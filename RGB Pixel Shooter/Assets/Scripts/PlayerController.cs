@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    GameObject camera;
-    // Start is called before the first frame update
     void Start()
     {
-        camera = GameObject.Find("Main Camera");
+        transform.position = new Vector3(Camera.main.ViewportToWorldPoint(new Vector3(0,0,0)).x+3, transform.position.y, transform.position.z);
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
