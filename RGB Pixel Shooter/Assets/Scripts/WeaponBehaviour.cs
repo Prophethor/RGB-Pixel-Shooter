@@ -9,7 +9,7 @@ public class WeaponBehaviour : MonoBehaviour
 
     public void Load()
     {
-        bullets++;
+        if(bullets<6)bullets++;
     }
 
     public void Shoot()
