@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    [SerializeField] float speed = 10;
+    public float speed = 10;
+    public int health = 1;
 
     private void Start()
     {
@@ -13,6 +14,20 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Die();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
     {
         Destroy(gameObject);
     }

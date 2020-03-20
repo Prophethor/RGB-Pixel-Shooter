@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D enemy;
+    public Rigidbody2D enemy;
     public void Start()
     {
         StartCoroutine("SpawnEnemy");

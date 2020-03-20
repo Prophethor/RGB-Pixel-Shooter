@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     void Start()
     {
-        transform.position = new Vector3(Camera.main.ViewportToWorldPoint(new Vector3(0,0,0)).x+60, transform.position.y, transform.position.z);
+        transform.position = new Vector3(Camera.main.ViewportToWorldPoint(new Vector3(0,0,0)).x+50, transform.position.y, transform.position.z);
     }
 
     void Update()
