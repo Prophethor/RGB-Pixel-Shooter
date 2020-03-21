@@ -18,8 +18,8 @@ public class WeaponBehaviour : MonoBehaviour
     {
         if (bullets > 0) {
             Rigidbody2D p = Instantiate(projectile, transform.position, Quaternion.identity);
-            p.velocity = new Vector3(1,0,0) * p.GetComponent<BulletBehavior>().speed;
-            p.GetComponent<BulletBehavior>().damage = damage;
+            p.velocity = new Vector3(1,0,0) * p.GetComponent<BulletBehaviour>().speed;
+            p.GetComponent<BulletBehaviour>().damage = damage;
             bullets--;
         }
     }
