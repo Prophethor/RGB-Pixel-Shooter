@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviour : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public float speed = 10;
     public int health = 1;
@@ -22,7 +22,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Die();
+        GameBehaviour.levelLost = true;
     }
 
     public void TakeDamage(int damage)
