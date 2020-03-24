@@ -10,12 +10,15 @@ public class Revolver : MonoBehaviour
     public int maxBullets = 6;
     public List<RGBColor> bullets = new List<RGBColor>();
     private int bulletsLoaded = 0;
-    private int loadIndex = 0;
-    private int shootIndex = 0;
+    public int loadIndex = 0;
+    public int shootIndex = 0;
+    private GameObject shootButton;
+    private Transform bulletButton;
 
     private void Start()
     {
         for (int i = 0; i < maxBullets; i++) bullets.Add(RGBColor.None);
+        shootButton = GameObject.Find("Shoot");
     }
     public void LoadRed()
     {
@@ -75,6 +78,16 @@ public class Revolver : MonoBehaviour
         foreach(Transform bullet in transform)
         {
             if (bullet.position.x >= 2 * Camera.main.transform.position.x * range) Destroy(bullet.gameObject);
+        }
+
+        for(int i= 0; i<maxBullets; i++)
+        {
+            bulletButton = shootButton.transform.GetChild(i);
+            SpriteRenderer spr = bulletButton.GetComponent<SpriteRenderer>();
+            if (bullets[(shootIndex + i) % maxBullets] == RGBColor.Red) spr.color = Color.red;
+            else if (bullets[(shootIndex + i) % maxBullets] == RGBColor.Green) spr.color = Color.green;
+            else if (bullets[(shootIndex + i) % maxBullets] == RGBColor.Blue) spr.color = Color.blue;
+            else spr.color = Color.white;
         }
     }
 }
