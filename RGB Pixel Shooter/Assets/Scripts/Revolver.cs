@@ -20,38 +20,18 @@ public class Revolver : MonoBehaviour
         for (int i = 0; i < maxBullets; i++) bullets.Add(RGBColor.None);
         shootButton = GameObject.Find("Shoot");
     }
-    public void LoadRed()
+    public void Load(string color)
     {
+        RGBColor rgbc = (RGBColor) System.Enum.Parse(typeof(RGBColor), color);
         if (bulletsLoaded < maxBullets)
         {
             loadIndex = shootIndex;
             while (bullets[loadIndex] != RGBColor.None) loadIndex = (loadIndex + 1) % maxBullets;
-            bullets[loadIndex] = RGBColor.Red;
+            bullets[loadIndex] = rgbc;
             bulletsLoaded++;
         }
     }
 
-    public void LoadBlue()
-    {
-        if (bulletsLoaded < maxBullets)
-        {
-            loadIndex = shootIndex;
-            while (bullets[loadIndex] != RGBColor.None) loadIndex = (loadIndex + 1) % maxBullets;
-            bullets[loadIndex] = RGBColor.Blue;
-            bulletsLoaded++;
-        }
-    }
-
-    public void LoadGreen()
-    {
-        if (bulletsLoaded < maxBullets)
-        {
-            loadIndex = shootIndex;
-            while (bullets[loadIndex] != RGBColor.None) loadIndex = (loadIndex + 1) % maxBullets;
-            bullets[loadIndex] = RGBColor.Green;
-            bulletsLoaded++;
-        }
-    }
     public void Shoot()
     {
         if (bulletsLoaded > 0 && bullets[shootIndex]!=RGBColor.None) {
