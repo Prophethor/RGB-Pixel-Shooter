@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
+    private float offset = 1.0f;
     void Start()
     {
         transform.position = new Vector3(Camera.main.ViewportToWorldPoint(new Vector3(0,0,0)).x+50, transform.position.y, transform.position.z);
@@ -19,14 +21,27 @@ public class PlayerController : MonoBehaviour
             {
                 if(hit.collider.tag == "Lane")
                 {
-                    if (transform.position.y > hit.collider.transform.position.y) {
-                        transform.position = new Vector3(transform.position.x, transform.position.y - 100, transform.position.z);
-                    } else if (transform.position.y < hit.collider.transform.position.y) {
-                        transform.position = new Vector3(transform.position.x, transform.position.y + 100, transform.position.z);
+                    if (transform.position.y > hit.collider.transform.position.y+offset) {
+                        StartCoroutine(MovePlayer(new Vector3(0,-100,0)));
+                    } else if (transform.position.y < hit.collider.transform.position.y-offset) {
+                        StartCoroutine(MovePlayer(new Vector3(0, 100, 0)));
                     }
                     
                 }
             }
+        }
+    }
+
+
+    IEnumerator MovePlayer(Vector3 deltapos)
+    {
+        float i = 0;
+        Vector3 pos = transform.position;
+        while (i < 1.0f)
+        {
+            transform.position = Vector3.Lerp(transform.position, pos + deltapos, i);
+            i += 0.1f;
+            yield return null;
         }
     }
 }

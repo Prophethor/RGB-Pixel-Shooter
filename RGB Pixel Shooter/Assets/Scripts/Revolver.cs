@@ -7,11 +7,12 @@ public class Revolver : MonoBehaviour
     public Rigidbody2D projectile;
     public int damage = 1;
     public float range = 0.9f;
+    public float loadTime = 0.5f;
     public int maxBullets = 6;
     public List<RGBColor> bullets = new List<RGBColor>();
     private int bulletsLoaded = 0;
-    public int loadIndex = 0;
-    public int shootIndex = 0;
+    private int loadIndex = 0;
+    private int shootIndex = 0;
     private GameObject shootButton;
     private Transform bulletButton;
 
@@ -20,8 +21,15 @@ public class Revolver : MonoBehaviour
         for (int i = 0; i < maxBullets; i++) bullets.Add(RGBColor.None);
         shootButton = GameObject.Find("Shoot");
     }
+
     public void Load(string color)
     {
+        StartCoroutine(LoadCor(color));
+    }
+
+    public IEnumerator LoadCor(string color)
+    {
+        yield return new WaitForSeconds(loadTime);
         RGBColor rgbc = (RGBColor) System.Enum.Parse(typeof(RGBColor), color);
         if (bulletsLoaded < maxBullets)
         {
