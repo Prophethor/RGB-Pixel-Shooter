@@ -16,34 +16,24 @@ public class Revolver : MonoBehaviour
     private GameObject shootButton;
     private Transform bulletButton;
 
-    public bool onCooldown;  // nove varijable
+    public bool onCooldown = false;  // nove varijable
     public float cooldownTimer; // nove varijable
 
     private void Start()
     {
         for (int i = 0; i < maxBullets; i++) bullets.Add(RGBColor.None);
         shootButton = GameObject.Find("Shoot");
-        cooldownTimer = loadTime;
     }
 
     public void Load(string color) // modifikovao sam ovu klasu da radi sa bool on cooldown, koji trigeruje u updejtu
     {
-        if (onCooldown == false)
-        {
-            StartCoroutine(LoadCor(color));
-            cooldownTimer = loadTime;
-            onCooldown = true;
-
-        }
-        else
-        {
-            Debug.Log("Load on cooldown"); // Debag log za cooldown ~~~~~~~~
-        }
+        if (!onCooldown) StartCoroutine(LoadCor(color));
     }
 
     public IEnumerator LoadCor(string color)
     {
-        yield return new WaitForSeconds(0); // izbacio sam load time odavde
+        onCooldown = true;
+        yield return new WaitForSeconds(loadTime); // izbacio sam load time odavde
         RGBColor rgbc = (RGBColor) System.Enum.Parse(typeof(RGBColor), color);
         if (bulletsLoaded < maxBullets)
         {
@@ -52,7 +42,7 @@ public class Revolver : MonoBehaviour
             bullets[loadIndex] = rgbc;
             bulletsLoaded++;
         }
-        
+        onCooldown = false;
     }
 
     public void Shoot()
@@ -78,17 +68,6 @@ public class Revolver : MonoBehaviour
 
     private void Update()
     {
-        // --------------------------- Logika za tajmer
-        if (onCooldown)
-        {
-            cooldownTimer -= Time.deltaTime;
-            if (cooldownTimer <= 0)
-            {
-                onCooldown = false;
-            }
-        }
-        //-------------------------------
-
         foreach(Transform bullet in transform)
         {
             if (bullet.position.x >= 2 * Camera.main.transform.position.x * range) Destroy(bullet.gameObject);
