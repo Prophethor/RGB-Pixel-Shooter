@@ -323,7 +323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &93168882
 Transform:
   m_ObjectHideFlags: 0
@@ -1664,10 +1664,11 @@ MonoBehaviour:
     type: 3}
   damage: 1
   range: 0.9
+  loadTime: 0.5
   maxBullets: 6
   bullets: 
-  loadIndex: 0
-  shootIndex: 0
+  onCooldown: 0
+  cooldownTimer: 0
 --- !u!1 &1174515495
 GameObject:
   m_ObjectHideFlags: 0
