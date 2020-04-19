@@ -7,7 +7,5 @@ public struct RGBDamage {
     public RGBDamage (RGBColor color, int amount) {
         this.color = color;
         this.amount = amount;
-
-        Debug.Log("Color: " + color.ToString());
     }
 }
