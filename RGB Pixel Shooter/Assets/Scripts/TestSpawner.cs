@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class TestSpawner : MonoBehaviour {
 
-    public Sprite enemySprite;
-
+    public Rigidbody2D enemy;
+    public int enemyCount = 15;
     private void Start () {
-        GameObject enemy = new GameObject("omg zombie");
-        TestEnemy tEnemy = enemy.AddComponent<TestEnemy>();
-        SpriteRenderer sr = enemy.AddComponent<SpriteRenderer>();
+        StartCoroutine(SpawnEnemy());
+    }
 
-        sr.sprite = enemySprite;
-
-        tEnemy.AddTrait(new ShieldTrait(RGBColor.RED, 2));
-        tEnemy.AddHPStack(new HPStack(RGBColor.GREEN));
+    IEnumerator SpawnEnemy()
+    {
+        while (enemyCount > 0)
+        {
+            Rigidbody2D currEnemy = Instantiate(enemy);
+            currEnemy.GetComponent<Mutant>().laneSetter = Random.Range(0,3);
+            enemyCount--;
+            yield return new WaitForSeconds(2f);
+        }
+        
     }
 }

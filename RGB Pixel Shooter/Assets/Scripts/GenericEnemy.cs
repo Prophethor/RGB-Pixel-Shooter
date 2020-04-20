@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class GenericEnemy : MonoBehaviour {
+
     public int point;
 
     protected float speed;
+    [SerializeField]
     protected int lane;
 
-    [SerializeField]
     protected List<HPStack> hpStackList;
     protected List<Trait> traits;
 
