@@ -7,10 +7,6 @@ public class Mutant : GenericEnemy
 
     public int laneSetter;
     private Rigidbody2D rb;
-    protected override void Awake()
-    {
-        Initialize();
-    }
 
     private void Start()
     {

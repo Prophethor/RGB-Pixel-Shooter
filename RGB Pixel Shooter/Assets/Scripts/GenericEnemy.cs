@@ -7,7 +7,6 @@ public abstract class GenericEnemy : MonoBehaviour {
     public int point;
 
     protected float speed;
-    [SerializeField]
     protected int lane;
 
     protected List<HPStack> hpStackList;
