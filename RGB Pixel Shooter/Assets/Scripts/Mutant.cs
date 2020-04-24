@@ -10,9 +10,9 @@ public class Mutant : GenericEnemy
 
     private void Start()
     {
-        speed = 1;
+        speed = .5f;
         lane = laneSetter;
-        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0)).x + 1, PlayField.GetLanePosition(lane));
+        transform.position = new Vector3(8, PlayField.GetLanePosition(lane));
         hpStackList.Add(new HPStack(RGBColor.BLUE, 1));
         rb = GetComponent<Rigidbody2D>();
         Move();

@@ -42,7 +42,6 @@ public class PlayField : MonoBehaviour
         }
                 
     }
-
     public static float GetLanePosition(int i)
     {
         return playGrid[i][0].position.y;
