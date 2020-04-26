@@ -2,27 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mutant : GenericEnemy
-{
+public class Mutant : GenericEnemy {
 
-    public int laneSetter;
-    private Rigidbody2D rb;
+    protected override void Start () {
+        base.Start();
 
-    private void Start()
-    {
-        speed = .5f;
-        lane = laneSetter;
-        transform.position = new Vector3(8, PlayField.GetLanePosition(lane));
-        hpStackList.Add(new HPStack(RGBColor.BLUE, 1));
-        rb = GetComponent<Rigidbody2D>();
+        //Set health color
+        hpStackList.Add(new HPStack(baseColor, 1));
+
+        //Initiate moving
         Move();
     }
 
-    protected override void Move() {
+    protected override void Move () {
+        Debug.Log("Move");
         rb.velocity = new Vector2(-speed, 0);
     }
 
-    protected override void InitiateShanking() {
+    protected override void InitiateShanking () {
         rb.velocity = Vector2.zero;
     }
 

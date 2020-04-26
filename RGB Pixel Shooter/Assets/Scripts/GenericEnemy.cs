@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class GenericEnemy : MonoBehaviour {
 
-    public int point;
+    protected Rigidbody2D rb;
+    protected Animator animator;
+    protected RGBColor baseColor;
 
     protected float speed;
     protected int lane;
@@ -14,6 +17,25 @@ public abstract class GenericEnemy : MonoBehaviour {
 
     protected virtual void Awake () {
         Initialize();
+    }
+
+    protected virtual void Start () {
+        // Set position according to lane
+        transform.position = new Vector3(8, PlayField.GetLanePosition(lane));
+
+        animator = GetComponent<Animator>();
+        switch (baseColor) {
+            case RGBColor.RED:
+                animator.SetTrigger("isRed");
+                break;
+            case RGBColor.GREEN:
+                animator.SetTrigger("isGreen");
+                break;
+            case RGBColor.BLUE:
+                animator.SetTrigger("isBlue");
+                break;
+        }
+        rb = GetComponent<Rigidbody2D>();
     }
 
     protected virtual void Update () {
@@ -28,6 +50,26 @@ public abstract class GenericEnemy : MonoBehaviour {
     protected void Initialize () {
         hpStackList = new List<HPStack>();
         traits = new List<Trait>();
+    }
+
+    public int GetLane () {
+        return lane;
+    }
+
+    public void SetLane (int lane) {
+        this.lane = lane;
+    }
+
+    public RGBColor GetBaseColor () {
+        return baseColor;
+    }
+
+    public void SetBaseColor (RGBColor baseColor) {
+        this.baseColor = baseColor;
+    }
+
+    public void SetSpeed (float speed) {
+        this.speed = speed;
     }
 
     public virtual void AddTrait (Trait trait) {
@@ -55,10 +97,6 @@ public abstract class GenericEnemy : MonoBehaviour {
     }
 
     protected virtual void Die () {
-        foreach (Trait trait in traits) {
-            trait.Die();
-        }
-
         SelfDestruct();
     }
 

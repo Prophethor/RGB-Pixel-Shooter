@@ -96,8 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95dc17373e1a9974c9da63d7a9c6415b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: 0
-  laneSetter: 0
 --- !u!50 &1988440765743063090
 Rigidbody2D:
   serializedVersion: 4
@@ -112,7 +110,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0

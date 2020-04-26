@@ -13,16 +13,15 @@ public class TestSpawner : MonoBehaviour {
         StartCoroutine(SpawnEnemy());
     }
 
-    IEnumerator SpawnEnemy()
-    {
-        while (enemyCount > 0)
-        {
+    IEnumerator SpawnEnemy () {
+        while (enemyCount > 0) {
             Rigidbody2D currEnemy = Instantiate(enemy);
             currEnemy.transform.localScale = new Vector3(3f / playField.GetComponent<PlayField>().rowCount, 3f / playField.GetComponent<PlayField>().rowCount);
-            currEnemy.GetComponent<Mutant>().laneSetter = Random.Range(0,playField.GetComponent<PlayField>().rowCount);
+            currEnemy.GetComponent<GenericEnemy>().SetLane(Random.Range(0, playField.GetComponent<PlayField>().rowCount));
+            currEnemy.GetComponent<GenericEnemy>().SetSpeed(1.5f); // Temporary, until EnemyInfo is added
             enemyCount--;
             yield return new WaitForSeconds(3f);
         }
-        
+
     }
 }
