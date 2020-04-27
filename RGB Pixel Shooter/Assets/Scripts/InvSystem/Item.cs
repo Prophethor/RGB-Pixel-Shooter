@@ -1,4 +1,4 @@
 ﻿public interface Item {
-    public string GetName ();
+    string GetName ();
     // TODO: GetIcon() for Inventory screen?
 }

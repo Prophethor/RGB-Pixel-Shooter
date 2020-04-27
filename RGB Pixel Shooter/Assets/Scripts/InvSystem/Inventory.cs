@@ -6,6 +6,10 @@ public class Inventory {
     // TODO: Inventory space limit?
     private List<Item> items;
 
+    public Inventory () {
+        items = new List<Item>();
+    }
+
     public List<Item> GetItems () {
         return items;
     }

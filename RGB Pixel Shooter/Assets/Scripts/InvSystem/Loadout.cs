@@ -15,6 +15,12 @@ public class Loadout {
     private List<Gear> gearItems;
     private List<Consumable> consumables;
 
+    public Loadout () {
+        weapons = new List<Weapon>();
+        gearItems = new List<Gear>();
+        consumables = new List<Consumable>();
+    }
+
     public bool IsValid () {
         if (weapons.Count < minWeapons || maxWeapons < weapons.Count) {
             return false;
