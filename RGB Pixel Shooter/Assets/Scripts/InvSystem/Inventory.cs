@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 [Serializable]
 public class Inventory {
-    // TODO: Inventory space limit?
+    // TODO: Inventory space limit!
     private List<Item> items;
 
     public Inventory () {

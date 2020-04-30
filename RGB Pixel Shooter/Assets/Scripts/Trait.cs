@@ -11,6 +11,8 @@ public abstract class Trait {
 
     public virtual void Update (float deltaTime) { }
 
+    public virtual void TakeDamage () { }
+
     public virtual void Die () { }
 
     // Traits rely on enemies setting themselves using this method, before using any other trait methods

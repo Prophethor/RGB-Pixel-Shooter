@@ -55,6 +55,10 @@ public abstract class GenericEnemy : MonoBehaviour {
     }
 
     protected virtual void Die () {
+        foreach (Trait trait in traits) {
+            trait.Die();
+        }
+
         SelfDestruct();
     }
 
