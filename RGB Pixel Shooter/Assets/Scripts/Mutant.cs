@@ -15,7 +15,6 @@ public class Mutant : GenericEnemy {
     }
 
     protected override void Move () {
-        Debug.Log("Move");
         rb.velocity = new Vector2(-speed, 0);
     }
 
