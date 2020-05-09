@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class GenericEnemy : MonoBehaviour {
+public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     protected Rigidbody2D rb;
     protected Animator animator;
     protected RGBColor baseColor;
+
+    protected StatMultiplierCollection statMultipliers;
 
     protected float speed;
     protected int lane;
@@ -45,10 +47,14 @@ public abstract class GenericEnemy : MonoBehaviour {
         foreach (HPStack stack in hpStackList) {
             stack.Update(Time.deltaTime);
         }
+
+        // Calling Move every frame might not be necessary, but it also might be
+        Move();
     }
 
     protected void Initialize () {
         hpStackList = new List<HPStack>();
+        statMultipliers = new StatMultiplierCollection();
         traits = new List<Trait>();
     }
 
@@ -70,6 +76,14 @@ public abstract class GenericEnemy : MonoBehaviour {
 
     public void SetSpeed (float speed) {
         this.speed = speed;
+    }
+
+    public StatMultiplierCollection GetStatMultipliers () {
+        return statMultipliers;
+    }
+
+    public void ApplyBuff (Buff buff) {
+        buff.Apply(statMultipliers);
     }
 
     public virtual void AddTrait (Trait trait) {
