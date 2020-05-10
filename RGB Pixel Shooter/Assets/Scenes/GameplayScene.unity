@@ -196,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191251345}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0, z: 0}
+  m_LocalPosition: {x: -1.5, y: 0, z: 10}
   m_LocalScale: {x: 1.26, y: 1.26, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -408,9 +408,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983f6f3ac5b17c54aaa9477a48ab5558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1988440765743063090, guid: b25cb2a9892872d4fb550ece0f6f78d3, type: 3}
-  enemyCount: 15
-  enemies: []
+  waveInfo: {fileID: -2674479664694370125, guid: a13d3a1d02b8f9741b652fbcd0f2aa7d,
+    type: 2}
+  gEnemies: []
 --- !u!4 &1435091645
 Transform:
   m_ObjectHideFlags: 0
