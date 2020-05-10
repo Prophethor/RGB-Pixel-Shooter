@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class EnemySpawner : MonoBehaviour {
 
-    public WaveInfo waveInfo;
+    public LevelInfo levelInfo;
 
     private GameObject playField;
 
@@ -33,24 +33,10 @@ public class EnemySpawner : MonoBehaviour {
         //connect to playfield
         playField = GameObject.Find("PlayField");
 
-        //load info from wave data
-        pointsToSpawn = waveInfo.pointPool;
+        StartCoroutine(SpawnEnemies(levelInfo));
 
-        colorDistribution = waveInfo.GetColorDistribution();
-        colorDistributionSum = CalculateDistributionSum(colorDistribution);
-        colorDistrReduxFactors = InitializeDistrReduxFactors(colorDistribution, colorDistributionSum);
-
-        typeDistribution = waveInfo.GetTypeDistribution();
-        typeDistributionSum = CalculateDistributionSum(typeDistribution);
-        typeDistrReduxFactors = InitializeDistrReduxFactors(typeDistribution, typeDistributionSum);
-
-        enemies = waveInfo.enemyPool;
-        enemyPrefabs = new List<Rigidbody2D>();
-        enemies.ForEach((i) => enemyPrefabs.Add(i.enemy));
-
-        //start spawning enemies
-        StartCoroutine(SpawnEnemies());
     }
+
 
     //returns 1/sum * distr
     private List<float> InitializeDistrReduxFactors(List<float> distr, float sum)
@@ -103,7 +89,29 @@ public class EnemySpawner : MonoBehaviour {
         return tmp;
     }
 
-    IEnumerator SpawnEnemies () {
+    IEnumerator SpawnEnemies(LevelInfo levelInfo)
+    {
+        foreach(WaveInfo wave in levelInfo.waves)
+        {
+            yield return StartCoroutine(SpawnWave(wave));
+            yield return new WaitForSeconds(5f);
+        }
+    }
+    IEnumerator SpawnWave (WaveInfo waveInfo) {
+        pointsToSpawn = waveInfo.pointPool;
+
+        colorDistribution = waveInfo.GetColorDistribution();
+        colorDistributionSum = CalculateDistributionSum(colorDistribution);
+        colorDistrReduxFactors = InitializeDistrReduxFactors(colorDistribution, colorDistributionSum);
+
+        typeDistribution = waveInfo.GetTypeDistribution();
+        typeDistributionSum = CalculateDistributionSum(typeDistribution);
+        typeDistrReduxFactors = InitializeDistrReduxFactors(typeDistribution, typeDistributionSum);
+
+        enemies = waveInfo.enemyPool;
+        enemyPrefabs = new List<Rigidbody2D>();
+        enemies.ForEach((i) => enemyPrefabs.Add(i.enemy));
+
         while (true)
         {
             int type = CalculateByDistribution(typeDistribution, typeDistrReduxFactors, ref typeDistributionSum);
@@ -134,6 +142,7 @@ public class EnemySpawner : MonoBehaviour {
 
         GenericEnemy gEnemy = currEnemy.GetComponent<GenericEnemy>();
 
+        gEnemies.Add(gEnemy);
         //Set lane randomly
         gEnemy.SetLane(Random.Range(0, playField.GetComponent<PlayField>().rowCount));
 
