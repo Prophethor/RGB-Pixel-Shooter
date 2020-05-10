@@ -94,7 +94,8 @@ public class EnemySpawner : MonoBehaviour {
         foreach(WaveInfo wave in levelInfo.waves)
         {
             yield return StartCoroutine(SpawnWave(wave));
-            yield return new WaitForSeconds(5f);
+            //we may in future want to start this timer when last enemy of previous wave dies
+            yield return new WaitForSeconds(10f);
         }
     }
     IEnumerator SpawnWave (WaveInfo waveInfo) {

@@ -408,8 +408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983f6f3ac5b17c54aaa9477a48ab5558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveInfo: {fileID: -2674479664694370125, guid: a13d3a1d02b8f9741b652fbcd0f2aa7d,
-    type: 2}
+  levelInfo: {fileID: 11400000, guid: a13d3a1d02b8f9741b652fbcd0f2aa7d, type: 2}
   gEnemies: []
 --- !u!4 &1435091645
 Transform:
