@@ -25,6 +25,7 @@ public class EnemySpawner : MonoBehaviour {
     private List<Rigidbody2D> enemyPrefabs;
 
     //for buff testing
+    [HideInInspector]
     public List<GenericEnemy> gEnemies;
 
     private void Start () {
@@ -39,36 +40,30 @@ public class EnemySpawner : MonoBehaviour {
 
 
     //returns 1/sum * distr
-    private List<float> InitializeDistrReduxFactors(List<float> distr, float sum)
-    {
+    private List<float> InitializeDistrReduxFactors (List<float> distr, float sum) {
         List<float> distrRedFacs = new List<float>();
         foreach (float t in distr) distrRedFacs.Add(t / sum);
         return distrRedFacs;
     }
 
     //return sum of all elements for given distr
-    private float CalculateDistributionSum(List<float> distribution)
-    {
+    private float CalculateDistributionSum (List<float> distribution) {
         float sum = 0f;
 
-        foreach (float d in distribution)
-        {
+        foreach (float d in distribution) {
             sum += d;
         }
         return sum;
     }
 
     //returns semi-random int from 0 to number of distr entries so that it satisfies set distr
-    private int CalculateByDistribution(List<float> distribution, List<float> distrReduxFactors, ref float distrSum)
-    {
+    private int CalculateByDistribution (List<float> distribution, List<float> distrReduxFactors, ref float distrSum) {
         int tmp = Random.Range(0, distribution.Count);
         float rnd = Random.value * distrSum;
-        for (int i = 0; i < distribution.Count; i++)
-        {
+        for (int i = 0; i < distribution.Count; i++) {
             rnd -= distribution[i];
 
-            if (rnd <= float.Epsilon)
-            {
+            if (rnd <= float.Epsilon) {
                 tmp = i;
 
                 distribution[i] *= distrReduxFactors[i];
@@ -77,10 +72,8 @@ public class EnemySpawner : MonoBehaviour {
                 break;
             }
         }
-        if (distrSum < distrSumBoundary)
-        {
-            for (int i = 0; i < distribution.Count; i++)
-            {
+        if (distrSum < distrSumBoundary) {
+            for (int i = 0; i < distribution.Count; i++) {
                 distribution[i] *= 10f;
             }
             distrSum = CalculateDistributionSum(distribution);
@@ -89,10 +82,8 @@ public class EnemySpawner : MonoBehaviour {
         return tmp;
     }
 
-    IEnumerator SpawnEnemies(LevelInfo levelInfo)
-    {
-        foreach(WaveInfo wave in levelInfo.waves)
-        {
+    IEnumerator SpawnEnemies (LevelInfo levelInfo) {
+        foreach (WaveInfo wave in levelInfo.waves) {
             yield return StartCoroutine(SpawnWave(wave));
             //we may in future want to start this timer when last enemy of previous wave dies
             yield return new WaitForSeconds(10f);
@@ -101,7 +92,7 @@ public class EnemySpawner : MonoBehaviour {
     IEnumerator SpawnWave (WaveInfo waveInfo) {
         pointsToSpawn = waveInfo.pointPool;
 
-        colorDistribution = waveInfo.GetColorDistribution();
+        colorDistribution = levelInfo.GetColorDistribution();
         colorDistributionSum = CalculateDistributionSum(colorDistribution);
         colorDistrReduxFactors = InitializeDistrReduxFactors(colorDistribution, colorDistributionSum);
 
@@ -113,16 +104,13 @@ public class EnemySpawner : MonoBehaviour {
         enemyPrefabs = new List<Rigidbody2D>();
         enemies.ForEach((i) => enemyPrefabs.Add(i.enemy));
 
-        while (true)
-        {
+        while (true) {
             int type = CalculateByDistribution(typeDistribution, typeDistrReduxFactors, ref typeDistributionSum);
-            if (enemies[type].pointValue <= pointsToSpawn)
-            {
+            if (enemies[type].pointValue <= pointsToSpawn) {
                 SpawnEnemy(type);
                 yield return new WaitForSeconds(Random.Range(2f, 3f));
             }
-            else
-            {
+            else {
                 typeDistribution.RemoveAt(type);
                 typeDistrReduxFactors.RemoveAt(type);
                 typeDistributionSum = CalculateDistributionSum(typeDistribution);
@@ -132,8 +120,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     //spawns one enemy of type given by it's position in type list
-    void SpawnEnemy(int typeIndex)
-    {
+    void SpawnEnemy (int typeIndex) {
         EnemyInfo enemyInfo = enemies[typeIndex];
         Rigidbody2D currEnemy = Instantiate(enemyPrefabs[typeIndex]);
 
@@ -148,7 +135,7 @@ public class EnemySpawner : MonoBehaviour {
         gEnemy.SetLane(Random.Range(0, playField.GetComponent<PlayField>().rowCount));
 
         //Set color based on level color distribution
-        RGBColor color = (RGBColor)CalculateByDistribution(colorDistribution, colorDistrReduxFactors, ref colorDistributionSum);
+        RGBColor color = (RGBColor) CalculateByDistribution(colorDistribution, colorDistrReduxFactors, ref colorDistributionSum);
         gEnemy.SetBaseColor(color);
 
         //Set speed based on enemy data

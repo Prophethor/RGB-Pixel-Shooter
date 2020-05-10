@@ -4,6 +4,26 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Level", menuName = "Level"), System.Serializable]
 public class LevelInfo : ScriptableObject {
+    [Range(0f, 10f)]
+    public float redDistribution;
+
+    [Range(0f, 10f)]
+    public float greenDistribution;
+
+    [Range(0f, 10f)]
+    public float blueDistribution;
 
     public List<WaveInfo> waves;
+
+    public List<float> GetColorDistribution () {
+        List<float> tmp = new List<float>();
+        tmp.Add(redDistribution);
+        tmp.Add(greenDistribution);
+        tmp.Add(blueDistribution);
+        return tmp;
+    }
+
+    public float GetColorDistributionSum () {
+        return redDistribution + greenDistribution + blueDistribution;
+    }
 }
