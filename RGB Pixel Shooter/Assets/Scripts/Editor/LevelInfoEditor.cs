@@ -16,17 +16,26 @@ public class LevelInfoEditor : Editor {
         //waveList.elementHeight = 7f * EditorGUIUtility.singleLineHeight + 2f;
 
         waveList.elementHeightCallback = (int index) => {
-            float height = 7f;
+            var element = waves.GetArrayElementAtIndex(index);
 
-            var element = new SerializedObject(waveList.serializedProperty.GetArrayElementAtIndex(index).objectReferenceValue);
+            float height;
 
-            SerializedProperty enemyList = element.FindProperty("enemyPool");
+            if (element.isExpanded) {
+                height = 4f;
+            }
+            else {
+                return EditorGUIUtility.singleLineHeight + 2f;
+            }
+
+            var serializedElement = new SerializedObject(element.objectReferenceValue);
+
+            SerializedProperty enemyList = serializedElement.FindProperty("enemyPool");
             if (enemyList.isExpanded) {
                 // Plus 1 for the "Size" field
                 height += enemyList.arraySize + 1;
             }
 
-            SerializedProperty typeDistrList = element.FindProperty("typeDistr");
+            SerializedProperty typeDistrList = serializedElement.FindProperty("typeDistr");
             if (typeDistrList.isExpanded) {
                 // Plus 1 for the "Size" field
                 height += typeDistrList.arraySize + 1;
@@ -41,6 +50,7 @@ public class LevelInfoEditor : Editor {
             list.index = index;
 
             SerializedProperty newElement = waves.GetArrayElementAtIndex(index);
+            newElement.isExpanded = true;
 
             // WaveInfo objects must be added to the LevelInfo asset
             WaveInfo newWave = ScriptableObject.CreateInstance<WaveInfo>();
@@ -76,59 +86,58 @@ public class LevelInfoEditor : Editor {
             if (waveList.serializedProperty.GetArrayElementAtIndex(index).objectReferenceValue == null) {
                 Debug.Log("This shit null");
             }
-            var element = new SerializedObject(waveList.serializedProperty.GetArrayElementAtIndex(index).objectReferenceValue);
+            var element = waveList.serializedProperty.GetArrayElementAtIndex(index);
+            var serializedElement = new SerializedObject(element.objectReferenceValue);
 
-            if (element == null) {
+            if (serializedElement == null) {
                 Debug.Log("Element is null");
             }
-            else if (element.FindProperty("pointPool") == null) {
+            else if (serializedElement.FindProperty("pointPool") == null) {
                 Debug.Log("PointPool is null");
             }
 
             float currentHeight = 0f;
 
-            EditorGUI.LabelField(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight + 2f), new GUIContent("Wave " + (index + 1)));
-            EditorGUI.PropertyField(new Rect(rect.x, rect.y + EditorGUIUtility.singleLineHeight + 2f, rect.width, EditorGUIUtility.singleLineHeight + 2f),
-                element.FindProperty("pointPool"));
-            currentHeight = 2f * (EditorGUIUtility.singleLineHeight + 2f);
+            element.isExpanded = EditorGUI.Foldout(new Rect(rect.x + 30f, rect.y, rect.width, EditorGUIUtility.singleLineHeight + 2f), element.isExpanded, new GUIContent("Wave " + (index + 1)), true);
 
-            float enemyPoolHeight = 1f;
-            if (element.FindProperty("enemyPool").isExpanded) {
-                enemyPoolHeight += element.FindProperty("enemyPool").arraySize + 1f;
+            if (element.isExpanded) {
+
+                EditorGUI.PropertyField(new Rect(rect.x, rect.y + EditorGUIUtility.singleLineHeight + 2f, rect.width, EditorGUIUtility.singleLineHeight + 2f),
+                    serializedElement.FindProperty("pointPool"));
+                currentHeight = 2f * (EditorGUIUtility.singleLineHeight + 2f);
+
+                float enemyPoolHeight = 1f;
+                if (serializedElement.FindProperty("enemyPool").isExpanded) {
+                    enemyPoolHeight += serializedElement.FindProperty("enemyPool").arraySize + 1f;
+                }
+                enemyPoolHeight *= (EditorGUIUtility.singleLineHeight + 2f);
+
+                EditorGUI.PropertyField(new Rect(rect.x, rect.y + currentHeight, rect.width, enemyPoolHeight),
+                    serializedElement.FindProperty("enemyPool"), true);
+                currentHeight += enemyPoolHeight;
+
+                float typeDistrHeight = 1f;
+                if (serializedElement.FindProperty("typeDistr").isExpanded) {
+                    typeDistrHeight += serializedElement.FindProperty("typeDistr").arraySize + 1f;
+                }
+                typeDistrHeight *= (EditorGUIUtility.singleLineHeight + 2f);
+
+                EditorGUI.PropertyField(new Rect(rect.x, rect.y + currentHeight, rect.width, typeDistrHeight),
+                    serializedElement.FindProperty("typeDistr"), true);
+                currentHeight += typeDistrHeight;
+
+
             }
-            enemyPoolHeight *= (EditorGUIUtility.singleLineHeight + 2f);
 
-            EditorGUI.PropertyField(new Rect(rect.x, rect.y + currentHeight, rect.width, enemyPoolHeight),
-                element.FindProperty("enemyPool"), true);
-            currentHeight += enemyPoolHeight;
-
-            float typeDistrHeight = 1f;
-            if (element.FindProperty("typeDistr").isExpanded) {
-                typeDistrHeight += element.FindProperty("typeDistr").arraySize + 1f;
-            }
-            typeDistrHeight *= (EditorGUIUtility.singleLineHeight + 2f);
-
-            EditorGUI.PropertyField(new Rect(rect.x, rect.y + currentHeight, rect.width, typeDistrHeight),
-                element.FindProperty("typeDistr"), true);
-            currentHeight += typeDistrHeight;
-
-            EditorGUI.PropertyField(new Rect(rect.x, rect.y + currentHeight, rect.width, EditorGUIUtility.singleLineHeight + 2f),
-                element.FindProperty("redDistribution"));
-            currentHeight += EditorGUIUtility.singleLineHeight + 2f;
-
-            EditorGUI.PropertyField(new Rect(rect.x, rect.y + currentHeight, rect.width, EditorGUIUtility.singleLineHeight + 2f),
-                element.FindProperty("greenDistribution"));
-            currentHeight += EditorGUIUtility.singleLineHeight + 2f;
-
-            EditorGUI.PropertyField(new Rect(rect.x, rect.y + currentHeight, rect.width, EditorGUIUtility.singleLineHeight + 2f),
-                element.FindProperty("blueDistribution"));
-            currentHeight += EditorGUIUtility.singleLineHeight + 2f;
-
-            element.ApplyModifiedProperties();
+            serializedElement.ApplyModifiedProperties();
         };
     }
 
     public override void OnInspectorGUI () {
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("redDistribution"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("greenDistribution"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("blueDistribution"));
+
         waveList.DoLayoutList();
         serializedObject.ApplyModifiedProperties();
     }
