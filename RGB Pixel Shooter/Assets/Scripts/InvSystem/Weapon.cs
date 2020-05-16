@@ -9,4 +9,6 @@ public abstract class Weapon : ScriptableObject, Item {
     public abstract string GetName ();
 
     public abstract void Shoot (Vector3 position);
+
+    public abstract void LevelStart ();
 }

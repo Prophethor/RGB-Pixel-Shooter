@@ -9,6 +9,10 @@ public class TestPlayer : MonoBehaviour {
 
     private int lane = 1;
 
+    private void Start () {
+        equippedWeapon.LevelStart();
+    }
+
     private void Update () {
         if (Input.GetKeyDown(KeyCode.S)) {
             if (lane > 0) {
@@ -22,19 +26,19 @@ public class TestPlayer : MonoBehaviour {
         }
         UpdatePosition();
 
-        /*
+        
         if (Input.GetKeyDown(KeyCode.J)) {
-            ((TestWeapon) equippedWeapon).bulletColor = RGBColor.RED;
-            equippedWeapon.Shoot(transform.position);
+            ((Revolver) equippedWeapon).Load(RGBColor.RED);
         }
         else if (Input.GetKeyDown(KeyCode.K)) {
-            ((TestWeapon) equippedWeapon).bulletColor = RGBColor.GREEN;
-            equippedWeapon.Shoot(transform.position);
+            ((Revolver) equippedWeapon).Load(RGBColor.GREEN);
         }
         else if (Input.GetKeyDown(KeyCode.L)) {
-            ((TestWeapon) equippedWeapon).bulletColor = RGBColor.BLUE;
+            ((Revolver) equippedWeapon).Load(RGBColor.BLUE);
+        }
+        else if (Input.GetKeyDown(KeyCode.Space)) {
             equippedWeapon.Shoot(transform.position);
-        }*/
+        }
     }
 
     private void UpdatePosition () {

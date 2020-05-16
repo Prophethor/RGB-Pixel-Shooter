@@ -119,5 +119,12 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         Destroy(gameObject);
     }
 
+    public void OnCollisionEnter2D (Collision2D collision) {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
+            TakeDamage(collision.gameObject.GetComponent<Projectile>().damage);
+            Destroy(collision.gameObject);
+        }
+    }
+
     protected abstract void InitiateShanking ();
 }
