@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1988440765743063088}
   - component: {fileID: 1988440765743063103}
   - component: {fileID: 1988440765743063089}
+  - component: {fileID: 8853162592787206652}
   - component: {fileID: 1988440765743063090}
   - component: {fileID: 7500979623821449531}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Test Mutant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,6 +97,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95dc17373e1a9974c9da63d7a9c6415b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &8853162592787206652
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988440765743063102}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.09613311, y: 0.5182663}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.6, y: 1.575}
+    newSize: {x: 1.6, y: 1.625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4079581, y: 1.0365326}
+  m_EdgeRadius: 0
 --- !u!50 &1988440765743063090
 Rigidbody2D:
   serializedVersion: 4
