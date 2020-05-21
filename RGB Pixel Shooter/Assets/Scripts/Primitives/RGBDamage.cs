@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[System.Serializable]
 public struct RGBDamage {
     public RGBColor color;
     public int amount;
