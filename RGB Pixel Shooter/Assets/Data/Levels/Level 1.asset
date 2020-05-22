@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   redDistribution: 5
-  greenDistribution: 2
-  blueDistribution: 2
+  greenDistribution: 5
+  blueDistribution: 5
   waves:
-  - {fileID: -6614857891804750078}
   - {fileID: -2674479664694370125}
+  - {fileID: -6614857891804750078}
