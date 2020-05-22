@@ -1,0 +1,488 @@
+fileFormatVersion: 2
+guid: 1e1b67a61c11aa0469c3302a8a984909
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5035015299591858955
+    second: M_Grunt_Blue_Walk_78x57 (1)_0
+  - first:
+      213: -8045711458465086819
+    second: M_Grunt_Blue_Walk_78x57 (1)_1
+  - first:
+      213: 3284491714458005391
+    second: M_Grunt_Blue_Walk_78x57 (1)_2
+  - first:
+      213: -3349526666580522352
+    second: M_Grunt_Blue_Walk_78x57 (1)_3
+  - first:
+      213: -6005902819619825860
+    second: M_Grunt_Blue_Walk_78x57 (1)_4
+  - first:
+      213: 5474571175765320749
+    second: M_Grunt_Blue_Walk_78x57 (1)_5
+  - first:
+      213: 9094600705081731232
+    second: M_Grunt_Blue_Walk_78x57 (1)_6
+  - first:
+      213: 8111312780696258749
+    second: M_Grunt_Blue_Walk_78x57 (1)_7
+  - first:
+      213: 4037837998610899404
+    second: M_Grunt_Blue_Walk_78x57 (1)_8
+  - first:
+      213: -3871210886816929299
+    second: M_Grunt_Blue_Walk_78x57 (1)_9
+  - first:
+      213: 2432789516376282000
+    second: M_Grunt_Blue_Walk_78x57 (1)_10
+  - first:
+      213: 6754379557616457768
+    second: M_Grunt_Blue_Walk_78x57 (1)_11
+  - first:
+      213: 133954801657318910
+    second: M_Grunt_Blue_Walk_72x57_0
+  - first:
+      213: 5413277792828241941
+    second: M_Grunt_Blue_Walk_72x57_1
+  - first:
+      213: 7723342072151025790
+    second: M_Grunt_Blue_Walk_72x57_2
+  - first:
+      213: 5976833129998600638
+    second: M_Grunt_Blue_Walk_72x57_3
+  - first:
+      213: 6440826331036827456
+    second: M_Grunt_Blue_Walk_72x57_4
+  - first:
+      213: -6977992604370391050
+    second: M_Grunt_Blue_Walk_72x57_5
+  - first:
+      213: -2859063398142680420
+    second: M_Grunt_Blue_Walk_72x57_6
+  - first:
+      213: 3317500920875659429
+    second: M_Grunt_Blue_Walk_72x57_7
+  - first:
+      213: 5438756876819464316
+    second: M_Grunt_Blue_Walk_72x57_8
+  - first:
+      213: -1042426320294754488
+    second: M_Grunt_Blue_Walk_72x57_9
+  - first:
+      213: -5586190833451770509
+    second: M_Grunt_Blue_Walk_72x57_10
+  - first:
+      213: 5299610202456833037
+    second: M_Grunt_Blue_Walk_72x57_11
+  - first:
+      213: 6951685271351202608
+    second: M_Grunt_Blue_Walk_72x57_0
+  - first:
+      213: 8832176511830453759
+    second: M_Grunt_Blue_Walk_72x57_1
+  - first:
+      213: 6139118992135664041
+    second: M_Grunt_Blue_Walk_72x57_2
+  - first:
+      213: -8080136220152010218
+    second: M_Grunt_Blue_Walk_72x57_3
+  - first:
+      213: 2193781029143092964
+    second: M_Grunt_Blue_Walk_72x57_4
+  - first:
+      213: 2269160905393324026
+    second: M_Grunt_Blue_Walk_72x57_5
+  - first:
+      213: -1674666491181721651
+    second: M_Grunt_Blue_Walk_72x57_6
+  - first:
+      213: 4787152734863257772
+    second: M_Grunt_Blue_Walk_72x57_7
+  - first:
+      213: -3823885419891937974
+    second: M_Grunt_Blue_Walk_72x57_8
+  - first:
+      213: 1453434073071261349
+    second: M_Grunt_Blue_Walk_72x57_9
+  - first:
+      213: 7714639207927576233
+    second: M_Grunt_Blue_Walk_72x57_10
+  - first:
+      213: -8051035261202088437
+    second: M_Grunt_Blue_Walk_72x57_11
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 40
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: M_Grunt_Blue_Walk_72x57_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 72
+        height: 57
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03314353ce8597060800000000000000
+      internalID: 6951685271351202608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Grunt_Blue_Walk_72x57_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 72
+        height: 57
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffde33d1eb1329a70800000000000000
+      internalID: 8832176511830453759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Grunt_Blue_Walk_72x57_2
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 72
+        height: 57
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a1b9186238823550800000000000000
+      internalID: 6139118992135664041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Grunt_Blue_Walk_72x57_3
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 0
+        width: 72
+        height: 57
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61a621d0be69ddf80800000000000000
+      internalID: -8080136220152010218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Grunt_Blue_Walk_72x57_4
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 72
+        height: 57
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ee901d0930e17e10800000000000000
+      internalID: 2193781029143092964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Grunt_Blue_Walk_72x57_5
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 72
+        height: 57
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aff3c2822ddad7f10800000000000000
+      internalID: 2269160905393324026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Grunt_Blue_Walk_72x57_6
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 72
+        height: 57
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc71dd3f2b362c8e0800000000000000
+      internalID: -1674666491181721651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Grunt_Blue_Walk_72x57_7
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 0
+        width: 72
+        height: 57
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca070178c026f6240800000000000000
+      internalID: 4787152734863257772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Grunt_Blue_Walk_72x57_8
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 72
+        height: 57
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4dab8d6874deeac0800000000000000
+      internalID: -3823885419891937974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Grunt_Blue_Walk_72x57_9
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 0
+        width: 72
+        height: 57
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a69cddb692ab2410800000000000000
+      internalID: 1453434073071261349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Grunt_Blue_Walk_72x57_10
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 72
+        height: 57
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a6f2d65c77ef0b60800000000000000
+      internalID: 7714639207927576233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Grunt_Blue_Walk_72x57_11
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 0
+        width: 72
+        height: 57
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0eb7ed061af44090800000000000000
+      internalID: -8051035261202088437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

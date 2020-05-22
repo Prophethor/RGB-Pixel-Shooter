@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Revolver", menuName = "Revolver")]
+[CreateAssetMenu(fileName = "Revolver", menuName = "Weapons/Revolver")]
 public class Revolver : Weapon {
     public int dmgAmount = 1;
     public Rigidbody2D bulletPrefab;

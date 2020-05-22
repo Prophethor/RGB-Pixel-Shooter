@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cb42729cc55a5a44b16804294a70154, type: 3}
-  m_Name: Level2
+  m_Script: {fileID: 11500000, guid: 14fa59df6a6dd214e82534e98302a748, type: 3}
+  m_Name: TestMutant
   m_EditorClassIdentifier: 
-  waves: []
+  enemy: {fileID: 1988440765743063090, guid: 12fb9367a84efd740b663a59e6821b7d, type: 3}
+  pointValue: 2
+  speed: 0.7
