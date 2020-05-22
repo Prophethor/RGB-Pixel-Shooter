@@ -70,8 +70,8 @@ public class UITest : MonoBehaviour
     }
 
     bool posOnPanel(Vector2 touch, RectTransform panel) {
-        if ((touch.x <= panel.position.x && touch.x >= panel.position.x - panel.rect.width) && 
-            (touch.y >= panel.position.y && touch.y <= panel.position.y + panel.rect.height)) return true;
+        if ((touch.x <= panel.position.x && touch.x >= panel.position.x - panel.rect.width) /*&& 
+            (touch.y >= panel.position.y && touch.y <= panel.position.y + panel.rect.height)*/) return true;
         return false;
     }
 
