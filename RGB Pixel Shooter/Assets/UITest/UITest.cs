@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UITest : MonoBehaviour
-{
+public class UITest : MonoBehaviour {
+
+    public Transform weapon1Panel;
+    public Transform weapon2Panel;
+
+    public TestPlayer player;
+
     private Vector2 fingerDown;
     private float fingerDownTime;
     private Vector2 fingerUp;
@@ -17,6 +22,10 @@ public class UITest : MonoBehaviour
         Down,
         Left,
         Right
+    }
+
+    private void Start () {
+        ((Revolver) player.equippedWeapon).HookUI(weapon1Panel);
     }
 
     private void Update () {
@@ -44,15 +53,18 @@ public class UITest : MonoBehaviour
             }
             if (direction == SwipeDirection.Down || direction == SwipeDirection.Up) {
                 if (weapon1Selected) {
-                    weaponPanel.Find("Weapon 1").gameObject.SetActive(false);
-                    weaponPanel.Find("Weapon 2").gameObject.SetActive(true);
+                    weapon1Panel.gameObject.SetActive(false);
+                    weapon2Panel.gameObject.SetActive(true);
                     weapon1Selected = false;
                 }
                 else {
-                    weaponPanel.Find("Weapon 1").gameObject.SetActive(true);
-                    weaponPanel.Find("Weapon 2").gameObject.SetActive(false);
+                    weapon1Panel.gameObject.SetActive(true);
+                    weapon2Panel.gameObject.SetActive(false);
                     weapon1Selected = true;
                 }
+                Weapon tempWeap = player.equippedWeapon;
+                player.equippedWeapon = player.otherWeapon;
+                player.otherWeapon = tempWeap;
             }
         }
     }
@@ -69,13 +81,13 @@ public class UITest : MonoBehaviour
         return Mathf.Abs(fingerDown.x - fingerUp.x);
     }
 
-    bool posOnPanel(Vector2 touch, RectTransform panel) {
+    bool posOnPanel (Vector2 touch, RectTransform panel) {
         if ((touch.x <= panel.position.x && touch.x >= panel.position.x - panel.rect.width) /*&& 
             (touch.y >= panel.position.y && touch.y <= panel.position.y + panel.rect.height)*/) return true;
         return false;
     }
 
-    public void ButtonLog(string msg) {
+    public void ButtonLog (string msg) {
         Debug.Log(msg);
     }
 }

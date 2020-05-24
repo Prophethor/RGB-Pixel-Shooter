@@ -6,6 +6,7 @@ public class TestPlayer : MonoBehaviour {
 
     // Besto testo
     public Weapon equippedWeapon;
+    public Weapon otherWeapon;
 
     private int lane = 1;
 
