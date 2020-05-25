@@ -537,7 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon1Panel: {fileID: 1869043824}
   weapon2Panel: {fileID: 1189080959}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1793928582}
   player: {fileID: 797096638}
   weaponPanel: {fileID: 1204639628}
 --- !u!4 &443079413
