@@ -29,29 +29,35 @@ public class TestPlayer : MonoBehaviour {
         }
         UpdatePosition();
 
-        
+
         if (Input.GetKeyDown(KeyCode.J)) {
-            ((Revolver) equippedWeapon).Load(RGBColor.RED);
+            ((Shotgun) equippedWeapon).Load(RGBColor.RED);
         }
         else if (Input.GetKeyDown(KeyCode.K)) {
-            ((Revolver) equippedWeapon).Load(RGBColor.GREEN);
+            ((Shotgun) equippedWeapon).Load(RGBColor.GREEN);
         }
         else if (Input.GetKeyDown(KeyCode.L)) {
-            ((Revolver) equippedWeapon).Load(RGBColor.BLUE);
+            ((Shotgun) equippedWeapon).Load(RGBColor.BLUE);
         }
         else if (Input.GetKeyDown(KeyCode.Space)) {
             equippedWeapon.Shoot(transform.position);
         }
     }
 
-    public void Move(Swipe.SwipeData swipe) {
-        if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) && swipe.direction == Swipe.SwipeDirection.Down && lane > 0) lane--;
-        else if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) && swipe.direction == Swipe.SwipeDirection.Up && lane < 2) lane++;
+    public void Move (Swipe.SwipeData swipe) {
+        if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
+            swipe.direction == Swipe.SwipeDirection.Down && lane > 0) {
+            lane--;
+        }
+        else if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
+            swipe.direction == Swipe.SwipeDirection.Up && lane < 2) {
+            lane++;
+        }
         UpdatePosition();
     }
 
     bool posOnPanel (Vector2 touch, RectTransform panel) {
-        if ((touch.x >= panel.position.x && touch.x <= panel.position.x + panel.rect.width) && 
+        if ((touch.x >= panel.position.x && touch.x <= panel.position.x + panel.rect.width) &&
             (touch.y >= panel.position.y && touch.y <= panel.position.y + panel.rect.height)) return true;
         return false;
     }

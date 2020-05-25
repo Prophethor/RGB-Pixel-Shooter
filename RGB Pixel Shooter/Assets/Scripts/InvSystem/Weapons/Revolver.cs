@@ -34,7 +34,7 @@ public class Revolver : Weapon {
         return GameObject.FindGameObjectWithTag("Player").transform.position;
     }
 
-    public void HookUI (Transform parentPanel) {
+    public override void HookUI (Transform parentPanel) {
         if (UIHooks == null) {
             InitHooks();
         }

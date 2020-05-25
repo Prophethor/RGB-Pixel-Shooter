@@ -7,12 +7,15 @@ public class UITest : MonoBehaviour {
     public Transform weapon1Panel;
     public Transform weapon2Panel;
 
+    public GameManager gameManager;
+
     public TestPlayer player;
     public RectTransform weaponPanel;
     private bool weapon1Selected = true;
 
     private void Start () {
-        ((Revolver) player.equippedWeapon).HookUI(weapon1Panel);
+        gameManager.GetLoadout().GetWeapons()[0].HookUI(weapon1Panel);
+        gameManager.GetLoadout().GetWeapons()[1].HookUI(weapon2Panel);
         Swipe.OnSwipe += debSwip;
     }
 
@@ -29,9 +32,7 @@ public class UITest : MonoBehaviour {
                 weapon2Panel.gameObject.SetActive(false);
                 weapon1Selected = true;
             }
-            Weapon tempWeap = player.equippedWeapon;
-            player.equippedWeapon = player.otherWeapon;
-            player.otherWeapon = tempWeap;
+            gameManager.SwitchWeapon();
         }
     }
     bool posOnPanel (Vector2 touch, RectTransform panel) {
