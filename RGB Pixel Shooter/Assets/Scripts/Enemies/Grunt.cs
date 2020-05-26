@@ -17,7 +17,6 @@ public class Grunt : GenericEnemy
     }
 
     public void Stop () {
-        Debug.Log("Stop");
         rb.velocity = Vector2.zero;
     }
     protected override void InitiateShanking () {

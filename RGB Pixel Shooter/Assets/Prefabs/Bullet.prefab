@@ -96,6 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8477fa193cecf204d8f245ddc21fc2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage:
+    color: 0
+    amount: 0
   bulletSprites:
   - {fileID: 21300000, guid: 76173b869534e8f4d945bf52fa71c557, type: 3}
   - {fileID: 21300000, guid: e94348d37a4eae648a6aedf449a8467f, type: 3}
@@ -112,7 +115,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
