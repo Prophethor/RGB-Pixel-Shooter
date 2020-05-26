@@ -33,6 +33,16 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Switched. Weapon is now " + player.equippedWeapon.GetName());
     }
 
+    public void WinGame () {
+        Time.timeScale = 0;
+        Debug.Log("You win!");
+    }
+
+    public void LoseGame () {
+        Time.timeScale = 0;
+        Debug.Log("Run.");
+    }
+
     public Loadout GetLoadout () {
         return loadout;
     }

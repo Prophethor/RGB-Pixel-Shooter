@@ -7,9 +7,13 @@ public class EnemySpawner : MonoBehaviour {
 
     public LevelInfo levelInfo;
 
+    private GameManager gm;
+
     private GameObject playField;
 
     private int pointsToSpawn;
+
+    public static int enemiesToKill = 0;
 
     private List<float> colorDistribution;
     private float colorDistributionSum;
@@ -31,8 +35,9 @@ public class EnemySpawner : MonoBehaviour {
     private void Start () {
         gEnemies = new List<GenericEnemy>();
 
-        //connect to playfield
+        //connect to playfield and gamemanager
         playField = GameObject.Find("PlayField");
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         StartCoroutine(SpawnEnemies(levelInfo));
 
@@ -84,10 +89,10 @@ public class EnemySpawner : MonoBehaviour {
 
     IEnumerator SpawnEnemies (LevelInfo levelInfo) {
         foreach (WaveInfo wave in levelInfo.waves) {
+            yield return new WaitForSeconds(3f);
             yield return StartCoroutine(SpawnWave(wave));
-            //we may in future want to start this timer when last enemy of previous wave dies
-            yield return new WaitForSeconds(10f);
         }
+        gm.WinGame();
     }
     IEnumerator SpawnWave (WaveInfo waveInfo) {
         pointsToSpawn = waveInfo.pointPool;
@@ -114,8 +119,13 @@ public class EnemySpawner : MonoBehaviour {
                 typeDistribution.RemoveAt(type);
                 typeDistrReduxFactors.RemoveAt(type);
                 typeDistributionSum = CalculateDistributionSum(typeDistribution);
-                if (typeDistribution.Count <= 0 || typeDistrReduxFactors.Count <= 0) break;
+                if (typeDistribution.Count <= 0 || typeDistrReduxFactors.Count <= 0){
+                    break;
+                }
             }
+        }
+        while (enemiesToKill > 0) {
+            yield return new WaitForSeconds(1f);
         }
     }
 
@@ -141,6 +151,7 @@ public class EnemySpawner : MonoBehaviour {
         //Set speed based on enemy data
         gEnemy.SetSpeed(enemyInfo.speed);
 
+        enemiesToKill++;
         pointsToSpawn -= enemyInfo.pointValue;
     }
 }

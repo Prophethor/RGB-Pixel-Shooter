@@ -17,6 +17,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected List<HPStack> hpStackList;
     protected List<Trait> traits;
 
+    private GameManager gm;
     protected virtual void Awake () {
         Initialize();
     }
@@ -25,6 +26,8 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         // Set position according to lane
         float yPos = PlayField.GetSpacePosition(lane, 0).y - Random.Range(-0.33f, 1f) * PlayField.GetSpaceHeight() / 3f;
         transform.position = new Vector3(9, yPos, yPos);
+
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         animator = GetComponent<Animator>();
         switch (baseColor) {
@@ -112,6 +115,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     }
 
     protected virtual void Die () {
+        EnemySpawner.enemiesToKill--;
         SelfDestruct();
     }
 
@@ -123,6 +127,12 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
             TakeDamage(collision.gameObject.GetComponent<Projectile>().damage);
             Destroy(collision.gameObject);
+        }
+    }
+
+    public void OnTriggerEnter2D (Collider2D collider) {
+        if (collider.gameObject.layer == LayerMask.NameToLayer("FinishLine")) {
+            gm.LoseGame();
         }
     }
 
