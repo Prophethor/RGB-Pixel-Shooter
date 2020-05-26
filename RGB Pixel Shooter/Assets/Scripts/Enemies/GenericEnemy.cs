@@ -50,7 +50,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         }
 
         // Calling Move every frame might not be necessary, but it also might be
-        Move();
+        //Move();
     }
 
     protected void Initialize () {
