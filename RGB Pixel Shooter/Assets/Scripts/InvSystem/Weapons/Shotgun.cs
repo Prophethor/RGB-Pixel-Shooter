@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Shotgun", menuName = "Weapons/Shotgun")]
 public class Shotgun : Weapon {
@@ -23,10 +24,33 @@ public class Shotgun : Weapon {
     private bool[] barrelLoaded = new bool[2];
     private int selectedBarrel = 0;
 
-
+    private static Dictionary<string, UnityEngine.Events.UnityAction> UIHooks;
 
     public override string GetName () {
         return "Shotgun";
+    }
+
+    private void InitHooks () {
+        UIHooks = new Dictionary<string, UnityEngine.Events.UnityAction>();
+        UIHooks.Add("LoadRed", () => Load(RGBColor.RED));
+        UIHooks.Add("LoadGreen", () => Load(RGBColor.GREEN));
+        UIHooks.Add("LoadBlue", () => Load(RGBColor.BLUE));
+        UIHooks.Add("ShootL", () => Shoot(0, GetPlayerPos()));
+        UIHooks.Add("ShootR", () => Shoot(1, GetPlayerPos()));
+    }
+
+    public Vector3 GetPlayerPos () {
+        return GameObject.FindGameObjectWithTag("Player").transform.position;
+    }
+
+    public override void HookUI (Transform parentPanel) {
+        InitHooks();
+
+        foreach(Button button in parentPanel.GetComponentsInChildren<Button>()) {
+            if (UIHooks.ContainsKey(button.tag)) {
+                button.onClick.AddListener(UIHooks[button.tag]);
+            }
+        }
     }
 
     public override void LevelStart () {
@@ -36,10 +60,6 @@ public class Shotgun : Weapon {
         barrels = new RGBDamage[2];
         barrelLoaded = new bool[2];
         selectedBarrel = 0;
-    }
-
-    public void InitUI () {
-
     }
 
     public void Load (RGBColor rgbColor) {

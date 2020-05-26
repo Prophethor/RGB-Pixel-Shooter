@@ -5,9 +5,14 @@ using System.Collections.Generic;
 public class Inventory {
     // TODO: Inventory space limit!
     private List<Item> items;
+    private Loadout loadout;
 
     public Inventory () {
         items = new List<Item>();
+    }
+
+    public Loadout GetLoadout () {
+        return loadout;
     }
 
     public List<Item> GetItems () {

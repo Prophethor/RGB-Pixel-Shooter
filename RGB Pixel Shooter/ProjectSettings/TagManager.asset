@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - playSpace
+  - Shoot
+  - ShootL
+  - ShootR
+  - LoadRed
+  - LoadGreen
+  - LoadBlue
   layers:
   - Default
   - TransparentFX
