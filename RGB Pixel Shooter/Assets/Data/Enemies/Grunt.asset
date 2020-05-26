@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 1988440765743063090, guid: 12fb9367a84efd740b663a59e6821b7d, type: 3}
   pointValue: 2
-  speed: 0.7
+  speed: 3
