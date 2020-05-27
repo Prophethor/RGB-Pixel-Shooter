@@ -14,6 +14,8 @@ public class TestPlayer : MonoBehaviour {
     [HideInInspector]
     public int savedLane = 1;
 
+    public float laneSwapTime = 0.55f;
+
     private bool isJumping = false;
 
     private void Start () {
@@ -68,13 +70,13 @@ public class TestPlayer : MonoBehaviour {
         animator.SetTrigger("IsJumping");
         isJumping = true;
 
-        Tweener.Invoke(0.3f, () => {
+        Tweener.Invoke(laneSwapTime * 0.5454f, () => {
             Tweener.AddTween(() => transform.position.y, (x) => transform.position = new Vector3(transform.position.x, x, transform.position.z),
-                PlayField.GetLanePosition(newLane), 0.25f, TweenMethods.SoftEase, () => {
+                PlayField.GetLanePosition(newLane), laneSwapTime * 0.4545f, TweenMethods.SoftEase, () => {
                     lane = newLane;
                     isJumping = false;
                 });
-            Tweener.Invoke(0.1f, () => {
+            Tweener.Invoke(Mathf.Max(laneSwapTime * 0.4545f - 0.15f, 0f), () => {
                 Land();
             });
         });
