@@ -9,6 +9,7 @@ public class TestPlayer : MonoBehaviour {
     public Weapon otherWeapon;
     public RectTransform playerSpace;
     private Animator animator;
+    public Animator animator1;
 
     private int lane = 1;
     [HideInInspector]
@@ -24,6 +25,11 @@ public class TestPlayer : MonoBehaviour {
     }
 
     private void Update () {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            animator1.SetBool("Win", true);
+        }
+
         if (Input.GetKeyDown(KeyCode.S)) {
             if (lane > 0) {
                 SwitchLane(lane - 1);

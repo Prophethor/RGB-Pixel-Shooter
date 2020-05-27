@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public Weapon shotgun;
 
     public TestPlayer player;
+    public Animator animator;
 
     private void Start () {
         loadout = new Loadout();
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour {
     public void WinGame () {
         Time.timeScale = 0;
         Debug.Log("You win!");
+        animator.SetBool("Win", true); // test delete later
     }
 
     public void LoseGame () {
