@@ -226,12 +226,14 @@ public class Tweener : MonoBehaviour {
     }
 
     // Safe method invocation
-    public static void Invoke (float delay, Callback callback, bool useUnscaledTime = false) {
+    public static Tween Invoke (float delay, Callback callback, bool useUnscaledTime = false) {
         float t = 0f;
-        AddTween(() => t, (x) => t = x, 1f, delay, callback, useUnscaledTime);
+        return AddTween(() => t, (x) => t = x, 1f, delay, callback, useUnscaledTime);
     }
 
     public static void RemoveTween (Tween tween) {
-        tween.active = false;
+        if (getInstance().activeTweens.Contains(tween)) {
+            tween.active = false;
+        }
     }
 }

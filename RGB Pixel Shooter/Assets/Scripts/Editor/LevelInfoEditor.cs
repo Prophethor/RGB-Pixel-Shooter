@@ -141,4 +141,4 @@ public class LevelInfoEditor : Editor {
         waveList.DoLayoutList();
         serializedObject.ApplyModifiedProperties();
     }
-}
+} 

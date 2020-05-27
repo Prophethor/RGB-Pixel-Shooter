@@ -12,7 +12,9 @@ public class Revolver : Weapon {
     public float loadTime = 1f;
 
     private WeaponState state;
+    private WeaponAnimState animState; //dodao
     private Queue<RGBColor> loadQueue;
+    private Tween currentLoad;
 
     public int dmgAmount = 1;
     public float bulletSpeed = 5;
@@ -22,6 +24,7 @@ public class Revolver : Weapon {
 
     public override void LevelStart () {
         state = WeaponState.READY;
+        animState = WeaponAnimState.IDLE;
         bullets = new List<RGBColor>();
         loadQueue = new Queue<RGBColor>();
 
@@ -74,27 +77,54 @@ public class Revolver : Weapon {
 
         if (bullets.Count < 6) {
             SetState(WeaponState.LOADING);
-            Tweener.Invoke(loadTime, () => {
-                bullets.Add(color);
-                SetState(WeaponState.READY);
+            SetAnimState(WeaponAnimState.LOADING);
+            currentLoad = Tweener.Invoke(loadTime, () => {
+                if (state == WeaponState.LOADING) {
+                    bullets.Add(color);
+                    SetState(WeaponState.READY);
+                }
             });
         }
     }
 
     public override void Shoot (Vector3 position) {
-        if (state == WeaponState.READY && bullets.Count > 0) {
+        if ((state == WeaponState.READY || state == WeaponState.LOADING) && bullets.Count > 0) {
             Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.identity);
             bulletObj.velocity = new Vector2(bulletSpeed, 0);
             bulletObj.GetComponent<Projectile>().SetDamage(bullets[0], dmgAmount);
             bullets.RemoveAt(0);
 
+            // Stop any and all bullet loading
+            if (currentLoad.active) {
+                Tweener.RemoveTween(currentLoad);
+            }
+            loadQueue.Clear();
+
+            SetAnimState(WeaponAnimState.SHOOTING);
             SetState(WeaponState.COOLDOWN);
             Tweener.Invoke(1f / fireRate, () => {
                 SetState(WeaponState.READY);
             });
         }
     }
-
+    private void SetAnimState (WeaponAnimState newState) {
+        animState = newState;
+        switch (animState) {
+            case WeaponAnimState.IDLE: // nepotrebno...
+                break;
+            case WeaponAnimState.SHOOTING:
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetTrigger("IsShooting");
+                break;
+            case WeaponAnimState.LOADING:
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetTrigger("IsLoading");
+                break;
+            case WeaponAnimState.MOVING:
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetTrigger("IsJumping");
+                break;
+            default:
+                break;
+        }
+    }
     private void SetState (WeaponState newState) {
         state = newState;
 
