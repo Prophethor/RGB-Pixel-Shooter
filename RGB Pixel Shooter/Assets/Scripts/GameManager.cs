@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public Weapon shotgun;
 
     public TestPlayer player;
+    public Animator UIAnimator;
 
     private void Start () {
         loadout = new Loadout();
@@ -34,11 +35,13 @@ public class GameManager : MonoBehaviour {
     }
 
     public void WinGame () {
+        UIAnimator.SetBool("Win", true);
         Time.timeScale = 0;
         Debug.Log("You win!");
     }
 
     public void LoseGame () {
+        UIAnimator.SetBool("Lose", true);
         Time.timeScale = 0;
         Debug.Log("Run.");
     }
