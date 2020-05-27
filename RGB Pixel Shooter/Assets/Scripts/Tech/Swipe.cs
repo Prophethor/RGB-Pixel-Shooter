@@ -9,7 +9,7 @@ public class Swipe : MonoBehaviour
     private float fingerDownTime;
     private Vector2 fingerUp;
     private SwipeDirection direction;
-    private float minDistanceForSwipe = 200f;
+    private float minDistanceForSwipe = 100f;
 
     public static event Action<SwipeData> OnSwipe = delegate { };
 

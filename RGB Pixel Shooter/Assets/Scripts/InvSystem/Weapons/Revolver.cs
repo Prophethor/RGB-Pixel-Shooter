@@ -22,15 +22,17 @@ public class Revolver : Weapon {
     private static Dictionary<string, UnityEngine.Events.UnityAction> UIHooks;
 
     private Animator animator;
-    private Animation anim;
+    private GameObject player;
+
     public override void LevelStart () {
         
         state = WeaponState.READY;
         bullets = new List<RGBColor>();
         loadQueue = new Queue<RGBColor>();
 
-        animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-        animator.SetFloat("loadSpeed", 0.683f / loadTime);
+        player = GameObject.FindGameObjectWithTag("Player");
+        animator = player.GetComponent<Animator>();
+        animator.SetFloat("loadSpeed", 0.4f / loadTime);
         
         if (UIHooks == null) {
             InitHooks();
@@ -72,14 +74,14 @@ public class Revolver : Weapon {
     }
 
     public void Load (RGBColor color) {
-        if (state != WeaponState.READY) {
+        if (state != WeaponState.READY ) {
             if (bullets.Count + loadQueue.Count < 6) {
                 loadQueue.Enqueue(color);
             }
             return;
         }
 
-        if (bullets.Count < 6) {
+        if (bullets.Count < 6 && !player.GetComponent<TestPlayer>().isJumping) {
             animator.SetTrigger("loadTrigger");
             SetState(WeaponState.LOADING);
             currentLoad = Tweener.Invoke(loadTime, () => {
@@ -92,7 +94,7 @@ public class Revolver : Weapon {
     }
 
     public override void Shoot (Vector3 position) {
-        if ((state == WeaponState.READY || state == WeaponState.LOADING) && bullets.Count > 0) {
+        if ((state == WeaponState.READY || state == WeaponState.LOADING) && bullets.Count > 0 && !player.GetComponent<TestPlayer>().isJumping) {
             animator.SetTrigger("shootTrigger");
             Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.identity);
             bulletObj.velocity = new Vector2(bulletSpeed, 0);
@@ -115,7 +117,6 @@ public class Revolver : Weapon {
   
     public void SetState (WeaponState newState) {
         state = newState;
-        if (state == WeaponState.READY) Debug.Log("Ready");
         if (newState == WeaponState.READY && loadQueue.Count > 0) {
             Load(loadQueue.Dequeue());
         }

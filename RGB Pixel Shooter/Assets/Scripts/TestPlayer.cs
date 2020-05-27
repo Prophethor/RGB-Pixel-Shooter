@@ -6,7 +6,6 @@ public class TestPlayer : MonoBehaviour {
 
     // Besto testo
     public Weapon equippedWeapon;
-    public Weapon otherWeapon;
     public RectTransform playerSpace;
     private Animator animator;
 
@@ -14,8 +13,11 @@ public class TestPlayer : MonoBehaviour {
     [HideInInspector]
     public int savedLane = 1;
 
-    private bool isJumping = false;
+    public bool isJumping = false;
     private float laneOffset;
+
+    //TODO: Make it weapon dependant
+    private float laneSwitchTime = 0.25f;
 
     private void Start () {
         equippedWeapon.LevelStart();
@@ -23,7 +25,9 @@ public class TestPlayer : MonoBehaviour {
 
         laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
 
-        animator = this.gameObject.GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+        // * 2 bi bilo da želimo da se animacija završi u trenutku kad stigne na lejn, pa sam stavio * 1.5 da bismo imali mali delay
+        animator.SetFloat("jumpSpeed", laneSwitchTime*1.5f);
     }
 
     private void Update () {
@@ -68,18 +72,14 @@ public class TestPlayer : MonoBehaviour {
             return;
         }
 
-        animator.SetBool("canShoot", false);
-        animator.SetBool("canLoad", false);
         animator.SetTrigger("jumpTrigger");
         isJumping = true;
 
         Tweener.Invoke(0.3f, () => {
             Tweener.AddTween(() => transform.position.y, (x) => transform.position = new Vector3(transform.position.x, x, transform.position.z),
-                PlayField.GetLanePosition(newLane)-laneOffset, 0.25f, TweenMethods.SoftEase, () => {
+                PlayField.GetLanePosition(newLane)-laneOffset, laneSwitchTime, TweenMethods.SoftEase, () => {
                     lane = newLane;
                     isJumping = false;
-                    animator.SetBool("canShoot", true);
-                    animator.SetBool("canLoad", true);
                 });
         });
 
