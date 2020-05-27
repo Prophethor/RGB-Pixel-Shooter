@@ -41,9 +41,10 @@ public class UITest : MonoBehaviour {
         gameManager.SwitchWeapon();
     }
 
-    bool posOnPanel (Vector2 touch, RectTransform panel) {
-        if ((touch.x <= panel.position.x && touch.x >= panel.position.x - panel.rect.width) /*&& 
-            (touch.y >= panel.position.y && touch.y <= panel.position.y + panel.rect.height)*/) return true;
+    private bool posOnPanel (Vector2 touch, RectTransform panel) {
+        if (touch.x <= panel.position.x && touch.x >= panel.position.x - panel.rect.width) {
+            return true;
+        }
         return false;
     }
 
@@ -52,6 +53,7 @@ public class UITest : MonoBehaviour {
     }
 }
 
+#if UNITY_EDITOR
 
 [CustomEditor(typeof(UITest))]
 public class UITestEditor : Editor {
@@ -64,3 +66,5 @@ public class UITestEditor : Editor {
         }
     }
 }
+
+#endif

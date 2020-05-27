@@ -119,7 +119,7 @@ public class EnemySpawner : MonoBehaviour {
                 typeDistribution.RemoveAt(type);
                 typeDistrReduxFactors.RemoveAt(type);
                 typeDistributionSum = CalculateDistributionSum(typeDistribution);
-                if (typeDistribution.Count <= 0 || typeDistrReduxFactors.Count <= 0){
+                if (typeDistribution.Count <= 0 || typeDistrReduxFactors.Count <= 0) {
                     break;
                 }
             }
@@ -129,14 +129,14 @@ public class EnemySpawner : MonoBehaviour {
         }
     }
 
-    //spawns one enemy of type given by it's position in type list
+    // Spawns one enemy of type given by it's position in type list
     void SpawnEnemy (int typeIndex) {
         EnemyInfo enemyInfo = enemies[typeIndex];
         Rigidbody2D currEnemy = Instantiate(enemyPrefabs[typeIndex]);
 
         // The value 3f represents the scaling factor of the enemies, that is, the enemy sprites are created for 3 lanes,
         // and we are trying to scale accordingly
-        //currEnemy.transform.localScale = new Vector3(3f / playField.GetComponent<PlayField>().rowCount, 3f / playField.GetComponent<PlayField>().rowCount);
+        // currEnemy.transform.localScale = new Vector3(3f / playField.GetComponent<PlayField>().rowCount, 3f / playField.GetComponent<PlayField>().rowCount);
 
         GenericEnemy gEnemy = currEnemy.GetComponent<GenericEnemy>();
 
@@ -156,12 +156,14 @@ public class EnemySpawner : MonoBehaviour {
     }
 }
 
+#if UNITY_EDITOR
+
 [CustomEditor(typeof(EnemySpawner))]
 public class TestSpawnerEditor : Editor {
 
     public override void OnInspectorGUI () {
         DrawDefaultInspector();
-        
+
         if (GUILayout.Button("Buff enemies!")) {
             foreach (GenericEnemy enemy in ((EnemySpawner) target).gEnemies) {
                 Dictionary<StatEnum, float> buffMult = new Dictionary<StatEnum, float>();
@@ -172,3 +174,5 @@ public class TestSpawnerEditor : Editor {
         }
     }
 }
+
+#endif
