@@ -8,39 +8,52 @@ public class TestPlayer : MonoBehaviour {
     public Weapon equippedWeapon;
     public Weapon otherWeapon;
     public RectTransform playerSpace;
+    private Animator animator;
 
     private int lane = 1;
+    [HideInInspector]
+    public int savedLane = 1;
 
     private void Start () {
         equippedWeapon.LevelStart();
         Swipe.OnSwipe += Move;
+
+        animator = this.gameObject.GetComponent<Animator>();
     }
 
     private void Update () {
         if (Input.GetKeyDown(KeyCode.S)) {
             if (lane > 0) {
-                lane--;
+                StartCoroutine(AdjustLaneDown());
+                animator.SetTrigger("IsJumping");
+
             }
         }
         if (Input.GetKeyDown(KeyCode.W)) {
             if (lane < 2) {
-                lane++;
+                StartCoroutine(AdjustLaneUp());
+                animator.SetTrigger("IsJumping");
+                
             }
         }
-        UpdatePosition();
-
+        //UpdatePosition();
+        LerpPosition();
 
         if (Input.GetKeyDown(KeyCode.J)) {
-            ((Shotgun) equippedWeapon).Load(RGBColor.RED);
+            ((Revolver) equippedWeapon).Load(RGBColor.RED);
+            animator.SetTrigger("IsLoading");
         }
         else if (Input.GetKeyDown(KeyCode.K)) {
-            ((Shotgun) equippedWeapon).Load(RGBColor.GREEN);
+            ((Revolver) equippedWeapon).Load(RGBColor.GREEN);
+            animator.SetTrigger("IsLoading");
         }
         else if (Input.GetKeyDown(KeyCode.L)) {
-            ((Shotgun) equippedWeapon).Load(RGBColor.BLUE);
+            ((Revolver) equippedWeapon).Load(RGBColor.BLUE);
+            animator.SetTrigger("IsLoading");
         }
         else if (Input.GetKeyDown(KeyCode.Space)) {
             equippedWeapon.Shoot(transform.position);
+            animator.SetTrigger("IsShooting");
         }
     }
 
@@ -48,12 +61,16 @@ public class TestPlayer : MonoBehaviour {
         if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
             swipe.direction == Swipe.SwipeDirection.Down && lane > 0) {
             lane--;
+            animator.SetTrigger("IsJumping");
         }
         else if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
             swipe.direction == Swipe.SwipeDirection.Up && lane < 2) {
             lane++;
+            animator.SetTrigger("IsJumping");
         }
-        UpdatePosition();
+        //UpdatePosition();
+        LerpPosition(); // vrv nece raditi ovaj deo jer je nije u updejtu
+
     }
 
     bool posOnPanel (Vector2 touch, RectTransform panel) {
@@ -65,5 +82,32 @@ public class TestPlayer : MonoBehaviour {
     private void UpdatePosition () {
         float yPos = PlayField.GetSpacePosition(lane, 0).y;
         transform.position = new Vector3(transform.position.x, yPos, yPos);
+    }
+
+
+    private void LerpPosition()
+    {
+        
+            float yPos = PlayField.GetSpacePosition(lane, 0).y;
+            float startYpos = this.transform.position.y;
+            float newYpos = Mathf.Lerp(startYpos, yPos, 0.1f);
+
+            transform.position = new Vector3(transform.position.x, newYpos);
+      
+    }
+
+    public IEnumerator AdjustLaneUp()
+    {
+        yield return new WaitForSeconds(.3f);
+        lane++;
+    }
+    public IEnumerator AdjustLaneDown()
+    {
+        yield return new WaitForSeconds(.3f);
+        lane--;
+    }
+    public void Land()
+    {
+        animator.SetTrigger("IsLanding");
     }
 }
