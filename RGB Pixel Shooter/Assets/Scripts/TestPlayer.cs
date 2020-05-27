@@ -15,10 +15,13 @@ public class TestPlayer : MonoBehaviour {
     public int savedLane = 1;
 
     private bool isJumping = false;
+    private float laneOffset;
 
     private void Start () {
         equippedWeapon.LevelStart();
         Swipe.OnSwipe += Move;
+
+        laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
 
         animator = this.gameObject.GetComponent<Animator>();
     }
@@ -45,17 +48,17 @@ public class TestPlayer : MonoBehaviour {
             ((Revolver) equippedWeapon).Load(RGBColor.BLUE);
         }
         else if (Input.GetKeyDown(KeyCode.Space)) {
-            equippedWeapon.Shoot(transform.position);
+            ((Revolver) equippedWeapon).Shoot(transform.position);
         }
     }
 
     public void Move (Swipe.SwipeData swipe) {
         if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
-            swipe.direction == Swipe.SwipeDirection.Down && lane > 0) {
+            swipe.direction == Swipe.SwipeDirection.Down) {
             SwitchLane(lane - 1);
         }
         else if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
-            swipe.direction == Swipe.SwipeDirection.Up && lane < 2) {
+            swipe.direction == Swipe.SwipeDirection.Up) {
             SwitchLane(lane + 1);
         }
     }
@@ -65,19 +68,22 @@ public class TestPlayer : MonoBehaviour {
             return;
         }
 
-        animator.SetTrigger("IsJumping");
+        animator.SetBool("canShoot", false);
+        animator.SetBool("canLoad", false);
+        animator.SetTrigger("jumpTrigger");
         isJumping = true;
 
         Tweener.Invoke(0.3f, () => {
             Tweener.AddTween(() => transform.position.y, (x) => transform.position = new Vector3(transform.position.x, x, transform.position.z),
-                PlayField.GetLanePosition(newLane), 0.25f, TweenMethods.SoftEase, () => {
+                PlayField.GetLanePosition(newLane)-laneOffset, 0.25f, TweenMethods.SoftEase, () => {
                     lane = newLane;
                     isJumping = false;
+                    animator.SetBool("canShoot", true);
+                    animator.SetBool("canLoad", true);
                 });
-            Tweener.Invoke(0.1f, () => {
-                Land();
-            });
         });
+
+        
     }
 
     bool posOnPanel (Vector2 touch, RectTransform panel) {
@@ -86,7 +92,4 @@ public class TestPlayer : MonoBehaviour {
         return false;
     }
 
-    public void Land () {
-        animator.SetTrigger("IsLanding");
-    }
 }

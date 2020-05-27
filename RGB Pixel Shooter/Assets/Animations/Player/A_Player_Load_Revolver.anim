@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_Load_Revolver
+  m_Name: A_Player_Load_Revolver
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -25,37 +25,37 @@ AnimationClip:
     - time: 0.06666667
       value: {fileID: -3313926454906934823, guid: 59d83eea5a6821c4cacf06b532af1ddd,
         type: 3}
-    - time: 0.11666667
+    - time: 0.1
       value: {fileID: 231655196109002994, guid: 59d83eea5a6821c4cacf06b532af1ddd,
         type: 3}
-    - time: 0.18333334
+    - time: 0.16666667
       value: {fileID: -8944538359009850675, guid: 59d83eea5a6821c4cacf06b532af1ddd,
         type: 3}
-    - time: 0.25
+    - time: 0.23333333
       value: {fileID: -8455093058352870015, guid: 59d83eea5a6821c4cacf06b532af1ddd,
         type: 3}
-    - time: 0.3
+    - time: 0.26666668
       value: {fileID: -8314920390812879024, guid: 59d83eea5a6821c4cacf06b532af1ddd,
         type: 3}
-    - time: 0.36666667
+    - time: 0.33333334
       value: {fileID: 871169543498373621, guid: 59d83eea5a6821c4cacf06b532af1ddd,
         type: 3}
-    - time: 0.43333334
+    - time: 0.4
       value: {fileID: -3129687254995328661, guid: 59d83eea5a6821c4cacf06b532af1ddd,
         type: 3}
-    - time: 0.48333332
+    - time: 0.43333334
       value: {fileID: -4455704869770972605, guid: 59d83eea5a6821c4cacf06b532af1ddd,
         type: 3}
-    - time: 0.55
+    - time: 0.5
       value: {fileID: -4471215069640382672, guid: 59d83eea5a6821c4cacf06b532af1ddd,
         type: 3}
-    - time: 0.6166667
+    - time: 0.56666666
       value: {fileID: 1688030790416697601, guid: 59d83eea5a6821c4cacf06b532af1ddd,
         type: 3}
-    - time: 0.6666667
+    - time: 0.6
       value: {fileID: -8243444754268399423, guid: 59d83eea5a6821c4cacf06b532af1ddd,
         type: 3}
-    - time: 0.73333335
+    - time: 0.6666667
       value: {fileID: 2573818322524310414, guid: 59d83eea5a6821c4cacf06b532af1ddd,
         type: 3}
     attribute: m_Sprite
@@ -95,7 +95,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.75
+    m_StopTime: 0.68333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
