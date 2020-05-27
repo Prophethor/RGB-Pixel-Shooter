@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: YouWinScreen_Anim
+  m_Name: YouLoseScreenAnim
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -22,7 +22,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -2032
+        value: -2010
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -30,23 +30,23 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.41666666
-        value: -70.97421
-        inSlope: 15863.169
-        outSlope: 15863.169
+        time: 0.35
+        value: 23.61261
+        inSlope: 14228.761
+        outSlope: 14228.761
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.23869368
+        outWeight: 0.11263131
       - serializedVersion: 3
         time: 0.5
         value: 0
-        inSlope: -782.64777
-        outSlope: -782.64777
+        inSlope: -408.53265
+        outSlope: -408.53265
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.29366255
+        outWeight: 0.42762613
       - serializedVersion: 3
         time: 1
         value: 0
@@ -60,7 +60,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: YouWinScreen/YouWinImmage
+    path: YouLoseScreen/YouLoseImage
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -72,7 +72,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3288170474
+      path: 3168258600
       attribute: 538195251
       script: {fileID: 0}
       typeID: 224
@@ -105,7 +105,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -2032
+        value: -2010
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -113,23 +113,23 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.41666666
-        value: -70.97421
-        inSlope: 15863.169
-        outSlope: 15863.169
+        time: 0.35
+        value: 23.61261
+        inSlope: 14228.761
+        outSlope: 14228.761
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.23869368
+        outWeight: 0.11263131
       - serializedVersion: 3
         time: 0.5
         value: 0
-        inSlope: -782.64777
-        outSlope: -782.64777
+        inSlope: -408.53265
+        outSlope: -408.53265
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.29366255
+        outWeight: 0.42762613
       - serializedVersion: 3
         time: 1
         value: 0
@@ -143,7 +143,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: YouWinScreen/YouWinImmage
+    path: YouLoseScreen/YouLoseImage
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []
