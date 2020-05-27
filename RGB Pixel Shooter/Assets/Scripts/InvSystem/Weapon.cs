@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
+public enum WeaponState { READY, COOLDOWN, LOADING }
+
 [Serializable]
 public abstract class Weapon : ScriptableObject, Item {
 

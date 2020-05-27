@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class UITest : MonoBehaviour {
 
@@ -22,19 +23,24 @@ public class UITest : MonoBehaviour {
 
     public void debSwip (Swipe.SwipeData swipe) {
         if (posOnPanel(swipe.startPos, weaponPanel) && (swipe.direction == Swipe.SwipeDirection.Up || swipe.direction == Swipe.SwipeDirection.Down)) {
-            if (weapon1Selected) {
-                weapon1Panel.gameObject.SetActive(false);
-                weapon2Panel.gameObject.SetActive(true);
-                weapon1Selected = false;
-            }
-            else {
-                weapon1Panel.gameObject.SetActive(true);
-                weapon2Panel.gameObject.SetActive(false);
-                weapon1Selected = true;
-            }
-            gameManager.SwitchWeapon();
+            SwitchWeapon();
         }
     }
+
+    public void SwitchWeapon () {
+        if (weapon1Selected) {
+            weapon1Panel.gameObject.SetActive(false);
+            weapon2Panel.gameObject.SetActive(true);
+            weapon1Selected = false;
+        }
+        else {
+            weapon1Panel.gameObject.SetActive(true);
+            weapon2Panel.gameObject.SetActive(false);
+            weapon1Selected = true;
+        }
+        gameManager.SwitchWeapon();
+    }
+
     bool posOnPanel (Vector2 touch, RectTransform panel) {
         if ((touch.x <= panel.position.x && touch.x >= panel.position.x - panel.rect.width) /*&& 
             (touch.y >= panel.position.y && touch.y <= panel.position.y + panel.rect.height)*/) return true;
@@ -43,5 +49,18 @@ public class UITest : MonoBehaviour {
 
     public void ButtonLog (string msg) {
         Debug.Log(msg);
+    }
+}
+
+
+[CustomEditor(typeof(UITest))]
+public class UITestEditor : Editor {
+
+    public override void OnInspectorGUI () {
+        DrawDefaultInspector();
+
+        if (GUILayout.Button("Switch weapon")) {
+            ((UITest) target).SwitchWeapon();
+        }
     }
 }
