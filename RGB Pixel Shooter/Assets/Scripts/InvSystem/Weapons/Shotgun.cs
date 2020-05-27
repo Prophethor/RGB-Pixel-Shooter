@@ -11,7 +11,17 @@ public class Shotgun : Weapon {
     public float spreadAngle = 0f;
     public int shotNum = 1;
 
+    public float fireRate = 1f;
+    public float loadTime = 1f;
+
     public int damageAmount;
+
+    private WeaponState state;
+    private Queue<RGBColor> loadQueue;
+
+    private RGBDamage[] barrels = new RGBDamage[2];
+    private bool[] barrelLoaded = new bool[2];
+    private int selectedBarrel = 0;
 
     public Material lineMaterial;
 
@@ -19,10 +29,6 @@ public class Shotgun : Weapon {
     public List<Vector3> startVertices;
     [HideInInspector]
     public List<Vector3> endVertices;
-
-    private RGBDamage[] barrels = new RGBDamage[2];
-    private bool[] barrelLoaded = new bool[2];
-    private int selectedBarrel = 0;
 
     private static Dictionary<string, UnityEngine.Events.UnityAction> UIHooks;
 
@@ -46,7 +52,7 @@ public class Shotgun : Weapon {
     public override void HookUI (Transform parentPanel) {
         InitHooks();
 
-        foreach(Button button in parentPanel.GetComponentsInChildren<Button>()) {
+        foreach (Button button in parentPanel.GetComponentsInChildren<Button>()) {
             if (UIHooks.ContainsKey(button.tag)) {
                 button.onClick.AddListener(UIHooks[button.tag]);
             }
@@ -54,6 +60,7 @@ public class Shotgun : Weapon {
     }
 
     public override void LevelStart () {
+        loadQueue = new Queue<RGBColor>();
         startVertices = new List<Vector3>();
         endVertices = new List<Vector3>();
 
@@ -63,6 +70,13 @@ public class Shotgun : Weapon {
     }
 
     public void Load (RGBColor rgbColor) {
+        if (state != WeaponState.READY) {
+            if (!(barrelLoaded[0] && barrelLoaded[1])) {
+                loadQueue.Enqueue(rgbColor);
+            }
+            return;
+        }
+
         int i;
         for (i = 0; i < 2; i++) {
             if (!barrelLoaded[i]) {
@@ -75,7 +89,11 @@ public class Shotgun : Weapon {
         }
 
         barrelLoaded[i] = true;
-        barrels[i] = new RGBDamage(rgbColor, damageAmount);
+        SetState(WeaponState.LOADING);
+        Tweener.Invoke(loadTime, () => {
+            barrels[i] = new RGBDamage(rgbColor, damageAmount);
+            SetState(WeaponState.READY);
+        });
     }
 
     public void Shoot (int barrelIndex, Vector3 position) {
@@ -86,7 +104,7 @@ public class Shotgun : Weapon {
     }
 
     public override void Shoot (Vector3 position) {
-        if (barrelLoaded[selectedBarrel]) {
+        if (state == WeaponState.READY && barrelLoaded[selectedBarrel]) {
             if (startVertices == null) {
                 startVertices = new List<Vector3>();
                 endVertices = new List<Vector3>();
@@ -120,6 +138,19 @@ public class Shotgun : Weapon {
             }
 
             barrelLoaded[selectedBarrel] = false;
+
+            SetState(WeaponState.COOLDOWN);
+            Tweener.Invoke(1f / fireRate, () => {
+                SetState(WeaponState.READY);
+            });
+        }
+    }
+
+    private void SetState (WeaponState newState) {
+        state = newState;
+
+        if (newState == WeaponState.READY && loadQueue.Count > 0) {
+            Load(loadQueue.Dequeue());
         }
     }
 

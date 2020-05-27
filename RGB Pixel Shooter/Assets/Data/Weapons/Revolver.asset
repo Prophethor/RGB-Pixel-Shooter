@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Revolver
   m_EditorClassIdentifier: 
   deltaPosition: {x: 0.8, y: 0.95}
-  dmgAmount: 1
   bulletPrefab: {fileID: 6013488467053243120, guid: d58c0b47b7f024446a01cd16b81a98dc,
     type: 3}
-  bulletSpeed: 10
+  fireRate: 1
+  loadTime: 1
+  dmgAmount: 1
+  bulletSpeed: 20

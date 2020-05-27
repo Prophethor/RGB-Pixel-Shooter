@@ -3,8 +3,11 @@ using System.Collections.Generic;
 
 [Serializable]
 public class Inventory {
-    // TODO: Inventory space limit!
+
     private List<Item> items;
+    private List<Weapon> weapons;
+    private List<Consumable> consumables;
+    private List<Gear> gearItems;
     private Loadout loadout;
 
     public Inventory () {

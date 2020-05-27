@@ -5,15 +5,25 @@ using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Revolver", menuName = "Weapons/Revolver")]
 public class Revolver : Weapon {
-    public int dmgAmount = 1;
+
     public Rigidbody2D bulletPrefab;
-    List<RGBColor> bullets;
+
+    public float fireRate = 1f;
+    public float loadTime = 1f;
+
+    private WeaponState state;
+    private Queue<RGBColor> loadQueue;
+
+    public int dmgAmount = 1;
     public float bulletSpeed = 5;
+    private List<RGBColor> bullets;
 
     private static Dictionary<string, UnityEngine.Events.UnityAction> UIHooks;
 
     public override void LevelStart () {
+        state = WeaponState.READY;
         bullets = new List<RGBColor>();
+        loadQueue = new Queue<RGBColor>();
 
         if (UIHooks == null) {
             InitHooks();
@@ -46,7 +56,7 @@ public class Revolver : Weapon {
         }
     }
 
-    public void UnookUI (GameObject parentPanel) {
+    public void UnhookUI (GameObject parentPanel) {
         for (int i = 0; i < parentPanel.transform.childCount; i++) {
             if (UIHooks.ContainsKey(parentPanel.transform.GetChild(i).tag)) {
                 parentPanel.transform.GetChild(i).GetComponent<Button>().onClick.RemoveListener(UIHooks[parentPanel.transform.GetChild(i).tag]);
@@ -55,17 +65,41 @@ public class Revolver : Weapon {
     }
 
     public void Load (RGBColor color) {
+        if (state != WeaponState.READY) {
+            if (bullets.Count + loadQueue.Count < 6) {
+                loadQueue.Enqueue(color);
+            }
+            return;
+        }
+
         if (bullets.Count < 6) {
-            bullets.Add(color);
+            SetState(WeaponState.LOADING);
+            Tweener.Invoke(loadTime, () => {
+                bullets.Add(color);
+                SetState(WeaponState.READY);
+            });
         }
     }
 
     public override void Shoot (Vector3 position) {
-        if (bullets.Count > 0) {
+        if (state == WeaponState.READY && bullets.Count > 0) {
             Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.identity);
             bulletObj.velocity = new Vector2(bulletSpeed, 0);
             bulletObj.GetComponent<Projectile>().SetDamage(bullets[0], dmgAmount);
             bullets.RemoveAt(0);
+
+            SetState(WeaponState.COOLDOWN);
+            Tweener.Invoke(1f / fireRate, () => {
+                SetState(WeaponState.READY);
+            });
+        }
+    }
+
+    private void SetState (WeaponState newState) {
+        state = newState;
+
+        if (newState == WeaponState.READY && loadQueue.Count > 0) {
+            Load(loadQueue.Dequeue());
         }
     }
 }
