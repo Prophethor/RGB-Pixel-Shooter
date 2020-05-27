@@ -25,8 +25,8 @@ public class PlayField : MonoBehaviour {
         }
 
     }
-    public static Vector2 GetLanePosition (int i) {
-        return laneList[i].position;
+    public static float GetLanePosition (int i) {
+        return laneList[i].position.y;
     }
 
     public static float GetLaneHeight () {

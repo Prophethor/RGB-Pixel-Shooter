@@ -70,7 +70,7 @@ public class TestPlayer : MonoBehaviour {
 
         Tweener.Invoke(0.3f, () => {
             Tweener.AddTween(() => transform.position.y, (x) => transform.position = new Vector3(transform.position.x, x, transform.position.z),
-                PlayField.GetLanePosition(newLane).y, 0.25f, TweenMethods.SoftEase, () => {
+                PlayField.GetLanePosition(newLane), 0.25f, TweenMethods.SoftEase, () => {
                     lane = newLane;
                     isJumping = false;
                 });
