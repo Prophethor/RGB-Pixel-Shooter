@@ -4,37 +4,32 @@ using UnityEngine;
 
 public class PlayField : MonoBehaviour {
 
-    public GameObject playSpace;
-    public int rowCount = 3;
-    private int columnCount = 8;
+    public GameObject lanePrefab;
+    public int laneCount = 3;
 
-    private RectTransform rect;
+    private RectTransform playField;
 
-    private static List<List<Transform>> playGrid = new List<List<Transform>>();
-    private static float spaceDim;
+    private static List<Transform> laneList = new List<Transform>();
+    private static float laneHeight;
 
     private void Start () {
-        rect = GetComponent<RectTransform>();
-        spaceDim = rect.sizeDelta.y / rowCount;
-        columnCount = Mathf.FloorToInt(rect.sizeDelta.x / spaceDim);
-        Vector3 startPos = transform.position + new Vector3(spaceDim / 2, spaceDim / 2);
-        for (int i = 0; i < rowCount; i++) {
-            playGrid.Add(new List<Transform>());
-            for (int j = 0; j < columnCount; j++) {
-                GameObject currSpace = Instantiate(playSpace, startPos + new Vector3(j * spaceDim, i * spaceDim), Quaternion.identity, transform);
-                currSpace.transform.localScale = new Vector2(spaceDim, spaceDim);
-                currSpace.name = "[" + i + ", " + j + "]";
-                currSpace.layer = LayerMask.NameToLayer("PlayField");
-                playGrid[i].Add(currSpace.transform);
-            }
+        playField = GetComponent<RectTransform>();
+        laneHeight = playField.rect.height / laneCount;
+        Vector3 startPos = transform.position + new Vector3(0,laneHeight/2);
+        for (int i = 0; i < laneCount; i++) {
+            GameObject currSpace = Instantiate(lanePrefab, startPos + new Vector3(playField.rect.width/2, i * laneHeight), Quaternion.identity, transform);
+            currSpace.transform.localScale = new Vector2(playField.rect.width, laneHeight);
+            currSpace.name = "Lane[" + i + "]";
+            currSpace.layer = LayerMask.NameToLayer("PlayField");
+            laneList.Add(currSpace.transform);
         }
 
     }
-    public static Vector2 GetSpacePosition (int i, int j) {
-        return playGrid[i][j].position;
+    public static Vector2 GetLanePosition (int i) {
+        return laneList[i].position;
     }
 
-    public static float GetSpaceHeight () {
-        return spaceDim;
+    public static float GetLaneHeight () {
+        return laneHeight;
     }
 }

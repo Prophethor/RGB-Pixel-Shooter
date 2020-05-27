@@ -63,7 +63,7 @@ public class TestPlayer : MonoBehaviour {
     }
 
     private void UpdatePosition () {
-        float yPos = PlayField.GetSpacePosition(lane, 0).y;
+        float yPos = PlayField.GetLanePosition(lane).y;
         transform.position = new Vector3(transform.position.x, yPos, yPos);
     }
 }

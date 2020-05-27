@@ -572,9 +572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e29579200d5774695df7d927f34a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playSpace: {fileID: 140382695293170302, guid: 5a36e2e929471474893c8c8d8e74674b,
+  lanePrefab: {fileID: 140382695293170302, guid: 5a36e2e929471474893c8c8d8e74674b,
     type: 3}
-  rowCount: 3
+  laneCount: 3
 --- !u!224 &446001213
 RectTransform:
   m_ObjectHideFlags: 0
