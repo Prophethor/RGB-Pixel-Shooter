@@ -22,4 +22,4 @@ public class SaveTesterEditor : Editor {
             SaveManager.GetInstance().Load();
         }
     }
-}
+} 

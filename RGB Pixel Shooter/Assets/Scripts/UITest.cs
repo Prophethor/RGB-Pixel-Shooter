@@ -63,4 +63,4 @@ public class UITestEditor : Editor {
             ((UITest) target).SwitchWeapon();
         }
     }
-}
+} 

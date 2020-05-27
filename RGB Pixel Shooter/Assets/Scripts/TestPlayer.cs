@@ -37,39 +37,44 @@ public class TestPlayer : MonoBehaviour {
             }
         }
         //UpdatePosition();
-        LerpPosition();
+        
 
         if (Input.GetKeyDown(KeyCode.J)) {
             ((Revolver) equippedWeapon).Load(RGBColor.RED);
-            animator.SetTrigger("IsLoading");
+            
         }
         else if (Input.GetKeyDown(KeyCode.K)) {
             ((Revolver) equippedWeapon).Load(RGBColor.GREEN);
-            animator.SetTrigger("IsLoading");
+           
         }
         else if (Input.GetKeyDown(KeyCode.L)) {
             ((Revolver) equippedWeapon).Load(RGBColor.BLUE);
-            animator.SetTrigger("IsLoading");
+          
         }
         else if (Input.GetKeyDown(KeyCode.Space)) {
             equippedWeapon.Shoot(transform.position);
-            animator.SetTrigger("IsShooting");
+          
         }
+
+        LerpPosition();
     }
 
     public void Move (Swipe.SwipeData swipe) {
         if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
             swipe.direction == Swipe.SwipeDirection.Down && lane > 0) {
-            lane--;
             animator.SetTrigger("IsJumping");
+            StartCoroutine(AdjustLaneDown());
+
+
         }
         else if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
             swipe.direction == Swipe.SwipeDirection.Up && lane < 2) {
-            lane++;
             animator.SetTrigger("IsJumping");
+            StartCoroutine(AdjustLaneUp());
+
+
         }
         //UpdatePosition();
-        LerpPosition(); // vrv nece raditi ovaj deo jer je nije u updejtu
 
     }
 
