@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+<<<<<<< Updated upstream
+=======
+  - enabled: 1
+    path: Assets/Scenes/UIGameScene.unity
+    guid: 1c1c055a154c227458fb83d7e8563261
+>>>>>>> Stashed changes
   m_configObjects: {}
