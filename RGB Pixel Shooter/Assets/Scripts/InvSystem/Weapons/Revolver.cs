@@ -14,6 +14,7 @@ public class Revolver : Weapon {
     private WeaponState state;
     private WeaponAnimState animState; //dodao
     private Queue<RGBColor> loadQueue;
+    private Tween currentLoad;
 
     public int dmgAmount = 1;
     public float bulletSpeed = 5;
@@ -21,10 +22,9 @@ public class Revolver : Weapon {
 
     private static Dictionary<string, UnityEngine.Events.UnityAction> UIHooks;
 
-
     public override void LevelStart () {
         state = WeaponState.READY;
-        animState = WeaponAnimState.IDLE; // dodao
+        animState = WeaponAnimState.IDLE;
         bullets = new List<RGBColor>();
         loadQueue = new Queue<RGBColor>();
 
@@ -77,35 +77,39 @@ public class Revolver : Weapon {
 
         if (bullets.Count < 6) {
             SetState(WeaponState.LOADING);
-            SetAnimState(WeaponAnimState.LOADING); // dodao
-            Tweener.Invoke(loadTime, () => {
-                bullets.Add(color);
-                SetState(WeaponState.READY);
+            SetAnimState(WeaponAnimState.LOADING);
+            currentLoad = Tweener.Invoke(loadTime, () => {
+                if (state == WeaponState.LOADING) {
+                    bullets.Add(color);
+                    SetState(WeaponState.READY);
+                }
             });
         }
     }
 
     public override void Shoot (Vector3 position) {
-        if ((state == WeaponState.READY||state==WeaponState.LOADING) && bullets.Count > 0) {
+        if ((state == WeaponState.READY || state == WeaponState.LOADING) && bullets.Count > 0) {
             Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.identity);
             bulletObj.velocity = new Vector2(bulletSpeed, 0);
             bulletObj.GetComponent<Projectile>().SetDamage(bullets[0], dmgAmount);
             bullets.RemoveAt(0);
-            loadQueue.Clear(); // ovo cisti queue
-            
-            SetAnimState(WeaponAnimState.SHOOTING); // dodao anim za shoot
 
+            // Stop any and all bullet loading
+            if (currentLoad.active) {
+                Tweener.RemoveTween(currentLoad);
+            }
+            loadQueue.Clear();
+
+            SetAnimState(WeaponAnimState.SHOOTING);
             SetState(WeaponState.COOLDOWN);
             Tweener.Invoke(1f / fireRate, () => {
                 SetState(WeaponState.READY);
             });
         }
     }
-    private void SetAnimState(WeaponAnimState newState)
-    {
+    private void SetAnimState (WeaponAnimState newState) {
         animState = newState;
-        switch (animState)
-        {
+        switch (animState) {
             case WeaponAnimState.IDLE: // nepotrebno...
                 break;
             case WeaponAnimState.SHOOTING:

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public enum WeaponState { READY, COOLDOWN, LOADING }
-public enum WeaponAnimState { IDLE, LOADING, SHOOTING, MOVING}
+public enum WeaponAnimState { IDLE, LOADING, SHOOTING, MOVING }
 
 [Serializable]
 public abstract class Weapon : ScriptableObject, Item {

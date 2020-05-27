@@ -14,6 +14,8 @@ public class TestPlayer : MonoBehaviour {
     [HideInInspector]
     public int savedLane = 1;
 
+    private bool isJumping = false;
+
     private void Start () {
         equippedWeapon.LevelStart();
         Swipe.OnSwipe += Move;
@@ -24,58 +26,58 @@ public class TestPlayer : MonoBehaviour {
     private void Update () {
         if (Input.GetKeyDown(KeyCode.S)) {
             if (lane > 0) {
-                StartCoroutine(AdjustLaneDown());
-                animator.SetTrigger("IsJumping");
-
+                SwitchLane(lane - 1);
             }
         }
         if (Input.GetKeyDown(KeyCode.W)) {
             if (lane < 2) {
-                StartCoroutine(AdjustLaneUp());
-                animator.SetTrigger("IsJumping");
-                
+                SwitchLane(lane + 1);
             }
         }
-        //UpdatePosition();
-        
 
         if (Input.GetKeyDown(KeyCode.J)) {
             ((Revolver) equippedWeapon).Load(RGBColor.RED);
-            
         }
         else if (Input.GetKeyDown(KeyCode.K)) {
             ((Revolver) equippedWeapon).Load(RGBColor.GREEN);
-           
         }
         else if (Input.GetKeyDown(KeyCode.L)) {
             ((Revolver) equippedWeapon).Load(RGBColor.BLUE);
-          
         }
         else if (Input.GetKeyDown(KeyCode.Space)) {
             equippedWeapon.Shoot(transform.position);
-          
         }
-
-        LerpPosition();
     }
 
     public void Move (Swipe.SwipeData swipe) {
         if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
             swipe.direction == Swipe.SwipeDirection.Down && lane > 0) {
-            animator.SetTrigger("IsJumping");
-            StartCoroutine(AdjustLaneDown());
-
-
+            SwitchLane(lane - 1);
         }
         else if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
             swipe.direction == Swipe.SwipeDirection.Up && lane < 2) {
-            animator.SetTrigger("IsJumping");
-            StartCoroutine(AdjustLaneUp());
-
-
+            SwitchLane(lane + 1);
         }
-        //UpdatePosition();
+    }
 
+    private void SwitchLane (int newLane) {
+        if (newLane < 0 || 2 < newLane || isJumping) {
+            return;
+        }
+
+        animator.SetTrigger("IsJumping");
+        isJumping = true;
+
+        Tweener.Invoke(0.3f, () => {
+            Tweener.AddTween(() => transform.position.y, (x) => transform.position = new Vector3(transform.position.x, x, transform.position.z),
+                PlayField.GetSpacePosition(newLane, 0).y, 0.25f, TweenMethods.SoftEase, () => {
+                    lane = newLane;
+                    isJumping = false;
+                });
+            Tweener.Invoke(0.1f, () => {
+                Land();
+            });
+        });
     }
 
     bool posOnPanel (Vector2 touch, RectTransform panel) {
@@ -84,35 +86,7 @@ public class TestPlayer : MonoBehaviour {
         return false;
     }
 
-    private void UpdatePosition () {
-        float yPos = PlayField.GetSpacePosition(lane, 0).y;
-        transform.position = new Vector3(transform.position.x, yPos, yPos);
-    }
-
-
-    private void LerpPosition()
-    {
-        
-            float yPos = PlayField.GetSpacePosition(lane, 0).y;
-            float startYpos = this.transform.position.y;
-            float newYpos = Mathf.Lerp(startYpos, yPos, 0.1f);
-
-            transform.position = new Vector3(transform.position.x, newYpos);
-      
-    }
-
-    public IEnumerator AdjustLaneUp()
-    {
-        yield return new WaitForSeconds(.3f);
-        lane++;
-    }
-    public IEnumerator AdjustLaneDown()
-    {
-        yield return new WaitForSeconds(.3f);
-        lane--;
-    }
-    public void Land()
-    {
+    public void Land () {
         animator.SetTrigger("IsLanding");
     }
 }
