@@ -26,6 +26,7 @@ public class TestPlayer : MonoBehaviour {
     }
 
     private void Update () {
+
         if (Input.GetKeyDown(KeyCode.S)) {
             if (lane > 0) {
                 SwitchLane(lane - 1);
