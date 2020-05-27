@@ -6,7 +6,6 @@ public class TestPlayer : MonoBehaviour {
 
     // Besto testo
     public Weapon equippedWeapon;
-    public Weapon otherWeapon;
     public RectTransform playerSpace;
     private Animator animator;
 
@@ -17,12 +16,17 @@ public class TestPlayer : MonoBehaviour {
     public float laneSwapTime = 0.55f;
 
     private bool isJumping = false;
+    private float laneOffset;
 
     private void Start () {
         equippedWeapon.LevelStart();
         Swipe.OnSwipe += Move;
 
-        animator = this.gameObject.GetComponent<Animator>();
+        laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
+
+        animator = GetComponent<Animator>();
+        // * 2 bi bilo da želimo da se animacija završi u trenutku kad stigne na lejn, pa sam stavio * 1.5 da bismo imali mali delay
+        animator.SetFloat("jumpSpeed", laneSwitchTime*1.5f);
     }
 
     private void Update () {
@@ -48,17 +52,17 @@ public class TestPlayer : MonoBehaviour {
             ((Revolver) equippedWeapon).Load(RGBColor.BLUE);
         }
         else if (Input.GetKeyDown(KeyCode.Space)) {
-            equippedWeapon.Shoot(transform.position);
+            ((Revolver) equippedWeapon).Shoot(transform.position);
         }
     }
 
     public void Move (Swipe.SwipeData swipe) {
         if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
-            swipe.direction == Swipe.SwipeDirection.Down && lane > 0) {
+            swipe.direction == Swipe.SwipeDirection.Down) {
             SwitchLane(lane - 1);
         }
         else if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
-            swipe.direction == Swipe.SwipeDirection.Up && lane < 2) {
+            swipe.direction == Swipe.SwipeDirection.Up) {
             SwitchLane(lane + 1);
         }
     }
@@ -68,7 +72,7 @@ public class TestPlayer : MonoBehaviour {
             return;
         }
 
-        animator.SetTrigger("IsJumping");
+        animator.SetTrigger("jumpTrigger");
         isJumping = true;
 
         Tweener.Invoke(laneSwapTime * 0.5454f, () => {
@@ -81,6 +85,8 @@ public class TestPlayer : MonoBehaviour {
                 Land();
             });
         });
+
+        
     }
 
     bool posOnPanel (Vector2 touch, RectTransform panel) {
@@ -89,7 +95,4 @@ public class TestPlayer : MonoBehaviour {
         return false;
     }
 
-    public void Land () {
-        animator.SetTrigger("IsLanding");
-    }
 }
