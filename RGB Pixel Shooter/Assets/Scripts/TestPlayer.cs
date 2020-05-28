@@ -20,7 +20,6 @@ public class TestPlayer : MonoBehaviour {
     private float laneOffset;
 
     private void Start () {
-        equippedWeapon.LevelStart();
         Swipe.OnSwipe += Move;
 
         laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;

@@ -48,6 +48,16 @@ public class UITest : MonoBehaviour {
         return false;
     }
 
+    public void UnhookWeapons () {
+        gameManager.GetLoadout().GetWeapons()[0].UnhookUI(weapon1Panel);
+        gameManager.GetLoadout().GetWeapons()[1].UnhookUI(weapon2Panel);
+        Swipe.OnSwipe -= debSwip;
+    }
+
+    private void OnDestroy () {
+        //UnhookWeapons();
+    }
+
     public void ButtonLog (string msg) {
         Debug.Log(msg);
     }

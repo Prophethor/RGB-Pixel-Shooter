@@ -9,10 +9,11 @@ public class PlayField : MonoBehaviour {
 
     private RectTransform playField;
 
-    private static List<Transform> laneList = new List<Transform>();
+    private static List<Transform> laneList;
     private static float laneHeight;
 
-    private void Start () {
+    private void Awake () {
+        laneList = new List<Transform>();
         playField = GetComponent<RectTransform>();
         laneHeight = playField.rect.height / laneCount;
         Vector3 startPos = transform.position + new Vector3(0,laneHeight/2);

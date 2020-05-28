@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     public TestPlayer player;
     public Animator UIAnimator;
 
-    private void Start () {
+    private void Awake () {
         loadout = new Loadout();
         loadout.AddWeapon(Instantiate(revolver));
         loadout.AddWeapon(Instantiate(shotgun));
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour {
         Debug.Log("You win!");
         Tweener.Invoke(2f, () => {
             StartCoroutine(Reset());
-        },true);
+        }, true);
     }
 
     public void LoseGame () {
@@ -50,20 +50,24 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Run.");
         Tweener.Invoke(0.5f, () => {
             StartCoroutine(Reset());
-        },true);
+        }, true);
     }
 
     IEnumerator Reset () {
         while (true) {
-            if (Input.touchCount <= 0 && !Input.GetKeyDown(KeyCode.Space)) { Debug.Log(Input.touchCount); yield return null;}
+            if (Input.touchCount <= 0 && !Input.GetKeyDown(KeyCode.Space)) {
+                yield return null;
+            }
             else {
                 UIAnimator.SetTrigger("Reset");
                 Tweener.Invoke(0.5f, () => {
+                    FindObjectOfType<UITest>().UnhookWeapons();
                     SceneManager.LoadScene(0);
+                    Time.timeScale = 1f;
                 }, true);
                 break;
             }
-        }    
+        }
     }
 
     public Loadout GetLoadout () {

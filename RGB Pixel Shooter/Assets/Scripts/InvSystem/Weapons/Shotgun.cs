@@ -30,13 +30,11 @@ public class Shotgun : Weapon {
     [HideInInspector]
     public List<Vector3> endVertices;
 
-    private static Dictionary<string, UnityEngine.Events.UnityAction> UIHooks;
-
     public override string GetName () {
         return "Shotgun";
     }
 
-    private void InitHooks () {
+    protected override void InitHooks () {
         UIHooks = new Dictionary<string, UnityEngine.Events.UnityAction>();
         UIHooks.Add("LoadRed", () => Load(RGBColor.RED));
         UIHooks.Add("LoadGreen", () => Load(RGBColor.GREEN));
@@ -47,16 +45,6 @@ public class Shotgun : Weapon {
 
     public Vector3 GetPlayerPos () {
         return GameObject.FindGameObjectWithTag("Player").transform.position;
-    }
-
-    public override void HookUI (Transform parentPanel) {
-        InitHooks();
-
-        foreach (Button button in parentPanel.GetComponentsInChildren<Button>()) {
-            if (UIHooks.ContainsKey(button.tag)) {
-                button.onClick.AddListener(UIHooks[button.tag]);
-            }
-        }
     }
 
     public override void LevelStart () {
