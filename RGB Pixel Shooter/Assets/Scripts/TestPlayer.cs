@@ -13,9 +13,10 @@ public class TestPlayer : MonoBehaviour {
     [HideInInspector]
     public int savedLane = 1;
 
-    public float laneSwapTime = 0.55f;
+    public float laneSwitchTime = 0.55f;
 
-    private bool isJumping = false;
+    [HideInInspector]
+    public bool isJumping = false;
     private float laneOffset;
 
     private void Start () {
@@ -26,7 +27,7 @@ public class TestPlayer : MonoBehaviour {
 
         animator = GetComponent<Animator>();
         // * 2 bi bilo da želimo da se animacija završi u trenutku kad stigne na lejn, pa sam stavio * 1.5 da bismo imali mali delay
-        animator.SetFloat("jumpSpeed", laneSwitchTime*1.5f);
+        animator.SetFloat("jumpSpeed", laneSwitchTime * 1.5f);
     }
 
     private void Update () {
@@ -75,18 +76,13 @@ public class TestPlayer : MonoBehaviour {
         animator.SetTrigger("jumpTrigger");
         isJumping = true;
 
-        Tweener.Invoke(laneSwapTime * 0.5454f, () => {
+        Tweener.Invoke(laneSwitchTime, () => {
             Tweener.AddTween(() => transform.position.y, (x) => transform.position = new Vector3(transform.position.x, x, transform.position.z),
-                PlayField.GetLanePosition(newLane), laneSwapTime * 0.4545f, TweenMethods.SoftEase, () => {
+                PlayField.GetLanePosition(newLane), laneSwitchTime, TweenMethods.SoftEase, () => {
                     lane = newLane;
                     isJumping = false;
                 });
-            Tweener.Invoke(Mathf.Max(laneSwapTime * 0.4545f - 0.15f, 0f), () => {
-                Land();
-            });
         });
-
-        
     }
 
     bool posOnPanel (Vector2 touch, RectTransform panel) {
@@ -94,5 +90,4 @@ public class TestPlayer : MonoBehaviour {
             (touch.y >= panel.position.y && touch.y <= panel.position.y + panel.rect.height)) return true;
         return false;
     }
-
 }
