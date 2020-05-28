@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -38,12 +39,31 @@ public class GameManager : MonoBehaviour {
         UIAnimator.SetBool("Win", true);
         Time.timeScale = 0;
         Debug.Log("You win!");
+        Tweener.Invoke(2f, () => {
+            StartCoroutine(Reset());
+        },true);
     }
 
     public void LoseGame () {
         UIAnimator.SetBool("Lose", true);
         Time.timeScale = 0;
         Debug.Log("Run.");
+        Tweener.Invoke(0.5f, () => {
+            StartCoroutine(Reset());
+        },true);
+    }
+
+    IEnumerator Reset () {
+        while (true) {
+            if (Input.touchCount <= 0 && !Input.GetKeyDown(KeyCode.Space)) { Debug.Log(Input.touchCount); yield return null;}
+            else {
+                UIAnimator.SetTrigger("Reset");
+                Tweener.Invoke(0.5f, () => {
+                    SceneManager.LoadScene(0);
+                }, true);
+                break;
+            }
+        }    
     }
 
     public Loadout GetLoadout () {

@@ -113,7 +113,7 @@ public class EnemySpawner : MonoBehaviour {
             int type = CalculateByDistribution(typeDistribution, typeDistrReduxFactors, ref typeDistributionSum);
             if (enemies[type].pointValue <= pointsToSpawn) {
                 SpawnEnemy(type);
-                yield return new WaitForSeconds(Random.Range(0.5f,4f));
+                yield return new WaitForSeconds(Random.Range(0.5f,2f));
             }
             else {
                 typeDistribution.RemoveAt(type);
@@ -125,7 +125,7 @@ public class EnemySpawner : MonoBehaviour {
             }
         }
         while (enemiesToKill > 0) {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
