@@ -9,9 +9,10 @@ public class Swipe : MonoBehaviour
     private float fingerDownTime;
     private Vector2 fingerUp;
     private SwipeDirection direction;
-    private float minDistanceForSwipe = 100f;
+    public bool detectOnlyAfterSwipe = false;
+    public float minDistanceForSwipe = 30f;
 
-    public static event Action<SwipeData> OnSwipe = delegate { };
+    public event Action<SwipeData> OnSwipe = delegate { };
 
     public enum SwipeDirection {
         Up,
@@ -63,9 +64,15 @@ public class Swipe : MonoBehaviour
 
     private void Update () {
         foreach (Touch touch in Input.touches) {
+
             if (touch.phase == TouchPhase.Began) {
                 fingerDownTime = Time.time;
                 fingerDown = touch.position;
+            }
+            if(touch.phase == TouchPhase.Moved && !detectOnlyAfterSwipe) {
+                fingerUp = touch.position;
+                float timePassed = Time.time - fingerDownTime;
+                if (timePassed < .4f) DetectSwipe();
             }
             if (touch.phase == TouchPhase.Ended) {
                 fingerUp = touch.position;

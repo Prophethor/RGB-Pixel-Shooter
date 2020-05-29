@@ -13,15 +13,21 @@ public class UITest : MonoBehaviour {
     public TestPlayer player;
     public RectTransform weaponPanel;
     private bool weapon1Selected = true;
+    public GameObject swipeDetector;
+    private Swipe swipe;
 
     private void Start () {
         gameManager.GetLoadout().GetWeapons()[0].HookUI(weapon1Panel);
         gameManager.GetLoadout().GetWeapons()[1].HookUI(weapon2Panel);
-        Swipe.OnSwipe += debSwip;
+
+        swipe = Instantiate(swipeDetector).GetComponent<Swipe>();
+        swipe.minDistanceForSwipe = 200;
+        swipe.detectOnlyAfterSwipe = true;
+        swipe.OnSwipe += SwipeToSwitch;
     }
 
 
-    public void debSwip (Swipe.SwipeData swipe) {
+    public void SwipeToSwitch (Swipe.SwipeData swipe) {
         if (posOnPanel(swipe.startPos, weaponPanel) && (swipe.direction == Swipe.SwipeDirection.Up || swipe.direction == Swipe.SwipeDirection.Down)) {
             SwitchWeapon();
         }
@@ -51,7 +57,7 @@ public class UITest : MonoBehaviour {
     public void UnhookWeapons () {
         gameManager.GetLoadout().GetWeapons()[0].UnhookUI(weapon1Panel);
         gameManager.GetLoadout().GetWeapons()[1].UnhookUI(weapon2Panel);
-        Swipe.OnSwipe -= debSwip;
+        swipe.OnSwipe -= SwipeToSwitch;
     }
 
     private void OnDestroy () {

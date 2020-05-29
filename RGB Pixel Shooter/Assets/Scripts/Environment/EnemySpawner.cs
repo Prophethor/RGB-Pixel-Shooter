@@ -34,11 +34,11 @@ public class EnemySpawner : MonoBehaviour {
 
     private void Start () {
         gEnemies = new List<GenericEnemy>();
-
+        
         //connect to playfield and gamemanager
         playField = GameObject.Find("PlayField");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-
+        enemiesToKill = 0;
         StartCoroutine(SpawnEnemies(levelInfo));
 
     }
@@ -113,7 +113,7 @@ public class EnemySpawner : MonoBehaviour {
             int type = CalculateByDistribution(typeDistribution, typeDistrReduxFactors, ref typeDistributionSum);
             if (enemies[type].pointValue <= pointsToSpawn) {
                 SpawnEnemy(type);
-                yield return new WaitForSeconds(Random.Range(0.5f,2f));
+                yield return new WaitForSeconds(Random.Range(1f,2.5f));
             }
             else {
                 typeDistribution.RemoveAt(type);
@@ -125,7 +125,7 @@ public class EnemySpawner : MonoBehaviour {
             }
         }
         while (enemiesToKill > 0) {
-            yield return new WaitForSeconds(0.5f);
+            yield return null;
         }
     }
 

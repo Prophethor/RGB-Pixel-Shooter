@@ -38,8 +38,7 @@ public class GameManager : MonoBehaviour {
     public void WinGame () {
         UIAnimator.SetBool("Win", true);
         Time.timeScale = 0;
-        Debug.Log("You win!");
-        Tweener.Invoke(2f, () => {
+        Tweener.Invoke(0.5f, () => {
             StartCoroutine(Reset());
         }, true);
     }
@@ -47,7 +46,7 @@ public class GameManager : MonoBehaviour {
     public void LoseGame () {
         UIAnimator.SetBool("Lose", true);
         Time.timeScale = 0;
-        Debug.Log("Run.");
+        
         Tweener.Invoke(0.5f, () => {
             StartCoroutine(Reset());
         }, true);
@@ -60,7 +59,7 @@ public class GameManager : MonoBehaviour {
             }
             else {
                 UIAnimator.SetTrigger("Reset");
-                Tweener.Invoke(0.5f, () => {
+                Tweener.Invoke(1f, () => {
                     FindObjectOfType<UITest>().UnhookWeapons();
                     SceneManager.LoadScene(0);
                     Time.timeScale = 1f;

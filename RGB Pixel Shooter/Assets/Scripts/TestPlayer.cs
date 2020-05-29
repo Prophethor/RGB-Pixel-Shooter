@@ -8,25 +8,30 @@ public class TestPlayer : MonoBehaviour {
     public Weapon equippedWeapon;
     public RectTransform playerSpace;
     private Animator animator;
+    public GameObject swipeDetector;
+    private Swipe swipe;
 
     private int lane = 1;
     [HideInInspector]
     public int savedLane = 1;
 
-    public float laneSwitchTime = 0.55f;
+    public float laneSwitchTime = 0.5f;
 
     [HideInInspector]
     public bool isJumping = false;
     private float laneOffset;
 
     private void Start () {
-        Swipe.OnSwipe += Move;
+
+        swipe = Instantiate(swipeDetector).GetComponent<Swipe>();
+        swipe.minDistanceForSwipe = 30;
+        swipe.OnSwipe += Move;
 
         laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
-
+        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(0,0)).x*0.85f,transform.position.y);
         animator = GetComponent<Animator>();
         // * 2 bi bilo da želimo da se animacija završi u trenutku kad stigne na lejn, pa sam stavio * 1.5 da bismo imali mali delay
-        animator.SetFloat("jumpSpeed", laneSwitchTime * 1.5f);
+        animator.SetFloat("jumpSpeed", laneSwitchTime * 2.2f);
     }
 
     private void Update () {
@@ -77,7 +82,7 @@ public class TestPlayer : MonoBehaviour {
 
         Tweener.Invoke(laneSwitchTime, () => {
             Tweener.AddTween(() => transform.position.y, (x) => transform.position = new Vector3(transform.position.x, x, transform.position.z),
-                PlayField.GetLanePosition(newLane)-laneOffset, laneSwitchTime, TweenMethods.SoftEase, () => {
+                PlayField.GetLanePosition(newLane)-laneOffset, laneSwitchTime, TweenMethods.HardLog, () => {
                     lane = newLane;
                     isJumping = false;
                 });
