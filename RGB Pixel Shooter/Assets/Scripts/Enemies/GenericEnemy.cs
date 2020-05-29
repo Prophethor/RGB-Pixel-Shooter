@@ -18,6 +18,8 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected List<Trait> traits;
 
     private GameManager gm;
+    protected bool isDead = false;
+
     protected virtual void Awake () {
         Initialize();
     }
@@ -41,6 +43,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
                 animator.SetTrigger("isBlue");
                 break;
         }
+        animator.SetBool("isDead", isDead);// false po defaultu
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -109,6 +112,21 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
             hpStackList.RemoveAt(0);
 
             if (hpStackList.Count == 0) {
+                isDead = true;
+                animator.SetBool("isDead", isDead);
+                switch (baseColor)
+                {
+                    case RGBColor.RED:
+                        animator.SetTrigger("isRed");
+                        break;
+                    case RGBColor.GREEN:
+                        animator.SetTrigger("isGreen");
+                        break;
+                    case RGBColor.BLUE:
+                        animator.SetTrigger("isBlue");
+                        break;
+                }
+                Move();
                 Die();
             }
         }
@@ -119,13 +137,15 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         SelfDestruct();
     }
 
-    public virtual void SelfDestruct () {
-        Destroy(gameObject);
+    public virtual void SelfDestruct() {
+        //Destroy(gameObject, 2f);
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 
     public void OnCollisionEnter2D (Collision2D collision) {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
             TakeDamage(collision.gameObject.GetComponent<Projectile>().damage);
+            collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position); // metak stvara blood splatter
             Destroy(collision.gameObject);
         }
     }
