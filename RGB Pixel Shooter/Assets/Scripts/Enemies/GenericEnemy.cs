@@ -18,6 +18,9 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected List<Trait> traits;
 
     private GameManager gm;
+    private Material defaultMat;
+    private Material flashMat;
+    private SpriteRenderer sr;
     protected bool isDead = false;
 
     protected virtual void Awake () {
@@ -63,6 +66,9 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         hpStackList = new List<HPStack>();
         statMultipliers = new StatMultiplierCollection();
         traits = new List<Trait>();
+        sr = GetComponent<SpriteRenderer>();
+        flashMat = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        defaultMat = sr.material;
     }
 
     public int GetLane () {
@@ -107,8 +113,16 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     public virtual void TakeDamage (RGBDamage damage) {
         HitStatus hitStatus;
+        if (damage.color == baseColor)
+        {
+            // dodao ovu proveru posto donja provera ne prolazi sem ako stack nije depleetovan... methinks
+            // sluzi da swapuje materijal monsteru da pobeli na udarac
+            sr.material = flashMat;
+            Invoke("ResetMaterial", .05f);
+        }
 
         if (hpStackList[0].TakeDamage(damage, out hitStatus)) {
+            
             hpStackList.RemoveAt(0);
 
             if (hpStackList.Count == 0) {
@@ -118,17 +132,23 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
                 {
                     case RGBColor.RED:
                         animator.SetTrigger("isRed");
+                        // test code, delete after adding anim
+                        sr.color = Color.red;
                         break;
                     case RGBColor.GREEN:
                         animator.SetTrigger("isGreen");
+                        // test code, delete after adding anim
+                        sr.color = Color.green;
                         break;
                     case RGBColor.BLUE:
                         animator.SetTrigger("isBlue");
                         break;
                 }
                 Move();
-                Die();
+                GetComponent<BoxCollider2D>().enabled = false;
+                //Die(); //added an anim notify to do this at end of animation
             }
+           
         }
     }
 
@@ -138,8 +158,8 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     }
 
     public virtual void SelfDestruct() {
-        //Destroy(gameObject, 2f);
-        GetComponent<BoxCollider2D>().enabled = false;
+        Destroy(gameObject);
+        //GetComponent<BoxCollider2D>().enabled = false;
     }
 
     public void OnCollisionEnter2D (Collision2D collision) {
@@ -156,5 +176,9 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         }
     }
 
+    private void ResetMaterial()
+    {
+        sr.material = defaultMat;
+    }
     protected abstract void InitiateShanking ();
 }
