@@ -19,6 +19,10 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     private GameManager gm;
     protected bool isDead = false;
+    private SpriteRenderer sr;
+    private Material defaultMaterial;
+    private Material flashMaterial;
+
 
     protected virtual void Awake () {
         Initialize();
@@ -35,12 +39,15 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         switch (baseColor) {
             case RGBColor.RED:
                 animator.SetTrigger("isRed");
+               
                 break;
             case RGBColor.GREEN:
                 animator.SetTrigger("isGreen");
+               
                 break;
             case RGBColor.BLUE:
                 animator.SetTrigger("isBlue");
+               
                 break;
         }
         animator.SetBool("isDead", isDead);// false po defaultu
@@ -63,6 +70,9 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         hpStackList = new List<HPStack>();
         statMultipliers = new StatMultiplierCollection();
         traits = new List<Trait>();
+        sr = GetComponent<SpriteRenderer>();
+        flashMaterial = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        defaultMaterial = sr.material;
     }
 
     public int GetLane () {
@@ -107,24 +117,32 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     public virtual void TakeDamage (RGBDamage damage) {
         HitStatus hitStatus;
+        if (damage.color == baseColor)
+        {
+            sr.material = flashMaterial;
+            Invoke("ResetMaterial", .1f);
+        }
 
         if (hpStackList[0].TakeDamage(damage, out hitStatus)) {
             hpStackList.RemoveAt(0);
 
             if (hpStackList.Count == 0) {
                 isDead = true;
+                GetComponent<BoxCollider2D>().enabled = false;
                 animator.SetBool("isDead", isDead);
                 switch (baseColor)
                 {
                     case RGBColor.RED:
                         animator.SetTrigger("isRed");
+                        sr.color = Color.red;
                         break;
                     case RGBColor.GREEN:
                         animator.SetTrigger("isGreen");
+                        sr.color = Color.green;
                         break;
                     case RGBColor.BLUE:
                         animator.SetTrigger("isBlue");
-                        // test code, delete after adding anim
+                        sr.color = Color.gray;
                         break;
                 }
                 Move();
@@ -139,14 +157,14 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     }
 
     public virtual void SelfDestruct() {
-        //Destroy(gameObject, 2f);
-        GetComponent<BoxCollider2D>().enabled = false;
+        Destroy(gameObject, 2f);
     }
 
     public void OnCollisionEnter2D (Collision2D collision) {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
             TakeDamage(collision.gameObject.GetComponent<Projectile>().damage);
-            collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position); // metak stvara blood splatter
+            // metak stvara blood splatter, mozda moze pametnije da se odradi pa da bude drugacijij blood splater svaki put
+            collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position); 
             Destroy(collision.gameObject);
         }
     }
@@ -157,5 +175,9 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         }
     }
 
+    public void ResetMaterial()
+    {
+        sr.material = defaultMaterial;
+    }
     protected abstract void InitiateShanking ();
 }

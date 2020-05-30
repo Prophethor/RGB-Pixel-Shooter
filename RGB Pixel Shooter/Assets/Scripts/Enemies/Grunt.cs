@@ -14,6 +14,10 @@ public class Grunt : GenericEnemy
 
     protected override void Move () {
         rb.velocity = new Vector2(-speed * statMultipliers.GetStat(StatEnum.SPEED), 0);
+        if (isDead)
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 
     public void Stop () {
