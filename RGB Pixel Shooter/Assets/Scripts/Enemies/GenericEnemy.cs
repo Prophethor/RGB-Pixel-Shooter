@@ -17,11 +17,11 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected List<HPStack> hpStackList;
     protected List<Trait> traits;
 
-    private GameManager gm;
+    protected GameManager gm;
     protected bool isDead = false;
-    private SpriteRenderer sr;
-    private Material defaultMaterial;
-    private Material flashMaterial;
+    protected SpriteRenderer sr;
+    protected Material defaultMaterial;
+    protected Material flashMaterial;
 
 
     protected virtual void Awake () {
@@ -35,7 +35,6 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        animator = GetComponent<Animator>();
         switch (baseColor) {
             case RGBColor.RED:
                 animator.SetTrigger("isRed");
@@ -73,6 +72,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         sr = GetComponent<SpriteRenderer>();
         flashMaterial = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         defaultMaterial = sr.material;
+        animator = GetComponent<Animator>();
     }
 
     public int GetLane () {
