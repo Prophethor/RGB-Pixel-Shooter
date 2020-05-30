@@ -125,7 +125,6 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
                     case RGBColor.BLUE:
                         animator.SetTrigger("isBlue");
                         // test code, delete after adding anim
-                        sr.color = Color.gray;
                         break;
                 }
                 Move();
