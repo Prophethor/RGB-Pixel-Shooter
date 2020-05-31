@@ -28,14 +28,14 @@ public class EnemySpawner : MonoBehaviour {
     private List<EnemyInfo> enemies;
     private List<Rigidbody2D> enemyPrefabs;
 
-    //for buff testing
+    // For buff testing
     [HideInInspector]
     public List<GenericEnemy> gEnemies;
 
     private void Start () {
         gEnemies = new List<GenericEnemy>();
-        
-        //connect to playfield and gamemanager
+
+        // Connect to playfield and gamemanager
         playField = GameObject.Find("PlayField");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         enemiesToKill = 0;
@@ -43,15 +43,16 @@ public class EnemySpawner : MonoBehaviour {
 
     }
 
-
-    //returns 1/sum * distr
+    // Returns 1/sum * distr
     private List<float> InitializeDistrReduxFactors (List<float> distr, float sum) {
         List<float> distrRedFacs = new List<float>();
-        foreach (float t in distr) distrRedFacs.Add(t / sum);
+        foreach (float t in distr) {
+            distrRedFacs.Add(t / sum);
+        }
         return distrRedFacs;
     }
 
-    //return sum of all elements for given distr
+    // Return sum of all elements for given distr
     private float CalculateDistributionSum (List<float> distribution) {
         float sum = 0f;
 
@@ -61,7 +62,7 @@ public class EnemySpawner : MonoBehaviour {
         return sum;
     }
 
-    //returns semi-random int from 0 to number of distr entries so that it satisfies set distr
+    // Returns semi-random int from 0 to number of distr entries so that it satisfies set distr
     private int CalculateByDistribution (List<float> distribution, List<float> distrReduxFactors, ref float distrSum) {
         int tmp = Random.Range(0, distribution.Count);
         float rnd = Random.value * distrSum;
@@ -113,7 +114,7 @@ public class EnemySpawner : MonoBehaviour {
             int type = CalculateByDistribution(typeDistribution, typeDistrReduxFactors, ref typeDistributionSum);
             if (enemies[type].pointValue <= pointsToSpawn) {
                 SpawnEnemy(type);
-                yield return new WaitForSeconds(Random.Range(1f,2.5f));
+                yield return new WaitForSeconds(Random.Range(1f, 2.5f));
             }
             else {
                 typeDistribution.RemoveAt(type);
