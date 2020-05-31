@@ -161,10 +161,18 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     }
 
     public void OnCollisionEnter2D (Collision2D collision) {
+        bool matchingColor;
+
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
             TakeDamage(collision.gameObject.GetComponent<Projectile>().damage);
+            if (collision.gameObject.GetComponent<Projectile>().damage.color == baseColor)
+            {
+                matchingColor = true;
+            }
+            else matchingColor = false;
+
             // metak stvara blood splatter, mozda moze pametnije da se odradi pa da bude drugacijij blood splater svaki put
-            collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position); 
+            collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, matchingColor); 
             Destroy(collision.gameObject);
         }
     }

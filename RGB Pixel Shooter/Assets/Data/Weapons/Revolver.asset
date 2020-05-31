@@ -17,5 +17,5 @@ MonoBehaviour:
     type: 3}
   fireRate: 6
   loadTime: 0.5
-  dmgAmount: 1
+  dmgAmount: 3
   bulletSpeed: 20

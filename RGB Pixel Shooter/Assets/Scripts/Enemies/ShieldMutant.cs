@@ -6,7 +6,7 @@ public class ShieldMutant : GenericEnemy
 {
     protected override void Start()
     {
-        hpStackList.Add(new HPStack(baseColor, 2, 0, 0, 0, 2));
+        hpStackList.Add(new HPStack((RGBColor)Random.Range(0, 2), 2, 0, 0, 0, 2));
         hpStackList.Add(new HPStack(baseColor, 1));
 
         float yPos = PlayField.GetLanePosition(lane) - Random.Range(-0.33f, 1f) * PlayField.GetLaneHeight() / 3f;
