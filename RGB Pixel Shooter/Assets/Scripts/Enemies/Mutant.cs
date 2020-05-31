@@ -15,9 +15,17 @@ public class Mutant : GenericEnemy {
     }
 
     protected override void Move () {
-        rb.velocity = new Vector2(-speed * statMultipliers.GetStat(StatEnum.SPEED), 0);
-    }
+        if (!isDead)
+        {
+            rb.velocity = new Vector2(-speed * statMultipliers.GetStat(StatEnum.SPEED), 0);
 
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
+    }
+   
     protected override void InitiateShanking () {
         rb.velocity = Vector2.zero;
     }

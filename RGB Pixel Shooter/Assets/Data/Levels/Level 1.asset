@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointPool: 20
   enemyPool:
-  - {fileID: 11400000, guid: 2958dd4e57908164f9a4779722096d31, type: 2}
+  - {fileID: 11400000, guid: 9982c99cc7985754db47e1ca1022c9c1, type: 2}
   typeDistr:
   - 10
 --- !u!114 &11400000

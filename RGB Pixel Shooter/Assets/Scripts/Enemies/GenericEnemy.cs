@@ -17,7 +17,13 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected List<HPStack> hpStackList;
     protected List<Trait> traits;
 
-    private GameManager gm;
+    protected GameManager gm;
+    protected bool isDead = false;
+    protected SpriteRenderer sr;
+    protected Material defaultMaterial;
+    protected Material flashMaterial;
+
+
     protected virtual void Awake () {
         Initialize();
     }
@@ -29,18 +35,21 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        animator = GetComponent<Animator>();
         switch (baseColor) {
             case RGBColor.RED:
                 animator.SetTrigger("isRed");
+               
                 break;
             case RGBColor.GREEN:
                 animator.SetTrigger("isGreen");
+               
                 break;
             case RGBColor.BLUE:
                 animator.SetTrigger("isBlue");
+               
                 break;
         }
+        animator.SetBool("isDead", isDead);// false po defaultu
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -60,6 +69,10 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         hpStackList = new List<HPStack>();
         statMultipliers = new StatMultiplierCollection();
         traits = new List<Trait>();
+        sr = GetComponent<SpriteRenderer>();
+        flashMaterial = Resources.Load("WhiteFlash", typeof(Material)) as Material;
+        defaultMaterial = sr.material;
+        animator = GetComponent<Animator>();
     }
 
     public int GetLane () {
@@ -104,11 +117,35 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     public virtual void TakeDamage (RGBDamage damage) {
         HitStatus hitStatus;
+        if (damage.color == baseColor)
+        {
+            sr.material = flashMaterial;
+            Invoke("ResetMaterial", .1f);
+        }
 
         if (hpStackList[0].TakeDamage(damage, out hitStatus)) {
             hpStackList.RemoveAt(0);
 
             if (hpStackList.Count == 0) {
+                isDead = true;
+                GetComponent<BoxCollider2D>().enabled = false;
+                animator.SetBool("isDead", isDead);
+                switch (baseColor)
+                {
+                    case RGBColor.RED:
+                        animator.SetTrigger("isRed");
+                        sr.color = Color.red;
+                        break;
+                    case RGBColor.GREEN:
+                        animator.SetTrigger("isGreen");
+                        sr.color = Color.green;
+                        break;
+                    case RGBColor.BLUE:
+                        animator.SetTrigger("isBlue");
+                        sr.color = Color.gray;
+                        break;
+                }
+                Move();
                 Die();
             }
         }
@@ -119,13 +156,15 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         SelfDestruct();
     }
 
-    public virtual void SelfDestruct () {
-        Destroy(gameObject);
+    public virtual void SelfDestruct() {
+        Destroy(gameObject, 2f);
     }
 
     public void OnCollisionEnter2D (Collision2D collision) {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
             TakeDamage(collision.gameObject.GetComponent<Projectile>().damage);
+            // metak stvara blood splatter, mozda moze pametnije da se odradi pa da bude drugacijij blood splater svaki put
+            collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position); 
             Destroy(collision.gameObject);
         }
     }
@@ -136,5 +175,9 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         }
     }
 
+    public void ResetMaterial()
+    {
+        sr.material = defaultMaterial;
+    }
     protected abstract void InitiateShanking ();
 }
