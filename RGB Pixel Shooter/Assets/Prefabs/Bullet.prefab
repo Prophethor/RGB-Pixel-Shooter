@@ -99,7 +99,7 @@ MonoBehaviour:
   damage:
     color: 0
     amount: 0
-  bloodSplater: {fileID: 1923756613354099486, guid: 48098cdb10a34d74896b2a95936e8c2a,
+  bloodSplatter: {fileID: 1923756613354099486, guid: 48098cdb10a34d74896b2a95936e8c2a,
     type: 3}
   bulletSprites:
   - {fileID: -8119929544814303167, guid: ed31c439bd27f2a45b96e474c5389ef2, type: 3}

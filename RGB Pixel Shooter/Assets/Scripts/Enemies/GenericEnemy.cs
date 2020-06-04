@@ -103,6 +103,10 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected abstract void Move ();
 
     public virtual void TakeDamage (RGBDamage damage) {
+        if (hpStackList.Count == 0) {
+            return;
+        }
+
         HitStatus hitStatus;
         if (damage.color == baseColor) {
             sr.material = flashMaterial;

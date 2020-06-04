@@ -32,6 +32,10 @@ public class ShieldMutant : GenericEnemy {
     }
 
     public override void TakeDamage (RGBDamage damage) {
+        if (hpStackList.Count == 0) {
+            return;
+        }
+
         HitStatus hitStatus;
 
         if (hpStackList[0].TakeDamage(damage, out hitStatus)) {

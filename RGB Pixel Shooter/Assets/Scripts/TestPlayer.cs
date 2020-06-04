@@ -59,6 +59,14 @@ public class TestPlayer : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.Space)) {
             ((Revolver) equippedWeapon).Shoot(transform.position);
         }
+
+        // ColorBomb test
+        if (Input.GetMouseButtonDown(0)) {
+            Debug.Log("Bombing");
+            Consumable colorBomb = new ColorBomb();
+            ((ColorBomb) colorBomb).radius = 5f;
+            colorBomb.Use(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
     }
 
     public void Move (Swipe.SwipeData swipe) {
