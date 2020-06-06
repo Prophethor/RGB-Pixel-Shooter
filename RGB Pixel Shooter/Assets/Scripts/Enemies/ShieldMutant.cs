@@ -48,7 +48,6 @@ public class ShieldMutant : GenericEnemy {
         if (hpStackList[0].TakeDamage(damage, out hitStatus)) {
             
             
-
             hpStackList.RemoveAt(0);
             animator.SetBool("hasShield", false);
             sr.material = flashMaterial;

@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   deltaPosition: {x: 0.8, y: 0.95}
-  range: 5
-  spreadAngle: 45
+  range: 13
+  spreadAngle: 5
   shotNum: 3
-  damageAmount: 1
+  fireRate: 1
+  loadTime: 1
+  damageAmount: 2
   lineMaterial: {fileID: 2100000, guid: 15e50c156d9d0e845b9ac85a649df26e, type: 2}
   startVertices:
   - {x: -7.45, y: 0.5, z: -0.5}

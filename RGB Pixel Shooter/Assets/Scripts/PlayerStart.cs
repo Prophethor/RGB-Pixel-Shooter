@@ -10,11 +10,17 @@ public class PlayerStart : MonoBehaviour
     {
         player.enabled = false;
         player.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        SpriteRenderer[] childrenderers = new SpriteRenderer[0];
+        childrenderers = player.gameObject.GetComponentsInChildren<SpriteRenderer>();
+        childrenderers[1].enabled = false;
     }
     public void EnablePlayer()
     {
         player.enabled = true;
         player.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        SpriteRenderer[] childrenderers = new SpriteRenderer[0];
+        childrenderers = player.gameObject.GetComponentsInChildren<SpriteRenderer>();
+        childrenderers[1].enabled = true;
         Destroy(this.gameObject);
     }
 }
