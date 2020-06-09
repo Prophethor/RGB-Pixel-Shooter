@@ -91,6 +91,12 @@ public class Revolver : Weapon {
                 SetState(WeaponState.READY);
             });
         }
+        else // hopefully this means it fires colorless bullets when empty
+        {
+            Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3)deltaPosition + position, Quaternion.identity);
+            bulletObj.velocity = new Vector2(bulletSpeed, 0);
+            bulletObj.GetComponent<Projectile>().SetDamage(RGBColor.NONE, dmgAmount);
+        }
     }
 
     public void SetState (WeaponState newState) {

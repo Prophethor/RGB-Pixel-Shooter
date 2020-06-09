@@ -1,3 +1,3 @@
 ﻿public enum RGBColor {
-    RED, GREEN, BLUE
+    RED, GREEN, BLUE, NONE
 }

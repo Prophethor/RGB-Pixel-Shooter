@@ -84,13 +84,6 @@ public class ShieldMutant : GenericEnemy {
                 animator.SetTrigger("deflect");
             }
         }
-        else if (!hpStackList[0].TakeDamage(damage, out hitStatus))
-        {
-            if (hitStatus == HitStatus.WRONG_COLOR)
-            {
-                animator.SetTrigger("deflect");
-            }
-        }
     }
 
     public void Stop () {

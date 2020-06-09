@@ -102,15 +102,20 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     protected abstract void Move ();
 
-    public virtual void TakeDamage (RGBDamage damage) {
-        HitStatus hitStatus;
-        if (damage.color == baseColor) {
-            sr.material = flashMaterial;
-            Invoke("ResetMaterial", .1f);
-        }
+    public virtual void TakeDamage (RGBDamage damage) { 
 
+            HitStatus hitStatus;
+            
         if (hpStackList[0].TakeDamage(damage, out hitStatus)) {
-            hpStackList.RemoveAt(0);
+            if (hpStackList[0].GetAmount() >= 0)
+            {
+                sr.material = flashMaterial;
+                Invoke("ResetMaterial", .1f);
+            }
+            else
+            {
+                hpStackList.RemoveAt(0);
+            }
 
             if (hpStackList.Count == 0) {
                 isDead = true;

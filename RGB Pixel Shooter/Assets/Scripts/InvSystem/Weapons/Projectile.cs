@@ -18,10 +18,12 @@ public class Projectile : MonoBehaviour {
     }
 
     public void SetDamage (RGBColor color, int amount) {
-        damage.color = color;
-        damage.amount = amount;
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        sr.sprite = bulletSprites[(int) color];
+       
+            damage.color = color;
+            damage.amount = amount;
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            sr.sprite = bulletSprites[(int)color];
+
     }
 
     public void SpawnBloodSplater (Vector3 spawnPosition, bool rightColor)

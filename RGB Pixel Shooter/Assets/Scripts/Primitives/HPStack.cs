@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Runtime.Serialization;
+using UnityEngine;
 
 [Serializable]
 public class HPStack {
     private RGBColor color;
     private int maxAmount;
-    private int amount;
+    private float amount;
+
+    private float wrongColorMultiplier = 0.5f;
+    private float noneColorMultiplier = 1f;
+    private float correctColorMultiplier = 2f;
 
     private int hpRegen;
     private float hpRegenTime;
@@ -37,34 +42,60 @@ public class HPStack {
         }
     }
 
-    public bool TakeDamage (RGBDamage damage, out HitStatus hitStatus) {
-        if (damage.color != color) {
-            hitStatus = HitStatus.WRONG_COLOR;
-            return false;
+    public bool TakeDamage(RGBDamage damage, out HitStatus hitStatus) {
+
+        float tempAmount = amount;
+        HitStatus tempHit = HitStatus.INSUFFICIENT_DAMAGE;
+        bool tempBool = false;
+        //----------------------------First we check the how the color matches up------------
+
+        if ((damage.color != color) || (damage.color != RGBColor.NONE)) {  // ako je promasio boju a NIJE Neutralni metak
+            tempHit = HitStatus.HIT_WRONG_COLOR;
+            tempAmount = damage.amount * wrongColorMultiplier;
+            hitStatus = tempHit;
+            tempBool = true;
+
+        }
+        if (damage.color == RGBColor.NONE) // ako je neutralni metak
+        {
+            tempHit = HitStatus.HIT_NEUTRAL;
+            tempAmount = damage.amount *noneColorMultiplier;
+            hitStatus = tempHit;
+            tempBool = true;
+
+        }
+        if (damage.color == color) // ako je pogodio tacnu boju metka
+        {
+            tempHit = HitStatus.HIT_CORRECT;
+            tempAmount = damage.amount * correctColorMultiplier;
+            hitStatus = tempHit;
+            tempBool = true;
         }
 
-        damage.amount -= damageReduction;
-
-        if (damage.amount >= threshold) {
-            hitStatus = HitStatus.HIT;
-            amount -= damage.amount;
-
-            if (amount <= 0) {
-                return true;
-            }
+        //------------------- Below we chech the trehold and armor pass marks--------------------
+        if (tempAmount <= damageReduction) // TODO make sure this is significant ammount of damage if it passes
+        {
+            tempHit = HitStatus.INSUFFICIENT_DAMAGE;
+            hitStatus = tempHit;
+            tempBool = false;
         }
-        else {
-            hitStatus = HitStatus.BELOW_THRESHOLD;
+        if ((tempAmount - damageReduction)< threshold)
+        {
+            tempHit = HitStatus.BELOW_THRESHOLD;
+            hitStatus = tempHit;
+            tempBool = false;
         }
-
-        return false;
+        Debug.Log("  HitStatus===" + tempHit + " HitBool==" + tempBool + "===DMG==");
+        amount -= tempAmount;
+        hitStatus = tempHit;
+        return tempBool;
     }
 
     public RGBColor GetColor () {
         return color;
     }
 
-    public int GetAmount () {
+    public float GetAmount () {
         return amount;
     }
 
