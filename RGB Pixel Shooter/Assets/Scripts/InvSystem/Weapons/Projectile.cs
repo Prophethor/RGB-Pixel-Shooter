@@ -44,23 +44,15 @@ public class Projectile : MonoBehaviour {
             {
                 bloodSplaterSuccessfull.GetComponent<SpriteRenderer>().color = Color.green;
             }
-            /*
-            switch (color)
-            {
-                case RGBColor.RED:
-                    bloodSplater.GetComponent<SpriteRenderer>().color = Color.red;
-                    break;
-                case RGBColor.GREEN:
-                    bloodSplater.GetComponent<SpriteRenderer>().color = Color.green;
-                    break;
-                case RGBColor.BLUE:
-                    bloodSplater.GetComponent<SpriteRenderer>().color = Color.blue;
-                    break;
-                default:
-                    break;
-                     }*/
+            
             Instantiate(bloodSplaterSuccessfull, spawnPosition + offsetVector, Quaternion.identity);
 
+        }
+        else if (damage.color == RGBColor.NONE)
+        {
+            Vector3 offsetVector = new Vector3(Random.Range(-.1f, .1f), Random.Range(-.1f, .1f), 0);
+            bloodSplatterUnsuccessfull.GetComponent<SpriteRenderer>().color = Color.gray;
+            Instantiate(bloodSplatterUnsuccessfull, spawnPosition + offsetVector, Quaternion.identity);
         }
         else
         {
@@ -78,21 +70,7 @@ public class Projectile : MonoBehaviour {
             {
                 bloodSplatterUnsuccessfull.GetComponent<SpriteRenderer>().color = Color.green;
             }
-            /*
-            switch (color)
-            {
-                case RGBColor.RED:
-                    bloodSplater.GetComponent<SpriteRenderer>().color = Color.red;
-                    break;
-                case RGBColor.GREEN:
-                    bloodSplater.GetComponent<SpriteRenderer>().color = Color.green;
-                    break;
-                case RGBColor.BLUE:
-                    bloodSplater.GetComponent<SpriteRenderer>().color = Color.blue;
-                    break;
-                default:
-                    break;
-                     }*/
+           
             Instantiate(bloodSplatterUnsuccessfull, spawnPosition + offsetVector, Quaternion.identity);
         }
     

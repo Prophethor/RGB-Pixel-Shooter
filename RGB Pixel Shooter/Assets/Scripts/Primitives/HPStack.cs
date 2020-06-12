@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Runtime.Serialization;
 using UnityEngine;
+using System.Diagnostics;
 
 [Serializable]
 public class HPStack {
@@ -9,9 +10,9 @@ public class HPStack {
     private int maxAmount;
     private float amount;
 
-    private float wrongColorMultiplier = 0.5f;
+    private float wrongColorMultiplier = 1f;
     private float noneColorMultiplier = 1f;
-    private float correctColorMultiplier = 2f;
+    private float correctColorMultiplier = 5f;
 
     private int hpRegen;
     private float hpRegenTime;
@@ -19,6 +20,7 @@ public class HPStack {
 
     private int damageReduction;
     private int threshold;
+    
 
     public HPStack (RGBColor color, int maxAmount = 1, int hpRegen = 0, float hpRegenTime = 0f, int damageReduction = 0, int threshold = 0) {
         this.color = color;
@@ -43,7 +45,7 @@ public class HPStack {
     }
 
     public bool TakeDamage(RGBDamage damage, out HitStatus hitStatus) {
-
+        StackTrace stackTrace = new StackTrace();
         float tempAmount = amount;
         HitStatus tempHit = HitStatus.INSUFFICIENT_DAMAGE;
         bool tempBool = false;
@@ -85,7 +87,9 @@ public class HPStack {
             hitStatus = tempHit;
             tempBool = false;
         }
-        Debug.Log("  HitStatus===" + tempHit + " HitBool==" + tempBool + "===DMG==");
+
+        //Debug.Log("  HitStatus===" + tempHit + " HitBool==" + tempBool + "===DMG==" + tempAmount);
+        Console.WriteLine(stackTrace.GetFrame(1).GetMethod().Name);
         amount -= tempAmount;
         hitStatus = tempHit;
         return tempBool;

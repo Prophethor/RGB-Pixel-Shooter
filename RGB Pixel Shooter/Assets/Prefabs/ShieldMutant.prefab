@@ -67,8 +67,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1493131465
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -6494169019419358343, guid: 2840eee3087229149be5310181e9c8d3,
     type: 3}
@@ -149,9 +149,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -1790166689
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 5555260863787250548, guid: 594557f3fe1b60046905743e3fce1dc3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -237,8 +237,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1790166689
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 8065658356358405631, guid: 8755a5c30b9326f4ab3cc61cf412a565,
     type: 3}
@@ -309,7 +309,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!95 &5671198125261350250
 Animator:

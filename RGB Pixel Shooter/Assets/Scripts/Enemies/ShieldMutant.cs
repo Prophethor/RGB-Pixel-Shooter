@@ -12,7 +12,7 @@ public class ShieldMutant : GenericEnemy {
     protected override void Start () {
         hpStackList.Add(new HPStack((RGBColor)Random.Range(0, 2), 2, 0, 0, 0, 2));
 
-        hpStackList.Add(new HPStack(baseColor, 1));
+        hpStackList.Add(new HPStack(baseColor, 5));
 
         float yPos = PlayField.GetLanePosition(lane) - Random.Range(-0.33f, 1f) * PlayField.GetLaneHeight() / 3f;
 
@@ -45,46 +45,60 @@ public class ShieldMutant : GenericEnemy {
     public override void TakeDamage (RGBDamage damage) {
         HitStatus hitStatus;
 
-        if (hpStackList[0].TakeDamage(damage, out hitStatus)) {
-            
-            
+        if (!hpStackList[0].TakeDamage(damage, out hitStatus))
+        {
+            Debug.Log("1");
+            // u slucaju da nije pukao stit, niti je umro. proveri dal je hit starus treshold, ako jeste, defelctuj
+            if (hitStatus == HitStatus.BELOW_THRESHOLD)
+            {
+                animator.SetTrigger("deflect");
+            }
+            else Debug.Log(hitStatus);
+        }
+
+        if (animator.GetBool("hasShield") && hpStackList[0].TakeDamage(damage, out hitStatus)) {
+            Debug.Log("2");
             hpStackList.RemoveAt(0);
-            animator.SetBool("hasShield", false);
             sr.material = flashMaterial;
             childSr.material = flashMaterial;
             Invoke("ResetMaterial", .1f);
-            animator.SetTrigger("break");
 
             // ovde puca prvi stack, ako je prosao treshold i vratio true
+            animator.SetTrigger("break");
+            animator.SetBool("hasShield", false);
             animator.SetTrigger("is" + baseColor.GetString());
             animator.SetTrigger("shield" + baseColor.GetString());
-
-            if (hpStackList.Count == 0) {
-                // ovde umire 
-                isDead = true;
-                GetComponent<BoxCollider2D>().enabled = false;
-                animator.SetBool("isDead", isDead);
-
-                // Temporary; TODO: change sprites to reflect behavior below
-                animator.SetTrigger("is" + baseColor.GetString());
-                sr.color = baseColor.GetColor();
-
-                if (baseColor == RGBColor.BLUE) {
-                    sr.color = Color.gray;
-                }
-
-                Move();
-                Die();
-            }
-
         }
-        else if (!hpStackList[0].TakeDamage(damage, out hitStatus)) {
-            // u slucaju da nije pukao stit, niti je umro. proveri dal je hit starus treshold, ako jeste, defelctuj
-            if (hitStatus == HitStatus.BELOW_THRESHOLD) {
-                animator.SetTrigger("deflect");
+        else if (!animator.GetBool("hasShield") && hpStackList[0].TakeDamage(damage, out hitStatus))
+        {
+            Debug.Log("3");
+            if (hpStackList[0].GetAmount() > 0)
+            {
+                sr.material = flashMaterial;
+                Invoke("ResetMaterial", .1f);
+            }
+            else
+            {
+                hpStackList.RemoveAt(0);
             }
         }
+
+        if (hpStackList.Count == 0) {
+            // ovde umire 
+            isDead = true;
+            GetComponent<BoxCollider2D>().enabled = false;
+            animator.SetBool("isDead", isDead);
+
+            // Temporary; TODO: change sprites to reflect behavior below
+            animator.SetTrigger("is" + baseColor.GetString());
+            
+
+            Move();
+            Die();
+        }
+
     }
+         
 
     public void Stop () {
         rb.velocity = Vector2.zero;
