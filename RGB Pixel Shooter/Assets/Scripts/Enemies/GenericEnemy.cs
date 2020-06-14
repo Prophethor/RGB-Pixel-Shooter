@@ -106,8 +106,9 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     public virtual void TakeDamage (RGBDamage damage) {
         HitStatus hitStatus;
-            
+
         if (hpStackList[0].TakeDamage(damage, out hitStatus)) {
+
             if (hpStackList[0].GetAmount() > 0)
             {
                 sr.material = flashMaterial;
@@ -147,14 +148,13 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
             TakeDamage(collision.gameObject.GetComponent<Projectile>().damage);
-            if (collision.gameObject.GetComponent<Projectile>().damage.color == baseColor)
-            {
+            if (collision.gameObject.GetComponent<Projectile>().damage.color == baseColor) {
                 matchingColor = true;
             }
             else matchingColor = false;
 
             // metak stvara blood splatter, mozda moze pametnije da se odradi pa da bude drugacijij blood splater svaki put
-            collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, matchingColor); 
+            collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, matchingColor);
             Destroy(collision.gameObject);
         }
     }
