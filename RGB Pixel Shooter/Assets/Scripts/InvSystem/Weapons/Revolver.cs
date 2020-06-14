@@ -129,7 +129,7 @@ public class Revolver : Weapon {
             bullets.RemoveAt(0);
 
             // Stop any and all bullet loading
-            if (currentLoad.active) {
+            if (currentLoad != null && currentLoad.active) {
                 Tweener.RemoveTween(currentLoad);
             }
             loadQueue.Clear();

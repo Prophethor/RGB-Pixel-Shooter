@@ -9,6 +9,7 @@ public class Mutant : GenericEnemy {
 
         //Set health color
         hpStackList.Add(new HPStack(baseColor, 5));
+        hpStackList[0].SetOnDestroy(() => { Debug.Log("Gotov sam"); });
 
         //Initiate moving
         Move();
