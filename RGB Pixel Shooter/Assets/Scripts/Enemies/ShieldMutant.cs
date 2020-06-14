@@ -8,8 +8,11 @@ public class ShieldMutant : GenericEnemy {
 
     protected override void Start () {
         hpStackList.Add(new HPStack((RGBColor) Random.Range(0, 2), 2, 0, 0, 0, 2));
+        hpStackList.Add(new HPStack(baseColor, 5));
+
+
+
         hpStackList[0].SetOnDestroy(() => {
-            Debug.Log("2");
             hpStackList.RemoveAt(0);
             sr.material = flashMaterial;
             childSr.material = flashMaterial;
@@ -21,25 +24,20 @@ public class ShieldMutant : GenericEnemy {
             animator.SetTrigger("is" + baseColor.GetString());
             animator.SetTrigger("shield" + baseColor.GetString());
         });
-
-        hpStackList.Add(new HPStack(baseColor, 5));
         hpStackList[1].SetOnDestroy(() => {
-            Debug.Log("3");
+            
             hpStackList.RemoveAt(0);
         });
 
         float yPos = PlayField.GetLanePosition(lane) - Random.Range(-0.33f, 1f) * PlayField.GetLaneHeight() / 3f;
-
         transform.position = new Vector3(9, yPos, yPos);
-
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-
         rb = GetComponent<Rigidbody2D>();
 
         animator = GetComponent<Animator>();
-        animator.SetBool("hasShield", true);
         animator.SetTrigger("is" + baseColor.GetString());
         animator.SetTrigger("shield" + hpStackList[0].GetColor().GetString());
+        animator.SetBool("hasShield", true);
         animator.SetBool("isDead", isDead); // false po defaultu
 
         SpriteRenderer[] allSr = GetComponentsInChildren<SpriteRenderer>();
@@ -63,7 +61,6 @@ public class ShieldMutant : GenericEnemy {
 
         
         if (!hitBool) {
-            Debug.Log("1");
             // u slucaju da nije pukao stit, niti je umro. proveri dal je hit status treshold, ako jeste, defelctuj
             if (hitStatus.belowThreshold) {
                 animator.SetTrigger("deflect");
