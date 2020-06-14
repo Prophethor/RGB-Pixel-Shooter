@@ -4,9 +4,29 @@ using UnityEngine;
 
 public class Grunt : GenericEnemy
 {
+    public AnimatorOverrideController overrideRed;
+    public AnimatorOverrideController overrideBlue;
+    public AnimatorOverrideController overrideGreen;
+
     protected override void Start () {
         base.Start();
 
+        switch (baseColor)
+        {
+            case RGBColor.RED:
+                animator.runtimeAnimatorController = overrideRed;
+                break;
+            case RGBColor.GREEN:
+                animator.runtimeAnimatorController = overrideGreen;
+                break;
+            case RGBColor.BLUE:
+                animator.runtimeAnimatorController = overrideBlue;
+                break;
+            case RGBColor.NONE:
+                break;
+            default:
+                break;
+        }
         //Set health color
         hpStackList.Add(new HPStack(baseColor, 10));
 

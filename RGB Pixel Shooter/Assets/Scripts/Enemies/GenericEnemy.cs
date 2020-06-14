@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     protected Rigidbody2D rb;
-    protected Animator animator;
     protected RGBColor baseColor;
 
     protected StatMultiplierCollection statMultipliers;
@@ -23,7 +23,8 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected Material defaultMaterial;
     protected Material flashMaterial;
 
-
+    protected Animator animator;   
+   
     protected virtual void Awake () {
         Initialize();
     }
@@ -35,7 +36,6 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        animator.SetTrigger("is" + baseColor.GetString());
         animator.SetBool("isDead", isDead);// false po defaultu
         rb = GetComponent<Rigidbody2D>();
     }
@@ -60,6 +60,8 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         flashMaterial = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         defaultMaterial = sr.material;
         animator = GetComponent<Animator>();
+
+   
     }
 
     public int GetLane () {
@@ -103,11 +105,9 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected abstract void Move ();
 
     public virtual void TakeDamage (RGBDamage damage) {
-        Debug.Log("4");
         HitStatus hitStatus;
             
         if (hpStackList[0].TakeDamage(damage, out hitStatus)) {
-            Debug.Log("5");
             if (hpStackList[0].GetAmount() > 0)
             {
                 sr.material = flashMaterial;
@@ -115,6 +115,8 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
             }
             else
             {
+                sr.material = flashMaterial;
+                Invoke("ResetMaterial", .1f);
                 hpStackList.RemoveAt(0);
             }
 
@@ -124,12 +126,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
                 animator.SetBool("isDead", isDead);
 
                 // Temporary; TODO: change sprites to reflect behavior below
-                animator.SetTrigger("is" + baseColor.GetString());
-                sr.color = baseColor.GetColor();
-
-                if (baseColor == RGBColor.BLUE) {
-                    sr.color = Color.gray;
-                }
+               
                 Move();
                 Die();
             }

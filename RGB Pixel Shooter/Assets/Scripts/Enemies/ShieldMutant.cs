@@ -47,7 +47,6 @@ public class ShieldMutant : GenericEnemy {
 
         if (!hpStackList[0].TakeDamage(damage, out hitStatus))
         {
-            Debug.Log("1");
             // u slucaju da nije pukao stit, niti je umro. proveri dal je hit starus treshold, ako jeste, defelctuj
             if (hitStatus == HitStatus.BELOW_THRESHOLD)
             {
@@ -57,7 +56,7 @@ public class ShieldMutant : GenericEnemy {
         }
 
         if (animator.GetBool("hasShield") && hpStackList[0].TakeDamage(damage, out hitStatus)) {
-            Debug.Log("2");
+    
             hpStackList.RemoveAt(0);
             sr.material = flashMaterial;
             childSr.material = flashMaterial;
@@ -70,8 +69,7 @@ public class ShieldMutant : GenericEnemy {
             animator.SetTrigger("shield" + baseColor.GetString());
         }
         else if (!animator.GetBool("hasShield") && hpStackList[0].TakeDamage(damage, out hitStatus))
-        {
-            Debug.Log("3");
+        {    
             if (hpStackList[0].GetAmount() > 0)
             {
                 sr.material = flashMaterial;
