@@ -552,10 +552,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: break
+    m_ConditionEvent: shieldBlue
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isBlue
+    m_ConditionEvent: break
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2013920989348968282}
@@ -917,10 +917,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: break
+    m_ConditionEvent: shieldGreen
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isGreen
+    m_ConditionEvent: break
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4698391773921082844}
@@ -1497,10 +1497,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: break
+    m_ConditionEvent: shieldRed
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: isRed
+    m_ConditionEvent: break
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6752600349921579685}

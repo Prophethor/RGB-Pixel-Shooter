@@ -7,7 +7,8 @@ public class ShieldMutant : GenericEnemy {
     private SpriteRenderer childSr;
 
     protected override void Start () {
-        hpStackList.Add(new HPStack((RGBColor) Random.Range(0, 2), 2, 0, 0, 0, 2));
+        RGBColor randColor = (RGBColor)Random.Range(0, 2);
+        hpStackList.Add(new HPStack(randColor, 2, 0, 0, 0, 2));
         hpStackList.Add(new HPStack(baseColor, 5));
 
 
@@ -22,7 +23,7 @@ public class ShieldMutant : GenericEnemy {
             animator.SetTrigger("break");
             animator.SetBool("hasShield", false);
             animator.SetTrigger("is" + baseColor.GetString());
-            animator.SetTrigger("shield" + baseColor.GetString());
+            animator.SetTrigger("shield" + randColor.GetString());
         });
         hpStackList[1].SetOnDestroy(() => {
             
@@ -36,7 +37,7 @@ public class ShieldMutant : GenericEnemy {
 
         animator = GetComponent<Animator>();
         animator.SetTrigger("is" + baseColor.GetString());
-        animator.SetTrigger("shield" + hpStackList[0].GetColor().GetString());
+        animator.SetTrigger("shield" + randColor.GetString());
         animator.SetBool("hasShield", true);
         animator.SetBool("isDead", isDead); // false po defaultu
 
