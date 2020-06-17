@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BulletPopNormal
+  m_Controller: {fileID: 9100000, guid: f7f780536170d8a418197b968f3fb083, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ce92702c3b8fcf345a3484d1bdbace9b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 39035fa725920444f83d8969df567da1, type: 2}
