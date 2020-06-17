@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 107491512220218189}
   - component: {fileID: 2455126479241339021}
+  - component: {fileID: 5832548987168453312}
   m_Layer: 10
   m_Name: Shield
   m_TagString: Untagged
@@ -164,6 +165,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5832548987168453312
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3433720470138480752}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22ba5b860647e994b9e3544f7f8baaa7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5671198125261350251
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +284,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da6733e7f72c9b4abe8bd085cf69fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OverrideRed: {fileID: 22100000, guid: d71fcbc342abb0b498180e476476745f, type: 2}
+  OverrideBlue: {fileID: 22100000, guid: ef9825369e69c03418a9708884fec344, type: 2}
+  OverrideGreen: {fileID: 22100000, guid: dd61c0472815f4b44901f12146429dda, type: 2}
+  OverrideShieldRed: {fileID: 22100000, guid: d5f56b5984247d94eb401de7dd881578, type: 2}
+  OverrideShieldBlue: {fileID: 22100000, guid: 7084849df32d1034992b6e2cd845b1a4, type: 2}
+  OverrideShieldGreen: {fileID: 22100000, guid: 55f24484aa6445242838a082ee360166,
+    type: 2}
 --- !u!61 &5671198125261350248
 BoxCollider2D:
   m_ObjectHideFlags: 0

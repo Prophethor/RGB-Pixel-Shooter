@@ -14,13 +14,10 @@ public class HpScript : MonoBehaviour
     {
         renderers = this.GetComponentsInChildren<SpriteRenderer>();
         hpFill = renderers[1]; // drugi po redu, prvi je za okvir (taj treba da se swapuje, ovaj ce se gnjeci)
-        Initialize();
+      
     }
 
-    private void Initalize()
-    {
-
-    }
+    
     public void ApplyDamage(HPStack currentStack, RGBDamage damage)
     {
 
