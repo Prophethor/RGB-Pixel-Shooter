@@ -11,6 +11,8 @@ public class TestPlayer : MonoBehaviour {
     public GameObject swipeDetector;
     private Swipe swipe;
 
+    public AudioSource audioSource;
+
     private int lane = 1;
     [HideInInspector]
     public int savedLane = 1;
@@ -23,6 +25,7 @@ public class TestPlayer : MonoBehaviour {
 
     private void Start () {
 
+        audioSource = GetComponent<AudioSource>();
         swipe = Instantiate(swipeDetector).GetComponent<Swipe>();
         swipe.minDistanceForSwipe = 30;
         swipe.OnSwipe += Move;

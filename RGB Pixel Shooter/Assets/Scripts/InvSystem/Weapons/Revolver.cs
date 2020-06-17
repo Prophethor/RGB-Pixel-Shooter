@@ -24,6 +24,8 @@ public class Revolver : Weapon {
     private GameObject player;
     private ReloadTimer timer;
 
+
+
     public override void LevelStart () {
         state = WeaponState.READY;
         bullets = new List<RGBColor>();
@@ -59,17 +61,26 @@ public class Revolver : Weapon {
     }
     public void ReloadNeutral(RGBColor color = RGBColor.NONE)
     {
+        
+        player.GetComponent<AudioSource>().Play();
+
         SetState(WeaponState.LOADING);
         animator.SetTrigger("loadTrigger");
         timer.StartTimer(loadTime);
         currentLoad = Tweener.Invoke(loadTime, () =>
         {
-            bullets.Add(color);
-            bullets.Add(RGBColor.NONE);
-            bullets.Add(RGBColor.NONE);
-            bullets.Add(RGBColor.NONE);
-            bullets.Add(RGBColor.NONE);
-            bullets.Add(RGBColor.NONE);
+            for (int i = 0; i < 6; i++)
+            {
+               
+                bullets.Add(RGBColor.NONE);
+               
+            }
+
+            if (color != RGBColor.NONE)
+            {
+                bullets.RemoveAt(0);
+                bullets.Insert(0, color);
+            }
 
             SetState(WeaponState.READY);
 
@@ -82,10 +93,10 @@ public class Revolver : Weapon {
         {
             if (bullets.Count == 0)
             {
-                ReloadNeutral(color);
-            
+                ReloadNeutral(color);  
             }
-            else
+
+            if (bullets.Count != 0)
             {
                 for (int i = 0; i < bullets.Count; i++)
                 {
@@ -94,6 +105,7 @@ public class Revolver : Weapon {
                         bullets[i] = color;
                         break;
                     }
+                  
                 }
                     
             }
