@@ -99,7 +99,7 @@ public class ShieldMutant : GenericEnemy {
         }
     }
 
-    public override void TakeDamage (RGBDamage damage) {
+    public override HitStatus TakeDamage (RGBDamage damage) {
         HitStatus hitStatus;
         bool hitBool = hpStackList[0].TakeDamage(damage, out hitStatus);
 
@@ -128,6 +128,7 @@ public class ShieldMutant : GenericEnemy {
             Move();
             Die();
         }
+        return hitStatus;
     }
 
 

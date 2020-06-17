@@ -104,9 +104,8 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     protected abstract void Move ();
 
-    public virtual void TakeDamage (RGBDamage damage) {
+    public virtual HitStatus TakeDamage (RGBDamage damage) {
         HitStatus hitStatus;
-
         if (hpStackList[0].TakeDamage(damage, out hitStatus)) {
 
             if (hpStackList[0].GetAmount() > 0)
@@ -132,6 +131,8 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
                 Die();
             }
         }
+
+        return hitStatus;
     }
 
     protected virtual void Die () {
@@ -144,17 +145,11 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     }
 
     public void OnCollisionEnter2D (Collision2D collision) {
-        bool matchingColor;
-
+        HitStatus hitData;
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
-            TakeDamage(collision.gameObject.GetComponent<Projectile>().damage);
-            if (collision.gameObject.GetComponent<Projectile>().damage.color == baseColor) {
-                matchingColor = true;
-            }
-            else matchingColor = false;
-
-            // metak stvara blood splatter, mozda moze pametnije da se odradi pa da bude drugacijij blood splater svaki put
-            collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, matchingColor);
+            hitData = TakeDamage(collision.gameObject.GetComponent<Projectile>().damage); // cuvamo retutn koji je data, ali take damage obracunava svu stetu... hopefully
+           
+            collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, hitData, hpStackList[0].GetColor()); // saljemo hit data iz take damage u projektil
             Destroy(collision.gameObject);
         }
     }

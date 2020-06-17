@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6761513973187095564}
   - component: {fileID: 1090364935558892834}
   m_Layer: 0
-  m_Name: BloodSplatterSuccesfull
+  m_Name: BloodPop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: 6821314810758903273, guid: 757c1571ce9dd1b4f9e1f0f0b6c088db,
     type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -96,6 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3c0eb07bc46944494e94c85e34e564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1090364935558892834}
+  animRed: {fileID: 22100000, guid: e4e4914f5c19f034b845c43f7f5321cb, type: 2}
+  animBlue: {fileID: 22100000, guid: 4f6df746b3f65b740b361873d25965d7, type: 2}
+  animGreen: {fileID: 22100000, guid: 0cfa1dd4cef9c4e4ebe611f56e95b74d, type: 2}
 --- !u!95 &1090364935558892834
 Animator:
   serializedVersion: 3
@@ -106,7 +110,7 @@ Animator:
   m_GameObject: {fileID: 1923756613354099486}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f7f780536170d8a418197b968f3fb083, type: 2}
+  m_Controller: {fileID: 22100000, guid: e4e4914f5c19f034b845c43f7f5321cb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

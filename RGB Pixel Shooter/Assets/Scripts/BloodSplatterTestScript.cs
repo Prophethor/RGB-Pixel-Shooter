@@ -4,11 +4,45 @@ using UnityEngine;
 
 public class BloodSplatterTestScript : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
+    private RGBColor color;
 
-    private void Start()
+    public AnimatorOverrideController animRed;
+    public AnimatorOverrideController animBlue;
+    public AnimatorOverrideController animGreen;
+
+
+    public void Initialize( RGBColor enemyColor, HitStatus data)
     {
-        animator = GetComponent<Animator>();
+        switch (enemyColor)
+        {
+            case RGBColor.RED:
+                animator.runtimeAnimatorController = animRed;
+                break;
+            case RGBColor.GREEN:
+                animator.runtimeAnimatorController = animGreen;
+                break;
+            case RGBColor.BLUE:
+                animator.runtimeAnimatorController = animBlue;
+                break;
+            case RGBColor.NONE:
+                break;
+            default:
+                break;
+        }
+        
+    }
+
+    private void Awake()
+    {
+        animator = this.GetComponent<Animator>();
+
+       
+    }
+
+    public void PlayAnim()
+    {
+
     }
     private void Die()
     {
