@@ -3,7 +3,10 @@ guid: 8477fa193cecf204d8f245ddc21fc2c2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bloodPop: {fileID: 1923756613354099486, guid: 7df5c2d5d9bbf304f812be8bb8f29b84,
+      type: 3}
+  - animator: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

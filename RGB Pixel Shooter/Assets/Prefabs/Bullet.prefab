@@ -73,15 +73,16 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ed31c439bd27f2a45b96e474c5389ef2, type: 3}
+  m_Sprite: {fileID: 5056786731484317293, guid: f14bc0222dd403d4ab7080c964610af9,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.6, y: 1.6}
+  m_Size: {x: 1.125, y: 1.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &6013488467053243120
@@ -120,13 +121,8 @@ MonoBehaviour:
   damage:
     color: 0
     amount: 1
-  bloodPop: {fileID: 1923756613354099486, guid: 7df5c2d5d9bbf304f812be8bb8f29b84,
+  bloodPop: {fileID: 5227551168284855346, guid: 7df5c2d5d9bbf304f812be8bb8f29b84,
     type: 3}
-  animator: {fileID: 1090364935558892834, guid: 7df5c2d5d9bbf304f812be8bb8f29b84,
-    type: 3}
-  animRed: {fileID: 22100000, guid: e4e4914f5c19f034b845c43f7f5321cb, type: 2}
-  animBlue: {fileID: 22100000, guid: 4f6df746b3f65b740b361873d25965d7, type: 2}
-  animGreen: {fileID: 22100000, guid: 0cfa1dd4cef9c4e4ebe611f56e95b74d, type: 2}
   bulletSprites:
   - {fileID: -8119929544814303167, guid: ed31c439bd27f2a45b96e474c5389ef2, type: 3}
   - {fileID: -3375275900011558089, guid: cea63e30824f517449c4cfda24442bfe, type: 3}
@@ -149,8 +145,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6, y: 1.6}
-    newSize: {x: 1.6, y: 1.6}
+    oldSize: {x: 1.125, y: 1.125}
+    newSize: {x: 1.125, y: 1.125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

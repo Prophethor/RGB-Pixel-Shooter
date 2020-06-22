@@ -103,8 +103,6 @@ public class ShieldMutant : GenericEnemy {
         HitStatus hitStatus;
         bool hitBool = hpStackList[0].TakeDamage(damage, out hitStatus);
 
-
-        
         if (!hitBool) {
             // u slucaju da nije pukao stit, niti je umro. proveri dal je hit status treshold, ako jeste, defelctuj
             if (hitStatus.belowThreshold) {
