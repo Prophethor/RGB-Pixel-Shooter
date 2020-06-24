@@ -18,6 +18,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected List<Trait> traits;
 
     protected GameManager gm;
+    protected ExplosionManager explosionManager;
     protected bool isDead = false;
     protected SpriteRenderer sr;
     protected Material defaultMaterial;
@@ -27,10 +28,12 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
    
     protected virtual void Awake () {
         Initialize();
+
     }
 
     protected virtual void Start () {
         // Set position according to lane
+         // TODO delete this
         float yPos = PlayField.GetLanePosition(lane) - Random.Range(-0.33f, 1f) * PlayField.GetLaneHeight() / 3f;
         transform.position = new Vector3(9, yPos, yPos);
 
@@ -60,8 +63,9 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         flashMaterial = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         defaultMaterial = sr.material;
         animator = GetComponent<Animator>();
+        explosionManager = FindObjectOfType<ExplosionManager>();
 
-   
+
     }
 
     public int GetLane () {
@@ -147,9 +151,10 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     public void OnCollisionEnter2D (Collision2D collision) {
         HitStatus hitData;
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
+            RGBColor tempColor = hpStackList[0].GetColor();
             hitData = TakeDamage(collision.gameObject.GetComponent<Projectile>().damage); // cuvamo retutn koji je data, ali take damage obracunava svu stetu... hopefully
-           
-            collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, hitData, hpStackList[0].GetColor()); // saljemo hit data iz take damage u projektil
+
+            explosionManager.SpawnExplosion(tempColor,collision, hitData); // saljemo hit data iz take damage u projektil
             Destroy(collision.gameObject);
         }
     }

@@ -88,7 +88,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.6666667
-    functionName: Die
+    functionName: ResetPosition
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

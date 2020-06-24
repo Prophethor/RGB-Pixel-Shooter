@@ -405,13 +405,13 @@ AnimatorStateMachine:
     m_Position: {x: 260, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7798067370466367225}
-    m_Position: {x: -620, y: 390, z: 0}
+    m_Position: {x: -490, y: 440, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8226181989096515453}
     m_Position: {x: 260, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8066255524015376700}
-    m_Position: {x: -620, y: 190, z: 0}
+    m_Position: {x: -490, y: 240, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -8489588590512308422}
@@ -419,8 +419,8 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -190, y: 380, z: 0}
-  m_EntryPosition: {x: 0, y: 220, z: 0}
+  m_AnyStatePosition: {x: -60, y: 430, z: 0}
+  m_EntryPosition: {x: -20, y: 300, z: 0}
   m_ExitPosition: {x: 1490, y: -270, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 8226181989096515453}
@@ -619,25 +619,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 1
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isDead
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: deflect
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: break
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Mutant

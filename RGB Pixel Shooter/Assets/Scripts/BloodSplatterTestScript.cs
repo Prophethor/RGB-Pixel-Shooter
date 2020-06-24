@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BloodSplatterTestScript : MonoBehaviour
 {
+    private Vector3 anchorPosition;
+    private Vector3 destinationPosition;
+
     public Animator animator;
     private RGBColor color;
 
@@ -12,8 +15,9 @@ public class BloodSplatterTestScript : MonoBehaviour
     public AnimatorOverrideController animGreen;
 
 
-    public void Initialize( RGBColor enemyColor, HitStatus data)
+    public void Initialize( RGBColor enemyColor, HitStatus data, Collision2D col)
     {
+
         switch (enemyColor)
         {
             case RGBColor.RED:
@@ -30,22 +34,40 @@ public class BloodSplatterTestScript : MonoBehaviour
             default:
                 break;
         }
-        
+
+        this.gameObject.transform.position = col.transform.position;
+
+        if (data.hitColor == HitColor.CORRECT)
+        {
+            animator.SetTrigger("crit");
+
+
+        }
+        if ((data.hitColor == HitColor.NEUTRAL) || (data.hitColor == HitColor.WRONG))
+        {
+            animator.SetTrigger("neutral");
+
+        }
+
+        if (data.damageAmount <= 0 && data.belowThreshold)
+        {
+            animator.SetTrigger("null");
+        }
+
     }
 
     private void Awake()
     {
         animator = this.GetComponent<Animator>();
-
+        anchorPosition = this.transform.position;
        
     }
 
-    public void PlayAnim()
-    {
 
-    }
-    private void Die()
+    private void ResetPosition()
     {
-        Destroy(this.gameObject);
+        this.transform.position = anchorPosition;
+        animator.SetTrigger("reset");
+        FindObjectOfType<ExplosionManager>().ReturnToQueue(this);
     }
 }

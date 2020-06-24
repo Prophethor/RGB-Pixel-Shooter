@@ -29,32 +29,4 @@ public class Projectile : MonoBehaviour {
 
     }
 
-    public void SpawnBloodSplater (Vector3 spawnPosition, HitStatus data, RGBColor enemyColor)
-    {
-        Vector3 offsetVector = new Vector3(Random.Range(-.1f, .1f), Random.Range(-.1f, .1f), 0);
-        Instantiate(bloodPop, spawnPosition + offsetVector, Quaternion.identity);
-        Animator tempAnim = bloodPop.GetComponent<Animator>();
-        bloodPop.GetComponent<BloodSplatterTestScript>().Initialize(enemyColor, data);
-
-        if (data.hitColor == HitColor.CORRECT)
-        {
-            tempAnim.SetTrigger("crit");
-           
-
-        }
-        if ((data.hitColor == HitColor.NEUTRAL) && (data.hitColor == HitColor.WRONG))
-        {
-            tempAnim.SetTrigger("neutral");
-           
-        }
-
-        if (data.damageAmount <= 0 && data.belowThreshold)
-        {
-            tempAnim.SetTrigger("null");
-        }
-
-        
-
-
-    }
 }
