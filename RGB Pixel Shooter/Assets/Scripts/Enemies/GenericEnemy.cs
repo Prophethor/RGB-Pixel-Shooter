@@ -151,10 +151,11 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     public void OnCollisionEnter2D (Collision2D collision) {
         HitStatus hitData;
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
-            RGBColor tempColor = hpStackList[0].GetColor();
+            RGBColor enemyColor = hpStackList[0].GetColor();
+            RGBColor bulletColor = collision.gameObject.GetComponent<Projectile>().damage.color;
             hitData = TakeDamage(collision.gameObject.GetComponent<Projectile>().damage); // cuvamo retutn koji je data, ali take damage obracunava svu stetu... hopefully
 
-            explosionManager.SpawnExplosion(tempColor,collision, hitData); // saljemo hit data iz take damage u projektil
+            explosionManager.SpawnExplosion(bulletColor, collision, hitData); // saljemo hit data iz take damage u projektil
             Destroy(collision.gameObject);
         }
     }
@@ -163,6 +164,12 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         if (collider.gameObject.layer == LayerMask.NameToLayer("FinishLine")) {
             gm.LoseGame();
         }
+    }
+
+    public virtual void FlashMaterial()
+    {
+        sr.material = flashMaterial;
+        Invoke("ResetMaterial", .1f);
     }
 
     public virtual void ResetMaterial () {

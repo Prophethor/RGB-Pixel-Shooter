@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.EditorTools;
 
 public class BloodSplatterTestScript : MonoBehaviour
 {
@@ -10,26 +11,27 @@ public class BloodSplatterTestScript : MonoBehaviour
     public Animator animator;
     private RGBColor color;
 
-    public AnimatorOverrideController animRed;
-    public AnimatorOverrideController animBlue;
-    public AnimatorOverrideController animGreen;
+    public Material spriteMaterial;
+
+  
 
 
-    public void Initialize( RGBColor enemyColor, HitStatus data, Collision2D col)
+    public void Initialize( RGBColor enemyColor, HitStatus data, Collision2D col, float emmisionValue)
     {
-
+        spriteMaterial = GetComponent<SpriteRenderer>().material;
         switch (enemyColor)
         {
             case RGBColor.RED:
-                animator.runtimeAnimatorController = animRed;
+                spriteMaterial.SetColor("Color_A71320E8", Color.red*emmisionValue);
                 break;
             case RGBColor.GREEN:
-                animator.runtimeAnimatorController = animGreen;
+                spriteMaterial.SetColor("Color_A71320E8", Color.green* emmisionValue);
                 break;
             case RGBColor.BLUE:
-                animator.runtimeAnimatorController = animBlue;
+                spriteMaterial.SetColor("Color_A71320E8", Color.blue* emmisionValue);
                 break;
             case RGBColor.NONE:
+                spriteMaterial.SetColor("Color_A71320E8", Color.yellow * emmisionValue);
                 break;
             default:
                 break;

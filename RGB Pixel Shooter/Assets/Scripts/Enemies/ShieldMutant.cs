@@ -26,9 +26,7 @@ public class ShieldMutant : GenericEnemy {
 
         hpStackList[0].SetOnDestroy(() => {
             hpStackList.RemoveAt(0);
-            sr.material = flashMaterial;
-            childSr.material = flashMaterial;
-            Invoke("ResetMaterial", .1f);
+            FlashMaterial();
 
             // ovde puca prvi stack, ako je prosao treshold i vratio true
             animator.SetTrigger("break");
@@ -38,6 +36,7 @@ public class ShieldMutant : GenericEnemy {
         hpStackList[1].SetOnDestroy(() => {
             
             hpStackList.RemoveAt(0);
+            FlashMaterial();
         });
 
         float yPos = PlayField.GetLanePosition(lane) - Random.Range(-0.33f, 1f) * PlayField.GetLaneHeight() / 3f;
@@ -110,6 +109,7 @@ public class ShieldMutant : GenericEnemy {
             if (hitStatus.belowThreshold) {
                 animator.SetTrigger("deflect");
                 animatorShield.SetTrigger("deflect");
+                FlashMaterial();
             }
             else Debug.Log(hitStatus);
         }
@@ -138,6 +138,12 @@ public class ShieldMutant : GenericEnemy {
 
     protected override void InitiateShanking () {
         rb.velocity = Vector2.zero;
+    }
+    public override void FlashMaterial()
+    {
+        sr.material = flashMaterial;
+        childSr.material = flashMaterial;
+        Invoke("ResetMaterial", .1f);
     }
 
     public override void ResetMaterial () {
