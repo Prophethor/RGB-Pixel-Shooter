@@ -4,16 +4,44 @@ using UnityEngine;
 
 public class Mutant : GenericEnemy {
 
-    public List<AudioClip> spawnClips;
+	public List<AudioClip> spawnClips;
+
+    public AnimatorOverrideController overrideRed;
+    public AnimatorOverrideController overrideBlue;
+    public AnimatorOverrideController overrideGreen;
+
+    public GameObject HP;
+
 
     protected override void Start () {
         base.Start();
-
-        AudioManager.instance.PlaySound(spawnClips[Random.Range(0, spawnClips.Count)]);
+		AudioManager.instance.PlaySound(spawnClips[Random.Range(0, spawnClips.Count)]);
 
         //Set health color
-        hpStackList.Add(new HPStack(baseColor, 5));
+
+        hpStackList.Add(new HPStack(baseColor, 100));
+        hpStackList[0].SetHPBar(HP);
         hpStackList[0].SetOnDestroy(() => { Debug.Log("Gotov sam"); });
+
+        switch (baseColor)
+        {
+            case RGBColor.RED:
+                animator.runtimeAnimatorController = overrideRed;
+                break;
+            case RGBColor.GREEN:
+                animator.runtimeAnimatorController = overrideGreen;
+                break;
+            case RGBColor.BLUE:
+                animator.runtimeAnimatorController = overrideBlue;
+                break;
+            case RGBColor.NONE:
+                break;
+            default:
+                break;
+        }
+
+
+      
 
         //Initiate moving
         Move();

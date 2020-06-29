@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9011a17ecc7ec4d8f4e9c68767b99d, type: 3}
   m_Name: Wave 1
   m_EditorClassIdentifier: 
-  pointPool: 30
+  pointPool: 4
   enemyPool:
-  - {fileID: 11400000, guid: 2958dd4e57908164f9a4779722096d31, type: 2}
+  - {fileID: 11400000, guid: 9982c99cc7985754db47e1ca1022c9c1, type: 2}
   typeDistr:
   - 10
 --- !u!114 &11400000

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6013488467053243127}
   - component: {fileID: 6013488467053243126}
-  - component: {fileID: 6013488467053243121}
   - component: {fileID: 6013488467053243120}
+  - component: {fileID: 4397253142433558108}
   - component: {fileID: 6013488467053243123}
   m_Layer: 9
   m_Name: Bullet
@@ -84,30 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6013488467053243121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6013488467053243122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8477fa193cecf204d8f245ddc21fc2c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage:
-    color: 0
-    amount: 0
-  bloodSplaterSuccessfull: {fileID: 1923756613354099486, guid: 7df5c2d5d9bbf304f812be8bb8f29b84,
-    type: 3}
-  bloodSplatterUnsuccessfull: {fileID: 1499969878946497976, guid: 38cb72c51d12d0c439b5d0607c71597d,
-    type: 3}
-  bulletSprites:
-  - {fileID: -8119929544814303167, guid: ed31c439bd27f2a45b96e474c5389ef2, type: 3}
-  - {fileID: -3375275900011558089, guid: cea63e30824f517449c4cfda24442bfe, type: 3}
-  - {fileID: 8109388948237087000, guid: 3d54ff51d31289641addbd766c2a6d45, type: 3}
-  - {fileID: 21300000, guid: f14bc0222dd403d4ab7080c964610af9, type: 3}
 --- !u!50 &6013488467053243120
 Rigidbody2D:
   serializedVersion: 4
@@ -129,6 +105,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &4397253142433558108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013488467053243122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8477fa193cecf204d8f245ddc21fc2c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage:
+    color: 0
+    amount: 1
+  bloodPop: {fileID: 1923756613354099486, guid: 7df5c2d5d9bbf304f812be8bb8f29b84,
+    type: 3}
+  animator: {fileID: 1090364935558892834, guid: 7df5c2d5d9bbf304f812be8bb8f29b84,
+    type: 3}
+  animRed: {fileID: 22100000, guid: e4e4914f5c19f034b845c43f7f5321cb, type: 2}
+  animBlue: {fileID: 22100000, guid: 4f6df746b3f65b740b361873d25965d7, type: 2}
+  animGreen: {fileID: 22100000, guid: 0cfa1dd4cef9c4e4ebe611f56e95b74d, type: 2}
+  bulletSprites:
+  - {fileID: -8119929544814303167, guid: ed31c439bd27f2a45b96e474c5389ef2, type: 3}
+  - {fileID: -3375275900011558089, guid: cea63e30824f517449c4cfda24442bfe, type: 3}
+  - {fileID: 8109388948237087000, guid: 3d54ff51d31289641addbd766c2a6d45, type: 3}
+  - {fileID: 5056786731484317293, guid: f14bc0222dd403d4ab7080c964610af9, type: 3}
 --- !u!61 &6013488467053243123
 BoxCollider2D:
   m_ObjectHideFlags: 0

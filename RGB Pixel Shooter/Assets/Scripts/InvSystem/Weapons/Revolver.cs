@@ -128,12 +128,17 @@ public class Revolver : Weapon {
             bulletObj.GetComponent<Projectile>().SetDamage(bullets[0], dmgAmount);
             bullets.RemoveAt(0);
 
-            // Stop any and all bullet loading
-            if (currentLoad != null && currentLoad.active) {
-                Tweener.RemoveTween(currentLoad);
-            }
-            loadQueue.Clear();
 
+
+            /* Stop any and all bullet loading
+        if (currentLoad != null && currentLoad.active) {
+
+                Tweener.RemoveTween(currentLoad);
+
+            }
+
+            loadQueue.Clear();*/
+           
 
             SetState(WeaponState.COOLDOWN);
             Tweener.Invoke(1f / fireRate, () => {

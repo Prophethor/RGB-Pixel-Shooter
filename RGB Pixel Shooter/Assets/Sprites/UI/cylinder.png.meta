@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 1691927756971446109
     second: cylinder_0
+  - first:
+      213: 6613250217091039900
+    second: cylinder_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -140,8 +143,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5f08eba45fea7710800000000000000
-      internalID: 1691927756971446109
+      spriteID: c928c70b80cf6cb50800000000000000
+      internalID: 6613250217091039900
       vertices: []
       indices: 
       edges: []
