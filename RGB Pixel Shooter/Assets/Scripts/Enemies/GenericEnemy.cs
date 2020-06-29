@@ -107,11 +107,10 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
             return;
         }
 
+        sr.material = flashMaterial;
+        Tweener.Invoke(0.1f, () => sr.material = defaultMaterial);
+
         HitStatus hitStatus;
-        if (damage.color == baseColor) {
-            sr.material = flashMaterial;
-            Invoke("ResetMaterial", .1f);
-        }
 
         if (hpStackList[0].TakeDamage(damage, out hitStatus)) {
             hpStackList.RemoveAt(0);
@@ -120,14 +119,8 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
                 isDead = true;
                 GetComponent<BoxCollider2D>().enabled = false;
                 animator.SetBool("isDead", isDead);
-
-                // Temporary; TODO: change sprites to reflect behavior below
                 animator.SetTrigger("is" + baseColor.GetString());
-                sr.color = baseColor.GetColor();
-
-                if (baseColor == RGBColor.BLUE) {
-                    sr.color = Color.gray;
-                }
+                Tweener.Invoke(.1f,()=>sr.color = Color.gray);
                 Move();
                 Die();
             }
@@ -156,10 +149,6 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         if (collider.gameObject.layer == LayerMask.NameToLayer("FinishLine")) {
             gm.LoseGame();
         }
-    }
-
-    public void ResetMaterial () {
-        sr.material = defaultMaterial;
     }
 
     protected abstract void InitiateShanking ();

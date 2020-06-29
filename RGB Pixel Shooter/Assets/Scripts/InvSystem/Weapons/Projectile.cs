@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour {
     public RGBDamage damage;
     public GameObject bloodSplatter;
     // Array of bullet sprites in order: Red, Green, Blue
-    public Sprite[] bulletSprites = new Sprite[3];
+    public Sprite[] bulletSprites = new Sprite[4];
 
     private void Update () {
         if (transform.position.magnitude > 100f) {

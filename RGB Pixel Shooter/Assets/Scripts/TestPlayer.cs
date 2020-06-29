@@ -7,15 +7,15 @@ public class TestPlayer : MonoBehaviour {
     // Besto testo
     public Weapon equippedWeapon;
     public RectTransform playerSpace;
-    private Animator animator;
     public GameObject swipeDetector;
     private Swipe swipe;
+    private Animator animator;
 
     private int lane = 1;
     [HideInInspector]
     public int savedLane = 1;
 
-    public float laneSwitchTime = 0.5f;
+    public float laneSwitchTime = 1f;
 
     [HideInInspector]
     public bool isJumping = false;
@@ -30,8 +30,7 @@ public class TestPlayer : MonoBehaviour {
         laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
         transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(0,0)).x*0.85f,transform.position.y);
         animator = GetComponent<Animator>();
-        // * 2 bi bilo da želimo da se animacija završi u trenutku kad stigne na lejn, pa sam stavio * 1.5 da bismo imali mali delay
-        animator.SetFloat("jumpSpeed", laneSwitchTime * 2.2f);
+        animator.SetFloat("jumpSpeed", 0.15f/laneSwitchTime);
     }
 
     private void Update () {
@@ -48,25 +47,25 @@ public class TestPlayer : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.J)) {
-            ((Revolver) equippedWeapon).Load(RGBColor.RED);
+            ((TestRevolver) equippedWeapon).Load(RGBColor.RED);
         }
         else if (Input.GetKeyDown(KeyCode.K)) {
-            ((Revolver) equippedWeapon).Load(RGBColor.GREEN);
+            ((TestRevolver) equippedWeapon).Load(RGBColor.GREEN);
         }
         else if (Input.GetKeyDown(KeyCode.L)) {
-            ((Revolver) equippedWeapon).Load(RGBColor.BLUE);
+            ((TestRevolver) equippedWeapon).Load(RGBColor.BLUE);
         }
         else if (Input.GetKeyDown(KeyCode.Space)) {
-            ((Revolver) equippedWeapon).Shoot(transform.position);
+            ((TestRevolver) equippedWeapon).Shoot(transform.position);
         }
 
         // ColorBomb test
-        if (Input.GetMouseButtonDown(0)) {
+        /*if (Input.GetMouseButtonDown(0)) {
             Debug.Log("Bombing");
             Consumable colorBomb = new ColorBomb();
             ((ColorBomb) colorBomb).radius = 5f;
             colorBomb.Use(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        }
+        }*/
     }
 
     public void Move (Swipe.SwipeData swipe) {
@@ -81,20 +80,19 @@ public class TestPlayer : MonoBehaviour {
     }
 
     private void SwitchLane (int newLane) {
-        if (newLane < 0 || 2 < newLane || isJumping) {
+        //TODO: get rid of casting
+        if (newLane < 0 || 2 < newLane || ((TestRevolver)equippedWeapon).isReloading) {
             return;
         }
 
         animator.SetTrigger("jumpTrigger");
         isJumping = true;
-
-        Tweener.Invoke(laneSwitchTime, () => {
-            Tweener.AddTween(() => transform.position.y, (x) => transform.position = new Vector3(transform.position.x, x, transform.position.z),
-                PlayField.GetLanePosition(newLane)-laneOffset, laneSwitchTime, TweenMethods.HardLog, () => {
-                    lane = newLane;
-                    isJumping = false;
-                });
-        });
+        lane = newLane;
+        //if player keeps switching lanes for longer than laneSwitchTime, isJumping is gonna become false and he could shoot midair
+        Tweener.AddTween(() => transform.position.y, (x) => transform.position = new Vector3(transform.position.x, x, transform.position.z),
+            PlayField.GetLanePosition(newLane)-laneOffset, laneSwitchTime, TweenMethods.Ease, () => {
+                isJumping = false;
+            });
     }
 
     bool posOnPanel (Vector2 touch, RectTransform panel) {
