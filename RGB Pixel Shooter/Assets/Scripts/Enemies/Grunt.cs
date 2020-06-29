@@ -8,7 +8,7 @@ public class Grunt : GenericEnemy
         base.Start();
 
         //Set health color
-        hpStackList.Add(new HPStack(baseColor, 2));
+        hpStackList.Add(new HPStack(baseColor, 200));
 
     }
 

@@ -8,7 +8,7 @@ public class Mutant : GenericEnemy {
         base.Start();
 
         //Set health color
-        hpStackList.Add(new HPStack(baseColor, 1));
+        hpStackList.Add(new HPStack(baseColor, 100));
 
         //Initiate moving
         Move();

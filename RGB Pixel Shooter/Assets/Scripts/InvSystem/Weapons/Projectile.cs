@@ -21,6 +21,8 @@ public class Projectile : MonoBehaviour {
         damage.amount = amount;
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         sr.sprite = bulletSprites[(int) color];
+        //Delete this when you get sprite for uncolored bullets
+        if (color == RGBColor.NONE) sr.color = Color.black;
     }
 
     public void SpawnBloodSplater (Vector3 spawnPosition) {

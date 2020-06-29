@@ -7,13 +7,13 @@ public class TestRevolver : Weapon
 {
 
     public Rigidbody2D bulletPrefab;
-    public int dmgAmount = 1;
+    public int dmgAmount = 100;
     public float reloadTime = 3;
 
-    [SerializeField]
     private List<RGBColor> bullets;
     private int maxBullets = 6;
     private float bulletSpeed = 15;
+    [HideInInspector]
     public bool isReloading = false;
 
     private Animator animator;

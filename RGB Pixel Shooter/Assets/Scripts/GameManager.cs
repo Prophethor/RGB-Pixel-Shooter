@@ -36,8 +36,10 @@ public class GameManager : MonoBehaviour {
     }
 
     public void WinGame () {
-        UIAnimator.SetBool("Win", true);
-        Time.timeScale = 0;
+        Tweener.Invoke(1f, () => {
+            UIAnimator.SetBool("Win", true);
+            Time.timeScale = 0;
+        });
         Tweener.Invoke(0.5f, () => {
             StartCoroutine(Reset());
         }, true);

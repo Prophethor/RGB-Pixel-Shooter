@@ -605,7 +605,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1142259980}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &357486909
 MonoBehaviour:
@@ -1042,7 +1042,7 @@ RectTransform:
   - {fileID: 940319541}
   - {fileID: 1964436743}
   m_Father: {fileID: 1142259980}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2000,8 +2000,8 @@ Transform:
   m_Children:
   - {fileID: 443079413}
   - {fileID: 1390041284}
-  - {fileID: 357486908}
   - {fileID: 696753277}
+  - {fileID: 357486908}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2578,7 +2578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983f6f3ac5b17c54aaa9477a48ab5558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelInfo: {fileID: 11400000, guid: a13d3a1d02b8f9741b652fbcd0f2aa7d, type: 2}
+  levelInfo: {fileID: 11400000, guid: 25d819104219e774995f62323f6801db, type: 2}
   gEnemies: []
 --- !u!4 &1435091645
 Transform:

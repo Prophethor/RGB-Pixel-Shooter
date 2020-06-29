@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Runtime.Serialization;
+using UnityEngine.UIElements;
 
 [Serializable]
 public class HPStack {
@@ -15,7 +16,7 @@ public class HPStack {
     private int damageReduction;
     private int threshold;
 
-    public HPStack (RGBColor color, int maxAmount = 1, int hpRegen = 0, float hpRegenTime = 0f, int damageReduction = 0, int threshold = 0) {
+    public HPStack (RGBColor color, int maxAmount = 100, int hpRegen = 0, float hpRegenTime = 0f, int damageReduction = 0, int threshold = 0) {
         this.color = color;
         this.maxAmount = maxAmount;
         amount = maxAmount;
@@ -38,23 +39,28 @@ public class HPStack {
     }
 
     public bool TakeDamage (RGBDamage damage, out HitStatus hitStatus) {
-        if (damage.color != color) {
-            hitStatus = HitStatus.WRONG_COLOR;
-            return false;
-        }
 
         damage.amount -= damageReduction;
+        if (damage.color == color) {
+            if (damage.amount >= threshold) {
+                hitStatus = HitStatus.HIT;
+                amount -= damage.amount;
 
-        if (damage.amount >= threshold) {
-            hitStatus = HitStatus.HIT;
-            amount -= damage.amount;
-
-            if (amount <= 0) {
-                return true;
-            }
+                if (amount <= 0) {
+                    return true;
+                }
+            }else { hitStatus = HitStatus.BELOW_THRESHOLD; }
         }
         else {
-            hitStatus = HitStatus.BELOW_THRESHOLD;
+            if (damage.amount/3+1 >= threshold) {
+                hitStatus = HitStatus.HIT;
+                amount -= damage.amount/3+1;
+
+                if (amount <= 0) {
+                    return true;
+                }
+            }
+            else { hitStatus = HitStatus.BELOW_THRESHOLD; }
         }
 
         return false;
