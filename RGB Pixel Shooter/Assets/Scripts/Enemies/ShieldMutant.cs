@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShieldMutant : GenericEnemy {
+
+    public GameObject HP1;
+    public GameObject HP2;
+
     protected override void Start () {
         base.Start();
         RGBColor randcolor = (RGBColor) Random.Range(0, 3);
         hpStackList.Add(new HPStack(randcolor, 100, 0, 0, 0, 100));
+        hpStackList[0].SetHPBar(HP1);
         hpStackList.Add(new HPStack(baseColor, 100));
+        hpStackList[1].SetHPBar(HP2);
         animator.SetBool("hasShield", true);
         animator.SetTrigger("shield" + randcolor.GetString());
         Move();

@@ -133,7 +133,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     }
 
     public virtual void SelfDestruct () {
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 1f);
     }
 
     public void OnCollisionEnter2D (Collision2D collision) {

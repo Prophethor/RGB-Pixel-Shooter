@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Mutant : GenericEnemy {
 
+    public GameObject HP;
+
     protected override void Start () {
         base.Start();
 
         //Set health color
         hpStackList.Add(new HPStack(baseColor, 100));
-
+        hpStackList[0].SetHPBar(HP);
         //Initiate moving
         Move();
     }

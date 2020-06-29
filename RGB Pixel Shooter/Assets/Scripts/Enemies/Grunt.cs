@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Grunt : GenericEnemy
 {
+
+    public GameObject HP;
+
     protected override void Start () {
         base.Start();
 
         //Set health color
         hpStackList.Add(new HPStack(baseColor, 200));
+        hpStackList[0].SetHPBar(HP);
 
     }
 
