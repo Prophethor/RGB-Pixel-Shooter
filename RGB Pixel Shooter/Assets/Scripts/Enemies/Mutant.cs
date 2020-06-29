@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Mutant : GenericEnemy {
 
+    public List<AudioClip> spawnClips;
+
     protected override void Start () {
         base.Start();
+
+        AudioManager.instance.PlaySound(spawnClips[Random.Range(0, spawnClips.Count)]);
 
         //Set health color
         hpStackList.Add(new HPStack(baseColor, 5));
