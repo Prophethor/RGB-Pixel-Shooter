@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
     public TestPlayer player;
     public Animator UIAnimator;
 
+    public ScoreManager scoreManager;
+
     private void Awake () {
         loadout = new Loadout();
         loadout.AddWeapon(Instantiate(revolver));
@@ -71,5 +73,10 @@ public class GameManager : MonoBehaviour {
 
     public Loadout GetLoadout () {
         return loadout;
+    }
+
+    public void UpdateScore(int pointValue)
+    {
+        scoreManager.UpdateScore(pointValue);
     }
 }

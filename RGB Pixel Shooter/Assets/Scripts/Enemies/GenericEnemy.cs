@@ -12,6 +12,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected StatMultiplierCollection statMultipliers;
 
     protected float speed;
+    protected int pointValue;
     protected int lane;
 
     protected List<HPStack> hpStackList;
@@ -88,6 +89,11 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         this.speed = speed;
     }
 
+    public void SetPointValue(int pointValue)
+    {
+        this.pointValue = pointValue;
+    }
+
     public StatMultiplierCollection GetStatMultipliers () {
         return statMultipliers;
     }
@@ -130,7 +136,8 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
                 animator.SetBool("isDead", isDead);
 
                 // Temporary; TODO: change sprites to reflect behavior below
-               
+
+                
                 Move();
                 Die();
             }
@@ -141,6 +148,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     protected virtual void Die () {
         EnemySpawner.enemiesToKill--;
+        gm.UpdateScore(pointValue);
         SelfDestruct();
     }
 
@@ -151,6 +159,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     public void OnCollisionEnter2D (Collision2D collision) {
         HitStatus hitData;
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
+            CameraShake.instance.Shake(0.1f);
             RGBColor enemyColor = hpStackList[0].GetColor();
             RGBColor bulletColor = collision.gameObject.GetComponent<Projectile>().damage.color;
             hitData = TakeDamage(collision.gameObject.GetComponent<Projectile>().damage); // cuvamo retutn koji je data, ali take damage obracunava svu stetu... hopefully

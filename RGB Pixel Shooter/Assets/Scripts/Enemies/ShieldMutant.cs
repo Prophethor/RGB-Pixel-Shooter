@@ -81,9 +81,7 @@ public class ShieldMutant : GenericEnemy {
         animator = GetComponent<Animator>();
         animator.SetBool("hasShield", true);
         animator.SetBool("isDead", isDead); // false po defaultu
-
-
-
+        
         SpriteRenderer[] allSr = GetComponentsInChildren<SpriteRenderer>();
         childSr = allSr[1];
         childSr.material = defaultMaterial;
