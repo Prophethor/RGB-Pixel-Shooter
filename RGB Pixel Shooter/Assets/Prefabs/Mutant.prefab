@@ -99,6 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95dc17373e1a9974c9da63d7a9c6415b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnClips:
+  - {fileID: 8300000, guid: 19ec24c5c7c0d6f4396fde25bb6c02c2, type: 3}
+  - {fileID: 8300000, guid: 83e154f63b22e2b49ade89bcdf096d49, type: 3}
+  - {fileID: 8300000, guid: ec5714249a539484e89416a1ab2620d9, type: 3}
+  - {fileID: 8300000, guid: 95430ab8dc816b14bb3f22cdc86475f1, type: 3}
+  - {fileID: 8300000, guid: 79932bf63be218040bcba3e6b5fe2b73, type: 3}
   overrideRed: {fileID: 22100000, guid: ca37082753ed6c240b36a573a246fe8c, type: 2}
   overrideBlue: {fileID: 22100000, guid: 87f12d58c90bd264d8b98e46ce25554e, type: 2}
   overrideGreen: {fileID: 22100000, guid: faf7e1e5dfa3576419441bdfab6cd9c1, type: 2}

@@ -12,10 +12,10 @@ public class Mutant : GenericEnemy {
 
     public GameObject HP;
 
-
     protected override void Start () {
         base.Start();
-		AudioManager.instance.PlaySound(spawnClips[Random.Range(0, spawnClips.Count)]);
+
+		AudioManager.instance.PlaySoundPitched(spawnClips[Random.Range(0, spawnClips.Count)], 2f);
 
         //Set health color
 
