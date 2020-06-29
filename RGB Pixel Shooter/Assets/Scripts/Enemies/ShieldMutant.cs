@@ -20,9 +20,9 @@ public class ShieldMutant : GenericEnemy {
     public GameObject HP2;
 
     protected override void Start() {
-        base.Start();
+
         RGBColor randcolor = (RGBColor)Random.Range(0, 3);
-        hpStackList.Add(new HPStack(randcolor, 100, 0, 0, 0, 100));
+        hpStackList.Add(new HPStack(randcolor, 500, 0, 0, 0, 500));
         hpStackList[0].SetHPBar(HP1);
         hpStackList.Add(new HPStack(baseColor, 100));
         hpStackList[1].SetHPBar(HP2);
@@ -91,6 +91,8 @@ public class ShieldMutant : GenericEnemy {
         SpriteRenderer[] allSr = GetComponentsInChildren<SpriteRenderer>();
         childSr = allSr[1];
         childSr.material = defaultMaterial;
+
+        Move();
     }
 
 

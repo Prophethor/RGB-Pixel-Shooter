@@ -19,6 +19,8 @@ public class TestRevolver : Weapon
     private Animator animator;
     private GameObject player;
 
+    private ReloadTimer timer;
+
     public override string GetName () { return "Revolver"; }
 
     public override void LevelStart () {
@@ -27,6 +29,7 @@ public class TestRevolver : Weapon
         animator.SetFloat("loadSpeed", 0.4f/reloadTime);
         bullets = new List<RGBColor>();
         while (bullets.Count < maxBullets) bullets.Add(RGBColor.NONE);
+        timer = FindObjectOfType<ReloadTimer>();
         if (UIHooks == null) {
             InitHooks();
         }
@@ -59,17 +62,46 @@ public class TestRevolver : Weapon
             }
             if(bullets.Count==0) {
                 isReloading = true;
-                Tweener.Invoke(0.15f,()=> {
-                    animator.SetTrigger("loadTrigger");
-                    Tweener.Invoke(reloadTime, () => {
-                        while (bullets.Count < maxBullets) bullets.Add(RGBColor.NONE);
-                        isReloading = false;
-                    });
+                timer.StartTimer(reloadTime); // this is for displaying reload timer somwhere
+                animator.SetTrigger("loadTrigger");
+                Tweener.Invoke(0f,()=> {
+                    if (isReloading)
+                    {
+                        Tweener.Invoke(reloadTime / 6, () => {
+                            LoadBullet(RGBColor.NONE);
+                            animator.SetBool("canLoad", true);
+
+                        });
+                    }
+                    
+                   
+                   
+
+                    //Tweener.Invoke(reloadTime, () => {
+                    //    while (bullets.Count < maxBullets) bullets.Add(RGBColor.NONE);
+                    //    isReloading = false;
+                    //});
                 });
             }
         }
     }
 
+    public void LoadBullet(RGBColor color)
+    {
+        animator.SetTrigger("loadTrigger");
+        bullets.Add(color);
+        if (bullets.Count < maxBullets)
+        {
+            Tweener.Invoke(reloadTime / 6, () => LoadBullet(RGBColor.NONE));
+        }
+        else
+        {
+            isReloading = false;
+            animator.SetBool("canLoad", isReloading);
+        }
+        
+    }
+    
     public Vector3 GetPlayerPos () {
         return GameObject.FindGameObjectWithTag("Player").transform.position;
     }

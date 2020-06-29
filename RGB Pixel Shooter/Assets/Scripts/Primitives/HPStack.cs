@@ -87,6 +87,7 @@ public class HPStack {
 
         //Debug.Log("  HitStatus===" + tempHit + " HitBool==" + tempBool + "===DMG==" + tempAmount);
         amount -= hitStatus.damageAmount;
+        if (amount <= 0) { amount = 0f; }
         HP.transform.localScale = new Vector3(2.8f * (float)amount / maxAmount, HP.transform.localScale.y);
 
         if (amount <= 0f && onDestroy != null) {

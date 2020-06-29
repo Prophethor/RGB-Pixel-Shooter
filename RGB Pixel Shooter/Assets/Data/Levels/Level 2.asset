@@ -33,4 +33,4 @@ MonoBehaviour:
   enemyPool:
   - {fileID: 11400000, guid: 9982c99cc7985754db47e1ca1022c9c1, type: 2}
   typeDistr:
-  - 0
+  - 10
