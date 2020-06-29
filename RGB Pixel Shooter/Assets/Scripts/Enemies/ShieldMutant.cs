@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShieldMutant : GenericEnemy {
 
+
     private SpriteRenderer childSr;
 
     public AnimatorOverrideController OverrideRed;
@@ -15,11 +16,16 @@ public class ShieldMutant : GenericEnemy {
     public AnimatorOverrideController OverrideShieldGreen;
 
     private Animator animatorShield;
+    public GameObject HP1;
+    public GameObject HP2;
 
-    protected override void Start () {
-        RGBColor randColor = (RGBColor)Random.Range(0, 2);
-        hpStackList.Add(new HPStack(randColor, 2, 0, 0, 0, 2));
-        hpStackList.Add(new HPStack(baseColor, 5));
+    protected override void Start() {
+        base.Start();
+        RGBColor randcolor = (RGBColor)Random.Range(0, 3);
+        hpStackList.Add(new HPStack(randcolor, 100, 0, 0, 0, 100));
+        hpStackList[0].SetHPBar(HP1);
+        hpStackList.Add(new HPStack(baseColor, 100));
+        hpStackList[1].SetHPBar(HP2);
 
         animatorShield = GetComponentsInChildren<Animator>()[1]; // assuming that [0] is main char animator, and 1 is first child animator
 
@@ -34,7 +40,7 @@ public class ShieldMutant : GenericEnemy {
             animator.SetBool("hasShield", false);
         });
         hpStackList[1].SetOnDestroy(() => {
-            
+
             hpStackList.RemoveAt(0);
             FlashMaterial();
         });
@@ -61,7 +67,7 @@ public class ShieldMutant : GenericEnemy {
                 break;
         }
 
-        switch (randColor)
+        switch (randcolor)
         {
             case RGBColor.RED:
                 animatorShield.runtimeAnimatorController = OverrideShieldRed;
@@ -81,17 +87,19 @@ public class ShieldMutant : GenericEnemy {
         animator = GetComponent<Animator>();
         animator.SetBool("hasShield", true);
         animator.SetBool("isDead", isDead); // false po defaultu
-        
+
         SpriteRenderer[] allSr = GetComponentsInChildren<SpriteRenderer>();
         childSr = allSr[1];
         childSr.material = defaultMaterial;
-        Move();
     }
 
-    protected override void Move () {
-        rb.velocity = new Vector2(-speed * statMultipliers.GetStat(StatEnum.SPEED), 0);
 
-        if (isDead) {
+    protected override void Move () {
+        if (!isDead) {
+            rb.velocity = new Vector2(-speed * statMultipliers.GetStat(StatEnum.SPEED), 0);
+
+        }
+        else {
             rb.velocity = Vector2.zero;
         }
     }
@@ -107,7 +115,11 @@ public class ShieldMutant : GenericEnemy {
             if (hitStatus.belowThreshold) {
                 animator.SetTrigger("deflect");
                 animatorShield.SetTrigger("deflect");
-                FlashMaterial();
+
+                sr.material = flashMaterial;
+                childSr.material = flashMaterial;
+                Tweener.Invoke(0.1f, () => sr.material = defaultMaterial);
+                Tweener.Invoke(0.1f, () => childSr.material = defaultMaterial);
             }
             else Debug.Log(hitStatus);
         }
@@ -115,7 +127,10 @@ public class ShieldMutant : GenericEnemy {
 
         if (!animator.GetBool("hasShield") && hitBool) {
             sr.material = flashMaterial;
-            Invoke("ResetMaterial", .1f);
+            childSr.material = flashMaterial;
+            Tweener.Invoke(0.1f, () => sr.material = defaultMaterial);
+            Tweener.Invoke(0.1f, () => childSr.material = defaultMaterial);
+
         }
 
         if (hpStackList.Count == 0) {
@@ -125,6 +140,7 @@ public class ShieldMutant : GenericEnemy {
             animator.SetBool("isDead", isDead);
             Move();
             Die();
+   
         }
         return hitStatus;
     }
@@ -137,15 +153,7 @@ public class ShieldMutant : GenericEnemy {
     protected override void InitiateShanking () {
         rb.velocity = Vector2.zero;
     }
-    public override void FlashMaterial()
-    {
-        sr.material = flashMaterial;
-        childSr.material = flashMaterial;
-        Invoke("ResetMaterial", .1f);
-    }
+    
 
-    public override void ResetMaterial () {
-        base.ResetMaterial();
-        childSr.material = defaultMaterial;
-    }
+    
 }

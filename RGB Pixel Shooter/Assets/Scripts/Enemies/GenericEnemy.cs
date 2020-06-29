@@ -114,8 +114,10 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     protected abstract void Move ();
 
+
     public virtual HitStatus TakeDamage (RGBDamage damage) {
         HitStatus hitStatus;
+
         if (hpStackList[0].TakeDamage(damage, out hitStatus)) {
 
             if (hpStackList[0].GetAmount() > 0)
@@ -135,9 +137,11 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
                 GetComponent<BoxCollider2D>().enabled = false;
                 animator.SetBool("isDead", isDead);
 
+
                 // Temporary; TODO: change sprites to reflect behavior below
 
                 
+
                 Move();
                 Die();
             }
@@ -153,7 +157,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     }
 
     public virtual void SelfDestruct () {
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 1f);
     }
 
     public void OnCollisionEnter2D (Collision2D collision) {

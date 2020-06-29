@@ -8,7 +8,8 @@ public class Inventory {
     private List<Weapon> weapons;
     private List<Consumable> consumables;
     private List<Gear> gearItems;
-    private Loadout loadout;
+    //commented out for the sake of mental health (was unused and was gining a warning all the time)
+    //private Loadout loadout;
 
     private int weaponMax = 6;
     private int consumableMax = 6;
@@ -29,9 +30,9 @@ public class Inventory {
 
     }
 
-    public Loadout GetLoadout () {
+    /*public Loadout GetLoadout () {
         return loadout;
-    }
+    }*/
 
     public List<Item> GetItems () {
         return items;
