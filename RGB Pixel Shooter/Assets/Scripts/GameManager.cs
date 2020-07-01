@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour {
     public TestPlayer player;
     public Animator UIAnimator;
 
-    public ScoreManager scoreManager;
-
     private void Awake () {
         loadout = new Loadout();
         loadout.AddWeapon(Instantiate(revolver));
@@ -38,10 +36,8 @@ public class GameManager : MonoBehaviour {
     }
 
     public void WinGame () {
-        Tweener.Invoke(1f, () => {
-            UIAnimator.SetBool("Win", true);
-            Time.timeScale = 0;
-        });
+        UIAnimator.SetBool("Win", true);
+        Time.timeScale = 0;
         Tweener.Invoke(0.5f, () => {
             StartCoroutine(Reset());
         }, true);
@@ -75,10 +71,5 @@ public class GameManager : MonoBehaviour {
 
     public Loadout GetLoadout () {
         return loadout;
-    }
-
-    public void UpdateScore(int pointValue)
-    {
-        scoreManager.UpdateScore(pointValue);
     }
 }

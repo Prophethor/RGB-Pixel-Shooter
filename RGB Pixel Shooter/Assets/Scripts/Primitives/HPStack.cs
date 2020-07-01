@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Runtime.Serialization;
 using UnityEngine;
-
+using System.Diagnostics;
 
 [Serializable]
 public class HPStack {
@@ -21,14 +21,9 @@ public class HPStack {
     private int damageReduction;
     private int threshold;
 
-
     private Callback onDestroy;
 
-
-    private GameObject HP;
-
-    public HPStack (RGBColor color, int maxAmount = 100, int hpRegen = 0, float hpRegenTime = 0f, int damageReduction = 0, int threshold = 0) {
-
+    public HPStack (RGBColor color, int maxAmount = 1, int hpRegen = 0, float hpRegenTime = 0f, int damageReduction = 0, int threshold = 0) {
         this.color = color;
         this.maxAmount = maxAmount;
         amount = maxAmount;
@@ -46,8 +41,6 @@ public class HPStack {
     }
 
     public void Update (float deltaTime) {
-        //there is probably a better place to put this line of code
-        HP.GetComponent<SpriteRenderer>().color = color.GetColor();
         hpRegenCurrentTime -= deltaTime;
 
         if (hpRegenCurrentTime <= 0f) {
@@ -57,7 +50,6 @@ public class HPStack {
     }
 
     public bool TakeDamage (RGBDamage damage, out HitStatus hitStatus) {
-
         hitStatus = new HitStatus();
         bool tempBool = false;
         //----------------------------First we check the how the color matches up------------
@@ -87,12 +79,9 @@ public class HPStack {
 
         //Debug.Log("  HitStatus===" + tempHit + " HitBool==" + tempBool + "===DMG==" + tempAmount);
         amount -= hitStatus.damageAmount;
-        if (amount <= 0) { amount = 0f; }
-        HP.transform.localScale = new Vector3(2.8f * (float)amount / maxAmount, HP.transform.localScale.y);
 
         if (amount <= 0f && onDestroy != null) {
             onDestroy();
-
         }
 
         return tempBool;
@@ -104,10 +93,6 @@ public class HPStack {
 
     public float GetAmount () {
         return amount;
-    }
-
-    public void SetHPBar (GameObject HP) {
-        this.HP = HP;
     }
 
 }

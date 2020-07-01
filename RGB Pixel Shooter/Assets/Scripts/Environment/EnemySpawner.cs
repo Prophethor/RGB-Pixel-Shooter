@@ -151,7 +151,6 @@ public class EnemySpawner : MonoBehaviour {
 
         //Set speed based on enemy data
         gEnemy.SetSpeed(enemyInfo.speed);
-        gEnemy.SetPointValue(enemyInfo.pointValue);
 
         enemiesToKill++;
         pointsToSpawn -= enemyInfo.pointValue;

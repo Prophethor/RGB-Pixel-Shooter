@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using TMPro;
-using UnityEngine.UI;
 
 public class UITest : MonoBehaviour {
 
@@ -18,7 +16,6 @@ public class UITest : MonoBehaviour {
     public GameObject swipeDetector;
     private Swipe swipe;
 
-
     private void Start () {
         gameManager.GetLoadout().GetWeapons()[0].HookUI(weapon1Panel);
         gameManager.GetLoadout().GetWeapons()[1].HookUI(weapon2Panel);
@@ -27,8 +24,6 @@ public class UITest : MonoBehaviour {
         swipe.minDistanceForSwipe = 200;
         swipe.detectOnlyAfterSwipe = true;
         swipe.OnSwipe += SwipeToSwitch;
-
-       
     }
 
 
@@ -72,8 +67,6 @@ public class UITest : MonoBehaviour {
     public void ButtonLog (string msg) {
         Debug.Log(msg);
     }
-
-
 }
 
 #if UNITY_EDITOR

@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class Grunt : GenericEnemy
 {
-
     public AnimatorOverrideController overrideRed;
     public AnimatorOverrideController overrideBlue;
     public AnimatorOverrideController overrideGreen;
-
-
-    public GameObject HP;
-
 
     protected override void Start () {
         base.Start();
@@ -33,10 +28,7 @@ public class Grunt : GenericEnemy
                 break;
         }
         //Set health color
-
-        hpStackList.Add(new HPStack(baseColor, 200));
-        hpStackList[0].SetHPBar(HP);
-
+        hpStackList.Add(new HPStack(baseColor, 10));
 
     }
 
