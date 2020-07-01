@@ -1456,11 +1456,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ded432a1e7f107c4da6fa4f2aa11e5d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedWeapon: {fileID: 11400000, guid: 68639cd09aeafd04e8d2d6140e819ba9, type: 2}
+  equippedWeapon: {fileID: 11400000, guid: 653de3cc40766494f9b8454afbd75f8a, type: 2}
   playerSpace: {fileID: 1917244189}
   swipeDetector: {fileID: 7478267638744852041, guid: 056536cc20e59a24583461d6e9770e22,
     type: 3}
-  savedLane: 1
   laneSwitchTime: 0.5
   isJumping: 0
 --- !u!212 &797096639
@@ -2578,7 +2577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983f6f3ac5b17c54aaa9477a48ab5558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelInfo: {fileID: 11400000, guid: 25d819104219e774995f62323f6801db, type: 2}
+  levelInfo: {fileID: 11400000, guid: a13d3a1d02b8f9741b652fbcd0f2aa7d, type: 2}
   gEnemies: []
 --- !u!4 &1435091645
 Transform:
@@ -2882,7 +2881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   revolver: {fileID: 11400000, guid: 68639cd09aeafd04e8d2d6140e819ba9, type: 2}
-  shotgun: {fileID: 11400000, guid: 7fbad554e671cd94784463dad21ef143, type: 2}
+  shotgun: {fileID: 11400000, guid: 653de3cc40766494f9b8454afbd75f8a, type: 2}
   player: {fileID: 797096638}
   UIAnimator: {fileID: 696753281}
 --- !u!4 &1793928583
@@ -3179,7 +3178,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106955239}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: 0}
+  m_LocalPosition: {x: -7.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 6, z: 1}
   m_Children:
   - {fileID: 2128139244}

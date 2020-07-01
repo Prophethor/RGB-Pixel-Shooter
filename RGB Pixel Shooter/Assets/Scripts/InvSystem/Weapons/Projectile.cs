@@ -10,8 +10,15 @@ public class Projectile : MonoBehaviour {
     // Array of bullet sprites in order: Red, Green, Blue
     public Sprite[] bulletSprites = new Sprite[4];
 
+    private float range = 100f;
+    private Vector3 startPosition;
+
+    private void Start () {
+        startPosition = transform.position;
+    }
+
     private void Update () {
-        if (transform.position.magnitude > 100f) {
+        if ((transform.position-startPosition).magnitude > range) {
             Destroy(gameObject);
         }
     }
@@ -23,6 +30,10 @@ public class Projectile : MonoBehaviour {
         sr.sprite = bulletSprites[(int) color];
         //Delete this when you get sprite for uncolored bullets
         if (color == RGBColor.NONE) sr.color = Color.black;
+    }
+
+    public void SetRange(float range) {
+        this.range = range;
     }
 
     public void SpawnBloodSplater (Vector3 spawnPosition) {

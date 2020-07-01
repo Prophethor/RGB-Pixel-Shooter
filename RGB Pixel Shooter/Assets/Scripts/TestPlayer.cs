@@ -12,8 +12,6 @@ public class TestPlayer : MonoBehaviour {
     private Animator animator;
 
     private int lane = 1;
-    [HideInInspector]
-    public int savedLane = 1;
 
     public float laneSwitchTime = 1f;
 
@@ -81,7 +79,7 @@ public class TestPlayer : MonoBehaviour {
 
     private void SwitchLane (int newLane) {
         //TODO: get rid of casting
-        if (newLane < 0 || 2 < newLane || ((TestRevolver)equippedWeapon).isReloading) {
+        if (newLane < 0 || 2 < newLane || ((TestRevolver) equippedWeapon).isReloading) {
             return;
         }
 
@@ -90,7 +88,7 @@ public class TestPlayer : MonoBehaviour {
         lane = newLane;
         //if player keeps switching lanes for longer than laneSwitchTime, isJumping is gonna become false and he could shoot midair
         Tweener.AddTween(() => transform.position.y, (x) => transform.position = new Vector3(transform.position.x, x, transform.position.z),
-            PlayField.GetLanePosition(newLane)-laneOffset, laneSwitchTime, TweenMethods.Ease, () => {
+            PlayField.GetLanePosition(newLane)-laneOffset, laneSwitchTime, TweenMethods.HardLog, () => {
                 isJumping = false;
             });
     }
