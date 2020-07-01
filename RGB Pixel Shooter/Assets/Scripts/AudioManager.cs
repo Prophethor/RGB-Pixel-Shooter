@@ -10,6 +10,10 @@ public class AudioManager : MonoBehaviour {
     private HashSet<AudioClip> audioClips;
     private AudioSource musicSource;
 
+    [Range(0, 1)]
+    public float sfxVolumeValue;
+    public float musicVolumeValue;
+
     private void Awake () {
         if (instance != null) {
             Destroy(gameObject);
@@ -29,9 +33,14 @@ public class AudioManager : MonoBehaviour {
     public void PlaySoundtrack (AudioClip soundtrack) {
         PlayLoopInternal(soundtrack);
     }
+    // stavio sam opcionalni bool koji ako definises kao true, onda mozes da odes u metod koji dozvoljava da se zvuci stakuju
+    public void PlaySound (AudioClip clip, bool overlapingSound = false) {
+        if (overlapingSound)
+        {
+            PlaySoundOverlaping(clip);
+        }
+        else PlaySoundPitched(clip, 1f);
 
-    public void PlaySound (AudioClip clip) {
-        PlaySoundPitched(clip, 1f);
     }
 
     // pitchRange represents a value of 1+
@@ -57,12 +66,25 @@ public class AudioManager : MonoBehaviour {
         audioSource.clip = clip;
         audioSource.pitch = Random.Range(1f / pitchRange, pitchRange);
         audioSource.loop = false;
+        audioSource.volume = sfxVolumeValue;
         audioSource.Play();
+    }
+
+    public void PlaySoundOverlaping(AudioClip clip)
+    {
+
+            PlayOneShotInternal(clip, 1f);
+            audioClips.Add(clip);
+
+            Tweener.Invoke(clip.length, () => {
+                audioClips.Remove(clip);
+            }); 
     }
 
     private void PlayLoopInternal (AudioClip clip) {
         musicSource.clip = clip;
         musicSource.loop = true;
+        musicSource.volume = musicVolumeValue;
         musicSource.Play();
     }
 }
