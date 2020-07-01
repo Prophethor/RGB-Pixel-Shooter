@@ -25,13 +25,8 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected Material defaultMaterial;
     protected Material flashMaterial;
 
-    protected Animator animator;
-
-
-    public List<AudioClip> spawnClips;
-    public List<AudioClip> deathClips;
-    public List<AudioClip> damageTakeClips;
-
+    protected Animator animator;   
+   
     protected virtual void Awake () {
         Initialize();
 
@@ -39,9 +34,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     protected virtual void Start () {
         // Set position according to lane
-        // TODO delete this
-        AudioManager.instance.PlaySoundPitched(spawnClips[Random.Range(0, spawnClips.Count)], 1f);
-
+         // TODO delete this
         float yPos = PlayField.GetLanePosition(lane) - Random.Range(-0.33f, 1f) * PlayField.GetLaneHeight() / 3f;
         transform.position = new Vector3(9, yPos, yPos);
 
@@ -131,33 +124,27 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
             {
                 sr.material = flashMaterial;
                 Invoke("ResetMaterial", .1f);
-                AudioManager.instance.PlaySoundPitched(damageTakeClips[Random.Range(0, damageTakeClips.Count)], 1f);
             }
             else
             {
                 sr.material = flashMaterial;
                 Invoke("ResetMaterial", .1f);
                 hpStackList.RemoveAt(0);
-                // odmag proverava ovde dal je ovaj dmg rezultirao smrcu, na osnovu toga ide u death, ili samo pusta damage take zvuk
-                if (hpStackList.Count == 0)
-                {
-                    isDead = true;
-                    GetComponent<BoxCollider2D>().enabled = false;
-                    animator.SetBool("isDead", isDead);
-
-
-                    // Temporary; TODO: change sprites to reflect behavior below
-
-                    Move();
-                    Die();
-                }
-                else
-                {
-                    AudioManager.instance.PlaySoundPitched(damageTakeClips[Random.Range(0, damageTakeClips.Count)], 1f);
-                }
             }
 
-            
+            if (hpStackList.Count == 0) {
+                isDead = true;
+                GetComponent<BoxCollider2D>().enabled = false;
+                animator.SetBool("isDead", isDead);
+
+
+                // Temporary; TODO: change sprites to reflect behavior below
+
+                
+
+                Move();
+                Die();
+            }
         }
 
         return hitStatus;
@@ -166,7 +153,6 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected virtual void Die () {
         EnemySpawner.enemiesToKill--;
         gm.UpdateScore(pointValue);
-        AudioManager.instance.PlaySoundPitched(deathClips[Random.Range(0, deathClips.Count)], 2f);
         SelfDestruct();
     }
 

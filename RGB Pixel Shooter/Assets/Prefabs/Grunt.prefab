@@ -164,24 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f60e462264159d4b96ad97b5ca36ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnClips:
-  - {fileID: 8300000, guid: 5e0fffb01f6cd2e41a74668e190e99d7, type: 3}
-  - {fileID: 8300000, guid: 929684f16585d654ea8f1ea8cd42d21f, type: 3}
-  - {fileID: 8300000, guid: 0672fa3de1b616242aaa3dfbae88fedb, type: 3}
-  - {fileID: 8300000, guid: 8a3a995371b83094895e2919e3c674d1, type: 3}
-  - {fileID: 8300000, guid: b0f766455e76fda4ba2af6246f5c2054, type: 3}
-  deathClips:
-  - {fileID: 8300000, guid: 0666ccef1adca744fbde39f91379f679, type: 3}
-  - {fileID: 8300000, guid: bdc6eb4d1cbe20f4f981c2ab749a2a49, type: 3}
-  - {fileID: 8300000, guid: 95c50144604c45640a3edc6ee5ef2127, type: 3}
-  - {fileID: 8300000, guid: 165e3b14519f12941a154f8e5e437152, type: 3}
-  - {fileID: 8300000, guid: 98d6bea85d199eb4bbf67b8df79f81d8, type: 3}
-  damageTakeClips:
-  - {fileID: 8300000, guid: 7b0fc888948be5544b2a55410d309fca, type: 3}
-  - {fileID: 8300000, guid: 6415e5b3c926e5444a23959615a33dbd, type: 3}
-  - {fileID: 8300000, guid: 44b3d7142eaf00f458f346c7a0736679, type: 3}
-  - {fileID: 8300000, guid: d907052df2d78014d8ba28a444a82e68, type: 3}
-  - {fileID: 8300000, guid: 8d7314fe1a333f346851c07f27dfca4e, type: 3}
   overrideRed: {fileID: 22100000, guid: 57003c7c4e8315041b9efc28409da080, type: 2}
   overrideBlue: {fileID: 22100000, guid: e80b9120608b25940b2e8a3a2c7ea690, type: 2}
   overrideGreen: {fileID: 22100000, guid: a1374df6d53786e4289c459a3670c8c1, type: 2}

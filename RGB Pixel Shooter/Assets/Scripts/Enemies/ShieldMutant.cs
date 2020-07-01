@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ShieldMutant : GenericEnemy {
 
-    public AudioClip shieldBreak;
-    public AudioClip shieldDeflect;
 
     private SpriteRenderer childSr;
 
@@ -23,8 +21,6 @@ public class ShieldMutant : GenericEnemy {
 
     protected override void Start() {
 
-        AudioManager.instance.PlaySoundPitched(spawnClips[Random.Range(0, spawnClips.Count)], 1f);
-
         RGBColor randcolor = (RGBColor)Random.Range(0, 3);
         hpStackList.Add(new HPStack(randcolor, 500, 0, 0, 0, 500));
         hpStackList[0].SetHPBar(HP1);
@@ -36,19 +32,17 @@ public class ShieldMutant : GenericEnemy {
 
         hpStackList[0].SetOnDestroy(() => {
             hpStackList.RemoveAt(0);
-            Tweener.Invoke(0.1f, () => sr.material = defaultMaterial);
-            Tweener.Invoke(0.1f, () => childSr.material = defaultMaterial);
+            FlashMaterial();
 
             // ovde puca prvi stack, ako je prosao treshold i vratio true
             animator.SetTrigger("break");
             animatorShield.SetTrigger("break");
             animator.SetBool("hasShield", false);
-            AudioManager.instance.PlaySoundPitched(shieldBreak, 1f);
         });
         hpStackList[1].SetOnDestroy(() => {
 
             hpStackList.RemoveAt(0);
-            Tweener.Invoke(0.1f, () => sr.material = defaultMaterial);
+            FlashMaterial();
         });
 
         float yPos = PlayField.GetLanePosition(lane) - Random.Range(-0.33f, 1f) * PlayField.GetLaneHeight() / 3f;
@@ -116,20 +110,20 @@ public class ShieldMutant : GenericEnemy {
         HitStatus hitStatus;
         bool hitBool = hpStackList[0].TakeDamage(damage, out hitStatus);
 
+
         
         if (!hitBool) {
             // u slucaju da nije pukao stit, niti je umro. proveri dal je hit status treshold, ako jeste, defelctuj
             if (hitStatus.belowThreshold) {
                 animator.SetTrigger("deflect");
                 animatorShield.SetTrigger("deflect");
-                AudioManager.instance.PlaySound(shieldDeflect, true);
 
                 sr.material = flashMaterial;
                 childSr.material = flashMaterial;
                 Tweener.Invoke(0.1f, () => sr.material = defaultMaterial);
                 Tweener.Invoke(0.1f, () => childSr.material = defaultMaterial);
             }
-            else Debug.Log(hitStatus); // ovo ne bi trebalo da se desi u principu
+            else Debug.Log(hitStatus);
         }
 
 

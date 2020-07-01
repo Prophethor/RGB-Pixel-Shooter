@@ -16,8 +16,6 @@ public class Grunt : GenericEnemy
     protected override void Start () {
         base.Start();
 
-        AudioManager.instance.PlaySoundPitched(spawnClips[Random.Range(0, spawnClips.Count)], 2f);
-
         switch (baseColor)
         {
             case RGBColor.RED:
@@ -56,5 +54,4 @@ public class Grunt : GenericEnemy
     protected override void InitiateShanking () {
         rb.velocity = Vector2.zero;
     }
-
 }

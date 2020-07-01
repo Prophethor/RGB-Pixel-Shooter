@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Mutant : GenericEnemy {
 
+	public List<AudioClip> spawnClips;
+
     public AnimatorOverrideController overrideRed;
     public AnimatorOverrideController overrideBlue;
     public AnimatorOverrideController overrideGreen;
@@ -13,6 +15,7 @@ public class Mutant : GenericEnemy {
     protected override void Start () {
         base.Start();
 
+		AudioManager.instance.PlaySoundPitched(spawnClips[Random.Range(0, spawnClips.Count)], 2f);
 
         //Set health color
 
@@ -58,12 +61,6 @@ public class Mutant : GenericEnemy {
    
     protected override void InitiateShanking () {
         rb.velocity = Vector2.zero;
-    }
-
-    public override void SelfDestruct()
-    {
-        base.SelfDestruct();
-        
     }
 
 }
