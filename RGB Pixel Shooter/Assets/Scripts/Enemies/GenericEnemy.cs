@@ -12,12 +12,14 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected StatMultiplierCollection statMultipliers;
 
     protected float speed;
+    protected int pointValue;
     protected int lane;
 
     protected List<HPStack> hpStackList;
     protected List<Trait> traits;
 
     protected GameManager gm;
+    protected ExplosionManager explosionManager;
     protected bool isDead = false;
     protected SpriteRenderer sr;
     protected Material defaultMaterial;
@@ -27,20 +29,12 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
    
     protected virtual void Awake () {
         Initialize();
+
     }
 
     protected virtual void Start () {
         // Set position according to lane
-<<<<<<< Updated upstream
          // TODO delete this
-=======
-<<<<<<< HEAD
-        // TODO delete this
-        AudioManager.instance.PlaySoundPitched(spawnClips[Random.Range(0, spawnClips.Count)], 1f);
-
-=======
->>>>>>> e27d96e1b951e2d0237e534f1e51dea54a07d4cf
->>>>>>> Stashed changes
         float yPos = PlayField.GetLanePosition(lane) - Random.Range(-0.33f, 1f) * PlayField.GetLaneHeight() / 3f;
         transform.position = new Vector3(9, yPos, yPos);
 
@@ -70,8 +64,9 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         flashMaterial = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         defaultMaterial = sr.material;
         animator = GetComponent<Animator>();
+        explosionManager = FindObjectOfType<ExplosionManager>();
 
-   
+
     }
 
     public int GetLane () {
@@ -94,6 +89,11 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         this.speed = speed;
     }
 
+    public void SetPointValue(int pointValue)
+    {
+        this.pointValue = pointValue;
+    }
+
     public StatMultiplierCollection GetStatMultipliers () {
         return statMultipliers;
     }
@@ -114,8 +114,10 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     protected abstract void Move ();
 
+
     public virtual HitStatus TakeDamage (RGBDamage damage) {
         HitStatus hitStatus;
+
         if (hpStackList[0].TakeDamage(damage, out hitStatus)) {
 
             if (hpStackList[0].GetAmount() > 0)
@@ -130,18 +132,11 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
                 hpStackList.RemoveAt(0);
             }
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-            
-=======
->>>>>>> Stashed changes
             if (hpStackList.Count == 0) {
                 isDead = true;
                 GetComponent<BoxCollider2D>().enabled = false;
                 animator.SetBool("isDead", isDead);
 
-<<<<<<< Updated upstream
 
                 // Temporary; TODO: change sprites to reflect behavior below
 
@@ -150,14 +145,6 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
                 Move();
                 Die();
             }
-=======
-                // Temporary; TODO: change sprites to reflect behavior below
-               
-                Move();
-                Die();
-            }
->>>>>>> e27d96e1b951e2d0237e534f1e51dea54a07d4cf
->>>>>>> Stashed changes
         }
 
         return hitStatus;
@@ -165,27 +152,23 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     protected virtual void Die () {
         EnemySpawner.enemiesToKill--;
-<<<<<<< HEAD
         gm.UpdateScore(pointValue);
-<<<<<<< Updated upstream
-=======
-        AudioManager.instance.PlaySoundPitched(deathClips[Random.Range(0, deathClips.Count)], 2f);
-=======
->>>>>>> e27d96e1b951e2d0237e534f1e51dea54a07d4cf
->>>>>>> Stashed changes
         SelfDestruct();
     }
 
     public virtual void SelfDestruct () {
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 1f);
     }
 
     public void OnCollisionEnter2D (Collision2D collision) {
         HitStatus hitData;
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
+            CameraShake.instance.Shake(0.1f);
+            RGBColor enemyColor = hpStackList[0].GetColor();
+            RGBColor bulletColor = collision.gameObject.GetComponent<Projectile>().damage.color;
             hitData = TakeDamage(collision.gameObject.GetComponent<Projectile>().damage); // cuvamo retutn koji je data, ali take damage obracunava svu stetu... hopefully
-           
-            collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, hitData, hpStackList[0].GetColor()); // saljemo hit data iz take damage u projektil
+
+            explosionManager.SpawnExplosion(bulletColor, collision, hitData); // saljemo hit data iz take damage u projektil
             Destroy(collision.gameObject);
         }
     }
@@ -194,6 +177,12 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         if (collider.gameObject.layer == LayerMask.NameToLayer("FinishLine")) {
             gm.LoseGame();
         }
+    }
+
+    public virtual void FlashMaterial()
+    {
+        sr.material = flashMaterial;
+        Invoke("ResetMaterial", .1f);
     }
 
     public virtual void ResetMaterial () {

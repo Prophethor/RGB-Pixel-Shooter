@@ -20,16 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -1224006819323320055, guid: beb54ae7f1f096a459d66fd1d6fde720,
+      value: {fileID: -7439608147175919193, guid: d76d2c7932f6edd49b9088e9d0b79004,
         type: 3}
     - time: 0.21666667
-      value: {fileID: 8241458669848518571, guid: beb54ae7f1f096a459d66fd1d6fde720,
+      value: {fileID: -3502240249889325796, guid: d76d2c7932f6edd49b9088e9d0b79004,
         type: 3}
     - time: 0.45
-      value: {fileID: -1052967807570929191, guid: beb54ae7f1f096a459d66fd1d6fde720,
+      value: {fileID: 8448659987311308741, guid: d76d2c7932f6edd49b9088e9d0b79004,
         type: 3}
     - time: 0.6666667
-      value: {fileID: -1224584153602340446, guid: beb54ae7f1f096a459d66fd1d6fde720,
+      value: {fileID: -7730619468326406452, guid: d76d2c7932f6edd49b9088e9d0b79004,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -50,10 +50,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -1224006819323320055, guid: beb54ae7f1f096a459d66fd1d6fde720, type: 3}
-    - {fileID: 8241458669848518571, guid: beb54ae7f1f096a459d66fd1d6fde720, type: 3}
-    - {fileID: -1052967807570929191, guid: beb54ae7f1f096a459d66fd1d6fde720, type: 3}
-    - {fileID: -1224584153602340446, guid: beb54ae7f1f096a459d66fd1d6fde720, type: 3}
+    - {fileID: -7439608147175919193, guid: d76d2c7932f6edd49b9088e9d0b79004, type: 3}
+    - {fileID: -3502240249889325796, guid: d76d2c7932f6edd49b9088e9d0b79004, type: 3}
+    - {fileID: 8448659987311308741, guid: d76d2c7932f6edd49b9088e9d0b79004, type: 3}
+    - {fileID: -7730619468326406452, guid: d76d2c7932f6edd49b9088e9d0b79004, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -79,7 +79,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.68333334
+  - time: 0.6666667
     functionName: ResetPosition
     data: 
     objectReferenceParameter: {fileID: 0}

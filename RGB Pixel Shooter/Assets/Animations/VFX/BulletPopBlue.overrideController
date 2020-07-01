@@ -9,9 +9,5 @@ AnimatorOverrideController:
   m_Name: BulletPopBlue
   m_Controller: {fileID: 9100000, guid: f7f780536170d8a418197b968f3fb083, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 39035fa725920444f83d8969df567da1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ce92702c3b8fcf345a3484d1bdbace9b, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 39035fa725920444f83d8969df567da1, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 33ace39f93125b743abb7c049517283c, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 33ace39f93125b743abb7c049517283c, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: e5740aa6274773a4baa6f6cbbc798edd, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: e5740aa6274773a4baa6f6cbbc798edd, type: 2}

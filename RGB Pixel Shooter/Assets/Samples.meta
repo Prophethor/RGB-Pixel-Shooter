@@ -1,17 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
 guid: 6fa99c6358917c54aaedd9520e785d2c
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD:RGB Pixel Shooter/Assets/Samples.meta
-guid: 6fa99c6358917c54aaedd9520e785d2c
-=======
-guid: 803861d22eea2fc4b855a8fec2133541
->>>>>>> e27d96e1b951e2d0237e534f1e51dea54a07d4cf:RGB Pixel Shooter/Assets/Samples/Shader Graph.meta
-=======
-guid: 6fa99c6358917c54aaedd9520e785d2c
->>>>>>> e27d96e1b951e2d0237e534f1e51dea54a07d4cf
->>>>>>> Stashed changes
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

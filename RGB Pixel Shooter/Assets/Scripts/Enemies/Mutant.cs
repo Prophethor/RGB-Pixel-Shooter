@@ -10,16 +10,17 @@ public class Mutant : GenericEnemy {
     public AnimatorOverrideController overrideBlue;
     public AnimatorOverrideController overrideGreen;
 
+    public GameObject HP;
+
     protected override void Start () {
         base.Start();
-<<<<<<< HEAD
 
 		AudioManager.instance.PlaySoundPitched(spawnClips[Random.Range(0, spawnClips.Count)], 2f);
 
-=======
->>>>>>> e27d96e1b951e2d0237e534f1e51dea54a07d4cf
         //Set health color
-        hpStackList.Add(new HPStack(baseColor, 5));
+
+        hpStackList.Add(new HPStack(baseColor, 100));
+        hpStackList[0].SetHPBar(HP);
         hpStackList[0].SetOnDestroy(() => { Debug.Log("Gotov sam"); });
 
         switch (baseColor)
@@ -38,6 +39,9 @@ public class Mutant : GenericEnemy {
             default:
                 break;
         }
+
+
+      
 
         //Initiate moving
         Move();
