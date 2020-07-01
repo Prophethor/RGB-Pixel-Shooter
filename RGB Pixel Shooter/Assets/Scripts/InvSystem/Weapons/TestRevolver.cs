@@ -26,7 +26,8 @@ public class TestRevolver : Weapon
     public override void LevelStart () {
         player = GameObject.FindGameObjectWithTag("Player");
         animator = player.GetComponent<Animator>();
-        animator.SetFloat("loadSpeed", 0.4f/reloadTime);
+        //animator.SetFloat("loadSpeed", 0.4f/reloadTime);
+        animator.SetFloat("loadSpeed", (reloadTime - 0.3f)/(maxBullets*0.15f));
         bullets = new List<RGBColor>();
         while (bullets.Count < maxBullets) bullets.Add(RGBColor.NONE);
         timer = FindObjectOfType<ReloadTimer>();
@@ -42,10 +43,11 @@ public class TestRevolver : Weapon
         UIHooks.Add("LoadBlue", () => Load(RGBColor.BLUE));
         UIHooks.Add("Shoot", () => Shoot(GetPlayerPos()));
     }
-
+    // TODO: this is infuse, not load... causes confusion
     public void Load (RGBColor color) {
         for (int i = 0; i < bullets.Count; i++) {
             if (bullets[i] != RGBColor.NONE) continue;
+            AudioManager.instance.PlaySound(player.GetComponent<TestPlayer>().infuseSound, true);
             bullets[i] = color;
             break;
         }
@@ -55,6 +57,7 @@ public class TestRevolver : Weapon
         if (!isReloading && !player.GetComponent<TestPlayer>().isJumping) {
             if (bullets.Count > 0) {
                 animator.SetTrigger("shootTrigger");
+                AudioManager.instance.PlaySound(player.GetComponent<TestPlayer>().shootSound, true);
                 Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.identity);
                 bulletObj.velocity = new Vector2(bulletSpeed, 0);
                 bulletObj.GetComponent<Projectile>().SetDamage(bullets[0], dmgAmount);
@@ -67,9 +70,9 @@ public class TestRevolver : Weapon
                 Tweener.Invoke(0f,()=> {
                     if (isReloading)
                     {
-                        Tweener.Invoke(reloadTime / 6, () => {
-                            LoadBullet(RGBColor.NONE);
+                        Tweener.Invoke(0f, () => {
                             animator.SetBool("canLoad", true);
+                            LoadBullet(RGBColor.NONE);
 
                         });
                     }
@@ -88,16 +91,21 @@ public class TestRevolver : Weapon
 
     public void LoadBullet(RGBColor color)
     {
-        animator.SetTrigger("loadTrigger");
-        bullets.Add(color);
+        
         if (bullets.Count < maxBullets)
         {
-            Tweener.Invoke(reloadTime / 6, () => LoadBullet(RGBColor.NONE));
+            animator.SetTrigger("loadTrigger");
+            bullets.Add(color);
+            Tweener.Invoke((reloadTime - 0.3f) / maxBullets, () => LoadBullet(RGBColor.NONE));
         }
         else
         {
-            isReloading = false;
-            animator.SetBool("canLoad", isReloading);
+            animator.SetTrigger("doneLoadingTrigger");
+            Tweener.Invoke(0.2f, () => {
+                isReloading = false;
+                animator.SetBool("canLoad", isReloading);
+            });
+           
         }
         
     }

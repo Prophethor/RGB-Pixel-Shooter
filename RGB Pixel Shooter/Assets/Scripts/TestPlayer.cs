@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TestPlayer : MonoBehaviour {
 
+    public AudioClip moveSound;
+    public AudioClip shootSound;
+    public AudioClip[] loadSounds;
+    public AudioClip infuseSound;
     // Besto testo
     public Weapon equippedWeapon;
     public RectTransform playerSpace;
@@ -30,7 +34,7 @@ public class TestPlayer : MonoBehaviour {
         laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
         transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(0,0)).x*0.85f,transform.position.y);
         animator = GetComponent<Animator>();
-        animator.SetFloat("jumpSpeed", 0.15f/laneSwitchTime);
+        animator.SetFloat("jumpSpeed", 0.15f/(laneSwitchTime/2));
     }
 
     private void Update () {
@@ -38,11 +42,13 @@ public class TestPlayer : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.S)) {
             if (lane > 0) {
                 SwitchLane(lane - 1);
+                AudioManager.instance.PlaySound(moveSound, true);
             }
         }
         if (Input.GetKeyDown(KeyCode.W)) {
             if (lane < 2) {
                 SwitchLane(lane + 1);
+                AudioManager.instance.PlaySound(moveSound, true);
             }
         }
 
@@ -69,6 +75,7 @@ public class TestPlayer : MonoBehaviour {
     }
 
     public void Move (Swipe.SwipeData swipe) {
+        
         if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
             swipe.direction == Swipe.SwipeDirection.Down) {
             SwitchLane(lane - 1);
@@ -80,7 +87,7 @@ public class TestPlayer : MonoBehaviour {
     }
 
     private void SwitchLane (int newLane) {
-        //TODO: get rid of casting
+        //TODO: get rid of casting 
         if (newLane < 0 || 2 < newLane || ((TestRevolver)equippedWeapon).isReloading) {
             return;
         }
@@ -99,5 +106,15 @@ public class TestPlayer : MonoBehaviour {
         if ((touch.x >= panel.position.x && touch.x <= panel.position.x + panel.rect.width) &&
             (touch.y >= panel.position.y && touch.y <= panel.position.y + panel.rect.height)) return true;
         return false;
+    }
+
+    public void PlayBulletLoadSoundClick()
+    {
+        AudioManager.instance.PlaySound(loadSounds[0], true);
+    }
+
+    public void PlayBulletLoadSoundFinish()
+    {
+        AudioManager.instance.PlaySound(loadSounds[1], true);
     }
 }
