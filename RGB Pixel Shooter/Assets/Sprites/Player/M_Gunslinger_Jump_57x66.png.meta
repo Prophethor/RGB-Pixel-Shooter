@@ -95,6 +95,90 @@ TextureImporter:
   - first:
       213: -7645197670601968475
     second: M_Gunslinger_Jump_61x66_16
+  - first:
+      213: 4739523154022317458
+    second: M_Gunslinger_Jump_57x66_0
+  - first:
+      213: 8793899623447417216
+    second: M_Gunslinger_Jump_57x66_1
+  - first:
+      213: 630408089848437114
+    second: M_Gunslinger_Jump_57x66_2
+  - first:
+      213: 4254130193245209697
+    second: M_Gunslinger_Jump_57x66_3
+  - first:
+      213: -4158098924624365369
+    second: M_Gunslinger_Jump_57x66_4
+  - first:
+      213: 1255666001385273472
+    second: M_Gunslinger_Jump_57x66_5
+  - first:
+      213: 8257327859550678006
+    second: M_Gunslinger_Jump_57x66_6
+  - first:
+      213: 6324637539494181675
+    second: M_Gunslinger_Jump_57x66_7
+  - first:
+      213: 8892701335158142289
+    second: M_Gunslinger_Jump_57x66_8
+  - first:
+      213: 9205185981539304908
+    second: M_Gunslinger_Jump_57x66_9
+  - first:
+      213: 5639081059698558129
+    second: M_Gunslinger_Jump_57x66_10
+  - first:
+      213: -4456064058272784578
+    second: M_Gunslinger_Jump_57x66_11
+  - first:
+      213: -3854141844452574169
+    second: M_Gunslinger_Jump_57x66_12
+  - first:
+      213: -1702038892491570950
+    second: M_Gunslinger_Jump_57x66_13
+  - first:
+      213: -9012081002182314805
+    second: M_Gunslinger_Jump_57x66_0
+  - first:
+      213: -1002102120264732169
+    second: M_Gunslinger_Jump_57x66_1
+  - first:
+      213: 4339541943526231108
+    second: M_Gunslinger_Jump_57x66_2
+  - first:
+      213: 999058089937089159
+    second: M_Gunslinger_Jump_57x66_3
+  - first:
+      213: -2800258072726863412
+    second: M_Gunslinger_Jump_57x66_4
+  - first:
+      213: 4133286916708108129
+    second: M_Gunslinger_Jump_57x66_5
+  - first:
+      213: 8292934631178050427
+    second: M_Gunslinger_Jump_57x66_6
+  - first:
+      213: 7218384103392689950
+    second: M_Gunslinger_Jump_57x66_7
+  - first:
+      213: -1012764832268390957
+    second: M_Gunslinger_Jump_57x66_8
+  - first:
+      213: 3518257631376399576
+    second: M_Gunslinger_Jump_57x66_9
+  - first:
+      213: 5873025313215564007
+    second: M_Gunslinger_Jump_57x66_10
+  - first:
+      213: 5761196418538592151
+    second: M_Gunslinger_Jump_57x66_11
+  - first:
+      213: 7732102414767571261
+    second: M_Gunslinger_Jump_57x66_12
+  - first:
+      213: 8689550174849090541
+    second: M_Gunslinger_Jump_57x66_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -216,295 +300,295 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_0
+      name: M_Gunslinger_Jump_57x66_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 1
-        width: 45
-        height: 65
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a0669a5270eddd1a0800000000000000
-      internalID: -6783021341472102902
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_1
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 1
-        width: 45
-        height: 65
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 47439e679fde1dd80800000000000000
-      internalID: -8227533388531551116
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_2
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 1
-        width: 45
-        height: 65
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d84737a6dc04c9c30800000000000000
-      internalID: 4367436989640963213
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_3
-      rect:
-        serializedVersion: 2
-        x: 182
-        y: 1
-        width: 45
-        height: 65
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: afb69ca5728948e20800000000000000
-      internalID: 3351971317464787962
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_4
-      rect:
-        serializedVersion: 2
-        x: 239
-        y: 1
-        width: 45
-        height: 65
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d3207c6794b558d00800000000000000
-      internalID: 974285265479074365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_5
-      rect:
-        serializedVersion: 2
-        x: 296
-        y: 1
-        width: 45
-        height: 65
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a9dc7ea57e04d790800000000000000
-      internalID: -7506358780318393947
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_6
-      rect:
-        serializedVersion: 2
-        x: 353
-        y: 1
-        width: 45
-        height: 65
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9a552a5cf23bbb770800000000000000
-      internalID: 8627686528918902185
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_7
-      rect:
-        serializedVersion: 2
-        x: 410
-        y: 1
-        width: 45
-        height: 65
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a7a695a14f4025b80800000000000000
-      internalID: -8407652107886695814
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_8
-      rect:
-        serializedVersion: 2
-        x: 465
+        x: 0
         y: 0
-        width: 49
-        height: 66
-      alignment: 6
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a54fd1a8864834ba0800000000000000
-      internalID: -6105891085255576486
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_9
-      rect:
-        serializedVersion: 2
-        x: 519
-        y: 0
-        width: 51
+        width: 57
         height: 66
       alignment: 9
-      pivot: {x: 0.10855641, y: 0.0032486697}
+      pivot: {x: 0.195, y: 0.015}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46195709b343cd860800000000000000
-      internalID: 7555971705252188516
+      spriteID: bc470e99318aee280800000000000000
+      internalID: -9012081002182314805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_10
+      name: M_Gunslinger_Jump_57x66_1
       rect:
         serializedVersion: 2
-        x: 573
+        x: 57
         y: 0
-        width: 53
+        width: 57
         height: 66
       alignment: 9
-      pivot: {x: 0.14712237, y: -0.00000003906015}
+      pivot: {x: 0.195, y: 0.015}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 461495bfb9d73d450800000000000000
-      internalID: 6112367228162228580
+      spriteID: 7f174f45e61d712f0800000000000000
+      internalID: -1002102120264732169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_11
+      name: M_Gunslinger_Jump_57x66_2
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 0
+        width: 57
+        height: 66
+      alignment: 9
+      pivot: {x: 0.195, y: 0.015}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44c0acfd766293c30800000000000000
+      internalID: 4339541943526231108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Gunslinger_Jump_57x66_3
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 0
+        width: 57
+        height: 66
+      alignment: 9
+      pivot: {x: 0.195, y: 0.015}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7823ea02a0e5ddd00800000000000000
+      internalID: 999058089937089159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Gunslinger_Jump_57x66_4
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 0
+        width: 57
+        height: 66
+      alignment: 9
+      pivot: {x: 0.195, y: 0.015}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc102b78e1c7329d0800000000000000
+      internalID: -2800258072726863412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Gunslinger_Jump_57x66_5
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 0
+        width: 57
+        height: 66
+      alignment: 9
+      pivot: {x: 0.195, y: 0.015}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16708293d826c5930800000000000000
+      internalID: 4133286916708108129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Gunslinger_Jump_57x66_6
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 0
+        width: 57
+        height: 66
+      alignment: 9
+      pivot: {x: 0.195, y: 0.015}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7b17e4fb1c661370800000000000000
+      internalID: 8292934631178050427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Gunslinger_Jump_57x66_7
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 0
+        width: 57
+        height: 66
+      alignment: 9
+      pivot: {x: 0.195, y: 0.015}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1f3c0fe81adc2460800000000000000
+      internalID: 7218384103392689950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Gunslinger_Jump_57x66_8
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 0
+        width: 57
+        height: 66
+      alignment: 9
+      pivot: {x: 0.195, y: 0.015}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd62ab30cfe1f1f0800000000000000
+      internalID: -1012764832268390957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Gunslinger_Jump_57x66_9
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 0
+        width: 57
+        height: 66
+      alignment: 9
+      pivot: {x: 0.195, y: 0.015}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc5f7adcac53d030800000000000000
+      internalID: 3518257631376399576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Gunslinger_Jump_57x66_10
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 0
+        width: 57
+        height: 66
+      alignment: 9
+      pivot: {x: 0.195, y: 0.015}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e8471fd76d218150800000000000000
+      internalID: 5873025313215564007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Gunslinger_Jump_57x66_11
       rect:
         serializedVersion: 2
         x: 627
         y: 0
-        width: 62
+        width: 57
         height: 66
       alignment: 9
-      pivot: {x: 0.16995731, y: -0.00000003906015}
+      pivot: {x: 0.195, y: 0.015}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58d04ce48a08fcb70800000000000000
-      internalID: 8921490847208574341
+      spriteID: 797de385e91e3ff40800000000000000
+      internalID: 5761196418538592151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_12
+      name: M_Gunslinger_Jump_57x66_12
       rect:
         serializedVersion: 2
-        x: 694
+        x: 684
         y: 0
-        width: 47
+        width: 57
         height: 66
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.195, y: 0.015}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c847a173a84bd1310800000000000000
-      internalID: 1377455566768206988
+      spriteID: d3149270e22fd4b60800000000000000
+      internalID: 7732102414767571261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Jump_61x66_13
+      name: M_Gunslinger_Jump_57x66_13
       rect:
         serializedVersion: 2
-        x: 752
-        y: 1
-        width: 45
-        height: 65
-      alignment: 6
-      pivot: {x: 0, y: 0}
+        x: 741
+        y: 0
+        width: 57
+        height: 66
+      alignment: 9
+      pivot: {x: 0.195, y: 0.015}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 306f323fe0fa44ef0800000000000000
-      internalID: -124782410915908093
+      spriteID: de340d548db779870800000000000000
+      internalID: 8689550174849090541
       vertices: []
       indices: 
       edges: []

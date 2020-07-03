@@ -12,7 +12,7 @@ public class TestRevolver : Weapon
 
     private List<RGBColor> bullets;
     private int maxBullets = 6;
-    private float bulletSpeed = 15;
+    public float bulletSpeed = 15;
     [HideInInspector]
     public bool isReloading = false;
 

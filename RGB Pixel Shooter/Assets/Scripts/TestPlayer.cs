@@ -45,16 +45,16 @@ public class TestPlayer : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.J)) {
-            ((TestRevolver) equippedWeapon).Load(RGBColor.RED);
+            ((TestShotgun) equippedWeapon).Load(RGBColor.RED);
         }
         else if (Input.GetKeyDown(KeyCode.K)) {
-            ((TestRevolver) equippedWeapon).Load(RGBColor.GREEN);
+            ((TestShotgun) equippedWeapon).Load(RGBColor.GREEN);
         }
         else if (Input.GetKeyDown(KeyCode.L)) {
-            ((TestRevolver) equippedWeapon).Load(RGBColor.BLUE);
+            ((TestShotgun) equippedWeapon).Load(RGBColor.BLUE);
         }
         else if (Input.GetKeyDown(KeyCode.Space)) {
-            ((TestRevolver) equippedWeapon).Shoot(transform.position);
+            ((TestShotgun) equippedWeapon).Shoot(transform.position);
         }
 
         // ColorBomb test
@@ -79,7 +79,7 @@ public class TestPlayer : MonoBehaviour {
 
     private void SwitchLane (int newLane) {
         //TODO: get rid of casting
-        if (newLane < 0 || 2 < newLane || ((TestRevolver) equippedWeapon).isReloading) {
+        if (newLane < 0 || 2 < newLane || ((TestShotgun) equippedWeapon).isReloading) {
             return;
         }
 

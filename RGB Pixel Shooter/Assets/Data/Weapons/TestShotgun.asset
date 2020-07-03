@@ -15,9 +15,10 @@ MonoBehaviour:
   deltaPosition: {x: 0.55, y: 1}
   bulletPrefab: {fileID: 6013488467053243120, guid: d58c0b47b7f024446a01cd16b81a98dc,
     type: 3}
-  dmgAmount: 100
+  dmgAmount: 80
   reloadTime: 1.5
+  bulletSpeed: 20
   isReloading: 0
-  numberOfPellets: 3
-  range: 8
-  angle: 20
+  numberOfPellets: 5
+  range: 10
+  angle: 15

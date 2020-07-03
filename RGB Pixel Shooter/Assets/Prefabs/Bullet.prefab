@@ -102,10 +102,10 @@ MonoBehaviour:
   bloodSplatter: {fileID: 1923756613354099486, guid: 48098cdb10a34d74896b2a95936e8c2a,
     type: 3}
   bulletSprites:
-  - {fileID: -8119929544814303167, guid: ed31c439bd27f2a45b96e474c5389ef2, type: 3}
-  - {fileID: -3375275900011558089, guid: cea63e30824f517449c4cfda24442bfe, type: 3}
-  - {fileID: 8109388948237087000, guid: 3d54ff51d31289641addbd766c2a6d45, type: 3}
-  - {fileID: 8109388948237087000, guid: 3d54ff51d31289641addbd766c2a6d45, type: 3}
+  - {fileID: 654171022123557234, guid: 43844fbc17ef1414b9bd1b4462cb96ce, type: 3}
+  - {fileID: -5147283379613638574, guid: 43844fbc17ef1414b9bd1b4462cb96ce, type: 3}
+  - {fileID: 8080341920383964308, guid: 43844fbc17ef1414b9bd1b4462cb96ce, type: 3}
+  - {fileID: -5660235833797017207, guid: 43844fbc17ef1414b9bd1b4462cb96ce, type: 3}
 --- !u!50 &6013488467053243120
 Rigidbody2D:
   serializedVersion: 4

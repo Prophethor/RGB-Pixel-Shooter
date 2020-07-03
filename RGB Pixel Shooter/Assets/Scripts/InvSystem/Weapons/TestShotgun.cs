@@ -12,7 +12,7 @@ public class TestShotgun : Weapon {
 
     private List<RGBColor> bullets;
     private int maxBullets = 2;
-    private float bulletSpeed = 15;
+    public float bulletSpeed = 15;
     [HideInInspector]
     public bool isReloading = false;
     public int numberOfPellets = 5;
@@ -86,7 +86,6 @@ public class TestShotgun : Weapon {
 
     private void InstantiatePellet (Vector3 position, double angle) {
         Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.identity);
-        Debug.Log(angle);
         bulletObj.velocity = new Vector2((float)Math.Cos(angle*Mathf.Deg2Rad)*bulletSpeed, (float) Math.Sin(angle*Mathf.Deg2Rad)*bulletSpeed);
         bulletObj.GetComponent<Projectile>().SetDamage(bullets[0], dmgAmount);
         bulletObj.GetComponent<Projectile>().SetRange(range);
