@@ -26,7 +26,7 @@ public class TestPlayer : MonoBehaviour {
         swipe.OnSwipe += Move;
 
         laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
-        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(0,0)).x*0.85f,transform.position.y);
+        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(0,0)).x*0.85f-1f,transform.position.y);
         animator = GetComponent<Animator>();
         animator.SetFloat("jumpSpeed", 0.15f/laneSwitchTime);
     }

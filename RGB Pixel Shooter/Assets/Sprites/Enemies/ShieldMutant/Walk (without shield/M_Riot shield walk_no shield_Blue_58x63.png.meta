@@ -1,0 +1,500 @@
+fileFormatVersion: 2
+guid: efa16e381d419574990c43f6510d1996
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6298864522403431543
+    second: M_Riot shield walk_no shield_Blue_58x63_0
+  - first:
+      213: 3877876731482686613
+    second: M_Riot shield walk_no shield_Blue_58x63_1
+  - first:
+      213: 8555627020792146178
+    second: M_Riot shield walk_no shield_Blue_58x63_2
+  - first:
+      213: -2036288825221323795
+    second: M_Riot shield walk_no shield_Blue_58x63_3
+  - first:
+      213: -7904710192443849876
+    second: M_Riot shield walk_no shield_Blue_58x63_4
+  - first:
+      213: -6994070197699770486
+    second: M_Riot shield walk_no shield_Blue_58x63_5
+  - first:
+      213: 1635427917771886924
+    second: M_Riot shield walk_no shield_Blue_58x63_6
+  - first:
+      213: -2189589588311376991
+    second: M_Riot shield walk_no shield_Blue_58x63_7
+  - first:
+      213: -676449496068788587
+    second: M_Riot shield walk_no shield_Blue_58x63_8
+  - first:
+      213: 2487118776166741263
+    second: M_Riot shield walk_no shield_Blue_58x63_9
+  - first:
+      213: 4381806015490499496
+    second: M_Riot shield walk_no shield_Blue_58x63_10
+  - first:
+      213: 3101216622962354
+    second: M_Riot shield walk_no shield_Blue_58x63_11
+  - first:
+      213: 7569151883704229976
+    second: M_Riot shield walk_no shield_Blue_58x63_12
+  - first:
+      213: -421180384352751473
+    second: M_Riot shield walk_no shield_Blue_58x63_13
+  - first:
+      213: 683659387498336787
+    second: M_Riot shield walk_no shield_Blue_58x63_14
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 40
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 774ca2a09ef0a6750800000000000000
+      internalID: 6298864522403431543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_1
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59447c6675cf0d530800000000000000
+      internalID: 3877876731482686613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_2
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 209ac0d1271bbb670800000000000000
+      internalID: 8555627020792146178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_3
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de3e5982a16adb3e0800000000000000
+      internalID: -2036288825221323795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_4
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6389fef5f3dc4290800000000000000
+      internalID: -7904710192443849876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_5
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8785fb163210fe90800000000000000
+      internalID: -6994070197699770486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_6
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c41dc8eb60532b610800000000000000
+      internalID: 1635427917771886924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_7
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ab7ec0ded30d91e0800000000000000
+      internalID: -2189589588311376991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_8
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59ee35e64c4cc96f0800000000000000
+      internalID: -676449496068788587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_9
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f057f9f7955048220800000000000000
+      internalID: 2487118776166741263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_10
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a32bf3fa5d4fcc30800000000000000
+      internalID: 4381806015490499496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_11
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b6ee234a840b0000800000000000000
+      internalID: 3101216622962354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_12
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8506b2ff8870b0960800000000000000
+      internalID: 7569151883704229976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_13
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f80ba440caaa72af0800000000000000
+      internalID: -421180384352751473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M_Riot shield walk_no shield_Blue_58x63_14
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 1
+        width: 58
+        height: 63
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 312133b3798dc7900800000000000000
+      internalID: 683659387498336787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
