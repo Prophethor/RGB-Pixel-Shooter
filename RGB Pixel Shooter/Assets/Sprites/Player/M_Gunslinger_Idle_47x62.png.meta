@@ -1,85 +1,46 @@
 fileFormatVersion: 2
-guid: 59d83eea5a6821c4cacf06b532af1ddd
+guid: 62b9630f3a9ba764ba01b1843b2a89ce
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2244483527684785948
-    second: M_Gunslinger_Load _45x61_0
+      213: -7507333933536258988
+    second: M_Gunslinger_Idle_47x62_0
   - first:
-      213: -3313926454906934823
-    second: M_Gunslinger_Load _45x61_1
+      213: 6478107985528545104
+    second: M_Gunslinger_Idle_47x62_1
   - first:
-      213: 231655196109002994
-    second: M_Gunslinger_Load _45x61_2
+      213: -2812982125691233847
+    second: M_Gunslinger_Idle_47x62_2
   - first:
-      213: -8944538359009850675
-    second: M_Gunslinger_Load _45x61_3
+      213: -3898663239234766517
+    second: M_Gunslinger_Idle_47x62_3
   - first:
-      213: -8455093058352870015
-    second: M_Gunslinger_Load _45x61_4
+      213: -7430684268401458759
+    second: M_Gunslinger_Idle_47x62_4
   - first:
-      213: -8314920390812879024
-    second: M_Gunslinger_Load _45x61_5
+      213: -4002960432350135570
+    second: M_Gunslinger_Idle_47x62_5
   - first:
-      213: 871169543498373621
-    second: M_Gunslinger_Load _45x61_6
+      213: 845424178116888200
+    second: M_Gunslinger_Idle_47x62_6
   - first:
-      213: -3129687254995328661
-    second: M_Gunslinger_Load _45x61_7
+      213: -4922611078140269439
+    second: M_Gunslinger_Idle_47x62_7
   - first:
-      213: -4455704869770972605
-    second: M_Gunslinger_Load _45x61_8
+      213: -4352104435035403858
+    second: M_Gunslinger_Idle_47x62_8
   - first:
-      213: -4471215069640382672
-    second: M_Gunslinger_Load _45x61_9
+      213: -5354153697628422649
+    second: M_Gunslinger_Idle_47x62_9
   - first:
-      213: 1688030790416697601
-    second: M_Gunslinger_Load _45x61_10
+      213: -5535779308063967151
+    second: M_Gunslinger_Idle_47x62_10
   - first:
-      213: -8243444754268399423
-    second: M_Gunslinger_Load _45x61_11
+      213: 4430085951925415447
+    second: M_Gunslinger_Idle_47x62_11
   - first:
-      213: 2573818322524310414
-    second: M_Gunslinger_Load _45x61_12
-  - first:
-      213: -5704501853086921184
-    second: M_Gunslinger_Load _45x61_0
-  - first:
-      213: 8884779830803731627
-    second: M_Gunslinger_Load _45x61_1
-  - first:
-      213: 6619658920547883936
-    second: M_Gunslinger_Load _45x61_2
-  - first:
-      213: -7319978285737082578
-    second: M_Gunslinger_Load _45x61_3
-  - first:
-      213: -2054387924326626729
-    second: M_Gunslinger_Load _45x61_4
-  - first:
-      213: -6934692908059600485
-    second: M_Gunslinger_Load _45x61_5
-  - first:
-      213: 8739428432049266464
-    second: M_Gunslinger_Load _45x61_6
-  - first:
-      213: -925871818160948251
-    second: M_Gunslinger_Load _45x61_7
-  - first:
-      213: 1358366017892217345
-    second: M_Gunslinger_Load _45x61_8
-  - first:
-      213: -5032327118620294983
-    second: M_Gunslinger_Load _45x61_9
-  - first:
-      213: -6759012176173347854
-    second: M_Gunslinger_Load _45x61_10
-  - first:
-      213: 2506207216836722346
-    second: M_Gunslinger_Load _45x61_11
-  - first:
-      213: 7370912584357387846
-    second: M_Gunslinger_Load _45x61_12
+      213: -6417092171927863083
+    second: M_Gunslinger_Idle_47x62_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -201,13 +162,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: M_Gunslinger_Load _45x61_0
+      name: M_Gunslinger_Idle_47x62_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 45
-        height: 61
+        width: 47
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02e4232d9c985d0b0800000000000000
-      internalID: -5704501853086921184
+      spriteID: 454d551209790d790800000000000000
+      internalID: -7507333933536258988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Load _45x61_1
+      name: M_Gunslinger_Idle_47x62_1
       rect:
         serializedVersion: 2
-        x: 45
+        x: 47
         y: 0
-        width: 45
-        height: 61
+        width: 47
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba49c9abe241d4b70800000000000000
-      internalID: 8884779830803731627
+      spriteID: 05fdc0ee3ecd6e950800000000000000
+      internalID: 6478107985528545104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Load _45x61_2
+      name: M_Gunslinger_Idle_47x62_2
       rect:
         serializedVersion: 2
-        x: 90
+        x: 94
         y: 0
-        width: 45
-        height: 61
+        width: 47
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ab908d37b0cddb50800000000000000
-      internalID: 6619658920547883936
+      spriteID: 9c996a619a746f8d0800000000000000
+      internalID: -2812982125691233847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Load _45x61_3
+      name: M_Gunslinger_Idle_47x62_3
       rect:
         serializedVersion: 2
-        x: 135
+        x: 141
         y: 0
-        width: 45
-        height: 61
+        width: 47
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,20 +239,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e21811338863a6a90800000000000000
-      internalID: -7319978285737082578
+      spriteID: b49b98e907a25e9c0800000000000000
+      internalID: -3898663239234766517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Load _45x61_4
+      name: M_Gunslinger_Idle_47x62_4
       rect:
         serializedVersion: 2
-        x: 180
+        x: 188
         y: 0
-        width: 45
-        height: 61
+        width: 47
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,20 +260,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75ac8a341195d73e0800000000000000
-      internalID: -2054387924326626729
+      spriteID: 9b109dff608e0e890800000000000000
+      internalID: -7430684268401458759
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Load _45x61_5
+      name: M_Gunslinger_Idle_47x62_5
       rect:
         serializedVersion: 2
-        x: 225
+        x: 235
         y: 0
-        width: 45
-        height: 61
+        width: 47
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,20 +281,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b99dfacaa8503cf90800000000000000
-      internalID: -6934692908059600485
+      spriteID: eea73d302b0a278c0800000000000000
+      internalID: -4002960432350135570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Load _45x61_6
+      name: M_Gunslinger_Idle_47x62_6
       rect:
         serializedVersion: 2
-        x: 270
+        x: 282
         y: 0
-        width: 45
-        height: 61
+        width: 47
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -341,20 +302,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02fde300bdfa84970800000000000000
-      internalID: 8739428432049266464
+      spriteID: 8860f2d8fcc8bbb00800000000000000
+      internalID: 845424178116888200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Load _45x61_7
+      name: M_Gunslinger_Idle_47x62_7
       rect:
         serializedVersion: 2
-        x: 315
+        x: 329
         y: 0
-        width: 45
-        height: 61
+        width: 47
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,20 +323,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ebb8f2ac74a623f0800000000000000
-      internalID: -925871818160948251
+      spriteID: 18ceb083e4f5fabb0800000000000000
+      internalID: -4922611078140269439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Load _45x61_8
+      name: M_Gunslinger_Idle_47x62_8
       rect:
         serializedVersion: 2
-        x: 360
+        x: 376
         y: 0
-        width: 45
-        height: 61
+        width: 47
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -383,20 +344,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1027d6342b2e9d210800000000000000
-      internalID: 1358366017892217345
+      spriteID: ea9005423183a93c0800000000000000
+      internalID: -4352104435035403858
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Load _45x61_9
+      name: M_Gunslinger_Idle_47x62_9
       rect:
         serializedVersion: 2
-        x: 405
+        x: 423
         y: 0
-        width: 45
-        height: 61
+        width: 47
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -404,20 +365,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b08215e525992ab0800000000000000
-      internalID: -5032327118620294983
+      spriteID: 70e730c549932b5b0800000000000000
+      internalID: -5354153697628422649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Load _45x61_10
+      name: M_Gunslinger_Idle_47x62_10
       rect:
         serializedVersion: 2
-        x: 450
+        x: 470
         y: 0
-        width: 45
-        height: 61
+        width: 47
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -425,20 +386,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2fbc5ae8c3a2332a0800000000000000
-      internalID: -6759012176173347854
+      spriteID: 158b3e39c06fc23b0800000000000000
+      internalID: -5535779308063967151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Load _45x61_11
+      name: M_Gunslinger_Idle_47x62_11
       rect:
         serializedVersion: 2
-        x: 495
+        x: 517
         y: 0
-        width: 45
-        height: 61
+        width: 47
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,20 +407,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aaeb21d6f26d7c220800000000000000
-      internalID: 2506207216836722346
+      spriteID: 71e66f0a3b3da7d30800000000000000
+      internalID: 4430085951925415447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Load _45x61_12
+      name: M_Gunslinger_Idle_47x62_12
       rect:
         serializedVersion: 2
-        x: 540
+        x: 564
         y: 0
-        width: 45
-        height: 61
+        width: 47
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -467,8 +428,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64e141551fdba4660800000000000000
-      internalID: 7370912584357387846
+      spriteID: 5d0cc493ba8e1f6a0800000000000000
+      internalID: -6417092171927863083
       vertices: []
       indices: 
       edges: []

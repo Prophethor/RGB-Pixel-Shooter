@@ -1,37 +1,22 @@
 fileFormatVersion: 2
-guid: e38f7356e7ea0814d9b696bbc68e909e
+guid: 89fc46f5986d5254a80283b55ddc4f60
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4746549265042191650
-    second: M_Gunslinger_Shoot_61x61_0
+      213: -2409841205946767784
+    second: M_Gunslinger_Shoot_63x62_0
   - first:
-      213: -3481793952464085047
-    second: M_Gunslinger_Shoot_61x61_1
+      213: 7220678012819872770
+    second: M_Gunslinger_Shoot_63x62_1
   - first:
-      213: -3562380854747571808
-    second: M_Gunslinger_Shoot_61x61_2
+      213: 1463410487096470288
+    second: M_Gunslinger_Shoot_63x62_2
   - first:
-      213: -3338300727814789200
-    second: M_Gunslinger_Shoot_61x61_3
+      213: 4479781648319964112
+    second: M_Gunslinger_Shoot_63x62_3
   - first:
-      213: -8618627368712700381
-    second: M_Gunslinger_Shoot_61x61_4
-  - first:
-      213: 8448175801787128089
-    second: M_Gunslinger_Shoot_61x61_0
-  - first:
-      213: 5404362889552294364
-    second: M_Gunslinger_Shoot_61x61_1
-  - first:
-      213: -3056839854857468538
-    second: M_Gunslinger_Shoot_61x61_2
-  - first:
-      213: -5597397016416182099
-    second: M_Gunslinger_Shoot_61x61_3
-  - first:
-      213: -3812355221766146498
-    second: M_Gunslinger_Shoot_61x61_4
+      213: -898531209186560492
+    second: M_Gunslinger_Shoot_63x62_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -77,7 +62,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -153,13 +138,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: M_Gunslinger_Shoot_61x61_0
+      name: M_Gunslinger_Shoot_63x62_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 61
-        height: 61
+        width: 63
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9199291a123fd3570800000000000000
-      internalID: 8448175801787128089
+      spriteID: 856a17ae0368e8ed0800000000000000
+      internalID: -2409841205946767784
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Shoot_61x61_1
+      name: M_Gunslinger_Shoot_63x62_1
       rect:
         serializedVersion: 2
-        x: 61
+        x: 63
         y: 0
-        width: 61
-        height: 61
+        width: 63
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd1711d1a67200b40800000000000000
-      internalID: 5404362889552294364
+      spriteID: 20c1a975560053460800000000000000
+      internalID: 7220678012819872770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Shoot_61x61_2
+      name: M_Gunslinger_Shoot_63x62_2
       rect:
         serializedVersion: 2
-        x: 122
+        x: 126
         y: 0
-        width: 61
-        height: 61
+        width: 63
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 685c6fb095ce395d0800000000000000
-      internalID: -3056839854857468538
+      spriteID: 01b67f3a5141f4410800000000000000
+      internalID: 1463410487096470288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Shoot_61x61_3
+      name: M_Gunslinger_Shoot_63x62_3
       rect:
         serializedVersion: 2
-        x: 183
+        x: 189
         y: 0
-        width: 61
-        height: 61
+        width: 63
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da0aea1e11d0252b0800000000000000
-      internalID: -5597397016416182099
+      spriteID: 0d3ec6b9ca16b2e30800000000000000
+      internalID: 4479781648319964112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M_Gunslinger_Shoot_61x61_4
+      name: M_Gunslinger_Shoot_63x62_4
       rect:
         serializedVersion: 2
-        x: 244
+        x: 252
         y: 0
-        width: 61
-        height: 61
+        width: 63
+        height: 62
       alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -251,8 +236,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e36f501ef1bc71bc0800000000000000
-      internalID: -3812355221766146498
+      spriteID: 41635d830a6c783f0800000000000000
+      internalID: -898531209186560492
       vertices: []
       indices: 
       edges: []
