@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e31dfccc9c34e244da7854c052f7e64d, type: 3}
   m_Name: TestShotgun
   m_EditorClassIdentifier: 
-  deltaPosition: {x: 0.55, y: 1}
+  deltaPosition: {x: 1.3, y: 1}
   bulletPrefab: {fileID: 6013488467053243120, guid: d58c0b47b7f024446a01cd16b81a98dc,
     type: 3}
   dmgAmount: 80

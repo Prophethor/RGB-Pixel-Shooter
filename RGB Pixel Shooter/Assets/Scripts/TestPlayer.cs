@@ -10,7 +10,6 @@ public class TestPlayer : MonoBehaviour {
     public GameObject swipeDetector;
     private Swipe swipe;
     private Animator animator;
-    public AnimatorOverrideController otherWeapon;
 
     private int lane = 1;
 
@@ -22,11 +21,6 @@ public class TestPlayer : MonoBehaviour {
 
     private void Start () {
 
-        animator = GetComponent<Animator>();
-        if (equippedWeapon.name == "TestShotgun" + "(Clone)")
-        {
-            animator.runtimeAnimatorController = otherWeapon;
-        }
 
         swipe = Instantiate(swipeDetector).GetComponent<Swipe>();
         swipe.minDistanceForSwipe = 30;
