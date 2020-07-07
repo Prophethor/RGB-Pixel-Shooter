@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1923756613354099486
+--- !u!1 &6013488467053243122
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1923756613354099483}
-  - component: {fileID: 1923756613354099484}
-  - component: {fileID: 6761513973187095564}
-  - component: {fileID: 1090364935558892834}
-  m_Layer: 0
-  m_Name: BloodSplatter
+  - component: {fileID: 6013488467053243127}
+  - component: {fileID: 6013488467053243126}
+  - component: {fileID: 6013488467053243121}
+  - component: {fileID: 6013488467053243120}
+  - component: {fileID: 6013488467053243123}
+  - component: {fileID: 2459883704520950169}
+  m_Layer: 9
+  m_Name: RevolverBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1923756613354099483
+--- !u!4 &6013488467053243127
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923756613354099486}
+  m_GameObject: {fileID: 6013488467053243122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.3553212, y: -4.010027, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1923756613354099484
+--- !u!212 &6013488467053243126
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923756613354099486}
+  m_GameObject: {fileID: 6013488467053243122}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,41 +74,93 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6317404349964352589, guid: 741a5bf3d871ae24390909e85fd3061a,
+  m_Sprite: {fileID: 1882690539680087040, guid: 313da3b480e6d9a4f884ba0ce4f0cab2,
     type: 3}
-  m_Color: {r: 0, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.3, y: 0.275}
+  m_Size: {x: 0.375, y: 0.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6761513973187095564
+--- !u!114 &6013488467053243121
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923756613354099486}
+  m_GameObject: {fileID: 6013488467053243122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca3c0eb07bc46944494e94c85e34e564, type: 3}
+  m_Script: {fileID: 11500000, guid: 8477fa193cecf204d8f245ddc21fc2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1090364935558892834
+  damage:
+    color: 0
+    amount: 0
+  bloodSplatter: {fileID: 1923756613354099486, guid: 48098cdb10a34d74896b2a95936e8c2a,
+    type: 3}
+--- !u!50 &6013488467053243120
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013488467053243122}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!61 &6013488467053243123
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013488467053243122}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.375, y: 0.1}
+    newSize: {x: 0.375, y: 0.1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.31666666, y: 0.4}
+  m_EdgeRadius: 0
+--- !u!95 &2459883704520950169
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923756613354099486}
+  m_GameObject: {fileID: 6013488467053243122}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3c7cc8f54b858fa48914f8ea2af84c35, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4994e6bca2f5ca642a7fbd2d5b1d3b1a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

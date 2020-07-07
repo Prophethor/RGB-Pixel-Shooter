@@ -13,7 +13,7 @@ public static class Utilities {
             case RGBColor.BLUE:
                 return "Blue";
             default:
-                return "Black";
+                return "White";
         }
     }
 
@@ -26,7 +26,7 @@ public static class Utilities {
             case RGBColor.BLUE:
                 return Color.blue;
             default:
-                return Color.black;
+                return Color.white;
         }
     }
 }

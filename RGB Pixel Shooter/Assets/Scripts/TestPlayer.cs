@@ -29,7 +29,8 @@ public class TestPlayer : MonoBehaviour {
         laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
         transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(0,0)).x*0.85f-1f,transform.position.y);
         animator = GetComponent<Animator>();
-        animator.SetFloat("jumpSpeed", 0.15f/laneSwitchTime);
+        animator.runtimeAnimatorController = equippedWeapon.controller;
+        animator.SetFloat("jumpSpeed", 0.2f/laneSwitchTime);
     }
 
     private void Update () {
@@ -46,16 +47,16 @@ public class TestPlayer : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.J)) {
-            ((TestShotgun) equippedWeapon).Load(RGBColor.RED);
+            ((TestRevolver) equippedWeapon).Load(RGBColor.RED);
         }
         else if (Input.GetKeyDown(KeyCode.K)) {
-            ((TestShotgun) equippedWeapon).Load(RGBColor.GREEN);
+            ((TestRevolver) equippedWeapon).Load(RGBColor.GREEN);
         }
         else if (Input.GetKeyDown(KeyCode.L)) {
-            ((TestShotgun) equippedWeapon).Load(RGBColor.BLUE);
+            ((TestRevolver) equippedWeapon).Load(RGBColor.BLUE);
         }
         else if (Input.GetKeyDown(KeyCode.Space)) {
-            ((TestShotgun) equippedWeapon).Shoot(transform.position);
+            ((TestRevolver) equippedWeapon).Shoot(transform.position);
         }
 
         // ColorBomb test
@@ -80,7 +81,7 @@ public class TestPlayer : MonoBehaviour {
 
     private void SwitchLane (int newLane) {
         //TODO: get rid of casting
-        if (newLane < 0 || 2 < newLane || ((TestShotgun) equippedWeapon).isReloading) {
+        if (newLane < 0 || 2 < newLane || (equippedWeapon.CanMove())) {
             return;
         }
 

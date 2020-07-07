@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "TestRevolver", menuName = "Weapons/TestRevolver")]
@@ -13,8 +14,6 @@ public class TestRevolver : Weapon
     private List<RGBColor> bullets;
     private int maxBullets = 6;
     public float bulletSpeed = 15;
-    [HideInInspector]
-    public bool isReloading = false;
 
     private Animator animator;
     private GameObject player;
@@ -52,9 +51,7 @@ public class TestRevolver : Weapon
         if (!isReloading && !player.GetComponent<TestPlayer>().isJumping) {
             if (bullets.Count > 0) {
                 animator.SetTrigger("shootTrigger");
-                Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.identity);
-                bulletObj.velocity = new Vector2(bulletSpeed, 0);
-                bulletObj.GetComponent<Projectile>().SetDamage(bullets[0], dmgAmount);
+                InstantiateBullet(position);
                 bullets.RemoveAt(0);
             }
             if(bullets.Count==0) {
@@ -72,6 +69,12 @@ public class TestRevolver : Weapon
 
     public Vector3 GetPlayerPos () {
         return GameObject.FindGameObjectWithTag("Player").transform.position;
+    }
+
+    public void InstantiateBullet (Vector3 position) {
+        Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.Euler(0,0,180));
+        bulletObj.velocity = new Vector2(bulletSpeed, 0);
+        bulletObj.GetComponent<Projectile>().SetDamage(bullets[0], dmgAmount);
     }
 
 }

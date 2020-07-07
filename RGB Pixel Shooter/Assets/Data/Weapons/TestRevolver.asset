@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: TestRevolver
   m_EditorClassIdentifier: 
   deltaPosition: {x: 0.55, y: 1}
-  bulletPrefab: {fileID: 6013488467053243120, guid: d58c0b47b7f024446a01cd16b81a98dc,
+  controller: {fileID: 22100000, guid: f3e94dd00be58f14db3c4cff86f58e27, type: 2}
+  bulletPrefab: {fileID: 6013488467053243120, guid: dae155b71adc46e4ebbfd49d778f5343,
     type: 3}
   dmgAmount: 100
   reloadTime: 1.5
-  isReloading: 0
+  bulletSpeed: 15

@@ -14,7 +14,6 @@ public class TestShotgun : Weapon {
     private int maxBullets = 2;
     public float bulletSpeed = 15;
     [HideInInspector]
-    public bool isReloading = false;
     public int numberOfPellets = 5;
     public float range = 5;
     public double angle = 45;
@@ -28,7 +27,7 @@ public class TestShotgun : Weapon {
     public override void LevelStart () {
         player = GameObject.FindGameObjectWithTag("Player");
         animator = player.GetComponent<Animator>();
-        animator.SetFloat("loadSpeed", 0.4f / reloadTime);
+        animator.SetFloat("loadSpeed", 0.25f / reloadTime);
         bullets = new List<RGBColor>();
         Reload();
         if (UIHooks == null) {
@@ -85,7 +84,8 @@ public class TestShotgun : Weapon {
     }
 
     private void InstantiatePellet (Vector3 position, double angle) {
-        Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.identity);
+        //why does it need to be angle-180 and not just angle??
+        Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.Euler(0,0,(float)angle-180));
         bulletObj.velocity = new Vector2((float)Math.Cos(angle*Mathf.Deg2Rad)*bulletSpeed, (float) Math.Sin(angle*Mathf.Deg2Rad)*bulletSpeed);
         bulletObj.GetComponent<Projectile>().SetDamage(bullets[0], dmgAmount);
         bulletObj.GetComponent<Projectile>().SetRange(range);

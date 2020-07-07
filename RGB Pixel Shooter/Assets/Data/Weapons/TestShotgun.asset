@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: TestShotgun
   m_EditorClassIdentifier: 
   deltaPosition: {x: 1.3, y: 1}
+  controller: {fileID: 22100000, guid: 2d536ddde0d50b046b05597224e7b1fb, type: 2}
   bulletPrefab: {fileID: 6013488467053243120, guid: d58c0b47b7f024446a01cd16b81a98dc,
     type: 3}
-  dmgAmount: 80
+  dmgAmount: 60
   reloadTime: 1.5
-  bulletSpeed: 20
-  isReloading: 0
+  bulletSpeed: 15
   numberOfPellets: 5
-  range: 10
-  angle: 15
+  range: 4
+  angle: 25

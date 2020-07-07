@@ -28,11 +28,12 @@ public class GameManager : MonoBehaviour {
     public void SwitchWeapon () {
         if (player.equippedWeapon == loadout.GetWeapons()[0]) {
             player.equippedWeapon = loadout.GetWeapons()[1];
+            player.GetComponent<Animator>().runtimeAnimatorController = player.equippedWeapon.controller;
         }
         else {
             player.equippedWeapon = loadout.GetWeapons()[0];
+            player.GetComponent<Animator>().runtimeAnimatorController = player.equippedWeapon.controller;
         }
-        Debug.Log("Switched. Weapon is now " + player.equippedWeapon.GetName());
     }
 
     public void WinGame () {

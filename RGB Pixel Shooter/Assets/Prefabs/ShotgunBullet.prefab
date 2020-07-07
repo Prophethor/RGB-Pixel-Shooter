@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 6013488467053243121}
   - component: {fileID: 6013488467053243120}
   - component: {fileID: 6013488467053243123}
+  - component: {fileID: 3914552663490159154}
   m_Layer: 9
-  m_Name: Bullet
+  m_Name: ShotgunBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6013488467053243122}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6013488467053243126
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,15 +74,16 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ed31c439bd27f2a45b96e474c5389ef2, type: 3}
+  m_Sprite: {fileID: -1765985549716314287, guid: 55f425bc10debf446b320ca44f50784e,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.6, y: 1.6}
+  m_Size: {x: 0.35, y: 0.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &6013488467053243121
@@ -101,11 +103,6 @@ MonoBehaviour:
     amount: 0
   bloodSplatter: {fileID: 1923756613354099486, guid: 48098cdb10a34d74896b2a95936e8c2a,
     type: 3}
-  bulletSprites:
-  - {fileID: 654171022123557234, guid: 43844fbc17ef1414b9bd1b4462cb96ce, type: 3}
-  - {fileID: -5147283379613638574, guid: 43844fbc17ef1414b9bd1b4462cb96ce, type: 3}
-  - {fileID: 8080341920383964308, guid: 43844fbc17ef1414b9bd1b4462cb96ce, type: 3}
-  - {fileID: -5660235833797017207, guid: 43844fbc17ef1414b9bd1b4462cb96ce, type: 3}
 --- !u!50 &6013488467053243120
 Rigidbody2D:
   serializedVersion: 4
@@ -143,9 +140,9 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.6, y: 1.6}
-    newSize: {x: 1.6, y: 1.6}
+    pivot: {x: 0.47346312, y: 0.38309777}
+    oldSize: {x: 0.35, y: 0.3}
+    newSize: {x: 0.35, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -153,3 +150,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.31666666, y: 0.4}
   m_EdgeRadius: 0
+--- !u!95 &3914552663490159154
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6013488467053243122}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fd7fd27ca066aaa48ba6c7373cb75918, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

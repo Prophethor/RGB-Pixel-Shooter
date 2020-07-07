@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,9 +9,12 @@ public enum WeaponState { READY, COOLDOWN, LOADING }
 [Serializable]
 public abstract class Weapon : ScriptableObject, Item {
 
+    protected bool isReloading = false;
+
     protected Dictionary<string, UnityEngine.Events.UnityAction> UIHooks;
 
     public Vector2 deltaPosition;
+    public AnimatorOverrideController controller;
 
     public abstract string GetName ();
 
@@ -19,6 +23,10 @@ public abstract class Weapon : ScriptableObject, Item {
     public abstract void LevelStart ();
 
     protected abstract void InitHooks ();
+
+    public virtual bool CanMove () {
+        return isReloading;
+    }
 
     public virtual void HookUI (Transform weaponUI) {
         if (UIHooks == null) {
