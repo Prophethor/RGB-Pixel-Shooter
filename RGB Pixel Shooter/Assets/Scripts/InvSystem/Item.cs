@@ -1,5 +1,9 @@
-﻿public interface Item {
+﻿using UnityEngine;
+
+public interface Item {
 
     string GetName ();
-    // TODO: GetIcon() for Inventory screen?
+    Sprite GetIcon ();
+
+    ItemToken GetToken ();
 }

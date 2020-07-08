@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e31dfccc9c34e244da7854c052f7e64d, type: 3}
-  m_Name: TestShotgun
+  m_Name: TestShotgun 1
   m_EditorClassIdentifier: 
   deltaPosition: {x: 0.7, y: 0.5}
   controller: {fileID: 22100000, guid: 2d536ddde0d50b046b05597224e7b1fb, type: 2}

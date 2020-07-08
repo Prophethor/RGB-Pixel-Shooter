@@ -20,7 +20,13 @@ public abstract class Weapon : ScriptableObject, Item {
 
     public abstract string GetName ();
 
-    public abstract void Shoot (Vector3 position);
+    public Sprite GetIcon () {
+        return weaponSprite;
+    }
+
+    public abstract ItemToken GetToken ();
+
+    public abstract void Shoot ();
 
     public abstract void LevelStart ();
 
@@ -40,6 +46,12 @@ public abstract class Weapon : ScriptableObject, Item {
                 button.onClick.AddListener(UIHooks[button.tag]);
             }
         }
+
+        TouchManager.GetInstance().AddListener((touch) => {
+            if (touch.position.x > Camera.main.scaledPixelWidth / 2f) {
+                Shoot();
+            }
+        });
     }
 
     public virtual void UnhookUI (Transform weaponUI) {

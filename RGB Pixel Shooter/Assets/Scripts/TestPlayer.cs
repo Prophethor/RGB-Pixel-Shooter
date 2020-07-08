@@ -27,10 +27,10 @@ public class TestPlayer : MonoBehaviour {
         swipe.OnSwipe += Move;
 
         laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
-        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(0,0)).x*0.85f-1f,transform.position.y);
+        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(0, 0)).x * 0.85f - 1f, transform.position.y);
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = equippedWeapon.controller;
-        animator.SetFloat("jumpSpeed", 0.2f/laneSwitchTime);
+        animator.SetFloat("jumpSpeed", 0.2f / laneSwitchTime);
     }
 
     private void Update () {
@@ -56,7 +56,7 @@ public class TestPlayer : MonoBehaviour {
             ((TestRevolver) equippedWeapon).Load(RGBColor.BLUE);
         }
         else if (Input.GetKeyDown(KeyCode.Space)) {
-            ((TestRevolver) equippedWeapon).Shoot(transform.position);
+            ((TestRevolver) equippedWeapon).Shoot();
         }
 
         // ColorBomb test
@@ -69,11 +69,11 @@ public class TestPlayer : MonoBehaviour {
     }
 
     public void Move (Swipe.SwipeData swipe) {
-        if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
+        if (PosOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
             swipe.direction == Swipe.SwipeDirection.Down) {
             SwitchLane(lane - 1);
         }
-        else if (posOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
+        else if (PosOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
             swipe.direction == Swipe.SwipeDirection.Up) {
             SwitchLane(lane + 1);
         }
@@ -90,12 +90,12 @@ public class TestPlayer : MonoBehaviour {
         lane = newLane;
         //if player keeps switching lanes for longer than laneSwitchTime, isJumping is gonna become false and he could shoot midair
         Tweener.AddTween(() => transform.position.y, (x) => transform.position = new Vector3(transform.position.x, x, transform.position.z),
-            PlayField.GetLanePosition(newLane)-laneOffset, laneSwitchTime, TweenMethods.HardLog, () => {
+            PlayField.GetLanePosition(newLane) - laneOffset, laneSwitchTime, TweenMethods.HardLog, () => {
                 isJumping = false;
             });
     }
 
-    bool posOnPanel (Vector2 touch, RectTransform panel) {
+    bool PosOnPanel (Vector2 touch, RectTransform panel) {
         if ((touch.x >= panel.position.x && touch.x <= panel.position.x + panel.rect.width) &&
             (touch.y >= panel.position.y && touch.y <= panel.position.y + panel.rect.height)) return true;
         return false;

@@ -4,7 +4,12 @@ using UnityEngine;
 using UnityEditor;
 
 public class SaveTester : MonoBehaviour {
+    [SerializeField, SerializeReference]
+    public Weapon item;
 
+    public void AddItem () {
+        InventoryManager.GetInstance().GetInventory().AddItem(item.GetToken());
+    }
 }
 
 #if UNITY_EDITOR
@@ -14,6 +19,10 @@ public class SaveTesterEditor : Editor {
 
     public override void OnInspectorGUI () {
         DrawDefaultInspector();
+
+        if (GUILayout.Button("Add item")) {
+            ((SaveTester) target).AddItem();
+        }
 
         if (GUILayout.Button("Save")) {
             SaveManager.GetInstance().Save();

@@ -10,6 +10,10 @@ public class ColorBomb : Consumable {
         return "ColorBomb";
     }
 
+    public override ItemToken GetToken () {
+        throw new System.NotImplementedException();
+    }
+
     // Takes world space position
     public override void Use (Vector2 position) {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(position, radius, LayerMask.GetMask("Enemies"));

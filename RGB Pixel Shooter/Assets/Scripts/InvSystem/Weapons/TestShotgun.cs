@@ -24,6 +24,10 @@ public class TestShotgun : Weapon {
 
     public override string GetName () { return "Shotgun"; }
 
+    public override ItemToken GetToken () {
+        return new ShotgunToken(this);
+    }
+
     public override void LevelStart () {
         player = GameObject.FindGameObjectWithTag("Player");
         animator = player.GetComponent<Animator>();
@@ -33,7 +37,7 @@ public class TestShotgun : Weapon {
         if (UIHooks == null) {
             InitHooks();
         }
-        if(numberOfPellets!=1)angleStep = angle * 2 / (numberOfPellets-1);
+        if (numberOfPellets != 1) angleStep = angle * 2 / (numberOfPellets - 1);
     }
 
     protected override void InitHooks () {
@@ -41,7 +45,7 @@ public class TestShotgun : Weapon {
         UIHooks.Add("LoadRed", () => Load(RGBColor.RED));
         UIHooks.Add("LoadGreen", () => Load(RGBColor.GREEN));
         UIHooks.Add("LoadBlue", () => Load(RGBColor.BLUE));
-        UIHooks.Add("Shoot", () => Shoot(GetPlayerPos()));
+        UIHooks.Add("Shoot", () => Shoot());
     }
 
     public void Load (RGBColor color) {
@@ -52,17 +56,17 @@ public class TestShotgun : Weapon {
         }
     }
 
-    public override void Shoot (Vector3 position) {
+    public override void Shoot () {
         if (!isReloading && !player.GetComponent<TestPlayer>().isJumping) {
             if (bullets.Count > 0) {
                 animator.SetTrigger("shootTrigger");
                 if (numberOfPellets != 1) {
                     for (int i = 0; i < numberOfPellets; i++) {
-                        InstantiatePellet(position, angle - i * angleStep);
+                        InstantiatePellet(player.transform.position + (Vector3) deltaPosition, angle - i * angleStep);
                     }
                 }
                 else {
-                    InstantiatePellet(position, 0);
+                    InstantiatePellet(player.transform.position + (Vector3) deltaPosition, 0);
                 }
                 bullets.RemoveAt(0);
             }
@@ -85,8 +89,8 @@ public class TestShotgun : Weapon {
 
     private void InstantiatePellet (Vector3 position, double angle) {
         //why does it need to be angle-180 and not just angle??
-        Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.Euler(0,0,(float)angle-180));
-        bulletObj.velocity = new Vector2((float)Math.Cos(angle*Mathf.Deg2Rad)*bulletSpeed, (float) Math.Sin(angle*Mathf.Deg2Rad)*bulletSpeed);
+        Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.Euler(0, 0, (float) angle - 180));
+        bulletObj.velocity = new Vector2((float) Math.Cos(angle * Mathf.Deg2Rad) * bulletSpeed, (float) Math.Sin(angle * Mathf.Deg2Rad) * bulletSpeed);
         bulletObj.GetComponent<Projectile>().SetDamage(bullets[0], dmgAmount);
         bulletObj.GetComponent<Projectile>().SetRange(range);
     }

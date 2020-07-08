@@ -19,18 +19,20 @@ public class SaveManager {
     }
 
     private SaveState GenerateSaveState () {
-        SaveState saveState = new SaveState();
+        SaveState saveState = new SaveState {
 
-        // TODO: Replace dummy values with real values
-        saveState.inventory = new Inventory();
-        saveState.coins = 46;
-        saveState.unlockedLevels = 4;
+            // TODO: Replace dummy values with real values
+            inventory = InventoryManager.GetInstance().GetInventory(),
+            coins = 46,
+            unlockedLevels = 4
+        };
 
         return saveState;
     }
 
     private void ApplySaveState (SaveState saveState) {
-        // TODO: Apply the SaveState to the running game
+        InventoryManager.GetInstance().SetInventory(saveState.inventory);
+        Debug.Log(saveState.coins);
     }
 
     public void Save () {
@@ -50,6 +52,6 @@ public class SaveManager {
         saveState = (SaveState) bf.Deserialize(file);
         file.Close();
 
-        Debug.Log(saveState.coins);
+        ApplySaveState(saveState);
     }
 }

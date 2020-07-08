@@ -5,8 +5,7 @@ using UnityEngine;
 using UnityScript.Steps;
 
 [CreateAssetMenu(fileName = "TestRevolver", menuName = "Weapons/TestRevolver")]
-public class TestRevolver : Weapon
-{
+public class TestRevolver : Weapon {
 
     public Rigidbody2D bulletPrefab;
     public int dmgAmount = 100;
@@ -18,9 +17,13 @@ public class TestRevolver : Weapon
     private GameObject player;
     public override string GetName () { return "Revolver"; }
 
+    public override ItemToken GetToken () {
+        return new RevolverToken(this);
+    }
+
     public override void LevelStart () {
         player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<Animator>().SetFloat("loadSpeed", 0.4f/reloadTime);
+        player.GetComponent<Animator>().SetFloat("loadSpeed", 0.4f / reloadTime);
         bullets = new List<RGBColor>();
         while (bullets.Count < maxBullets) bullets.Add(RGBColor.NONE);
         if (UIHooks == null) {
@@ -33,7 +36,7 @@ public class TestRevolver : Weapon
         UIHooks.Add("LoadRed", () => Load(RGBColor.RED));
         UIHooks.Add("LoadGreen", () => Load(RGBColor.GREEN));
         UIHooks.Add("LoadBlue", () => Load(RGBColor.BLUE));
-        UIHooks.Add("Shoot", () => Shoot(GetPlayerPos()));
+        UIHooks.Add("Shoot", () => Shoot());
     }
 
     public void Load (RGBColor color) {
@@ -44,16 +47,16 @@ public class TestRevolver : Weapon
         }
     }
 
-    public override void Shoot (Vector3 position) {
+    public override void Shoot () {
         if (!isReloading && !player.GetComponent<TestPlayer>().isJumping) {
             if (bullets.Count > 0) {
                 player.GetComponent<Animator>().SetTrigger("shootTrigger");
-                InstantiateBullet(position);
+                InstantiateBullet(player.transform.position + (Vector3) deltaPosition);
                 bullets.RemoveAt(0);
             }
-            if(bullets.Count==0) {
+            if (bullets.Count == 0) {
                 isReloading = true;
-                Tweener.Invoke(0.15f,()=> {
+                Tweener.Invoke(0.15f, () => {
                     player.GetComponent<Animator>().SetTrigger("loadTrigger");
                     Tweener.Invoke(reloadTime, () => {
                         while (bullets.Count < maxBullets) bullets.Add(RGBColor.NONE);
@@ -69,7 +72,7 @@ public class TestRevolver : Weapon
     }
 
     public void InstantiateBullet (Vector3 position) {
-        Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.Euler(0,0,180));
+        Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.Euler(0, 0, 180));
         bulletObj.velocity = new Vector2(bulletSpeed, 0);
         bulletObj.GetComponent<Projectile>().SetDamage(bullets[0], dmgAmount);
     }
