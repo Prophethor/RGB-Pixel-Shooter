@@ -15,6 +15,8 @@ public abstract class Weapon : ScriptableObject, Item {
 
     public Vector2 deltaPosition;
     public AnimatorOverrideController controller;
+    public GameObject UIbarrel;
+    public Sprite weaponSprite;
 
     public abstract string GetName ();
 

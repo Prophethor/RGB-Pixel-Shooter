@@ -8,43 +8,50 @@ public class UITest : MonoBehaviour {
 
     public Transform weapon1Panel;
     public Transform weapon2Panel;
-    public Transform barrel1Panel;
-    public Transform barrel2Panel;
-    public Image currentWeapon;
-    public Image otherWeapon;
-
-    public GameManager gameManager;
+    public Transform barrelPanel;
+    public Image currentWeaponPanel;
+    public Image otherWeaponPanel;
 
     public TestPlayer player;
-    public RectTransform weaponPanel;
-    private bool weapon1Selected = true;
+    public GameManager gameManager;
     public GameObject swipeDetector;
-    private Sprite sprite;
+
+    private bool weapon1Selected = true;
+    private GameObject weapon1Barrel, weapon2Barrel;
+    private Sprite weapon1Sprite, weapon2Sprite;
 
     private void Start () {
         gameManager.GetLoadout().GetWeapons()[0].HookUI(weapon1Panel);
         gameManager.GetLoadout().GetWeapons()[1].HookUI(weapon2Panel);
-
+        weapon1Barrel = Instantiate(gameManager.GetLoadout().GetWeapons()[0].UIbarrel, barrelPanel);
+        weapon2Barrel = Instantiate(gameManager.GetLoadout().GetWeapons()[1].UIbarrel, barrelPanel);
+        weapon1Sprite = gameManager.GetLoadout().GetWeapons()[0].weaponSprite;
+        weapon2Sprite = gameManager.GetLoadout().GetWeapons()[1].weaponSprite;
+        currentWeaponPanel.color = Color.white;
+        otherWeaponPanel.color = Color.white;
+        currentWeaponPanel.sprite = weapon1Sprite;
+        otherWeaponPanel.sprite = weapon2Sprite;
     }
 
 
     public void SwitchWeapon () {
-        sprite = currentWeapon.sprite;
-        currentWeapon.sprite = otherWeapon.sprite;
-        otherWeapon.sprite = sprite;
         
         if (weapon1Selected) {
             weapon1Panel.gameObject.SetActive(false);
             weapon2Panel.gameObject.SetActive(true);
-            barrel1Panel.gameObject.SetActive(false);
-            barrel2Panel.gameObject.SetActive(true);
+            weapon1Barrel.gameObject.SetActive(false);
+            weapon2Barrel.gameObject.SetActive(true);
+            currentWeaponPanel.sprite = weapon2Sprite;
+            otherWeaponPanel.sprite = weapon1Sprite;
             weapon1Selected = false;
         }
         else {
             weapon1Panel.gameObject.SetActive(true);
             weapon2Panel.gameObject.SetActive(false);
-            barrel1Panel.gameObject.SetActive(true);
-            barrel2Panel.gameObject.SetActive(false);
+            weapon1Barrel.gameObject.SetActive(true);
+            weapon2Barrel.gameObject.SetActive(false);
+            currentWeaponPanel.sprite = weapon1Sprite;
+            otherWeaponPanel.sprite = weapon2Sprite;
             weapon1Selected = true;
         }
         gameManager.SwitchWeapon();
@@ -64,10 +71,6 @@ public class UITest : MonoBehaviour {
 
     private void OnDestroy () {
         //UnhookWeapons();
-    }
-
-    public void ButtonLog (string msg) {
-        Debug.Log(msg);
     }
 }
 

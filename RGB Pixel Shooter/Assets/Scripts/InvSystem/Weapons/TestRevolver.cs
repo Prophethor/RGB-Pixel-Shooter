@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityScript.Steps;
 
 [CreateAssetMenu(fileName = "TestRevolver", menuName = "Weapons/TestRevolver")]
 public class TestRevolver : Weapon
@@ -14,16 +15,12 @@ public class TestRevolver : Weapon
     private List<RGBColor> bullets;
     private int maxBullets = 6;
     public float bulletSpeed = 15;
-
-    private Animator animator;
     private GameObject player;
-
     public override string GetName () { return "Revolver"; }
 
     public override void LevelStart () {
         player = GameObject.FindGameObjectWithTag("Player");
-        animator = player.GetComponent<Animator>();
-        animator.SetFloat("loadSpeed", 0.4f/reloadTime);
+        player.GetComponent<Animator>().SetFloat("loadSpeed", 0.4f/reloadTime);
         bullets = new List<RGBColor>();
         while (bullets.Count < maxBullets) bullets.Add(RGBColor.NONE);
         if (UIHooks == null) {
@@ -50,14 +47,14 @@ public class TestRevolver : Weapon
     public override void Shoot (Vector3 position) {
         if (!isReloading && !player.GetComponent<TestPlayer>().isJumping) {
             if (bullets.Count > 0) {
-                animator.SetTrigger("shootTrigger");
+                player.GetComponent<Animator>().SetTrigger("shootTrigger");
                 InstantiateBullet(position);
                 bullets.RemoveAt(0);
             }
             if(bullets.Count==0) {
                 isReloading = true;
                 Tweener.Invoke(0.15f,()=> {
-                    animator.SetTrigger("loadTrigger");
+                    player.GetComponent<Animator>().SetTrigger("loadTrigger");
                     Tweener.Invoke(reloadTime, () => {
                         while (bullets.Count < maxBullets) bullets.Add(RGBColor.NONE);
                         isReloading = false;

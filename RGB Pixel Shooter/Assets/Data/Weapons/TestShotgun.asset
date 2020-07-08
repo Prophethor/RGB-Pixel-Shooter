@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deltaPosition: {x: 1.3, y: 1}
   controller: {fileID: 22100000, guid: 2d536ddde0d50b046b05597224e7b1fb, type: 2}
+  UIbarrel: {fileID: 463111997490701878, guid: e5cb2bb1a49ef604eb6e619e6d1f654d, type: 3}
+  weaponSprite: {fileID: 8074781941680627385, guid: 43844fbc17ef1414b9bd1b4462cb96ce,
+    type: 3}
   bulletPrefab: {fileID: 6013488467053243120, guid: d58c0b47b7f024446a01cd16b81a98dc,
     type: 3}
   dmgAmount: 60
