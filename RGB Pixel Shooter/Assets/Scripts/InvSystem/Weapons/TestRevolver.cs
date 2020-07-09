@@ -1,9 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityScript.Steps;
-
 [CreateAssetMenu(fileName = "TestRevolver", menuName = "Weapons/TestRevolver")]
 public class TestRevolver : Weapon {
 
@@ -39,7 +36,7 @@ public class TestRevolver : Weapon {
         UIHooks.Add("Shoot", () => Shoot());
     }
 
-    public void Load (RGBColor color) {
+    public override void Load (RGBColor color) {
         for (int i = 0; i < bullets.Count; i++) {
             if (bullets[i] != RGBColor.NONE) continue;
             bullets[i] = color;

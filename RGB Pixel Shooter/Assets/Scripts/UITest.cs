@@ -57,13 +57,6 @@ public class UITest : MonoBehaviour {
         gameManager.SwitchWeapon();
     }
 
-    private bool posOnPanel (Vector2 touch, RectTransform panel) {
-        if (touch.x <= panel.position.x && touch.x >= panel.position.x - panel.rect.width) {
-            return true;
-        }
-        return false;
-    }
-
     public void UnhookWeapons () {
         gameManager.GetLoadout().GetWeapons()[0].UnhookUI(weapon1Panel);
         gameManager.GetLoadout().GetWeapons()[1].UnhookUI(weapon2Panel);

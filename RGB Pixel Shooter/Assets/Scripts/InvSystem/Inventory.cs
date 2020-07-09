@@ -8,9 +8,9 @@ public class Inventory {
     //commented out for the sake of mental health (was unused and was giving a warning all the time)
     //private Loadout loadout;
 
-    private int weaponMax = 6;
-    private int consumableMax = 6;
-    private int gearMax = 6;
+    //private int weaponMax = 6;
+    //private int consumableMax = 6;
+    //private int gearMax = 6;
 
     public Inventory () {
         items = new List<ItemToken>();

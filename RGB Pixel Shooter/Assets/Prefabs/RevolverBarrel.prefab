@@ -85,8 +85,9 @@ GameObject:
   - component: {fileID: 8305476823123701356}
   - component: {fileID: 8305476823123701358}
   - component: {fileID: 8305476823123701357}
+  - component: {fileID: 6813102502972861284}
   m_Layer: 5
-  m_Name: Barrel 1
+  m_Name: RevolverBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,6 +155,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6813102502972861284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8305476823123701331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1c590f57648c84db7d21110454f91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8305476823438179295
 GameObject:
   m_ObjectHideFlags: 0

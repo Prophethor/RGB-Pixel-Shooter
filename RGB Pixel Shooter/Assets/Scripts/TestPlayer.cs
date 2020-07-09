@@ -6,7 +6,8 @@ public class TestPlayer : MonoBehaviour {
 
     // Besto testo
     public Weapon equippedWeapon;
-    public RectTransform playerSpace;
+    public RectTransform moveSpace;
+    public RectTransform shootSpace;
     public GameObject swipeDetector;
     private Swipe swipe;
     private Animator animator;
@@ -23,7 +24,8 @@ public class TestPlayer : MonoBehaviour {
 
 
         swipe = Instantiate(swipeDetector).GetComponent<Swipe>();
-        swipe.minDistanceForSwipe = 30;
+        swipe.minDistanceForSwipe = 20;
+        swipe.detectOnlyAfterSwipe = true;
         swipe.OnSwipe += Move;
 
         laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
@@ -34,6 +36,12 @@ public class TestPlayer : MonoBehaviour {
     }
 
     private void Update () {
+        
+        if (Input.touchCount > 0 && Input.touches[0].phase==TouchPhase.Began) {
+            if (PosOnPanel(Camera.main.ScreenToWorldPoint(Input.touches[0].position), shootSpace)) {
+                equippedWeapon.Shoot();
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.S)) {
             if (lane > 0) {
@@ -46,17 +54,21 @@ public class TestPlayer : MonoBehaviour {
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.O)) {
+            FindObjectOfType<UITest>().SwitchWeapon();
+        }
+
         if (Input.GetKeyDown(KeyCode.J)) {
-            ((TestRevolver) equippedWeapon).Load(RGBColor.RED);
+            equippedWeapon.Load(RGBColor.RED);
         }
         else if (Input.GetKeyDown(KeyCode.K)) {
-            ((TestRevolver) equippedWeapon).Load(RGBColor.GREEN);
+            equippedWeapon.Load(RGBColor.GREEN);
         }
         else if (Input.GetKeyDown(KeyCode.L)) {
-            ((TestRevolver) equippedWeapon).Load(RGBColor.BLUE);
+            equippedWeapon.Load(RGBColor.BLUE);
         }
         else if (Input.GetKeyDown(KeyCode.Space)) {
-            ((TestRevolver) equippedWeapon).Shoot();
+            equippedWeapon.Shoot();
         }
 
         // ColorBomb test
@@ -69,11 +81,11 @@ public class TestPlayer : MonoBehaviour {
     }
 
     public void Move (Swipe.SwipeData swipe) {
-        if (PosOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
+        if (PosOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), moveSpace) &&
             swipe.direction == Swipe.SwipeDirection.Down) {
             SwitchLane(lane - 1);
         }
-        else if (PosOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), playerSpace) &&
+        else if (PosOnPanel(Camera.main.ScreenToWorldPoint(swipe.startPos), moveSpace) &&
             swipe.direction == Swipe.SwipeDirection.Up) {
             SwitchLane(lane + 1);
         }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +26,7 @@ public abstract class Weapon : ScriptableObject, Item {
     public abstract ItemToken GetToken ();
 
     public abstract void Shoot ();
+    public abstract void Load (RGBColor color);
 
     public abstract void LevelStart ();
 
@@ -46,12 +46,12 @@ public abstract class Weapon : ScriptableObject, Item {
                 button.onClick.AddListener(UIHooks[button.tag]);
             }
         }
-
+        /*
         TouchManager.GetInstance().AddListener((touch) => {
             if (touch.position.x > Camera.main.scaledPixelWidth / 2f) {
                 Shoot();
             }
-        });
+        });*/
     }
 
     public virtual void UnhookUI (Transform weaponUI) {
