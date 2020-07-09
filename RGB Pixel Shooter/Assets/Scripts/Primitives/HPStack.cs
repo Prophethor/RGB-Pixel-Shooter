@@ -32,8 +32,6 @@ public class HPStack {
     }
 
     public void Update (float deltaTime) {
-        //there is probably a better place to put this line of code
-        HP.GetComponent<SpriteRenderer>().color = color.GetColor();
         hpRegenCurrentTime -= deltaTime;
 
         if (hpRegenCurrentTime <= 0f) {
@@ -55,12 +53,13 @@ public class HPStack {
                 if (amount == 0) {
                     return true;
                 }
-            }else { hitStatus = HitStatus.BELOW_THRESHOLD; }
+            }
+            else { hitStatus = HitStatus.BELOW_THRESHOLD; }
         }
         else {
-            if (damage.amount/4+1 >= threshold) {
+            if (damage.amount / 4 + 1 >= threshold) {
                 hitStatus = HitStatus.HIT;
-                amount -= damage.amount/4+1;
+                amount -= damage.amount / 4 + 1;
                 if (amount < 0) amount = 0;
                 HP.transform.localScale = new Vector3(2.8f * (float) amount / maxAmount, HP.transform.localScale.y);
 
@@ -84,6 +83,6 @@ public class HPStack {
 
     public void SetHPBar (GameObject HP) {
         this.HP = HP;
+        this.HP.GetComponent<SpriteRenderer>().color = color.GetColor();
     }
-
 }

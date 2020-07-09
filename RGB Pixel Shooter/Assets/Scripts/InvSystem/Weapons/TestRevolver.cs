@@ -5,6 +5,7 @@ using UnityEngine;
 public class TestRevolver : Weapon {
 
     public Rigidbody2D bulletPrefab;
+    public AudioClip shootEffect;
     public int dmgAmount = 100;
     public float reloadTime = 3;
 
@@ -12,6 +13,7 @@ public class TestRevolver : Weapon {
     private int maxBullets = 6;
     public float bulletSpeed = 15;
     private GameObject player;
+
     public override string GetName () { return "Revolver"; }
 
     public override ItemToken GetToken () {
@@ -54,6 +56,8 @@ public class TestRevolver : Weapon {
                 player.GetComponent<Animator>().SetTrigger("shootTrigger");
                 InstantiateBullet(player.transform.position + (Vector3) deltaPosition);
                 bullets.RemoveAt(0);
+
+                AudioManager.GetInstance().PlaySound(shootEffect, true);
             }
             if (bullets.Count == 0) {
                 isReloading = true;

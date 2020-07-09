@@ -100,6 +100,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: {fileID: 822900272540670608}
+  spawnEffects:
+  - {fileID: 8300000, guid: 19ec24c5c7c0d6f4396fde25bb6c02c2, type: 3}
+  - {fileID: 8300000, guid: 83e154f63b22e2b49ade89bcdf096d49, type: 3}
+  - {fileID: 8300000, guid: ec5714249a539484e89416a1ab2620d9, type: 3}
+  - {fileID: 8300000, guid: 95430ab8dc816b14bb3f22cdc86475f1, type: 3}
+  - {fileID: 8300000, guid: 79932bf63be218040bcba3e6b5fe2b73, type: 3}
+  deathEffects:
+  - {fileID: 8300000, guid: 796ea4fd8a26d8f4c8dd86910413d1cf, type: 3}
+  - {fileID: 8300000, guid: 5233043acfeeda14a8c7dc7fc19ba53c, type: 3}
+  - {fileID: 8300000, guid: 9518c37537fa007428814fbebdaade58, type: 3}
+  - {fileID: 8300000, guid: 95adc540f828fc44da5b0605e79b660d, type: 3}
+  - {fileID: 8300000, guid: 8dff867ffb77fac40979e0e9cec201b8, type: 3}
 --- !u!61 &-2026013131639320592
 BoxCollider2D:
   m_ObjectHideFlags: 0

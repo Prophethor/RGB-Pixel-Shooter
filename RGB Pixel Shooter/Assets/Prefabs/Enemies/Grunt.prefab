@@ -83,7 +83,7 @@ SpriteRenderer:
   m_Size: {x: 1.8, y: 1.425}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &8853162592787206652
@@ -165,6 +165,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: {fileID: 3963593921641573106}
+  spawnEffects:
+  - {fileID: 8300000, guid: 5e0fffb01f6cd2e41a74668e190e99d7, type: 3}
+  - {fileID: 8300000, guid: 929684f16585d654ea8f1ea8cd42d21f, type: 3}
+  - {fileID: 8300000, guid: 0672fa3de1b616242aaa3dfbae88fedb, type: 3}
+  - {fileID: 8300000, guid: 8a3a995371b83094895e2919e3c674d1, type: 3}
+  - {fileID: 8300000, guid: b0f766455e76fda4ba2af6246f5c2054, type: 3}
+  deathEffects:
+  - {fileID: 8300000, guid: 0666ccef1adca744fbde39f91379f679, type: 3}
+  - {fileID: 8300000, guid: bdc6eb4d1cbe20f4f981c2ab749a2a49, type: 3}
+  - {fileID: 8300000, guid: 95c50144604c45640a3edc6ee5ef2127, type: 3}
+  - {fileID: 8300000, guid: 165e3b14519f12941a154f8e5e437152, type: 3}
+  - {fileID: 8300000, guid: 98d6bea85d199eb4bbf67b8df79f81d8, type: 3}
+  damageEffects:
+  - {fileID: 8300000, guid: 7b0fc888948be5544b2a55410d309fca, type: 3}
+  - {fileID: 8300000, guid: 6415e5b3c926e5444a23959615a33dbd, type: 3}
+  - {fileID: 8300000, guid: 44b3d7142eaf00f458f346c7a0736679, type: 3}
+  - {fileID: 8300000, guid: d907052df2d78014d8ba28a444a82e68, type: 3}
 --- !u!1001 &448812326967860197
 PrefabInstance:
   m_ObjectHideFlags: 0

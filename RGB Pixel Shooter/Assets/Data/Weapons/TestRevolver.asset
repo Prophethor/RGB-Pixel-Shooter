@@ -20,6 +20,7 @@ MonoBehaviour:
     type: 3}
   bulletPrefab: {fileID: 6013488467053243120, guid: dae155b71adc46e4ebbfd49d778f5343,
     type: 3}
+  shootEffect: {fileID: 8300000, guid: 4176073e3ffc5294b84b1474ad9b3c57, type: 3}
   dmgAmount: 100
   reloadTime: 1.5
   bulletSpeed: 15
