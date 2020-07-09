@@ -18,6 +18,10 @@ public class TestRevolver : Weapon {
         return new RevolverToken(this);
     }
 
+    public List<RGBColor> GetBullets () {
+        return bullets;
+    }
+
     public override void LevelStart () {
         player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<Animator>().SetFloat("loadSpeed", 0.4f / reloadTime);

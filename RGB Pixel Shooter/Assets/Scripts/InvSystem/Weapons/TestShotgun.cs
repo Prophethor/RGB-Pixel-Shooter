@@ -13,7 +13,6 @@ public class TestShotgun : Weapon {
     private List<RGBColor> bullets;
     private int maxBullets = 2;
     public float bulletSpeed = 15;
-    [HideInInspector]
     public int numberOfPellets = 5;
     public float range = 5;
     public double angle = 45;
@@ -23,6 +22,10 @@ public class TestShotgun : Weapon {
     private GameObject player;
 
     public override string GetName () { return "Shotgun"; }
+
+    public List<RGBColor> GetBullets () {
+        return bullets;
+    }
 
     public override ItemToken GetToken () {
         return new ShotgunToken(this);

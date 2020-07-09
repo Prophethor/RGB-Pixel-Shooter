@@ -58,9 +58,9 @@ public class HPStack {
             }else { hitStatus = HitStatus.BELOW_THRESHOLD; }
         }
         else {
-            if (damage.amount/3+1 >= threshold) {
+            if (damage.amount/4+1 >= threshold) {
                 hitStatus = HitStatus.HIT;
-                amount -= damage.amount/3+1;
+                amount -= damage.amount/4+1;
                 if (amount < 0) amount = 0;
                 HP.transform.localScale = new Vector3(2.8f * (float) amount / maxAmount, HP.transform.localScale.y);
 
