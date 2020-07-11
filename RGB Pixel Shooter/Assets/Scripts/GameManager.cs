@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
         loadout.GetWeapons()[1].LevelStart();
 
         player.equippedWeapon = loadout.GetWeapons()[0];
+
     }
 
     public void SwitchWeapon () {

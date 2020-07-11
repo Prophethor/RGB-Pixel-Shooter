@@ -19,9 +19,9 @@ MonoBehaviour:
     type: 3}
   bulletPrefab: {fileID: 6013488467053243120, guid: d58c0b47b7f024446a01cd16b81a98dc,
     type: 3}
-  dmgAmount: 60
+  dmgAmount: 200
   reloadTime: 1.5
   bulletSpeed: 15
-  numberOfPellets: 5
-  range: 4
-  angle: 25
+  numberOfPellets: 3
+  range: 6
+  angle: 13

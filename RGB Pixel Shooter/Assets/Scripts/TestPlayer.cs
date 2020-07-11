@@ -28,8 +28,13 @@ public class TestPlayer : MonoBehaviour {
         swipe.detectOnlyAfterSwipe = true;
         swipe.OnSwipe += Move;
 
+        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(0, 0)).x +
+                   0.05f * Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, 0)).x, transform.position.y);
+
+        Transform finishLine = GameObject.FindGameObjectWithTag("FinishLine").transform;
+        finishLine.position = new Vector3((transform.position + new Vector3(2, 0, 0)).x,finishLine.position.y);
+
         laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
-        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(0, 0)).x * 0.85f - 1f, transform.position.y);
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = equippedWeapon.controller;
         animator.SetFloat("jumpSpeed", 0.2f / laneSwitchTime);

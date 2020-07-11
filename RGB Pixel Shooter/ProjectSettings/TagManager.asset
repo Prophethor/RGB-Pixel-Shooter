@@ -11,6 +11,7 @@ TagManager:
   - LoadRed
   - LoadGreen
   - LoadBlue
+  - FinishLine
   layers:
   - Default
   - TransparentFX

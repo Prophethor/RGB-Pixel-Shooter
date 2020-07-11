@@ -31,7 +31,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected virtual void Start () {
         // Set position according to lane
         float yPos = PlayField.GetLanePosition(lane) - Random.Range(-0.33f, 1f) * PlayField.GetLaneHeight() / 3f;
-        transform.position = new Vector3(9, yPos, yPos);
+        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth,0)).x+2, yPos, yPos);
 
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
