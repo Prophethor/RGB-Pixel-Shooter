@@ -7,8 +7,22 @@ public class ShieldMutant : GenericEnemy {
     public GameObject HP1;
     public GameObject HP2;
 
+    [Header("Sound effects")]
+    public List<AudioClip> spawnEffects;
+    public List<AudioClip> deathEffects;
+    public AudioClip shieldBreakEffect;
+    public AudioClip shieldDeflectEffect;
+    private float vocalPitch;
+
     protected override void Start () {
         base.Start();
+
+        vocalPitch = Random.Range(0.8f, 1.5f);
+
+        if (spawnEffects.Count > 0) {
+            AudioManager.GetInstance().PlaySoundPitched(spawnEffects[Random.Range(0, spawnEffects.Count)], vocalPitch);
+        }
+
         RGBColor randcolor = (RGBColor) Random.Range(0, 3);
         hpStackList.Add(new HPStack(randcolor, 100, 0, 0, 0, 100));
         hpStackList[0].SetHPBar(HP1);
@@ -43,6 +57,8 @@ public class ShieldMutant : GenericEnemy {
             if (hpStackList.Count == 1) {
                 animator.SetBool("hasShield", false);
                 animator.SetTrigger("break");
+
+                AudioManager.GetInstance().PlaySound(shieldBreakEffect);
             }
             if (hpStackList.Count == 0) {
                 isDead = true;
@@ -54,13 +70,21 @@ public class ShieldMutant : GenericEnemy {
                 Die();
             }
         }
-        else {
-            if(hitStatus==HitStatus.BELOW_THRESHOLD) animator.SetTrigger("deflect");
+        else if (hitStatus == HitStatus.BELOW_THRESHOLD) {
+            animator.SetTrigger("deflect");
+
+            AudioManager.GetInstance().PlaySound(shieldDeflectEffect, true);
         }
     }
 
     public void Stop () {
         rb.velocity = Vector2.zero;
+    }
+
+    protected override void Die () {
+        AudioManager.GetInstance().PlaySoundPitched(deathEffects[Random.Range(0, deathEffects.Count)], vocalPitch, true);
+
+        base.Die();
     }
 
     protected override void InitiateShanking () {

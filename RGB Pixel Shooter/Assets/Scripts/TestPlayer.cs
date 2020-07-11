@@ -18,6 +18,7 @@ public class TestPlayer : MonoBehaviour {
 
     [HideInInspector]
     public bool isJumping = false;
+    private Tween jumpTween;
     private float laneOffset;
 
     private void Start () {
@@ -41,8 +42,8 @@ public class TestPlayer : MonoBehaviour {
     }
 
     private void Update () {
-        
-        if (Input.touchCount > 0 && Input.touches[0].phase==TouchPhase.Began) {
+
+        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began) {
             if (PosOnPanel(Camera.main.ScreenToWorldPoint(Input.touches[0].position), shootSpace)) {
                 equippedWeapon.Shoot();
             }
@@ -105,10 +106,16 @@ public class TestPlayer : MonoBehaviour {
         animator.SetTrigger("jumpTrigger");
         isJumping = true;
         lane = newLane;
-        //if player keeps switching lanes for longer than laneSwitchTime, isJumping is gonna become false and he could shoot midair
-        Tweener.AddTween(() => transform.position.y, (x) => transform.position = new Vector3(transform.position.x, x, transform.position.z),
+
+        if (jumpTween != null && jumpTween.active == true) {
+            jumpTween.active = false;
+        }
+
+        jumpTween = Tweener.AddTween(() => transform.position.y, (x) => transform.position = new Vector3(transform.position.x, x, transform.position.z),
             PlayField.GetLanePosition(newLane) - laneOffset, laneSwitchTime, TweenMethods.HardLog, () => {
-                isJumping = false;
+                if (jumpTween.active == false) {
+                    isJumping = false;
+                }
             });
     }
 

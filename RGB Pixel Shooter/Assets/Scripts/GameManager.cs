@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
     public TestPlayer player;
     public Animator UIAnimator;
 
+    public AudioClip soundtrack;
+
     private void Awake () {
         loadout = new Loadout();
         loadout.AddWeapon(Instantiate(revolver));
@@ -24,6 +26,9 @@ public class GameManager : MonoBehaviour {
 
         player.equippedWeapon = loadout.GetWeapons()[0];
 
+        if (soundtrack != null) {
+            AudioManager.GetInstance().PlaySoundtrack(soundtrack);
+        }
     }
 
     public void SwitchWeapon () {
@@ -50,7 +55,7 @@ public class GameManager : MonoBehaviour {
     public void LoseGame () {
         UIAnimator.SetBool("Lose", true);
         Time.timeScale = 0;
-        
+
         Tweener.Invoke(0.5f, () => {
             StartCoroutine(Reset());
         }, true);
