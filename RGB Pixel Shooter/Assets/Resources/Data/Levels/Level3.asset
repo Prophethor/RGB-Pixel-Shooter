@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6540880474960588970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9011a17ecc7ec4d8f4e9c68767b99d, type: 3}
+  m_Name: Wave 1
+  m_EditorClassIdentifier: 
+  pointPool: 3
+  enemyPool:
+  - {fileID: 11400000, guid: 9982c99cc7985754db47e1ca1022c9c1, type: 2}
+  typeDistr:
+  - 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb42729cc55a5a44b16804294a70154, type: 3}
+  m_Name: Level3
+  m_EditorClassIdentifier: 
+  redDistribution: 10
+  greenDistribution: 10
+  blueDistribution: 10
+  waves:
+  - {fileID: -6540880474960588970}

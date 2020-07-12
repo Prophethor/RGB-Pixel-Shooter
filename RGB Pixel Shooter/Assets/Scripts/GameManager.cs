@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour {
     public Weapon shotgun;
 
     public TestPlayer player;
-    public Animator UIAnimator;
 
     public AudioClip soundtrack;
 
@@ -44,7 +43,6 @@ public class GameManager : MonoBehaviour {
 
     public void WinGame () {
         Tweener.Invoke(1f, () => {
-            UIAnimator.SetBool("Win", true);
             Time.timeScale = 0;
         });
         Tweener.Invoke(0.5f, () => {
@@ -53,12 +51,8 @@ public class GameManager : MonoBehaviour {
     }
 
     public void LoseGame () {
-        UIAnimator.SetBool("Lose", true);
         Time.timeScale = 0;
-
-        Tweener.Invoke(0.5f, () => {
-            StartCoroutine(Reset());
-        }, true);
+        StartCoroutine(Reset());
     }
 
     IEnumerator Reset () {
@@ -67,7 +61,6 @@ public class GameManager : MonoBehaviour {
                 yield return null;
             }
             else {
-                UIAnimator.SetTrigger("Reset");
                 Tweener.Invoke(1f, () => {
                     FindObjectOfType<UITest>().UnhookWeapons();
                     SceneManager.LoadScene(0);

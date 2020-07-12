@@ -38,9 +38,13 @@ public class EnemySpawner : MonoBehaviour {
         // Connect to playfield and gamemanager
         playField = GameObject.Find("PlayField");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        enemiesToKill = 0;
-        StartCoroutine(SpawnEnemies(levelInfo));
 
+    }
+
+    public void SetLevelInfo (LevelInfo level) {
+        levelInfo = level;
+        enemiesToKill = 0;
+        StartCoroutine(SpawnEnemies(level));
     }
 
     // Returns 1/sum * distr
