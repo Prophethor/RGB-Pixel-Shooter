@@ -7,6 +7,7 @@ using UnityEngine;
 public class TestShotgun : Weapon {
 
     public Rigidbody2D bulletPrefab;
+    public AudioClip shootEffect;
     public int dmgAmount = 100;
     public float reloadTime = 3;
 
@@ -72,6 +73,7 @@ public class TestShotgun : Weapon {
                     InstantiatePellet(player.transform.position + (Vector3) deltaPosition, 0);
                 }
                 bullets.RemoveAt(0);
+                AudioManager.GetInstance().PlaySound(shootEffect, true);
             }
             if (bullets.Count == 0) {
                 isReloading = true;
