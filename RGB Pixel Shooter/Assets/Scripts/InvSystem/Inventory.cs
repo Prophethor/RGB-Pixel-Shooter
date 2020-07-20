@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class Inventory {
 
     private List<ItemToken> items;
-    //commented out for the sake of mental health (was unused and was giving a warning all the time)
-    //private Loadout loadout;
+
+    private Loadout loadout;
 
     //private int weaponMax = 6;
     //private int consumableMax = 6;
@@ -14,11 +14,12 @@ public class Inventory {
 
     public Inventory () {
         items = new List<ItemToken>();
+        loadout = new Loadout();
     }
 
-    /*public Loadout GetLoadout () {
+    public Loadout GetLoadout () {
         return loadout;
-    }*/
+    }
 
     public List<ItemToken> GetItems () {
         return items;

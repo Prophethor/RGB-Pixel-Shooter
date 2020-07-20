@@ -11,14 +11,14 @@ public class Loadout {
     private const int maxConsumables = 3;
 
     // Minimum of 1 weapon for the Loadout to be valid
-    private List<Weapon> weapons;
-    private List<Gear> gearItems;
-    private List<Consumable> consumables;
+    private List<ItemToken> weapons;
+    private List<ItemToken> gearItems;
+    private List<ItemToken> consumables;
 
     public Loadout () {
-        weapons = new List<Weapon>();
-        gearItems = new List<Gear>();
-        consumables = new List<Consumable>();
+        weapons = new List<ItemToken>();
+        gearItems = new List<ItemToken>();
+        consumables = new List<ItemToken>();
     }
 
     public bool IsValid () {
@@ -37,11 +37,35 @@ public class Loadout {
         return true;
     }
 
-    public List<Weapon> GetWeapons () {
+    public bool AddItem (ItemToken item) {
+        if (item.HasTag("Weapon")) {
+            return AddWeapon(item);
+        }
+        else if (item.HasTag("Gear")) {
+            return AddGear(item);
+        }
+        else {
+            return AddConsumable(item);
+        }
+    }
+
+    public bool RemoveItem (ItemToken item) {
+        if (item.HasTag("Weapon")) {
+            return RemoveWeapon(item);
+        }
+        else if (item.HasTag("Gear")) {
+            return RemoveGear(item);
+        }
+        else {
+            return RemoveConsumable(item);
+        }
+    }
+
+    public List<ItemToken> GetWeapons () {
         return weapons;
     }
 
-    public bool AddWeapon (Weapon weapon) {
+    public bool AddWeapon (ItemToken weapon) {
         if (weapons.Count < maxWeapons) {
             weapons.Add(weapon);
             return true;
@@ -50,18 +74,18 @@ public class Loadout {
         return false;
     }
 
-    public bool RemoveWeapon (Weapon weapon) {
+    public bool RemoveWeapon (ItemToken weapon) {
         if (weapons.Contains(weapon)) {
             return weapons.Remove(weapon);
         }
 
         return false;
     }
-    public List<Gear> GetGear () {
+    public List<ItemToken> GetGear () {
         return gearItems;
     }
 
-    public bool AddGear (Gear gear) {
+    public bool AddGear (ItemToken gear) {
         if (gearItems.Count < maxGear) {
             gearItems.Add(gear);
             return true;
@@ -70,7 +94,7 @@ public class Loadout {
         return false;
     }
 
-    public bool RemoveGear (Gear gear) {
+    public bool RemoveGear (ItemToken gear) {
         if (gearItems.Contains(gear)) {
             return gearItems.Remove(gear);
         }
@@ -78,11 +102,11 @@ public class Loadout {
         return false;
     }
 
-    public List<Consumable> GetConsumables () {
+    public List<ItemToken> GetConsumables () {
         return consumables;
     }
 
-    public bool AddConsumables (Consumable consumable) {
+    public bool AddConsumable (ItemToken consumable) {
         if (consumables.Count < maxConsumables) {
             consumables.Add(consumable);
             return true;
@@ -91,11 +115,15 @@ public class Loadout {
         return false;
     }
 
-    public bool RemoveConsumables (Consumable consumable) {
+    public bool RemoveConsumable (ItemToken consumable) {
         if (consumables.Contains(consumable)) {
             return consumables.Remove(consumable);
         }
 
         return false;
+    }
+
+    public bool Contains (ItemToken item) {
+        return weapons.Contains(item) || gearItems.Contains(item) || consumables.Contains(item);
     }
 }

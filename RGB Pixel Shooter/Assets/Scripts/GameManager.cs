@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ public class GameManager : MonoBehaviour {
 
     // TODO: Get loadout from Inventory
     private Loadout loadout;
+    private List<Weapon> weapons;
 
     public Weapon revolver;
     public Weapon shotgun;
@@ -16,27 +18,52 @@ public class GameManager : MonoBehaviour {
     public AudioClip soundtrack;
 
     private void Awake () {
-        loadout = new Loadout();
-        loadout.AddWeapon(Instantiate(revolver));
-        loadout.AddWeapon(Instantiate(shotgun));
+        weapons = new List<Weapon>();
 
-        loadout.GetWeapons()[0].LevelStart();
-        loadout.GetWeapons()[1].LevelStart();
+        // In case loadout/inventory/inventoryManager doesn't exist
+        try {
+            loadout = InventoryManager.GetInstance().GetInventory().GetLoadout();
 
-        player.equippedWeapon = loadout.GetWeapons()[0];
+            foreach (ItemToken weaponToken in loadout.GetWeapons()) {
+                weapons.Add(weaponToken.Instantiate() as Weapon);
+            }
+        }
+        catch (Exception e) {
+            Debug.LogError(e.Message + "\n" + e.StackTrace);
+
+        }
+
+        if (weapons.Count < 1) {
+            GenerateLoadout();
+        }
+
+        player.equippedWeapon = weapons[0];
+
+        foreach (Weapon weapon in weapons) {
+            weapon.LevelStart();
+        }
 
         if (soundtrack != null) {
             AudioManager.GetInstance().PlaySoundtrack(soundtrack);
         }
     }
 
+    private void GenerateLoadout () {
+        weapons.Add(Instantiate(revolver));
+        weapons.Add(Instantiate(shotgun));
+    }
+
     public void SwitchWeapon () {
-        if (player.equippedWeapon == loadout.GetWeapons()[0]) {
-            player.equippedWeapon = loadout.GetWeapons()[1];
+        if (weapons.Count < 2) {
+            return;
+        }
+
+        if (player.equippedWeapon == weapons[0]) {
+            player.equippedWeapon = weapons[1];
             player.GetComponent<Animator>().runtimeAnimatorController = player.equippedWeapon.controller;
         }
         else {
-            player.equippedWeapon = loadout.GetWeapons()[0];
+            player.equippedWeapon = weapons[0];
             player.GetComponent<Animator>().runtimeAnimatorController = player.equippedWeapon.controller;
         }
     }
@@ -71,7 +98,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public Loadout GetLoadout () {
-        return loadout;
+    public List<Weapon> GetWeapons () {
+        return weapons;
     }
 }

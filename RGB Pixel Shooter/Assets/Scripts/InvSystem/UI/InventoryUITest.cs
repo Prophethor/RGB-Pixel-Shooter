@@ -11,7 +11,6 @@ public class InventoryUITest : MonoBehaviour {
 
     public List<ItemToken> items;
 
-
     public void ShowInventory () {
         GameObject invPanel = Instantiate(inventoryPanelPrefab, FindObjectOfType<Canvas>().transform);
 

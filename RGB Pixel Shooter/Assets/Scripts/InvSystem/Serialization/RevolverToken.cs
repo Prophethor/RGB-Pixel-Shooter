@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class RevolverToken : ItemToken {
+
+    private List<string> tags;
 
     private int dmgAmount = 100;
     private float reloadTime = 3;
@@ -10,10 +13,14 @@ public class RevolverToken : ItemToken {
     private float bulletSpeed = 15;
 
     public RevolverToken (ScriptableObject obj) {
+        tags = new List<string>() {
+            "Weapon"
+        };
+
         Read(obj);
     }
 
-    public void Read (ScriptableObject obj) {
+    public override void Read (ScriptableObject obj) {
         TestRevolver revolver = (TestRevolver) obj;
 
         dmgAmount = revolver.dmgAmount;
@@ -21,7 +28,7 @@ public class RevolverToken : ItemToken {
         bulletSpeed = revolver.bulletSpeed;
     }
 
-    public ScriptableObject Instantiate () {
+    public override ScriptableObject Instantiate () {
         TestRevolver revolver = ScriptableObject.Instantiate(Resources.Load<TestRevolver>("TestRevolver 1"));
 
         revolver.dmgAmount = dmgAmount;
@@ -31,11 +38,11 @@ public class RevolverToken : ItemToken {
         return revolver;
     }
 
-    public string GetName () {
+    public override string GetName () {
         return "Revolver";
     }
 
-    public Sprite GetIcon () {
+    public override Sprite GetIcon () {
         return Resources.Load<TestRevolver>("TestRevolver 1").GetIcon();
     }
 }

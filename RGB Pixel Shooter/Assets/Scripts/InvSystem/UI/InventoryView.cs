@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public delegate bool ItemFilter (ItemToken item);
+
 public class InventoryView : MonoBehaviour {
 
     public GameObject slotPrefab;
@@ -22,7 +24,7 @@ public class InventoryView : MonoBehaviour {
         slotObjects.Clear();
     }
 
-    public void SetItems (int slotCount, List<ItemToken> items) {
+    public void SetItems (int slotCount, List<ItemToken> items, ItemFilter filter = null) {
         this.items = items;
         ClearSlots();
 
@@ -30,11 +32,14 @@ public class InventoryView : MonoBehaviour {
         for (int i = 0; i < slotCount; i++) {
             GameObject newSlot = Instantiate(slotPrefab);
             newSlot.transform.SetParent(transform);
+            newSlot.GetComponent<InventorySlot>().IsSelectable = false;
             slotObjects.Add(newSlot);
         }
-
-        for (int i = 0; i < items.Count; i++) {
-            slotObjects[i].GetComponent<InventorySlot>().SetItem(items[i]);
+        
+        foreach (ItemToken item in items) {
+            if (filter == null || filter(item)) {
+                FillSlot(item);
+            }
         }
     }
 
@@ -48,6 +53,7 @@ public class InventoryView : MonoBehaviour {
             InventorySlot slot = slotObject.GetComponent<InventorySlot>();
             if (!slot.IsFilled()) {
                 slot.SetItem(item);
+                slot.IsSelectable = true;
                 return;
             }
         }

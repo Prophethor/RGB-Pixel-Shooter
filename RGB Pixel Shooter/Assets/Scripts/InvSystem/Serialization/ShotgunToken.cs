@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class ShotgunToken : ItemToken {
+
+    private List<string> tags;
 
     private int dmgAmount = 100;
     private float reloadTime = 3;
@@ -12,10 +15,14 @@ public class ShotgunToken : ItemToken {
     private double angle;
 
     public ShotgunToken (ScriptableObject obj) {
+        tags = new List<string>() {
+            "Weapon"
+        };
+
         Read(obj);
     }
 
-    public void Read (ScriptableObject obj) {
+    public override void Read (ScriptableObject obj) {
         TestShotgun shotgun = (TestShotgun) obj;
 
         dmgAmount = shotgun.dmgAmount;
@@ -26,7 +33,7 @@ public class ShotgunToken : ItemToken {
         angle = shotgun.angle;
     }
 
-    public ScriptableObject Instantiate () {
+    public override ScriptableObject Instantiate () {
         TestShotgun shotgun = ScriptableObject.Instantiate(Resources.Load<TestShotgun>("TestShotgun 1"));
 
         shotgun.dmgAmount = dmgAmount;
@@ -39,11 +46,11 @@ public class ShotgunToken : ItemToken {
         return shotgun;
     }
 
-    public string GetName () {
+    public override string GetName () {
         return "Shotgun";
     }
 
-    public Sprite GetIcon () {
+    public override Sprite GetIcon () {
         return Resources.Load<TestShotgun>("TestShotgun 1").GetIcon();
     }
 }

@@ -40,9 +40,11 @@ public abstract class Weapon : ScriptableObject, Item {
         if (UIHooks == null) {
             InitHooks();
         }
+        Debug.Log("Hooking " + GetName());
 
         foreach (Button button in weaponUI.GetComponentsInChildren<Button>()) {
             if (UIHooks.ContainsKey(button.tag)) {
+                Debug.Log(button.name + " hooked with " + GetName());
                 button.onClick.AddListener(UIHooks[button.tag]);
             }
         }

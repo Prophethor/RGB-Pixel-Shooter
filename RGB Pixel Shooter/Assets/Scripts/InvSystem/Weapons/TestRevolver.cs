@@ -28,7 +28,9 @@ public class TestRevolver : Weapon {
         player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<Animator>().SetFloat("loadSpeed", 0.4f / reloadTime);
         bullets = new List<RGBColor>();
-        while (bullets.Count < maxBullets) bullets.Add(RGBColor.NONE);
+        while (bullets.Count < maxBullets) {
+            bullets.Add(RGBColor.NONE);
+        }
         if (UIHooks == null) {
             InitHooks();
         }
@@ -81,5 +83,4 @@ public class TestRevolver : Weapon {
         bulletObj.velocity = new Vector2(bulletSpeed, 0);
         bulletObj.GetComponent<Projectile>().SetDamage(bullets[0], dmgAmount);
     }
-
 }
