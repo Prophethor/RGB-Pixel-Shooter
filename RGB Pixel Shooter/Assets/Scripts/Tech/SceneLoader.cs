@@ -28,7 +28,7 @@ public class SceneLoader : MonoBehaviour
         instance = this;
         blackoutScreen = Resources.Load<GameObject>("Prefabs\\UI\\BlackoutScreen");
         SceneManager.sceneLoaded += (x, y) => {
-            FadeIn();
+            FadeIn(1.5f);
         };
         DontDestroyOnLoad(gameObject);
     }
@@ -53,23 +53,27 @@ public class SceneLoader : MonoBehaviour
         LoadScene(scene);
     }
 
-    private void FadeIn() {
+    private void FadeIn(float duration) {
         if (blackoutScreenObject == null) blackoutScreenObject = Instantiate(blackoutScreen);
         Image blackout = blackoutScreenObject.GetComponentInChildren<Image>();
-        Tweener.AddTween(() => blackout.color.a, (x) => { blackout.color = new Color(0, 0, 0, x); }, 0, 0.5f, TweenMethods.Linear, ()=> {
+        blackout.color = new Color(0, 0, 0, 1f);
+        Tweener.AddTween(() => blackout.color.a, (x) => { blackout.color = new Color(0f, 0f, 0f, x); }, 0f, duration, TweenMethods.Quadratic, ()=> {
             blackoutScreenObject.SetActive(false);
         }, true);
     }
 
-    private void FadeOut() {
+    private void FadeOut(float duration) {
         if (blackoutScreenObject == null) blackoutScreenObject = Instantiate(blackoutScreen);
         Image blackout = blackoutScreenObject.GetComponentInChildren<Image>();
+        blackout.color = new Color(0f, 0f, 0f, 0f);
         blackoutScreenObject.SetActive(true);
-        Tweener.AddTween(() => blackout.color.a, (x) => { blackout.color = new Color(0, 0, 0, x); }, 255, 0.5f, TweenMethods.Linear, true);
+        Tweener.AddTween(() => blackout.color.a, (x) => { blackout.color = new Color(0f, 0f, 0f, x); }, 1f, duration, TweenMethods.Linear, true);
     }
 
     public void LoadScene (string scene) {
-        FadeOut();
-        SceneManager.LoadScene(scene);
+        FadeOut(1f);
+        Tweener.Invoke(1f, () => {
+            SceneManager.LoadScene(scene);
+        });
     }
 }
