@@ -73,13 +73,13 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0;
         });
         Tweener.Invoke(0.5f, () => {
-            StartCoroutine(Reset());
+            SceneLoader.GetInstance().FinishLevel("LevelSelect");
         }, true);
     }
 
     public void LoseGame () {
         Time.timeScale = 0;
-        StartCoroutine(Reset());
+        SceneLoader.GetInstance().FinishLevel("LevelSelect");
     }
 
     IEnumerator Reset () {

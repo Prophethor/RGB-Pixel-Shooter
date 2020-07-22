@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: 5b652ccf297c79442a10a09911b16351
+guid: 718b577138672b64b811e4c988539080
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - blackOutScreen: {fileID: 7303000094209105069, guid: 5a1ef483c789d8245b4618f931d9f847,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
