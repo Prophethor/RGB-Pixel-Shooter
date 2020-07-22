@@ -5,8 +5,6 @@ using System.Collections.Generic;
 [System.Serializable]
 public class RevolverToken : ItemToken {
 
-    private List<string> tags;
-
     private int dmgAmount = 100;
     private float reloadTime = 3;
 
@@ -29,7 +27,7 @@ public class RevolverToken : ItemToken {
     }
 
     public override ScriptableObject Instantiate () {
-        TestRevolver revolver = ScriptableObject.Instantiate(Resources.Load<TestRevolver>("TestRevolver 1"));
+        TestRevolver revolver = ScriptableObject.Instantiate(Resources.Load<TestRevolver>("Data/Weapons/TestRevolver"));
 
         revolver.dmgAmount = dmgAmount;
         revolver.reloadTime = reloadTime;
@@ -43,6 +41,6 @@ public class RevolverToken : ItemToken {
     }
 
     public override Sprite GetIcon () {
-        return Resources.Load<TestRevolver>("TestRevolver 1").GetIcon();
+        return Resources.Load<TestRevolver>("Data/Weapons/TestRevolver").GetIcon();
     }
 }

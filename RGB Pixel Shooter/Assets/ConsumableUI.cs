@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ConsumableUI : MonoBehaviour
-{
+public class ConsumableUI : MonoBehaviour {
 
     public Canvas dragCanvas;
     public GameObject dragItem;
+    public Consumable consumable; // For now, this is the ScriptableObject
 
     public void StartDrag () {
         dragItem = Instantiate(gameObject, Input.mousePosition, transform.rotation) as GameObject;
@@ -21,8 +21,9 @@ public class ConsumableUI : MonoBehaviour
         dragItem.transform.position = Input.mousePosition;
     }
 
-    public void EndDrag() {
+    public void EndDrag () {
         Debug.Log(Camera.main.ScreenToWorldPoint(dragItem.transform.position));
+        consumable.Use(Camera.main.ScreenToWorldPoint(dragItem.transform.position));
         Destroy(dragItem);
     }
 }

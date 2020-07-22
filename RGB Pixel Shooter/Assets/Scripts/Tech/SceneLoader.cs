@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SceneLoader : MonoBehaviour
-{
+public class SceneLoader : MonoBehaviour {
 
     public static SceneLoader instance;
     private LevelInfo level;
@@ -33,7 +32,7 @@ public class SceneLoader : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void SetLevel(LevelInfo level) {
+    public void SetLevel (LevelInfo level) {
         this.level = level;
     }
 
@@ -53,16 +52,16 @@ public class SceneLoader : MonoBehaviour
         LoadScene(scene);
     }
 
-    private void FadeIn(float duration) {
+    private void FadeIn (float duration) {
         if (blackoutScreenObject == null) blackoutScreenObject = Instantiate(blackoutScreen);
         Image blackout = blackoutScreenObject.GetComponentInChildren<Image>();
         blackout.color = new Color(0, 0, 0, 1f);
-        Tweener.AddTween(() => blackout.color.a, (x) => { blackout.color = new Color(0f, 0f, 0f, x); }, 0f, duration, TweenMethods.Quadratic, ()=> {
+        Tweener.AddTween(() => blackout.color.a, (x) => { blackout.color = new Color(0f, 0f, 0f, x); }, 0f, duration, TweenMethods.Quadratic, () => {
             blackoutScreenObject.SetActive(false);
         }, true);
     }
 
-    private void FadeOut(float duration) {
+    private void FadeOut (float duration) {
         if (blackoutScreenObject == null) blackoutScreenObject = Instantiate(blackoutScreen);
         Image blackout = blackoutScreenObject.GetComponentInChildren<Image>();
         blackout.color = new Color(0f, 0f, 0f, 0f);
@@ -74,6 +73,7 @@ public class SceneLoader : MonoBehaviour
         FadeOut(1f);
         Tweener.Invoke(1f, () => {
             SceneManager.LoadScene(scene);
-        });
+            Time.timeScale = 1f;
+        }, true);
     }
 }

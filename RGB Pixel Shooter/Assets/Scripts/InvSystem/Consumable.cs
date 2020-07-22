@@ -2,11 +2,11 @@
 using UnityEngine;
 
 [Serializable]
-public abstract class Consumable : Item {
+public abstract class Consumable : ScriptableObject, Item {
 
     public abstract string GetName ();
 
-    public Sprite GetIcon () {
+    public virtual Sprite GetIcon () {
         // TODO: Consumable icons
         return null;
     }

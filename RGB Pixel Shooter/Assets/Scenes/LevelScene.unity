@@ -1524,6 +1524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragCanvas: {fileID: 1681056667}
   dragItem: {fileID: 0}
+  consumable: {fileID: 11400000, guid: 3da69bf0815db1d478649762d7a41785, type: 2}
 --- !u!114 &690714709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2519,6 +2520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragCanvas: {fileID: 1681056667}
   dragItem: {fileID: 0}
+  consumable: {fileID: 0}
 --- !u!114 &1197987845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3019,6 +3021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragCanvas: {fileID: 1681056667}
   dragItem: {fileID: 0}
+  consumable: {fileID: 0}
 --- !u!114 &1362572009
 MonoBehaviour:
   m_ObjectHideFlags: 0

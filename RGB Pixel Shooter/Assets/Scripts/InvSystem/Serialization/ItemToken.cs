@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public abstract class ItemToken {
 
-    private List<string> tags;
+    protected List<string> tags;
 
     public abstract void Read (ScriptableObject obj);
     public abstract ScriptableObject Instantiate ();

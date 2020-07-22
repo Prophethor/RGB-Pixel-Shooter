@@ -5,8 +5,6 @@ using System.Collections.Generic;
 [System.Serializable]
 public class ShotgunToken : ItemToken {
 
-    private List<string> tags;
-
     private int dmgAmount = 100;
     private float reloadTime = 3;
 
