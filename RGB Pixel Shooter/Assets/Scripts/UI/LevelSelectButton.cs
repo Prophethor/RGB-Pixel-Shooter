@@ -11,7 +11,8 @@ public class LevelSelectButton : MonoBehaviour
 
     private void Awake () {
         GetComponent<Button>().onClick.AddListener(() =>{
-            SceneLoader.GetInstance().LoadLevel(level);
+            SceneLoader.GetInstance().SetLevel(level);
+            SceneLoader.GetInstance().LoadLevel();
         });
     }
 }

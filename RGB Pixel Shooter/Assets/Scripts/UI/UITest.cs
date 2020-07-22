@@ -57,6 +57,7 @@ public class UITest : MonoBehaviour {
             weapon1Selected = true;
         }
         gameManager.SwitchWeapon();
+        player.GetComponent<Animator>().SetTrigger("weaponSwitch");
     }
 
     public void UnhookWeapons () {
