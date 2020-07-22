@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour {
 
     public AudioClip soundtrack;
 
+    public AudioClip swapWeapon;
+
     private void Awake () {
         weapons = new List<Weapon>();
 
@@ -57,6 +59,8 @@ public class GameManager : MonoBehaviour {
         if (weapons.Count < 2) {
             return;
         }
+
+        AudioManager.GetInstance().PlaySound(swapWeapon, true);
 
         if (player.equippedWeapon == weapons[0]) {
             player.equippedWeapon = weapons[1];

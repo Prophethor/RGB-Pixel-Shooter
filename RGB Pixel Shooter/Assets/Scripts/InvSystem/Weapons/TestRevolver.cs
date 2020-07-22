@@ -6,6 +6,8 @@ public class TestRevolver : Weapon {
 
     public Rigidbody2D bulletPrefab;
     public AudioClip shootEffect;
+    public AudioClip reloadStartSFX;
+    public AudioClip reloadEndSFX;
     public int dmgAmount = 100;
     public float reloadTime = 3;
 
@@ -13,6 +15,11 @@ public class TestRevolver : Weapon {
     private int maxBullets = 6;
     public float bulletSpeed = 15;
     private GameObject player;
+
+    public AudioClip redInfuseSFX;
+    public AudioClip greenInfuseSFX;
+    public AudioClip blueInfuseSFX;
+
 
     public override string GetName () { return "Revolver"; }
 
@@ -47,6 +54,22 @@ public class TestRevolver : Weapon {
     public override void Load (RGBColor color) {
         for (int i = 0; i < bullets.Count; i++) {
             if (bullets[i] != RGBColor.NONE) continue;
+            switch (color)
+            {
+                case RGBColor.RED:
+                    AudioManager.GetInstance().PlaySound(redInfuseSFX, true);
+                    break;
+                case RGBColor.GREEN:
+                    AudioManager.GetInstance().PlaySound(greenInfuseSFX, true);
+                    break;
+                case RGBColor.BLUE:
+                    AudioManager.GetInstance().PlaySound(blueInfuseSFX, true);
+                    break;
+                case RGBColor.NONE:
+                    break;
+                default:
+                    break;
+            }
             bullets[i] = color;
             break;
         }
@@ -65,13 +88,20 @@ public class TestRevolver : Weapon {
                 isReloading = true;
                 Tweener.Invoke(0.15f, () => {
                     player.GetComponent<Animator>().SetTrigger("loadTrigger");
+                    AudioManager.GetInstance().PlaySound(reloadStartSFX);
+                    player.GetComponent<TestPlayer>().allPurposeAudio = reloadEndSFX;
                     Tweener.Invoke(reloadTime, () => {
-                        while (bullets.Count < maxBullets) bullets.Add(RGBColor.NONE);
+                        Reload();
                         isReloading = false;
                     });
                 });
             }
         }
+    }
+
+    private void Reload()
+    {
+        while (bullets.Count < maxBullets) bullets.Add(RGBColor.NONE);
     }
 
     public Vector3 GetPlayerPos () {

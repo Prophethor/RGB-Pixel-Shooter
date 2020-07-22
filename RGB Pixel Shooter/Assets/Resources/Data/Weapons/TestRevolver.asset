@@ -21,6 +21,11 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6013488467053243120, guid: dae155b71adc46e4ebbfd49d778f5343,
     type: 3}
   shootEffect: {fileID: 8300000, guid: d30d0a74d66548d41883ab20405bd808, type: 3}
+  reloadStartSFX: {fileID: 8300000, guid: 0844937934c768c4d845636afecbc18a, type: 3}
+  reloadEndSFX: {fileID: 8300000, guid: 71f9373d8ec89df45b0e88d06a8674b3, type: 3}
   dmgAmount: 100
   reloadTime: 1.5
   bulletSpeed: 15
+  redInfuseSFX: {fileID: 8300000, guid: eb3dca490103a8d40989e145cee10f31, type: 3}
+  greenInfuseSFX: {fileID: 8300000, guid: 026acc57774368c4e937f1733aa0c018, type: 3}
+  blueInfuseSFX: {fileID: 8300000, guid: 91e815daf1b16b445b95c12983354c9f, type: 3}

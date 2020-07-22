@@ -103,6 +103,7 @@ MonoBehaviour:
     amount: 0
   bloodSplatter: {fileID: 1923756613354099486, guid: 48098cdb10a34d74896b2a95936e8c2a,
     type: 3}
+  hitSFX: {fileID: 8300000, guid: f61ae08ee71bb8b4ebe69f5130dd5e8c, type: 3}
 --- !u!50 &6013488467053243120
 Rigidbody2D:
   serializedVersion: 4

@@ -8,6 +8,8 @@ public class TestShotgun : Weapon {
 
     public Rigidbody2D bulletPrefab;
     public AudioClip shootEffect;
+    public AudioClip reloadStartSFX;
+    public AudioClip reloadEndSFX;
     public int dmgAmount = 100;
     public float reloadTime = 3;
 
@@ -21,6 +23,10 @@ public class TestShotgun : Weapon {
 
     private Animator animator;
     private GameObject player;
+
+    public AudioClip redInfuseSFX;
+    public AudioClip greenInfuseSFX;
+    public AudioClip blueInfuseSFX;
 
     public override string GetName () { return "Shotgun"; }
 
@@ -55,6 +61,22 @@ public class TestShotgun : Weapon {
     public override void Load (RGBColor color) {
         for (int i = 0; i < bullets.Count; i++) {
             if (bullets[i] != RGBColor.NONE) continue;
+            switch (color)
+            {
+                case RGBColor.RED:
+                    AudioManager.GetInstance().PlaySound(redInfuseSFX, true);
+                    break;
+                case RGBColor.GREEN:
+                    AudioManager.GetInstance().PlaySound(greenInfuseSFX, true);
+                    break;
+                case RGBColor.BLUE:
+                    AudioManager.GetInstance().PlaySound(blueInfuseSFX, true);
+                    break;
+                case RGBColor.NONE:
+                    break;
+                default:
+                    break;
+            }
             bullets[i] = color;
             break;
         }
@@ -79,6 +101,8 @@ public class TestShotgun : Weapon {
                 isReloading = true;
                 Tweener.Invoke(0.15f, () => {
                     animator.SetTrigger("loadTrigger");
+                    AudioManager.GetInstance().PlaySound(reloadStartSFX);
+                    player.GetComponent<TestPlayer>().allPurposeAudio = reloadEndSFX;
                     Tweener.Invoke(reloadTime, () => {
                         Reload();
                         isReloading = false;

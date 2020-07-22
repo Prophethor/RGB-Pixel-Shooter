@@ -20,6 +20,7 @@ public class UITest : MonoBehaviour {
     private GameObject weapon1Barrel, weapon2Barrel;
     private Sprite weapon1Sprite, weapon2Sprite;
 
+
     private void Start () {
         List<Weapon> weapons = gameManager.GetWeapons();
 

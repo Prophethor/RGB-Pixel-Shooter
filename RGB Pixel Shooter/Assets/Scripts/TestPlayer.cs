@@ -21,6 +21,10 @@ public class TestPlayer : MonoBehaviour {
     private Tween jumpTween;
     private float laneOffset;
 
+
+    public AudioClip allPurposeAudio;
+    public AudioClip moveSFX;
+
     private void Start () {
 
 
@@ -102,7 +106,8 @@ public class TestPlayer : MonoBehaviour {
         if (newLane < 0 || 2 < newLane || (equippedWeapon.CanMove())) {
             return;
         }
-
+        allPurposeAudio = moveSFX;
+        PlaySound();
         animator.SetTrigger("jumpTrigger");
         isJumping = true;
         lane = newLane;
@@ -123,5 +128,10 @@ public class TestPlayer : MonoBehaviour {
         if ((touch.x >= panel.position.x && touch.x <= panel.position.x + panel.rect.width) &&
             (touch.y >= panel.position.y && touch.y <= panel.position.y + panel.rect.height)) return true;
         return false;
+    }
+
+    public void PlaySound()
+    {
+        AudioManager.GetInstance().PlaySound(allPurposeAudio);
     }
 }
