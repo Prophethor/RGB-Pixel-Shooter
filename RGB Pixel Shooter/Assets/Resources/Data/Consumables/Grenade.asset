@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Grenade
   m_EditorClassIdentifier: 
   icon: {fileID: -2076781362981731538, guid: c2151fb6eac921547b50410476a161f7, type: 3}
-  radius: 5
+  radius: 2
   damage: 500
+  trail: {fileID: 1954506477722709040, guid: 55de30b8b3c8eca4d8ea3a3ad2502a0e, type: 3}

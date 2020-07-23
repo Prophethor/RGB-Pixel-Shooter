@@ -7,7 +7,7 @@ public class PlayField : MonoBehaviour {
     public GameObject lanePrefab;
     public int laneCount = 3;
 
-    private RectTransform playField;
+    private static RectTransform playField;
 
     private static List<Transform> laneList;
     private static float laneHeight;
@@ -28,6 +28,11 @@ public class PlayField : MonoBehaviour {
     }
     public static float GetLanePosition (int i) {
         return laneList[i].position.y;
+    }
+
+    public static bool OnField(Vector3 pos) {
+        return pos.x > playField.position.x && pos.x < playField.position.x+playField.rect.width &&
+               pos.y > playField.position.y && pos.y < playField.position.y + playField.rect.height;
     }
 
     public static float GetLaneHeight () {
