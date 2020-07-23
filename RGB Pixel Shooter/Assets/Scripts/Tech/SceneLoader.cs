@@ -27,7 +27,7 @@ public class SceneLoader : MonoBehaviour {
         instance = this;
         blackoutScreen = Resources.Load<GameObject>("Prefabs\\UI\\BlackoutScreen");
         SceneManager.sceneLoaded += (x, y) => {
-            FadeIn(1.5f);
+            FadeIn(0.5f);
         };
         DontDestroyOnLoad(gameObject);
     }
@@ -70,8 +70,8 @@ public class SceneLoader : MonoBehaviour {
     }
 
     public void LoadScene (string scene) {
-        FadeOut(1f);
-        Tweener.Invoke(1f, () => {
+        FadeOut(0.5f);
+        Tweener.Invoke(0.5f, () => {
             SceneManager.LoadScene(scene);
             Time.timeScale = 1f;
         }, true);

@@ -21,6 +21,8 @@ public class UITest : MonoBehaviour {
     private Sprite weapon1Sprite, weapon2Sprite;
 
 
+    public GameObject HUDCanvas, YouWin, YouLose, PausePanel, BlackScreen, SFXButton, MusicButton, SFXSlider, MusicSlider;
+
     private void Start () {
         List<Weapon> weapons = gameManager.GetWeapons();
 
@@ -34,8 +36,79 @@ public class UITest : MonoBehaviour {
         otherWeaponPanel.color = Color.white;
         currentWeaponPanel.sprite = weapon1Sprite;
         otherWeaponPanel.sprite = weapon2Sprite;
+
+        SFXSlider.GetComponent<Slider>().value = AudioManager.GetInstance().sfxVolumeValue;
+        MusicSlider.GetComponent<Slider>().value = AudioManager.GetInstance().musicVolumeValue;
     }
 
+    public void PauseGame () {
+        Time.timeScale = 0;
+        Image blackScreen = BlackScreen.GetComponent<Image>();
+        CanvasGroup pausePanel = PausePanel.GetComponent<CanvasGroup>();
+        BlackScreen.SetActive(true);
+        Tweener.AddTween(() => pausePanel.alpha, (x) => {pausePanel.alpha = x; }, 1, 0.1f,()=> {
+            pausePanel.blocksRaycasts = true;
+            pausePanel.interactable = true;
+
+        }, true);
+        Tweener.AddTween(() => blackScreen.color.a, (x) => { blackScreen.color = new Color(0, 0, 0, x); }, 0.5f, 0.1f, true);
+    }
+
+    public void ResumeGame() {
+        CanvasGroup pausePanel = PausePanel.GetComponent<CanvasGroup>();
+        Image blackScreen = BlackScreen.GetComponent<Image>();
+        pausePanel.blocksRaycasts = false;
+        pausePanel.interactable = false;
+        Tweener.AddTween(() => pausePanel.alpha, (x) => { pausePanel.alpha = x; }, 0, 0.1f, () => {
+            Time.timeScale = 1;
+        }, true);
+        Tweener.AddTween(() => blackScreen.color.a, (x) => { blackScreen.color = new Color(0, 0, 0, x); }, 0, 0.1f, () => {
+            BlackScreen.SetActive(false);
+        },true);
+    }
+
+    public void RestartLevel() {
+        gameManager.RestartLevel();
+    }
+
+    public void GoToMenu() {
+        gameManager.GoToMenu();
+    }
+
+    public void ShowWinScreen () {
+        Image blackScreen = BlackScreen.GetComponent<Image>();
+        BlackScreen.SetActive(true);
+        Tweener.AddTween(() => blackScreen.color.a, (x) => { blackScreen.color = new Color(0, 0, 0, x); }, 0.5f, 0.5f, true);
+
+        Tweener.AddTween(() => YouWin.transform.position.y,(x)=> { YouWin.transform.position = new Vector3(YouWin.transform.position.x, x); },
+             Camera.main.WorldToScreenPoint(new Vector3(0,5.5f)).y,0.5f,()=> {
+                 Time.timeScale = 0;
+             },true);
+    }
+
+    public void ShowLoseScreen () {
+        Time.timeScale = 0;
+        Image blackScreen = BlackScreen.GetComponent<Image>();
+        BlackScreen.SetActive(true);
+        Tweener.AddTween(() => blackScreen.color.a, (x) => { blackScreen.color = new Color(0, 0, 0, x); }, 0.5f, 0.5f, true);
+
+        Tweener.AddTween(() => YouLose.transform.position.y, (x) => { YouLose.transform.position = new Vector3(YouLose.transform.position.x, x); },
+            Camera.main.WorldToScreenPoint(new Vector3(0, 5.5f)).y, 0.5f, () => {
+                Time.timeScale = 0;
+            }, true);
+    }
+
+    public void SetMusicVolume(float value) {
+        AudioManager.GetInstance().musicVolumeValue = value;
+        if(value==0) MusicButton.GetComponent<MuteButton>().SetMuted();
+        else MusicButton.GetComponent<MuteButton>().SetUnmuted();
+    }
+
+    public void SetSFXVolume (float value) {
+        AudioManager.GetInstance().sfxVolumeValue = value;
+        if (value == 0) SFXButton.GetComponent<MuteButton>().SetMuted();
+        else SFXButton.GetComponent<MuteButton>().SetUnmuted();
+    }
 
     public void SwitchWeapon () {
 
@@ -60,6 +133,8 @@ public class UITest : MonoBehaviour {
         gameManager.SwitchWeapon();
         player.GetComponent<Animator>().SetTrigger("weaponSwitch");
     }
+
+
 
     public void UnhookWeapons () {
         gameManager.GetWeapons()[0].UnhookUI(weapon1Panel);

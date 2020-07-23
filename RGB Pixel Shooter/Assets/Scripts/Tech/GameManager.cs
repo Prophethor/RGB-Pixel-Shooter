@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
 
     public AudioClip swapWeapon;
 
+    private UITest UIManager;
     private void Awake () {
         weapons = new List<Weapon>();
 
@@ -48,6 +49,8 @@ public class GameManager : MonoBehaviour {
         if (soundtrack != null) {
             AudioManager.GetInstance().PlaySoundtrack(soundtrack);
         }
+
+        UIManager = FindObjectOfType<UITest>();
     }
 
     private void GenerateLoadout () {
@@ -73,16 +76,18 @@ public class GameManager : MonoBehaviour {
     }
 
     public void WinGame () {
-        Tweener.Invoke(1f, () => {
-            Time.timeScale = 0;
-        });
-        Tweener.Invoke(0.5f, () => {
-            SceneLoader.GetInstance().FinishLevel("LevelSelect");
-        }, true);
+        UIManager.ShowWinScreen();
     }
 
     public void LoseGame () {
-        Time.timeScale = 0;
+        UIManager.ShowLoseScreen();
+    }
+
+    public void RestartLevel() {
+        SceneLoader.GetInstance().LoadScene("LevelScene");
+    }
+
+    public void GoToMenu() {
         SceneLoader.GetInstance().FinishLevel("LevelSelect");
     }
 

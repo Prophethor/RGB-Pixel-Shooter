@@ -11,9 +11,6 @@ public class ConsumableUI : MonoBehaviour {
     public GameObject blinds;
     public Consumable consumable; // For now, this is the ScriptableObject
 
-    private float speed = 10;
-    private Vector3 deltaPos = new Vector3(.3f, .5f);
-
     public void StartDrag () {
         dragItem = Instantiate(gameObject, Input.mousePosition, transform.rotation) as GameObject;
         dragItem.transform.SetParent(dragCanvas.transform);
