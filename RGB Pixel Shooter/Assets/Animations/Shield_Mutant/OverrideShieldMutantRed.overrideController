@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OverrideShieldMutantRed
+  m_Controller: {fileID: 9100000, guid: 106b66cf8dcdf7d44a3dddf9f6e42c0f, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 3ea5fe37955ca7b48929ab8addf9756b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 71631400438780148ac8a333f5169ef0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fdf8f780c8e319345b1ddf96ead3c630, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 741416c7f1ac4cd46816eaaf10d9dd6e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1a458dcf6e9e4e148b8970386fa68d36, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 98774944c58a65d4785bad4e74e43c03, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1511c3771fd03484c8326db2a2676877, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c5ff8da648f833b4b9ed323a3cd039fb, type: 2}

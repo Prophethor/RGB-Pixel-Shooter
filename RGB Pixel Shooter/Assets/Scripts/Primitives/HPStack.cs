@@ -16,6 +16,8 @@ public class HPStack {
     private int damageReduction;
     private int threshold;
 
+    private Callback onDestroy;
+
     private GameObject HP;
 
     public HPStack (RGBColor color, int maxAmount = 100, int hpRegen = 0, float hpRegenTime = 0f, int damageReduction = 0, int threshold = 0) {
@@ -30,6 +32,12 @@ public class HPStack {
         this.damageReduction = damageReduction;
         this.threshold = threshold;
     }
+
+    public void SetOnDestroy(Callback callback)
+    {
+        onDestroy = callback;
+    }
+
 
     public void Update (float deltaTime) {
         hpRegenCurrentTime -= deltaTime;
@@ -48,9 +56,16 @@ public class HPStack {
                 hitStatus = HitStatus.HIT;
                 amount -= damage.amount;
                 if (amount < 0) amount = 0;
+
                 HP.transform.localScale = new Vector3(2.8f * (float) amount / maxAmount, HP.transform.localScale.y);
 
-                if (amount == 0) {
+                if (amount == 0 && onDestroy != null) {
+                    onDestroy();
+                    return true;
+
+                }
+                else if(amount == 0)
+                {
                     return true;
                 }
             }
@@ -63,7 +78,14 @@ public class HPStack {
                 if (amount < 0) amount = 0;
                 HP.transform.localScale = new Vector3(2.8f * (float) amount / maxAmount, HP.transform.localScale.y);
 
-                if (amount == 0) {
+                if (amount == 0 && onDestroy != null)
+                {
+                    onDestroy();
+                    return true;
+
+                }
+                else if (amount == 0)
+                {
                     return true;
                 }
             }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 107491512220218189}
   - component: {fileID: 2455126479241339021}
+  - component: {fileID: 1032540782315753476}
   m_Layer: 10
   m_Name: Shield
   m_TagString: Untagged
@@ -81,6 +82,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1032540782315753476
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3433720470138480752}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22ba5b860647e994b9e3544f7f8baaa7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5671198125261350251
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +218,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1b8bd2438328f774f88b9a911a295e13, type: 3}
   shieldBreakEffect: {fileID: 8300000, guid: 98f69271be6955449af84b296991e6f5, type: 3}
   shieldDeflectEffect: {fileID: 8300000, guid: fba9fc96d83e26b469909bf2a6c3b0cc, type: 3}
+  OverrideRed: {fileID: 22100000, guid: d71fcbc342abb0b498180e476476745f, type: 2}
+  OverrideBlue: {fileID: 22100000, guid: ef9825369e69c03418a9708884fec344, type: 2}
+  OverrideGreen: {fileID: 22100000, guid: dd61c0472815f4b44901f12146429dda, type: 2}
+  OverrideShieldRed: {fileID: 22100000, guid: d5f56b5984247d94eb401de7dd881578, type: 2}
+  OverrideShieldBlue: {fileID: 22100000, guid: 7084849df32d1034992b6e2cd845b1a4, type: 2}
+  OverrideShieldGreen: {fileID: 22100000, guid: 55f24484aa6445242838a082ee360166,
+    type: 2}
 --- !u!61 &5671198125261350248
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -255,7 +282,7 @@ Animator:
   m_GameObject: {fileID: 5671198125261350251}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0de6d51203ce2da428589caae093459b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 106b66cf8dcdf7d44a3dddf9f6e42c0f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
