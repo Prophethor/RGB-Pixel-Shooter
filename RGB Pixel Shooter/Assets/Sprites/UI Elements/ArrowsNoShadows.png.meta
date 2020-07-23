@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 0ee8f77c381ea8747b6a27b176f25546
 TextureImporter:
   internalIDToNameTable:
@@ -17,6 +18,11 @@ TextureImporter:
   - first:
       213: 6308380277647888986
     second: ArrowsNoShadows_4
+=======
+guid: 8638d3b645cf70345a3ee4ab8574b196
+TextureImporter:
+  internalIDToNameTable: []
+>>>>>>> 6cdb0a95b6fb467783d3cb154674643906795dab
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -46,7 +52,11 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<< HEAD
     filterMode: 0
+=======
+    filterMode: -1
+>>>>>>> 6cdb0a95b6fb467783d3cb154674643906795dab
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -55,12 +65,20 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 2
+=======
+  spriteMode: 1
+>>>>>>> 6cdb0a95b6fb467783d3cb154674643906795dab
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   spritePixelsToUnits: 40
+=======
+  spritePixelsToUnits: 100
+>>>>>>> 6cdb0a95b6fb467783d3cb154674643906795dab
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -79,6 +97,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<< HEAD
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
@@ -116,6 +135,9 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
+=======
+    textureCompression: 1
+>>>>>>> 6cdb0a95b6fb467783d3cb154674643906795dab
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,6 +146,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
+<<<<<<< HEAD
     sprites:
     - serializedVersion: 2
       name: ArrowsNoShadows_0
@@ -230,6 +253,9 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+=======
+    sprites: []
+>>>>>>> 6cdb0a95b6fb467783d3cb154674643906795dab
     outline: []
     physicsShape: []
     bones: []
