@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9011a17ecc7ec4d8f4e9c68767b99d, type: 3}
   m_Name: Wave 1
   m_EditorClassIdentifier: 
-  pointPool: 3
+  pointPool: 30
   enemyPool:
   - {fileID: 11400000, guid: 2958dd4e57908164f9a4779722096d31, type: 2}
   - {fileID: 11400000, guid: 1f83189d4349ec046ac81f31f95a7da9, type: 2}
   typeDistr:
   - 1
-  - 1
+  - 9
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36,3 +36,43 @@ MonoBehaviour:
   blueDistribution: 10
   waves:
   - {fileID: -760368584954298035}
+  - {fileID: 4142017720223434826}
+  - {fileID: 3067443711340267205}
+--- !u!114 &3067443711340267205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9011a17ecc7ec4d8f4e9c68767b99d, type: 3}
+  m_Name: Wave 3
+  m_EditorClassIdentifier: 
+  pointPool: 40
+  enemyPool:
+  - {fileID: 11400000, guid: 1f83189d4349ec046ac81f31f95a7da9, type: 2}
+  - {fileID: 11400000, guid: 9982c99cc7985754db47e1ca1022c9c1, type: 2}
+  typeDistr:
+  - 5
+  - 5
+--- !u!114 &4142017720223434826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9011a17ecc7ec4d8f4e9c68767b99d, type: 3}
+  m_Name: Wave 2
+  m_EditorClassIdentifier: 
+  pointPool: 30
+  enemyPool:
+  - {fileID: 11400000, guid: 1f83189d4349ec046ac81f31f95a7da9, type: 2}
+  - {fileID: 11400000, guid: 9982c99cc7985754db47e1ca1022c9c1, type: 2}
+  typeDistr:
+  - 8
+  - 2

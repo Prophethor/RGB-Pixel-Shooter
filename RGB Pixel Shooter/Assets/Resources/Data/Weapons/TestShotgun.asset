@@ -22,12 +22,12 @@ MonoBehaviour:
   shootEffect: {fileID: 8300000, guid: b236b69eaa4506b4dbc9007227f385ae, type: 3}
   reloadStartSFX: {fileID: 8300000, guid: 0844937934c768c4d845636afecbc18a, type: 3}
   reloadEndSFX: {fileID: 8300000, guid: 71f9373d8ec89df45b0e88d06a8674b3, type: 3}
-  dmgAmount: 200
-  reloadTime: 1.5
+  dmgAmount: 160
+  reloadTime: 1
   bulletSpeed: 15
   numberOfPellets: 3
-  range: 6
-  angle: 13
+  range: 10
+  angle: 3
   redInfuseSFX: {fileID: 8300000, guid: eb3dca490103a8d40989e145cee10f31, type: 3}
   greenInfuseSFX: {fileID: 8300000, guid: 026acc57774368c4e937f1733aa0c018, type: 3}
   blueInfuseSFX: {fileID: 8300000, guid: 91e815daf1b16b445b95c12983354c9f, type: 3}
