@@ -295,12 +295,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 40
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -615,6 +615,22 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3293788805175288089, guid: ebe05243928e0c34ea6b2feb80fc5fc7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 470000416802061985, guid: 9db75b6591c42fc4b963b1a69a900b2d,
+        type: 3}
+    - target: {fileID: 3293788805175288089, guid: ebe05243928e0c34ea6b2feb80fc5fc7,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293788805175288102, guid: ebe05243928e0c34ea6b2feb80fc5fc7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3293788805175288103, guid: ebe05243928e0c34ea6b2feb80fc5fc7,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -834,6 +850,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3293788806812591165, guid: ebe05243928e0c34ea6b2feb80fc5fc7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8928213725160730033, guid: 9db75b6591c42fc4b963b1a69a900b2d,
+        type: 3}
+    - target: {fileID: 3293788806812591165, guid: ebe05243928e0c34ea6b2feb80fc5fc7,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3583081886884573447, guid: ebe05243928e0c34ea6b2feb80fc5fc7,
         type: 3}
