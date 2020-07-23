@@ -1,28 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 7f99ff2507fbab645b3781d69c569399
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 620003767402994400
-    second: ArrowsOrange_0
-  - first:
-      213: 3613786099514042406
-    second: ArrowsOrange_1
-  - first:
-      213: 6132037831491363392
-    second: ArrowsOrange_2
-  - first:
-      213: 9206406119478572997
-    second: ArrowsOrange_3
-  - first:
-      213: -3479768196999289670
-    second: ArrowsOrange_4
-=======
-guid: b458592c700e0134bbfebe7922278dec
-TextureImporter:
   internalIDToNameTable: []
->>>>>>> 6cdb0a95b6fb467783d3cb154674643906795dab
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -52,11 +31,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-<<<<<<< HEAD
-    filterMode: 0
-=======
     filterMode: -1
->>>>>>> 6cdb0a95b6fb467783d3cb154674643906795dab
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -65,20 +40,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-  spriteMode: 2
-=======
   spriteMode: 1
->>>>>>> 6cdb0a95b6fb467783d3cb154674643906795dab
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
-  spritePixelsToUnits: 40
-=======
   spritePixelsToUnits: 100
->>>>>>> 6cdb0a95b6fb467783d3cb154674643906795dab
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,47 +64,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<< HEAD
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-=======
     textureCompression: 1
->>>>>>> 6cdb0a95b6fb467783d3cb154674643906795dab
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -146,116 +73,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-<<<<<<< HEAD
-    sprites:
-    - serializedVersion: 2
-      name: ArrowsOrange_0
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 261
-        width: 245
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ea957b3422ba9800800000000000000
-      internalID: 620003767402994400
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArrowsOrange_1
-      rect:
-        serializedVersion: 2
-        x: 89
-        y: 195
-        width: 188
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 62867c39f4fb62230800000000000000
-      internalID: 3613786099514042406
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArrowsOrange_2
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 134
-        width: 137
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 042ac473bef591550800000000000000
-      internalID: 6132037831491363392
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArrowsOrange_3
-      rect:
-        serializedVersion: 2
-        x: 174
-        y: 76
-        width: 103
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5c7b0898699b3cf70800000000000000
-      internalID: 9206406119478572997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArrowsOrange_4
-      rect:
-        serializedVersion: 2
-        x: 212
-        y: 19
-        width: 64
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ab4e72de24165bfc0800000000000000
-      internalID: -3479768196999289670
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-=======
     sprites: []
->>>>>>> 6cdb0a95b6fb467783d3cb154674643906795dab
     outline: []
     physicsShape: []
     bones: []
