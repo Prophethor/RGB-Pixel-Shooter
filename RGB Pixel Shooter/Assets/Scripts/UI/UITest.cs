@@ -23,6 +23,15 @@ public class UITest : MonoBehaviour {
 
     public GameObject HUDCanvas, YouWin, YouLose, PausePanel, BlackScreen, SFXButton, MusicButton, SFXSlider, MusicSlider;
 
+    [Header("AudioClips")]
+    public AudioClip pauseButtonSFX;
+    public AudioClip resumeButtonSFX;
+    public AudioClip restartButtonSFX;
+    public AudioClip backToMenuButtonSFX;
+    public AudioClip youWinJingle;
+    public AudioClip youLooseJingle;
+    public AudioClip setSoundVolumeSFX;
+   
     private void Start () {
         List<Weapon> weapons = gameManager.GetWeapons();
 
@@ -42,6 +51,7 @@ public class UITest : MonoBehaviour {
     }
 
     public void PauseGame () {
+        PLayUISound(pauseButtonSFX, true);
         Time.timeScale = 0;
         Image blackScreen = BlackScreen.GetComponent<Image>();
         CanvasGroup pausePanel = PausePanel.GetComponent<CanvasGroup>();
@@ -55,6 +65,7 @@ public class UITest : MonoBehaviour {
     }
 
     public void ResumeGame() {
+        PLayUISound(resumeButtonSFX, true);
         CanvasGroup pausePanel = PausePanel.GetComponent<CanvasGroup>();
         Image blackScreen = BlackScreen.GetComponent<Image>();
         pausePanel.blocksRaycasts = false;
@@ -68,14 +79,17 @@ public class UITest : MonoBehaviour {
     }
 
     public void RestartLevel() {
+        PLayUISound(restartButtonSFX, true);
         gameManager.RestartLevel();
     }
 
     public void GoToMenu() {
+        PLayUISound(backToMenuButtonSFX, true);
         gameManager.GoToMenu();
     }
 
     public void ShowWinScreen () {
+        PLayUISound(youWinJingle);
         Image blackScreen = BlackScreen.GetComponent<Image>();
         BlackScreen.SetActive(true);
         Tweener.AddTween(() => blackScreen.color.a, (x) => { blackScreen.color = new Color(0, 0, 0, x); }, 0.5f, 0.5f, true);
@@ -87,6 +101,7 @@ public class UITest : MonoBehaviour {
     }
 
     public void ShowLoseScreen () {
+        PLayUISound(youLooseJingle);
         Time.timeScale = 0;
         Image blackScreen = BlackScreen.GetComponent<Image>();
         BlackScreen.SetActive(true);
@@ -99,12 +114,14 @@ public class UITest : MonoBehaviour {
     }
 
     public void SetMusicVolume(float value) {
+        PLayUISound(setSoundVolumeSFX, true);
         AudioManager.GetInstance().musicVolumeValue = value;
         if(value==0) MusicButton.GetComponent<MuteButton>().SetMuted();
         else MusicButton.GetComponent<MuteButton>().SetUnmuted();
     }
 
     public void SetSFXVolume (float value) {
+        PLayUISound(setSoundVolumeSFX, true);
         AudioManager.GetInstance().sfxVolumeValue = value;
         if (value == 0) SFXButton.GetComponent<MuteButton>().SetMuted();
         else SFXButton.GetComponent<MuteButton>().SetUnmuted();
@@ -144,7 +161,13 @@ public class UITest : MonoBehaviour {
     private void OnDestroy () {
         //UnhookWeapons();
     }
+
+    public void PLayUISound(AudioClip clip, bool overlaping = false)
+    {
+        AudioManager.GetInstance().PlaySound(clip, overlaping);
+    }
 }
+
 
 #if UNITY_EDITOR
 
