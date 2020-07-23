@@ -139,7 +139,16 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     public void OnCollisionEnter2D (Collision2D collision) {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
             //ova linija ispod mora da se desi pre take damage linije
-            collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, collision.gameObject.GetComponent<Projectile>().damage.color, this.hpStackList[0].GetColor());
+            if (this.hpStackList.Count > 0)
+            {
+                collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, collision.gameObject.GetComponent<Projectile>().damage.color, this.hpStackList[0].GetColor());
+
+            }
+            else
+            {
+                collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, collision.gameObject.GetComponent<Projectile>().damage.color);
+            }
+
             TakeDamage(collision.gameObject.GetComponent<Projectile>().damage);
             // metak stvara blood splatter, mozda moze pametnije da se odradi pa da bude drugacijij blood splater svaki put
             collision.gameObject.GetComponent<Projectile>().SelfDestruct();

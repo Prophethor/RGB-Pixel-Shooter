@@ -59,6 +59,7 @@ public class ShieldMutant : GenericEnemy {
             animatorShield.SetTrigger("break");
             AudioManager.GetInstance().PlaySoundPitched(shieldBreakEffect, 1f);
         });
+
         hpStackList[1].SetOnDestroy(() => {
 
             Tweener.Invoke(0.1f, () => sr.material = defaultMaterial);

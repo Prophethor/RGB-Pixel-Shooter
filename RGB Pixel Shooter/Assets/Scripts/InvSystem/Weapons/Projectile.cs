@@ -37,7 +37,7 @@ public class Projectile : MonoBehaviour {
         this.range = range;
     }
 
-    public void SpawnBloodSplater (Vector3 spawnPosition, RGBColor bulletColor, RGBColor enemyColor) {
+    public void SpawnBloodSplater (Vector3 spawnPosition, RGBColor bulletColor, RGBColor enemyColor = RGBColor.NONE) {
 
        
 
