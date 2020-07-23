@@ -58,12 +58,15 @@ public class TestRevolver : Weapon {
             {
                 case RGBColor.RED:
                     AudioManager.GetInstance().PlaySound(redInfuseSFX, true);
+                    FindObjectOfType<RevolverBarrel>().LoadRed();
                     break;
                 case RGBColor.GREEN:
                     AudioManager.GetInstance().PlaySound(greenInfuseSFX, true);
+                    FindObjectOfType<RevolverBarrel>().LoadGreen();
                     break;
                 case RGBColor.BLUE:
                     AudioManager.GetInstance().PlaySound(blueInfuseSFX, true);
+                    FindObjectOfType<RevolverBarrel>().LoadBlue();
                     break;
                 case RGBColor.NONE:
                     break;
@@ -83,6 +86,7 @@ public class TestRevolver : Weapon {
                 bullets.RemoveAt(0);
 
                 AudioManager.GetInstance().PlaySound(shootEffect, true);
+                FindObjectOfType<RevolverBarrel>().Shoot();
             }
             if (bullets.Count == 0) {
                 isReloading = true;
@@ -91,6 +95,7 @@ public class TestRevolver : Weapon {
                     AudioManager.GetInstance().PlaySound(reloadStartSFX);
                     player.GetComponent<TestPlayer>().allPurposeAudio = reloadEndSFX;
                     Tweener.Invoke(reloadTime, () => {
+                        FindObjectOfType<RevolverBarrel>().Reload();
                         Reload();
                         isReloading = false;
                     });

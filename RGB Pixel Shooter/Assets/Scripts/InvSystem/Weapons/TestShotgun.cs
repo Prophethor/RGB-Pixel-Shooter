@@ -65,12 +65,15 @@ public class TestShotgun : Weapon {
             {
                 case RGBColor.RED:
                     AudioManager.GetInstance().PlaySound(redInfuseSFX, true);
+                    FindObjectOfType<DBShotgunBarrel>().LoadRed();
                     break;
                 case RGBColor.GREEN:
                     AudioManager.GetInstance().PlaySound(greenInfuseSFX, true);
+                    FindObjectOfType<DBShotgunBarrel>().LoadGreen();
                     break;
                 case RGBColor.BLUE:
                     AudioManager.GetInstance().PlaySound(blueInfuseSFX, true);
+                    FindObjectOfType<DBShotgunBarrel>().LoadBlue();
                     break;
                 case RGBColor.NONE:
                     break;
@@ -96,6 +99,7 @@ public class TestShotgun : Weapon {
                 }
                 bullets.RemoveAt(0);
                 AudioManager.GetInstance().PlaySound(shootEffect, true);
+                FindObjectOfType<DBShotgunBarrel>().Shoot();
             }
             if (bullets.Count == 0) {
                 isReloading = true;
@@ -105,6 +109,7 @@ public class TestShotgun : Weapon {
                     player.GetComponent<TestPlayer>().allPurposeAudio = reloadEndSFX;
                     Tweener.Invoke(reloadTime, () => {
                         Reload();
+                        FindObjectOfType<DBShotgunBarrel>().Reload();
                         isReloading = false;
                     });
                 });
