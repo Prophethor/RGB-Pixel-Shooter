@@ -134,6 +134,7 @@ public class LevelInfoEditor : Editor {
     }
 
     public override void OnInspectorGUI () {
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("soundtrack"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("redDistribution"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("greenDistribution"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("blueDistribution"));
@@ -141,4 +142,4 @@ public class LevelInfoEditor : Editor {
         waveList.DoLayoutList();
         serializedObject.ApplyModifiedProperties();
     }
-} 
+}

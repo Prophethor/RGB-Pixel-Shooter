@@ -44,6 +44,9 @@ public class EnemySpawner : MonoBehaviour {
     public void SetLevelInfo (LevelInfo level) {
         levelInfo = level;
         enemiesToKill = 0;
+        if (level.soundtrack != null) {
+            AudioManager.GetInstance().PlaySoundtrack(level.soundtrack);
+        }
         StartCoroutine(SpawnEnemies(level));
     }
 
