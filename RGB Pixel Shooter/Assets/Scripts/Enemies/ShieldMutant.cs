@@ -118,6 +118,12 @@ public class ShieldMutant : GenericEnemy {
         Move();
     }
 
+    protected override void Update()
+    {
+        base.Update();
+        Move();
+    }
+
     protected override void Move () {
         if (!isDead) {
             rb.velocity = new Vector2(-speed * statMultipliers.GetStat(StatEnum.SPEED), 0);
@@ -168,6 +174,20 @@ public class ShieldMutant : GenericEnemy {
         AudioManager.GetInstance().PlaySoundPitched(deathEffects[Random.Range(0, deathEffects.Count)], vocalPitch, true);
 
         base.Die();
+    }
+
+    public override void Flash(float duration)
+    {
+        sr.material = flashMaterial;
+        childSr.material = flashMaterial;
+        Tweener.Invoke(duration, () => sr.material = defaultMaterial);
+        Tweener.Invoke(duration, () => childSr.material = defaultMaterial);
+    }
+
+    public override void SetAnimatorSpeed(float speed)
+    {
+        base.SetAnimatorSpeed(speed);
+        animatorShield.speed = speed;
     }
 
     protected override void InitiateShanking () {

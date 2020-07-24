@@ -41,6 +41,7 @@ public class FreezeBomb : Consumable {
             collider.GetComponent<GenericEnemy>().ApplyBuff(freeze);
             collider.GetComponent<GenericEnemy>().SetAnimatorSpeed(0f);
             collider.GetComponent<GenericEnemy>().Flash(thawTime);
+            collider.GetComponent<GenericEnemy>().UpdateMove();
             collider.GetComponent<SpriteRenderer>().color = new Color(0f, 0.9f, 0.87f);
 
             Vector3 enemyPos = collider.transform.position;

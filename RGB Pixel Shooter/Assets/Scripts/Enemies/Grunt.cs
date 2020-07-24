@@ -27,6 +27,12 @@ public class Grunt : GenericEnemy {
 
     }
 
+    protected override void Update()
+    {
+        base.Update();
+        //Move();
+    }
+
     public override void TakeDamage (RGBDamage damage) {
         base.TakeDamage(damage);
 

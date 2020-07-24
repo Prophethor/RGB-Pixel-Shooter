@@ -106,6 +106,10 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         Tweener.Invoke(duration, () => sr.material = defaultMaterial);
     }
 
+    public virtual void UpdateMove()
+    {
+        Move();
+    }
     public virtual void TakeDamage (RGBDamage damage) {
         if (hpStackList.Count == 0) {
             return;
