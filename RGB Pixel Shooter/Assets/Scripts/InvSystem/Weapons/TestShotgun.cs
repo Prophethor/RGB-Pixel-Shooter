@@ -23,7 +23,6 @@ public class TestShotgun : Weapon {
 
     private Animator animator;
     private GameObject player;
-    private DBShotgunBarrel barrel;
 
     public AudioClip redInfuseSFX;
     public AudioClip greenInfuseSFX;
@@ -62,7 +61,8 @@ public class TestShotgun : Weapon {
     public override void Load (RGBColor color) {
         for (int i = 0; i < bullets.Count; i++) {
             if (bullets[i] != RGBColor.NONE) continue;
-            switch (color) {
+            switch (color)
+            {
                 case RGBColor.RED:
                     AudioManager.GetInstance().PlaySound(redInfuseSFX, true);
                     FindObjectOfType<DBShotgunBarrel>().LoadRed();
@@ -86,10 +86,6 @@ public class TestShotgun : Weapon {
     }
 
     public override void Shoot () {
-        if (barrel == null) {
-            barrel = FindObjectOfType<DBShotgunBarrel>();
-        }
-
         if (!isReloading && !player.GetComponent<TestPlayer>().isJumping) {
             if (bullets.Count > 0) {
                 animator.SetTrigger("shootTrigger");
@@ -113,7 +109,7 @@ public class TestShotgun : Weapon {
                     player.GetComponent<TestPlayer>().allPurposeAudio = reloadEndSFX;
                     Tweener.Invoke(reloadTime, () => {
                         Reload();
-                        barrel.Reload();
+                        FindObjectOfType<DBShotgunBarrel>().Reload();
                         isReloading = false;
                     });
                 });

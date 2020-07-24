@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cde3176e38962c4b89b53128de0682e, type: 3}
   m_Name: Grenade
   m_EditorClassIdentifier: 
-  icon: {fileID: 7292017107605658406, guid: 9db75b6591c42fc4b963b1a69a900b2d, type: 3}
+  icon: {fileID: -2076781362981731538, guid: c2151fb6eac921547b50410476a161f7, type: 3}
   radius: 2
   damage: 500
-  trailPrefab: {fileID: 1954506477722709040, guid: 55de30b8b3c8eca4d8ea3a3ad2502a0e,
-    type: 3}
+  trail: {fileID: 1954506477722709040, guid: 55de30b8b3c8eca4d8ea3a3ad2502a0e, type: 3}
   ExplosionSFX: {fileID: 8300000, guid: 173dd1beec1c2a848949dc3e643e86c4, type: 3}
   pickSFX: {fileID: 8300000, guid: 2f0ae584d3fbba64787cde447a77d40b, type: 3}

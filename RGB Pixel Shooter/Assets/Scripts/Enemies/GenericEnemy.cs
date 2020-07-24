@@ -23,6 +23,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected Material defaultMaterial;
     protected Material flashMaterial;
 
+
     protected virtual void Awake () {
         Initialize();
     }
@@ -30,7 +31,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     protected virtual void Start () {
         // Set position according to lane
         float yPos = PlayField.GetLanePosition(lane) - Random.Range(-0.33f, 1f) * PlayField.GetLaneHeight() / 3f;
-        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, 0)).x + 2, yPos, yPos);
+        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth,0)).x+2, yPos, yPos);
 
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -56,7 +57,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         statMultipliers = new StatMultiplierCollection();
         traits = new List<Trait>();
         sr = GetComponent<SpriteRenderer>();
-        flashMaterial = Resources.Load("TestMat", typeof(Material)) as Material;
+        flashMaterial = Resources.Load("WhiteFlash", typeof(Material)) as Material;
         defaultMaterial = sr.material;
         animator = GetComponent<Animator>();
     }
@@ -101,17 +102,13 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     protected abstract void Move ();
 
-    public virtual void Flash (float duration) {
-        sr.material = flashMaterial;
-        Tweener.Invoke(duration, () => sr.material = defaultMaterial);
-    }
-
     public virtual void TakeDamage (RGBDamage damage) {
         if (hpStackList.Count == 0) {
             return;
         }
 
-        Flash(0.1f);
+        sr.material = flashMaterial;
+        Tweener.Invoke(0.1f, () => sr.material = defaultMaterial);
 
         HitStatus hitStatus;
 
@@ -123,16 +120,11 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
                 GetComponent<BoxCollider2D>().enabled = false;
                 animator.SetBool("isDead", isDead);
                 animator.SetTrigger("is" + baseColor.GetString());
-                Tweener.Invoke(.1f, () => sr.color = Color.gray);
+                Tweener.Invoke(.1f,()=>sr.color = Color.gray);
                 Move();
                 Die();
             }
         }
-    }
-
-    // ¯\_(ツ)_/¯
-    public virtual void SetAnimatorSpeed (float speed) {
-        animator.speed = speed;
     }
 
     protected virtual void Die () {
@@ -147,10 +139,13 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
     public void OnCollisionEnter2D (Collision2D collision) {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
             //ova linija ispod mora da se desi pre take damage linije
-            if (this.hpStackList.Count > 0) {
+            if (this.hpStackList.Count > 0)
+            {
                 collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, collision.gameObject.GetComponent<Projectile>().damage.color, this.hpStackList[0].GetColor());
+
             }
-            else {
+            else
+            {
                 collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, collision.gameObject.GetComponent<Projectile>().damage.color);
             }
 

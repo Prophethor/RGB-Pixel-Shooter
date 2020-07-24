@@ -25,13 +25,17 @@ public class ConsumableUI : MonoBehaviour {
         dragItem.transform.position = Input.mousePosition;
     }
 
+    
+
     public void EndDrag () {
         if (PlayField.OnField(Camera.main.ScreenToWorldPoint(dragItem.transform.position))) {
             consumable.Use(Camera.main.ScreenToWorldPoint(dragItem.transform.position));
             Tweener.AddTween(() => blinds.GetComponent<RectTransform>().sizeDelta.y, (x) => {
                 blinds.GetComponent<RectTransform>().sizeDelta = new Vector2(blinds.GetComponent<RectTransform>().sizeDelta.x, x);
             }, 230, 0.3f, true);
-            
+            //TODO: Make this modular
+            GameObject trail = Instantiate(((Grenade) consumable).trail, Camera.main.ScreenToWorldPoint(dragItem.transform.position) + new Vector3(0, 0, 1f), Quaternion.identity);
+            Tweener.Invoke(0.3f, () => Destroy(trail));
             Destroy(gameObject);
         }
         Destroy(dragItem);

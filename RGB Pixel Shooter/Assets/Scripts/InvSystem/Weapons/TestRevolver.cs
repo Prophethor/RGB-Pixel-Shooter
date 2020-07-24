@@ -15,7 +15,6 @@ public class TestRevolver : Weapon {
     private int maxBullets = 6;
     public float bulletSpeed = 15;
     private GameObject player;
-    private RevolverBarrel barrel;
 
     public AudioClip redInfuseSFX;
     public AudioClip greenInfuseSFX;
@@ -55,7 +54,8 @@ public class TestRevolver : Weapon {
     public override void Load (RGBColor color) {
         for (int i = 0; i < bullets.Count; i++) {
             if (bullets[i] != RGBColor.NONE) continue;
-            switch (color) {
+            switch (color)
+            {
                 case RGBColor.RED:
                     AudioManager.GetInstance().PlaySound(redInfuseSFX, true);
                     FindObjectOfType<RevolverBarrel>().LoadRed();
@@ -79,11 +79,6 @@ public class TestRevolver : Weapon {
     }
 
     public override void Shoot () {
-        // ¯\_(ツ)_/¯
-        if (barrel == null) {
-            barrel = FindObjectOfType<RevolverBarrel>();
-        }
-
         if (!isReloading && !player.GetComponent<TestPlayer>().isJumping) {
             if (bullets.Count > 0) {
                 player.GetComponent<Animator>().SetTrigger("shootTrigger");
@@ -100,7 +95,7 @@ public class TestRevolver : Weapon {
                     AudioManager.GetInstance().PlaySound(reloadStartSFX);
                     player.GetComponent<TestPlayer>().allPurposeAudio = reloadEndSFX;
                     Tweener.Invoke(reloadTime, () => {
-                        barrel.Reload();
+                        FindObjectOfType<RevolverBarrel>().Reload();
                         Reload();
                         isReloading = false;
                     });
@@ -109,7 +104,8 @@ public class TestRevolver : Weapon {
         }
     }
 
-    private void Reload () {
+    private void Reload()
+    {
         while (bullets.Count < maxBullets) bullets.Add(RGBColor.NONE);
     }
 
