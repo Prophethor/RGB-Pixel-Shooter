@@ -16,3 +16,5 @@ MonoBehaviour:
   radius: 2
   damage: 500
   trail: {fileID: 1954506477722709040, guid: 55de30b8b3c8eca4d8ea3a3ad2502a0e, type: 3}
+  ExplosionSFX: {fileID: 8300000, guid: 173dd1beec1c2a848949dc3e643e86c4, type: 3}
+  pickSFX: {fileID: 8300000, guid: 2f0ae584d3fbba64787cde447a77d40b, type: 3}

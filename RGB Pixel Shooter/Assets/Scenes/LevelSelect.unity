@@ -1245,8 +1245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1fa285652b2ef4b932f97e127d146e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxVolumeValue: 0.057
-  musicVolumeValue: 0.025
+  sfxVolumeValue: 0.506
+  musicVolumeValue: 0.308
 --- !u!4 &809679607
 Transform:
   m_ObjectHideFlags: 0
@@ -2875,6 +2875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 306467480}
+  clickSFX: {fileID: 8300000, guid: f05328e75b08a614f907b08ea88ef8a6, type: 3}
 --- !u!1 &2018348796
 GameObject:
   m_ObjectHideFlags: 0

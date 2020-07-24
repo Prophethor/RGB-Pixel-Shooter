@@ -4,12 +4,14 @@ using UnityEngine;
 [Serializable]
 public abstract class Consumable : ScriptableObject, Item {
 
-    public abstract string GetName ();
+    public abstract string GetName();
 
-    public virtual Sprite GetIcon () {
+    public virtual Sprite GetIcon() {
         // TODO: Consumable icons
         return null;
     }
+
+    public abstract AudioClip GetPickupAudio();
 
     public abstract ItemToken GetToken ();
 

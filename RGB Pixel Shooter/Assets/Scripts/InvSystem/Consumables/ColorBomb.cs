@@ -5,6 +5,12 @@ using UnityEngine;
 public class ColorBomb : Consumable {
 
     public float radius;
+    public AudioClip pickSFX;
+
+    public override AudioClip GetPickupAudio()
+    {
+        return pickSFX;
+    }
 
     public override string GetName () {
         return "ColorBomb";

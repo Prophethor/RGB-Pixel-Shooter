@@ -12,11 +12,13 @@ public class ConsumableUI : MonoBehaviour {
     public Consumable consumable; // For now, this is the ScriptableObject
 
     public void StartDrag () {
+        
         dragItem = Instantiate(gameObject, Input.mousePosition, transform.rotation) as GameObject;
         dragItem.transform.SetParent(dragCanvas.transform);
         dragItem.GetComponent<Image>().SetNativeSize();
         dragItem.GetComponent<Image>().color = new Color(1, 1, 1, 0.8f);
         dragItem.transform.localScale = 0.8f * dragItem.transform.localScale;
+        AudioManager.GetInstance().PlaySound(consumable.GetPickupAudio(), true);
     }
 
     public void Drag () {
