@@ -4821,7 +4821,7 @@ MonoBehaviour:
   dragCanvas: {fileID: 1681056667}
   dragItem: {fileID: 0}
   blinds: {fileID: 926301221}
-  consumable: {fileID: 11400000, guid: 3da69bf0815db1d478649762d7a41785, type: 2}
+  consumable: {fileID: 11400000, guid: bfaf4102dfd3c8b409e3c2e1fe737d83, type: 2}
 --- !u!114 &1583904543
 MonoBehaviour:
   m_ObjectHideFlags: 0
