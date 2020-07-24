@@ -160,7 +160,7 @@ public class ShieldMutant : GenericEnemy {
         else if (hitStatus == HitStatus.BELOW_THRESHOLD) {
             animator.SetTrigger("deflect");
             animatorShield.SetTrigger("deflect");
-            AudioManager.GetInstance().PlaySound(shieldDeflectEffect, true);
+            AudioManager.GetInstance().PlaySound(shieldBreakEffect, true);
         }
 
 
