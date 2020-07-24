@@ -2807,6 +2807,8 @@ GameObject:
   - component: {fileID: 1938352374}
   - component: {fileID: 1938352373}
   - component: {fileID: 1938352375}
+  - component: {fileID: 1938352377}
+  - component: {fileID: 1938352376}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -2930,6 +2932,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 306467480}
   clickSFX: {fileID: 8300000, guid: f05328e75b08a614f907b08ea88ef8a6, type: 3}
+--- !u!114 &1938352376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938352371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1938352377
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938352371}
+  m_CullTransparentMesh: 0
 --- !u!1 &2018348796
 GameObject:
   m_ObjectHideFlags: 0
