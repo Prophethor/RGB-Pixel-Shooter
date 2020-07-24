@@ -103,13 +103,18 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     public virtual void Flash (float duration) {
         sr.material = flashMaterial;
-        Tweener.Invoke(duration, () => sr.material = defaultMaterial);
+        // TODO: This tween causes a bug
+        Tweener.Invoke(duration, () => {
+            if (sr != null && sr.enabled) {
+                sr.material = defaultMaterial;
+            }
+        });
     }
 
-    public virtual void UpdateMove()
-    {
+    public virtual void UpdateMove () {
         Move();
     }
+
     public virtual void TakeDamage (RGBDamage damage) {
         if (hpStackList.Count == 0) {
             return;

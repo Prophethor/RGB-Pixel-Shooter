@@ -50,8 +50,10 @@ public class FreezeBomb : Consumable {
             Tweener.AddTween(() => icicle.transform.localScale.x, (x) => {
                 icicle.transform.localScale = new Vector3(x, x, 1f);
             }, 0.01f, thawTime, TweenMethods.Linear, () => {
-                collider.GetComponent<GenericEnemy>().SetAnimatorSpeed(1f);
-                collider.GetComponent<SpriteRenderer>().color = Color.white;
+                if (collider != null) {
+                    collider.GetComponent<GenericEnemy>().SetAnimatorSpeed(1f);
+                    collider.GetComponent<SpriteRenderer>().color = Color.white;
+                }
                 Destroy(icicle);
             });
         }
