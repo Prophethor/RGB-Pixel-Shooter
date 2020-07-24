@@ -94,6 +94,9 @@ public class UITest : MonoBehaviour {
         BlackScreen.SetActive(true);
         Tweener.AddTween(() => blackScreen.color.a, (x) => { blackScreen.color = new Color(0, 0, 0, x); }, 0.5f, 0.5f, true);
 
+        YouWin.GetComponent<CanvasGroup>().alpha = 1;
+        YouWin.GetComponent<CanvasGroup>().interactable = true;
+        YouWin.GetComponent<CanvasGroup>().blocksRaycasts = true;
         Tweener.AddTween(() => YouWin.transform.position.y, (x) => { YouWin.transform.position = new Vector3(YouWin.transform.position.x, x); },
              Camera.main.WorldToScreenPoint(new Vector3(0, 5.5f)).y, 0.5f, () => {
                  Time.timeScale = 0;
@@ -107,6 +110,9 @@ public class UITest : MonoBehaviour {
         BlackScreen.SetActive(true);
         Tweener.AddTween(() => blackScreen.color.a, (x) => { blackScreen.color = new Color(0, 0, 0, x); }, 0.5f, 0.5f, true);
 
+        YouLose.GetComponent<CanvasGroup>().alpha = 1;
+        YouLose.GetComponent<CanvasGroup>().interactable = true;
+        YouLose.GetComponent<CanvasGroup>().blocksRaycasts = true;
         Tweener.AddTween(() => YouLose.transform.position.y, (x) => { YouLose.transform.position = new Vector3(YouLose.transform.position.x, x); },
             Camera.main.WorldToScreenPoint(new Vector3(0, 5.5f)).y, 0.5f, () => {
                 Time.timeScale = 0;
