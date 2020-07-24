@@ -31,7 +31,7 @@ public class UITest : MonoBehaviour {
     public AudioClip youWinJingle;
     public AudioClip youLooseJingle;
     public AudioClip setSoundVolumeSFX;
-   
+
     private void Start () {
         List<Weapon> weapons = gameManager.GetWeapons();
 
@@ -46,17 +46,17 @@ public class UITest : MonoBehaviour {
         currentWeaponPanel.sprite = weapon1Sprite;
         otherWeaponPanel.sprite = weapon2Sprite;
 
-        SFXSlider.GetComponent<Slider>().value = AudioManager.GetInstance().sfxVolumeValue;
-        MusicSlider.GetComponent<Slider>().value = AudioManager.GetInstance().musicVolumeValue;
+        SFXSlider.GetComponent<Slider>().value = AudioManager.GetInstance().SfxVolumeValue;
+        MusicSlider.GetComponent<Slider>().value = AudioManager.GetInstance().MusicVolumeValue;
     }
 
     public void PauseGame () {
-        PLayUISound(pauseButtonSFX, true);
+        PlayUISound(pauseButtonSFX, true);
         Time.timeScale = 0;
         Image blackScreen = BlackScreen.GetComponent<Image>();
         CanvasGroup pausePanel = PausePanel.GetComponent<CanvasGroup>();
         BlackScreen.SetActive(true);
-        Tweener.AddTween(() => pausePanel.alpha, (x) => {pausePanel.alpha = x; }, 1, 0.1f,()=> {
+        Tweener.AddTween(() => pausePanel.alpha, (x) => { pausePanel.alpha = x; }, 1, 0.1f, () => {
             pausePanel.blocksRaycasts = true;
             pausePanel.interactable = true;
 
@@ -64,8 +64,8 @@ public class UITest : MonoBehaviour {
         Tweener.AddTween(() => blackScreen.color.a, (x) => { blackScreen.color = new Color(0, 0, 0, x); }, 0.5f, 0.1f, true);
     }
 
-    public void ResumeGame() {
-        PLayUISound(resumeButtonSFX, true);
+    public void ResumeGame () {
+        PlayUISound(resumeButtonSFX, true);
         CanvasGroup pausePanel = PausePanel.GetComponent<CanvasGroup>();
         Image blackScreen = BlackScreen.GetComponent<Image>();
         pausePanel.blocksRaycasts = false;
@@ -75,33 +75,33 @@ public class UITest : MonoBehaviour {
         }, true);
         Tweener.AddTween(() => blackScreen.color.a, (x) => { blackScreen.color = new Color(0, 0, 0, x); }, 0, 0.1f, () => {
             BlackScreen.SetActive(false);
-        },true);
+        }, true);
     }
 
-    public void RestartLevel() {
-        PLayUISound(restartButtonSFX, true);
+    public void RestartLevel () {
+        PlayUISound(restartButtonSFX, true);
         gameManager.RestartLevel();
     }
 
-    public void GoToMenu() {
-        PLayUISound(backToMenuButtonSFX, true);
+    public void GoToMenu () {
+        PlayUISound(backToMenuButtonSFX, true);
         gameManager.GoToMenu();
     }
 
     public void ShowWinScreen () {
-        PLayUISound(youWinJingle);
+        PlayUISound(youWinJingle);
         Image blackScreen = BlackScreen.GetComponent<Image>();
         BlackScreen.SetActive(true);
         Tweener.AddTween(() => blackScreen.color.a, (x) => { blackScreen.color = new Color(0, 0, 0, x); }, 0.5f, 0.5f, true);
 
-        Tweener.AddTween(() => YouWin.transform.position.y,(x)=> { YouWin.transform.position = new Vector3(YouWin.transform.position.x, x); },
-             Camera.main.WorldToScreenPoint(new Vector3(0,5.5f)).y,0.5f,()=> {
+        Tweener.AddTween(() => YouWin.transform.position.y, (x) => { YouWin.transform.position = new Vector3(YouWin.transform.position.x, x); },
+             Camera.main.WorldToScreenPoint(new Vector3(0, 5.5f)).y, 0.5f, () => {
                  Time.timeScale = 0;
-             },true);
+             }, true);
     }
 
     public void ShowLoseScreen () {
-        PLayUISound(youLooseJingle);
+        PlayUISound(youLooseJingle);
         Time.timeScale = 0;
         Image blackScreen = BlackScreen.GetComponent<Image>();
         BlackScreen.SetActive(true);
@@ -113,18 +113,24 @@ public class UITest : MonoBehaviour {
             }, true);
     }
 
-    public void SetMusicVolume(float value) {
-        PLayUISound(setSoundVolumeSFX, true);
-        AudioManager.GetInstance().musicVolumeValue = value;
-        if(value==0) MusicButton.GetComponent<MuteButton>().SetMuted();
-        else MusicButton.GetComponent<MuteButton>().SetUnmuted();
+    public void SetMusicVolume (float value) {
+        AudioManager.GetInstance().MusicVolumeValue = value;
+        if (value <= float.Epsilon) {
+            MusicButton.GetComponent<MuteButton>().SetMuted();
+        }
+        else {
+            MusicButton.GetComponent<MuteButton>().SetUnmuted();
+        }
     }
 
     public void SetSFXVolume (float value) {
-        PLayUISound(setSoundVolumeSFX, true);
-        AudioManager.GetInstance().sfxVolumeValue = value;
-        if (value == 0) SFXButton.GetComponent<MuteButton>().SetMuted();
-        else SFXButton.GetComponent<MuteButton>().SetUnmuted();
+        AudioManager.GetInstance().SfxVolumeValue = value;
+        if (value <= float.Epsilon) {
+            SFXButton.GetComponent<MuteButton>().SetMuted();
+        }
+        else {
+            SFXButton.GetComponent<MuteButton>().SetUnmuted();
+        }
     }
 
     public void SwitchWeapon () {
@@ -162,9 +168,8 @@ public class UITest : MonoBehaviour {
         //UnhookWeapons();
     }
 
-    public void PLayUISound(AudioClip clip, bool overlaping = false)
-    {
-        AudioManager.GetInstance().PlaySound(clip, overlaping);
+    public void PlayUISound (AudioClip clip, bool overlapping = false) {
+        AudioManager.GetInstance().PlaySound(clip, overlapping);
     }
 }
 

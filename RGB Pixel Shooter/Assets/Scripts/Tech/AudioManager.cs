@@ -16,12 +16,35 @@ public class AudioManager : MonoBehaviour {
     }
 
     private HashSet<AudioClip> audioClips;
+    private List<AudioSource> sfxSources;
     private AudioSource musicSource;
 
     [Range(0f, 1f)]
-    public float sfxVolumeValue = 1f;
+    private float sfxVolumeValue = 1f;
     [Range(0f, 1f)]
-    public float musicVolumeValue = 0.6f;
+    private float musicVolumeValue = 0.6f;
+
+    public float SfxVolumeValue {
+        get => sfxVolumeValue;
+        set {
+            sfxVolumeValue = Mathf.Clamp01(value);
+            if (sfxSources != null) {
+                foreach (AudioSource source in sfxSources) {
+                    source.volume = value;
+                }
+            }
+        }
+    }
+
+    public float MusicVolumeValue {
+        get => musicVolumeValue;
+        set {
+            musicVolumeValue = Mathf.Clamp01(value);
+            if (musicSource != null) {
+                musicSource.volume = value;
+            }
+        }
+    }
 
     private void Awake () {
         if (instance != null && instance != this) {
@@ -32,6 +55,7 @@ public class AudioManager : MonoBehaviour {
 
         DontDestroyOnLoad(gameObject);
         audioClips = new HashSet<AudioClip>();
+        sfxSources = new List<AudioSource>();
 
         musicSource = GetComponent<AudioSource>();
 
@@ -75,11 +99,14 @@ public class AudioManager : MonoBehaviour {
         audioSource.clip = clip;
         audioSource.pitch = pitch;
         audioSource.loop = false;
-        audioSource.volume = sfxVolumeValue;
+        audioSource.volume = SfxVolumeValue;
         audioSource.Play();
+
+        sfxSources.Add(audioSource);
 
         // TODO: Replace creation and destruction of GameObject with object pooling pattern
         Tweener.Invoke(audioSource.clip.length, () => {
+            sfxSources.Remove(audioSource);
             Destroy(audioSourceObject);
         });
     }
