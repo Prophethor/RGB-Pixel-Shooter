@@ -17,7 +17,7 @@ MonoBehaviour:
   thawTime: 2
   trailPrefab: {fileID: 6270255222793949891, guid: 552fac5b0b2ab9949a4948eddfe13999,
     type: 3}
-  iciclePrefab: {fileID: 1341440198788263724, guid: 991a01e143583354abb08aeec058dae9,
+  iciclePrefab: {fileID: 1341440198788263724, guid: 4fbf66d49d8be734dba98f297ad03d81,
     type: 3}
   ExplosionSFX: {fileID: 8300000, guid: 672298b0ad4607344bdc1a07d25cbd7e, type: 3}
   pickSFX: {fileID: 8300000, guid: 4065a21fbafbbe34aaf0825536f5a091, type: 3}

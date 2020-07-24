@@ -1,10 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<< HEAD
---- !u!1 &7677156115420698192
-=======
 --- !u!1 &1341440198788263724
->>>>>>> 190ed91d140101bf6c16f09c92250bb4e66f0a0a
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,37 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 7677156115420698194}
-  - component: {fileID: 7677156115420698195}
-  m_Layer: 0
-  m_Name: Icicle
-=======
   - component: {fileID: 153171850645087236}
   - component: {fileID: 8047208426895930107}
   m_Layer: 0
   m_Name: M_Effects_Consumable_Freeze_48x49
->>>>>>> 190ed91d140101bf6c16f09c92250bb4e66f0a0a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!4 &7677156115420698194
-=======
 --- !u!4 &153171850645087236
->>>>>>> 190ed91d140101bf6c16f09c92250bb4e66f0a0a
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 7677156115420698192}
-=======
   m_GameObject: {fileID: 1341440198788263724}
->>>>>>> 190ed91d140101bf6c16f09c92250bb4e66f0a0a
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -50,21 +31,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
---- !u!212 &7677156115420698195
-=======
 --- !u!212 &8047208426895930107
->>>>>>> 190ed91d140101bf6c16f09c92250bb4e66f0a0a
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 7677156115420698192}
-=======
   m_GameObject: {fileID: 1341440198788263724}
->>>>>>> 190ed91d140101bf6c16f09c92250bb4e66f0a0a
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
