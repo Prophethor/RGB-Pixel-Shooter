@@ -71,7 +71,7 @@ public class Molotov : Consumable {
                 Debug.Log("Molotov used");
                 collider.GetComponent<GenericEnemy>().TakeDamage(new RGBDamage(RGBColor.NONE, Mathf.FloorToInt(dps * Time.deltaTime)));
             }
-        }, 0.01f, duration);
+        }, 1f, duration);
     }
 
     public override ItemToken GetToken () {
