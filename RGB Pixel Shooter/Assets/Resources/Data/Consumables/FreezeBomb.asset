@@ -20,4 +20,4 @@ MonoBehaviour:
   iciclePrefab: {fileID: 1341440198788263724, guid: 4fbf66d49d8be734dba98f297ad03d81,
     type: 3}
   ExplosionSFX: {fileID: 8300000, guid: 672298b0ad4607344bdc1a07d25cbd7e, type: 3}
-  pickSFX: {fileID: 8300000, guid: 4065a21fbafbbe34aaf0825536f5a091, type: 3}
+  pickSFX: {fileID: 8300000, guid: 0612631c6b307864ea5ed7ffb532822d, type: 3}

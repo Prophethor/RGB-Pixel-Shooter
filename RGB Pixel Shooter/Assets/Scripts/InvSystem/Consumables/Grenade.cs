@@ -26,7 +26,9 @@ public class Grenade : Consumable {
     }
 
     public override void Use (Vector2 position) {
-        GameObject trail = Instantiate(trailPrefab, (Vector3)position + new Vector3(0, 0, 1f), Quaternion.identity);
+        GameObject trail = Instantiate(trailPrefab, (Vector3) position + new Vector3(0, 0, 1f), Quaternion.identity);
+        float scale = 0.8f * radius;
+        trail.transform.localScale = new Vector3(scale, scale, 1f);
         Tweener.Invoke(0.3f, () => Destroy(trail));
 
         AudioManager.GetInstance().PlaySound(ExplosionSFX, true);

@@ -520,7 +520,7 @@ MonoBehaviour:
   dragCanvas: {fileID: 1681056667}
   dragItem: {fileID: 0}
   blinds: {fileID: 353936371}
-  consumable: {fileID: 11400000, guid: 3da69bf0815db1d478649762d7a41785, type: 2}
+  consumable: {fileID: 11400000, guid: 3f41e9466c3eef24fb6a9dd26d7185a8, type: 2}
 --- !u!114 &305903491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
+  m_sendNavigationEvents: 0
   m_DragThreshold: 10
 --- !u!1 &374111165
 GameObject:

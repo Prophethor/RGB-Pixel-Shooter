@@ -30,6 +30,8 @@ public class FreezeBomb : Consumable {
 
     public override void Use (Vector2 position) {
         GameObject trail = Instantiate(trailPrefab, (Vector3) position + new Vector3(0, 0, 1f), Quaternion.identity);
+        float trailScale = 0.8f * radius;
+        trail.transform.localScale = new Vector3(trailScale, trailScale, 1f);
         Tweener.Invoke(0.3f, () => Destroy(trail));
 
         AudioManager.GetInstance().PlaySound(ExplosionSFX, true);
@@ -57,17 +59,6 @@ public class FreezeBomb : Consumable {
                 Destroy(icicle);
             });
         }
-
-        // Leave code for molotov
-        //float temp = 0f;
-        //Tweener.AddTween(() => temp, (x) => {
-        //    temp = x;
-        //    Collider2D[] colliders = Physics2D.OverlapCircleAll(position, radius, LayerMask.GetMask("Enemies"));
-        //    foreach (Collider2D collider in colliders) {
-        //        Debug.Log("Freeze used");
-        //        collider.GetComponent<GenericEnemy>().ApplyBuff(new Buff(new Dictionary<StatEnum, float>() { { StatEnum.SPEED, slowFactor } }, thawTime));
-        //    }
-        //}, 1f, duration);
     }
 
     public override ItemToken GetToken () {
