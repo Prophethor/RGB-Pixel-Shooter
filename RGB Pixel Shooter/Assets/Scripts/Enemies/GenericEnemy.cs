@@ -146,6 +146,11 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
 
     protected virtual void Die () {
         EnemySpawner.enemiesToKill--;
+        //Collider2D[] colliders = new Collider2D[10];
+        //rb.GetAttachedColliders(colliders);
+        //foreach (Collider2D collider in colliders) {
+        //    collider.enabled = false;
+        //}
         SelfDestruct();
     }
 
@@ -153,30 +158,25 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         Destroy(gameObject, 1f);
     }
 
-    public void OnCollisionEnter2D (Collision2D collision) {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
+    public void OnTriggerEnter2D (Collider2D collider) {
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Bullets")) {
             //ova linija ispod mora da se desi pre take damage linije
             if (this.hpStackList.Count > 0) {
-                collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, collision.gameObject.GetComponent<Projectile>().damage.color, this.hpStackList[0].GetColor());
+                collider.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collider.transform.position, collider.gameObject.GetComponent<Projectile>().damage.color, this.hpStackList[0].GetColor());
+                TakeDamage(collider.gameObject.GetComponent<Projectile>().damage);
+                // metak stvara blood splatter, mozda moze pametnije da se odradi pa da bude drugacijij blood splater svaki put
+                collider.gameObject.GetComponent<Projectile>().SelfDestruct();
+                Destroy(collider.gameObject);
+
+                if (collider.gameObject.name == "ShieldMutant") {
+                    AudioManager.GetInstance().PlaySound(collider.gameObject.GetComponent<ShieldMutant>().shieldBreakEffect, true);
+                }
             }
             else {
-                collision.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collision.transform.position, collision.gameObject.GetComponent<Projectile>().damage.color);
-            }
-
-            TakeDamage(collision.gameObject.GetComponent<Projectile>().damage);
-            // metak stvara blood splatter, mozda moze pametnije da se odradi pa da bude drugacijij blood splater svaki put
-            collision.gameObject.GetComponent<Projectile>().SelfDestruct();
-            Destroy(collision.gameObject);
-
-            if (collision.gameObject.name == "ShieldMutant")
-            {
-                AudioManager.GetInstance().PlaySound(collision.gameObject.GetComponent<ShieldMutant>().shieldBreakEffect, true);
+                collider.gameObject.GetComponent<Projectile>().SpawnBloodSplater(collider.transform.position, collider.gameObject.GetComponent<Projectile>().damage.color);
             }
         }
-    }
-
-    public void OnTriggerEnter2D (Collider2D collider) {
-        if (collider.gameObject.layer == LayerMask.NameToLayer("FinishLine")) {
+        else if (collider.gameObject.layer == LayerMask.NameToLayer("FinishLine")) {
             gm.LoseGame();
         }
     }

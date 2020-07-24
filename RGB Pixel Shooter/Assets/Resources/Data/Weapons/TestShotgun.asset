@@ -26,8 +26,8 @@ MonoBehaviour:
   reloadTime: 1
   bulletSpeed: 15
   numberOfPellets: 3
-  range: 10
-  angle: 3
+  range: 7
+  angle: 7
   redInfuseSFX: {fileID: 8300000, guid: eb3dca490103a8d40989e145cee10f31, type: 3}
   greenInfuseSFX: {fileID: 8300000, guid: 026acc57774368c4e937f1733aa0c018, type: 3}
   blueInfuseSFX: {fileID: 8300000, guid: 91e815daf1b16b445b95c12983354c9f, type: 3}

@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour {
     }
 
     private void Update () {
-        if ((transform.position-startPosition).magnitude > range) {
+        if ((transform.position - startPosition).magnitude > range) {
             Destroy(gameObject);
         }
     }
@@ -33,34 +33,29 @@ public class Projectile : MonoBehaviour {
         sr.color = color.GetColor();
     }
 
-    public void SetRange(float range) {
+    public void SetRange (float range) {
         this.range = range;
     }
 
     public void SpawnBloodSplater (Vector3 spawnPosition, RGBColor bulletColor, RGBColor enemyColor = RGBColor.NONE) {
-
-       
-
         Vector3 offsetVector = new Vector3(Random.Range(-.1f, .1f), Random.Range(-.1f, .1f), 0);
 
         GameObject splatterObject = Instantiate(bloodSplatter, spawnPosition + offsetVector, Quaternion.identity);
         splatterObject.GetComponent<SpriteRenderer>().color = damage.color.GetColor();
 
         Animator explosionAnimator = splatterObject.GetComponent<Animator>();
-        if (bulletColor == enemyColor)
-        {
+        if (bulletColor == enemyColor) {
             explosionAnimator.SetInteger("ExplosionInt", 2);
         }
-        else
-        {
+        else {
             explosionAnimator.SetInteger("ExplosionInt", 1);
         }
 
         Tweener.Invoke(.3f, () => { Destroy(splatterObject); });
     }
 
-    public void SelfDestruct()
-    {
+    public void SelfDestruct () {
         AudioManager.GetInstance().PlaySound(hitSFX, true);
-        Destroy(this.gameObject);    }
+        Destroy(this.gameObject);
+    }
 }

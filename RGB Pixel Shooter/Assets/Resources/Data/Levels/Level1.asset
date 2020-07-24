@@ -17,6 +17,7 @@ MonoBehaviour:
   blueDistribution: 10
   waves:
   - {fileID: 6714713623803973020}
+  soundtrack: {fileID: 8300000, guid: c7cf94db5d7a4a545af7f279f215c8fe, type: 3}
 --- !u!114 &6714713623803973020
 MonoBehaviour:
   m_ObjectHideFlags: 0

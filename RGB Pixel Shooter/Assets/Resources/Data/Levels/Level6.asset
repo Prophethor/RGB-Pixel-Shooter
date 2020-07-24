@@ -57,6 +57,7 @@ MonoBehaviour:
   - {fileID: -2523416005147082073}
   - {fileID: -8306467767667084230}
   - {fileID: 7774365502171528701}
+  soundtrack: {fileID: 8300000, guid: ce71bbc494325e6489fae850a82865a9, type: 3}
 --- !u!114 &7774365502171528701
 MonoBehaviour:
   m_ObjectHideFlags: 0

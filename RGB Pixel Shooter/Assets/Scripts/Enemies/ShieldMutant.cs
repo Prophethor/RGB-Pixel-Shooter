@@ -72,8 +72,7 @@ public class ShieldMutant : GenericEnemy {
             hpStackList.RemoveAt(0);
         });
 
-        switch (baseColor)
-        {
+        switch (baseColor) {
             case RGBColor.RED:
                 animator.runtimeAnimatorController = OverrideRed;
                 break;
@@ -89,8 +88,7 @@ public class ShieldMutant : GenericEnemy {
                 break;
         }
 
-        switch (randcolor)
-        {
+        switch (randcolor) {
             case RGBColor.RED:
                 animatorShield.runtimeAnimatorController = OverrideShieldRed;
                 break;
@@ -118,8 +116,7 @@ public class ShieldMutant : GenericEnemy {
         Move();
     }
 
-    protected override void Update()
-    {
+    protected override void Update () {
         base.Update();
         Move();
     }
@@ -148,19 +145,18 @@ public class ShieldMutant : GenericEnemy {
         HitStatus hitStatus;
         if (hpStackList[0].TakeDamage(damage, out hitStatus)) {
             //hpStackList.RemoveAt(0);
-           /* if (hpStackList.Count == 0) {
-                isDead = true;
-                animator.SetBool("IsDead", true);
-                GetComponent<BoxCollider2D>().enabled = false;
-                Tweener.Invoke(.1f, () => sr.color = Color.gray);
-                Move();
-                Die();
-            }*/
+            /* if (hpStackList.Count == 0) {
+                 isDead = true;
+                 animator.SetBool("IsDead", true);
+                 GetComponent<BoxCollider2D>().enabled = false;
+                 Tweener.Invoke(.1f, () => sr.color = Color.gray);
+                 Move();
+                 Die();
+             }*/
         }
         else if (hitStatus == HitStatus.BELOW_THRESHOLD) {
             animator.SetTrigger("deflect");
             animatorShield.SetTrigger("deflect");
-            AudioManager.GetInstance().PlaySound(shieldBreakEffect, true);
         }
 
 
@@ -176,16 +172,14 @@ public class ShieldMutant : GenericEnemy {
         base.Die();
     }
 
-    public override void Flash(float duration)
-    {
+    public override void Flash (float duration) {
         sr.material = flashMaterial;
         childSr.material = flashMaterial;
         Tweener.Invoke(duration, () => sr.material = defaultMaterial);
         Tweener.Invoke(duration, () => childSr.material = defaultMaterial);
     }
 
-    public override void SetAnimatorSpeed(float speed)
-    {
+    public override void SetAnimatorSpeed (float speed) {
         base.SetAnimatorSpeed(speed);
         animatorShield.speed = speed;
     }
