@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour {
 
@@ -62,9 +63,27 @@ public class AudioManager : MonoBehaviour {
         if (musicSource == null) {
             musicSource = gameObject.AddComponent<AudioSource>();
         }
+
+        SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
+    }
+
+    private void SceneManager_activeSceneChanged (Scene scene0, Scene scene1) {
+        ClearEffects();
+    }
+
+    private void ClearEffects () {
+        foreach (AudioSource source in sfxSources) {
+            Destroy(source.gameObject);
+        }
+        sfxSources = new List<AudioSource>();
     }
 
     public void PlaySoundtrack (AudioClip soundtrack) {
+        // To avoid replaying the current soundtrack
+        if (soundtrack == musicSource.clip) {
+            return;
+        }
+
         PlayLoopInternal(soundtrack);
     }
 
@@ -87,7 +106,7 @@ public class AudioManager : MonoBehaviour {
 
             Tweener.Invoke(clip.length, () => {
                 audioClips.Remove(clip);
-            });
+            }, true);
         }
     }
 
@@ -107,8 +126,10 @@ public class AudioManager : MonoBehaviour {
         // TODO: Replace creation and destruction of GameObject with object pooling pattern
         Tweener.Invoke(audioSource.clip.length, () => {
             sfxSources.Remove(audioSource);
-            Destroy(audioSourceObject);
-        });
+            if (audioSourceObject != null) {
+                Destroy(audioSourceObject);
+            }
+        }, true);
     }
 
     private void PlayLoopInternal (AudioClip clip) {

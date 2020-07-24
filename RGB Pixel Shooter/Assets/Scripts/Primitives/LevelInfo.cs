@@ -14,6 +14,7 @@ public class LevelInfo : ScriptableObject {
     public float blueDistribution = 10f;
 
     public List<WaveInfo> waves;
+    public AudioClip soundtrack;
 
     public List<float> GetColorDistribution () {
         List<float> tmp = new List<float>();
