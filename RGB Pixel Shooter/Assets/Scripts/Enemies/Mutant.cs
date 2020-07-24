@@ -28,10 +28,15 @@ public class Mutant : GenericEnemy {
         Move();
     }
 
+    protected override void Update () {
+        base.Update();
+
+        Move();
+    }
+
     protected override void Move () {
         if (!isDead) {
             rb.velocity = new Vector2(-speed * statMultipliers.GetStat(StatEnum.SPEED), 0);
-
         }
         else {
             rb.velocity = Vector2.zero;
