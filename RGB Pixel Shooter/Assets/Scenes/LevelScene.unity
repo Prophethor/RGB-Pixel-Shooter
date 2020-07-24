@@ -1118,8 +1118,8 @@ MonoBehaviour:
   resumeButtonSFX: {fileID: 8300000, guid: e00eb550742d4d84285c2eb6ac51cca2, type: 3}
   restartButtonSFX: {fileID: 8300000, guid: e00eb550742d4d84285c2eb6ac51cca2, type: 3}
   backToMenuButtonSFX: {fileID: 8300000, guid: e00eb550742d4d84285c2eb6ac51cca2, type: 3}
-  youWinJingle: {fileID: 8300000, guid: 469770fa182d39040ae270cc130089dc, type: 3}
-  youLooseJingle: {fileID: 8300000, guid: ce69815adac712049a631a685a2cd038, type: 3}
+  youWinJingle: {fileID: 8300000, guid: 7f2c0aab43e27f44c8961d8cca6f61bd, type: 3}
+  youLooseJingle: {fileID: 8300000, guid: 84ba1fe9c90f7664facceefa85e77222, type: 3}
   setSoundVolumeSFX: {fileID: 8300000, guid: a7f345125c2a1754b893a0d5f758682f, type: 3}
 --- !u!4 &443079413
 Transform:

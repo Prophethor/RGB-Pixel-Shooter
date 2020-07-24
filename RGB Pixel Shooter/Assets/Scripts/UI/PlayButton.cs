@@ -6,8 +6,11 @@ public class PlayButton : MonoBehaviour
 {
 
     public GameObject panel;
+    [Header("Audio Clips")]
+    public AudioClip clickSFX;
 
     public void Play () {
+        AudioManager.GetInstance().PlaySound(clickSFX);
         Tweener.AddTween(
             () => panel.transform.position.y,
             (x) => { panel.transform.position = new Vector3(panel.transform.position.x, x, panel.transform.position.z); },

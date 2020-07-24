@@ -132,3 +132,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 0}
+  levelSelectSFX: {fileID: 8300000, guid: a7f345125c2a1754b893a0d5f758682f, type: 3}
