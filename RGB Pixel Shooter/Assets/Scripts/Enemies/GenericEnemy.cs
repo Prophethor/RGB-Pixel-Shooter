@@ -167,6 +167,11 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
             // metak stvara blood splatter, mozda moze pametnije da se odradi pa da bude drugacijij blood splater svaki put
             collision.gameObject.GetComponent<Projectile>().SelfDestruct();
             Destroy(collision.gameObject);
+
+            if (collision.gameObject.name == "ShieldMutant")
+            {
+                AudioManager.GetInstance().PlaySound(collision.gameObject.GetComponent<ShieldMutant>().shieldBreakEffect, true);
+            }
         }
     }
 

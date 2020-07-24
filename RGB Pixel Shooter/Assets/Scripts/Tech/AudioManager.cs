@@ -20,9 +20,9 @@ public class AudioManager : MonoBehaviour {
     private AudioSource musicSource;
 
     [Range(0f, 1f)]
-    private float sfxVolumeValue = 1f;
+    private float sfxVolumeValue = .3f;
     [Range(0f, 1f)]
-    private float musicVolumeValue = 0.6f;
+    private float musicVolumeValue = 0.3f;
 
     public float SfxVolumeValue {
         get => sfxVolumeValue;
