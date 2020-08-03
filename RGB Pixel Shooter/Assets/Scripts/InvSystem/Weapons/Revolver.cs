@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "TestRevolver", menuName = "Weapons/TestRevolver")]
-public class TestRevolver : Weapon {
+[CreateAssetMenu(fileName = "Revolver", menuName = "Weapons/Revolver")]
+public class Revolver : Weapon {
 
     public Rigidbody2D bulletPrefab;
     public AudioClip shootEffect;
@@ -84,7 +84,7 @@ public class TestRevolver : Weapon {
             barrel = FindObjectOfType<RevolverBarrel>();
         }
 
-        if (!isReloading && !player.GetComponent<TestPlayer>().isJumping) {
+        if (!isReloading && !player.GetComponent<PlayerController>().isJumping) {
             if (bullets.Count > 0) {
                 player.GetComponent<Animator>().SetTrigger("shootTrigger");
                 InstantiateBullet(player.transform.position + (Vector3) deltaPosition);
@@ -98,7 +98,7 @@ public class TestRevolver : Weapon {
                 Tweener.Invoke(0.15f, () => {
                     player.GetComponent<Animator>().SetTrigger("loadTrigger");
                     AudioManager.GetInstance().PlaySound(reloadStartSFX);
-                    player.GetComponent<TestPlayer>().allPurposeAudio = reloadEndSFX;
+                    player.GetComponent<PlayerController>().allPurposeAudio = reloadEndSFX;
                     Tweener.Invoke(reloadTime, () => {
                         barrel.Reload();
                         Reload();

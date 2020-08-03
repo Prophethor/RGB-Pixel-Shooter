@@ -56,7 +56,7 @@ public abstract class GenericEnemy : MonoBehaviour, Statable {
         statMultipliers = new StatMultiplierCollection();
         traits = new List<Trait>();
         sr = GetComponent<SpriteRenderer>();
-        flashMaterial = Resources.Load("TestMat", typeof(Material)) as Material;
+        flashMaterial = Resources.Load("Materials/RecolorMaterial", typeof(Material)) as Material;
         defaultMaterial = sr.material;
         animator = GetComponent<Animator>();
     }

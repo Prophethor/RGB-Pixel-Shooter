@@ -19,7 +19,7 @@ public class RevolverToken : ItemToken {
     }
 
     public override void Read (ScriptableObject obj) {
-        TestRevolver revolver = (TestRevolver) obj;
+        Revolver revolver = (Revolver) obj;
 
         dmgAmount = revolver.dmgAmount;
         reloadTime = revolver.reloadTime;
@@ -27,7 +27,7 @@ public class RevolverToken : ItemToken {
     }
 
     public override ScriptableObject Instantiate () {
-        TestRevolver revolver = ScriptableObject.Instantiate(Resources.Load<TestRevolver>("Data/Weapons/TestRevolver"));
+        Revolver revolver = ScriptableObject.Instantiate(Resources.Load<Revolver>("Data/Weapons/Revolver"));
 
         revolver.dmgAmount = dmgAmount;
         revolver.reloadTime = reloadTime;
@@ -41,6 +41,6 @@ public class RevolverToken : ItemToken {
     }
 
     public override Sprite GetIcon () {
-        return Resources.Load<TestRevolver>("Data/Weapons/TestRevolver").GetIcon();
+        return Resources.Load<Revolver>("Data/Weapons/Revolver").GetIcon();
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestPlayer : MonoBehaviour {
+public class PlayerController: MonoBehaviour {
 
     // Besto testo
     public Weapon equippedWeapon;
@@ -27,17 +27,19 @@ public class TestPlayer : MonoBehaviour {
 
     private void Start () {
 
-
+        //TODO: Replace with tap
         swipe = Instantiate(swipeDetector).GetComponent<Swipe>();
         swipe.minDistanceForSwipe = 20;
         swipe.detectOnlyAfterSwipe = true;
         swipe.OnSwipe += Move;
 
+        //Positioning level objects based on aspect ratio
         transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(0, 0)).x +
-                   0.05f * Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, 0)).x, transform.position.y);
+                   0.06f * Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, 0)).x, transform.position.y);
+
 
         Transform finishLine = GameObject.FindGameObjectWithTag("FinishLine").transform;
-        finishLine.position = new Vector3((transform.position + new Vector3(2, 0, 0)).x,finishLine.position.y);
+        finishLine.position = new Vector3((transform.position + new Vector3(2.25f, 0, 0)).x,finishLine.position.y);
 
         laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
         animator = GetComponent<Animator>();
@@ -65,7 +67,7 @@ public class TestPlayer : MonoBehaviour {
             }
 
             if (Input.GetKeyDown(KeyCode.O)) {
-                FindObjectOfType<UITest>().SwitchWeapon();
+                FindObjectOfType<UIManager>().SwitchWeapon();
             }
 
             if (Input.GetKeyDown(KeyCode.J)) {

@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TestShotgun", menuName = "Weapons/TestShotgun")]
-public class TestShotgun : Weapon {
+[CreateAssetMenu(fileName = "DBShotgun", menuName = "Weapons/DBShotgun")]
+public class DBShotgun : Weapon {
 
     public Rigidbody2D bulletPrefab;
     public AudioClip shootEffect;
@@ -90,7 +90,7 @@ public class TestShotgun : Weapon {
             barrel = FindObjectOfType<DBShotgunBarrel>();
         }
 
-        if (!isReloading && !player.GetComponent<TestPlayer>().isJumping) {
+        if (!isReloading && !player.GetComponent<PlayerController>().isJumping) {
             if (bullets.Count > 0) {
                 animator.SetTrigger("shootTrigger");
                 if (numberOfPellets != 1) {
@@ -110,7 +110,7 @@ public class TestShotgun : Weapon {
                 Tweener.Invoke(0.15f, () => {
                     animator.SetTrigger("loadTrigger");
                     AudioManager.GetInstance().PlaySound(reloadStartSFX);
-                    player.GetComponent<TestPlayer>().allPurposeAudio = reloadEndSFX;
+                    player.GetComponent<PlayerController>().allPurposeAudio = reloadEndSFX;
                     Tweener.Invoke(reloadTime, () => {
                         Reload();
                         barrel.Reload();

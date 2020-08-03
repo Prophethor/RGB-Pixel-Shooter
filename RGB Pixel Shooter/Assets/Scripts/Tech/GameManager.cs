@@ -13,13 +13,13 @@ public class GameManager : MonoBehaviour {
     public Weapon revolver;
     public Weapon shotgun;
 
-    public TestPlayer player;
+    public PlayerController player;
 
     public AudioClip soundtrack;
 
     public AudioClip swapWeapon;
 
-    private UITest UIManager;
+    private UIManager UIManager;
     private void Awake () {
         weapons = new List<Weapon>();
 
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
             AudioManager.GetInstance().PlaySoundtrack(soundtrack);
         }
 
-        UIManager = FindObjectOfType<UITest>();
+        UIManager = FindObjectOfType<UIManager>();
     }
 
     private void GenerateLoadout () {
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour {
             }
             else {
                 Tweener.Invoke(1f, () => {
-                    FindObjectOfType<UITest>().UnhookWeapons();
+                    FindObjectOfType<UIManager>().UnhookWeapons();
                     SceneManager.LoadScene(0);
                     Time.timeScale = 1f;
                 }, true);

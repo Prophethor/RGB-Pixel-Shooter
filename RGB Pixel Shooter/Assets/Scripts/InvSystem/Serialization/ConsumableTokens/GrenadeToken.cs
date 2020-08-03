@@ -24,7 +24,7 @@ public class GrenadeToken : ItemToken {
     }
 
     public override ScriptableObject Instantiate () {
-        Grenade grenade = ScriptableObject.Instantiate(Resources.Load<Grenade>("Data/Weapons/TestRevolver"));
+        Grenade grenade = ScriptableObject.Instantiate(Resources.Load<Grenade>("Data/Weapons/Revolver"));
 
         grenade.radius = radius;
         grenade.damage = damage;

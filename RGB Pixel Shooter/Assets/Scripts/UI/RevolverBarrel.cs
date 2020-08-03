@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class RevolverBarrel : MonoBehaviour {
 
-    private TestRevolver revolver;
+    private Revolver revolver;
     Image[] slots;
     int shootIndex = 0;
     int loadIndex = 0;
@@ -13,7 +13,7 @@ public class RevolverBarrel : MonoBehaviour {
     private Tween rotTween;
 
     void Start () {
-        revolver = FindObjectOfType<TestRevolver>();
+        revolver = FindObjectOfType<Revolver>();
         slots = GetComponentsInChildren<Image>();
         Reload();
     }

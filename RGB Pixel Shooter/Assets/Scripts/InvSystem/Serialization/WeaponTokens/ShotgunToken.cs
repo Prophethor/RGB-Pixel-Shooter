@@ -21,7 +21,7 @@ public class ShotgunToken : ItemToken {
     }
 
     public override void Read (ScriptableObject obj) {
-        TestShotgun shotgun = (TestShotgun) obj;
+        DBShotgun shotgun = (DBShotgun) obj;
 
         dmgAmount = shotgun.dmgAmount;
         reloadTime = shotgun.reloadTime;
@@ -32,7 +32,7 @@ public class ShotgunToken : ItemToken {
     }
 
     public override ScriptableObject Instantiate () {
-        TestShotgun shotgun = ScriptableObject.Instantiate(Resources.Load<TestShotgun>("TestShotgun 1"));
+        DBShotgun shotgun = ScriptableObject.Instantiate(Resources.Load<DBShotgun>("Data/Weapons/DBShotgun"));
 
         shotgun.dmgAmount = dmgAmount;
         shotgun.reloadTime = reloadTime;
@@ -49,6 +49,6 @@ public class ShotgunToken : ItemToken {
     }
 
     public override Sprite GetIcon () {
-        return Resources.Load<TestShotgun>("TestShotgun 1").GetIcon();
+        return Resources.Load<DBShotgun>("Data/Weapons/DBShotgun").GetIcon();
     }
 }

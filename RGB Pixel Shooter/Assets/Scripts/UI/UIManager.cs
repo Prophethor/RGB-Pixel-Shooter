@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 
-public class UITest : MonoBehaviour {
+public class UIManager : MonoBehaviour {
 
     public Transform weapon1Panel;
     public Transform weapon2Panel;
@@ -12,7 +12,7 @@ public class UITest : MonoBehaviour {
     public Image currentWeaponPanel;
     public Image otherWeaponPanel;
 
-    public TestPlayer player;
+    public PlayerController player;
     public GameManager gameManager;
     public GameObject swipeDetector;
 
@@ -182,14 +182,14 @@ public class UITest : MonoBehaviour {
 
 #if UNITY_EDITOR
 
-[CustomEditor(typeof(UITest))]
-public class UITestEditor : Editor {
+[CustomEditor(typeof(UIManager))]
+public class UIManagerEditor : Editor {
 
     public override void OnInspectorGUI () {
         DrawDefaultInspector();
 
         if (GUILayout.Button("Switch weapon")) {
-            ((UITest) target).SwitchWeapon();
+            ((UIManager) target).SwitchWeapon();
         }
     }
 }
