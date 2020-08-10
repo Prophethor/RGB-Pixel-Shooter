@@ -52,6 +52,9 @@ public class Revolver : Weapon {
         UIHooks.Add("LoadGreen", () => Load(RGBColor.GREEN));
         UIHooks.Add("LoadBlue", () => Load(RGBColor.BLUE));
         UIHooks.Add("Shoot", () => Shoot());
+        UIHooks.Add("Reload", () => {
+            Debug.Log("Reload");
+        });
     }
 
     public override void Load (RGBColor color) {

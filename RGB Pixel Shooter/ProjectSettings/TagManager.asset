@@ -12,6 +12,7 @@ TagManager:
   - LoadGreen
   - LoadBlue
   - FinishLine
+  - Reload
   layers:
   - Default
   - TransparentFX
