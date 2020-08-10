@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController: MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
     // Besto testo
     public Weapon equippedWeapon;
@@ -39,11 +39,11 @@ public class PlayerController: MonoBehaviour {
 
 
         Transform finishLine = GameObject.FindGameObjectWithTag("FinishLine").transform;
-        finishLine.position = new Vector3((transform.position + new Vector3(2.25f, 0, 0)).x,finishLine.position.y);
+        finishLine.position = new Vector3((transform.position + new Vector3(2.25f, 0, 0)).x, finishLine.position.y);
 
         laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
         animator = GetComponent<Animator>();
-        animator.runtimeAnimatorController = equippedWeapon.controller;
+        animator.runtimeAnimatorController = equippedWeapon.Controller;
         animator.SetFloat("jumpSpeed", 0.2f / laneSwitchTime);
     }
 
@@ -133,8 +133,7 @@ public class PlayerController: MonoBehaviour {
         return false;
     }
 
-    public void PlaySound()
-    {
+    public void PlaySound () {
         AudioManager.GetInstance().PlaySound(allPurposeAudio);
     }
 }

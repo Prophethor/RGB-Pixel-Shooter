@@ -13,9 +13,12 @@ public class RevolverBarrel : MonoBehaviour {
     private Tween rotTween;
 
     void Start () {
-        revolver = FindObjectOfType<Revolver>();
         slots = GetComponentsInChildren<Image>();
         Reload();
+    }
+
+    public void SetRevolver (Revolver revolver) {
+        this.revolver = revolver;
     }
 
     public void Reload () {

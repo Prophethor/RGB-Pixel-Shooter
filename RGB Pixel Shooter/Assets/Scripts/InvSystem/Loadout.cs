@@ -11,12 +11,12 @@ public class Loadout {
     private const int maxConsumables = 3;
 
     // Minimum of 1 weapon for the Loadout to be valid
-    private List<ItemToken> weapons;
+    private List<Weapon> weapons;
     private List<ItemToken> gearItems;
     private List<ItemToken> consumables;
 
     public Loadout () {
-        weapons = new List<ItemToken>();
+        weapons = new List<Weapon>();
         gearItems = new List<ItemToken>();
         consumables = new List<ItemToken>();
     }
@@ -39,7 +39,7 @@ public class Loadout {
 
     public bool AddItem (ItemToken item) {
         if (item.HasTag("Weapon")) {
-            return AddWeapon(item);
+            return AddWeapon((Weapon) item);
         }
         else if (item.HasTag("Gear")) {
             return AddGear(item);
@@ -51,7 +51,7 @@ public class Loadout {
 
     public bool RemoveItem (ItemToken item) {
         if (item.HasTag("Weapon")) {
-            return RemoveWeapon(item);
+            return RemoveWeapon((Weapon) item);
         }
         else if (item.HasTag("Gear")) {
             return RemoveGear(item);
@@ -61,11 +61,11 @@ public class Loadout {
         }
     }
 
-    public List<ItemToken> GetWeapons () {
+    public List<Weapon> GetWeapons () {
         return weapons;
     }
 
-    public bool AddWeapon (ItemToken weapon) {
+    public bool AddWeapon (Weapon weapon) {
         if (weapons.Count < maxWeapons) {
             weapons.Add(weapon);
             return true;
@@ -74,7 +74,7 @@ public class Loadout {
         return false;
     }
 
-    public bool RemoveWeapon (ItemToken weapon) {
+    public bool RemoveWeapon (Weapon weapon) {
         if (weapons.Contains(weapon)) {
             return weapons.Remove(weapon);
         }
@@ -124,6 +124,17 @@ public class Loadout {
     }
 
     public bool Contains (ItemToken item) {
-        return weapons.Contains(item) || gearItems.Contains(item) || consumables.Contains(item);
+        if (item is Weapon) {
+            return weapons.Contains((Weapon) item);
+        }
+        //else if (item is Gear) {
+        //    return weapons.Contains((Weapon) item);
+        //}
+        //else if (item is Consumable) {
+        //    return weapons.Contains((Weapon) item);
+        //}
+        else {
+            return false;
+        }
     }
 }

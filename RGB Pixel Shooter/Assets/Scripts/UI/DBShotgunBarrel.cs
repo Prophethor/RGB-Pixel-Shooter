@@ -4,15 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DBShotgunBarrel : MonoBehaviour {
+
     private DBShotgun shotgun;
     Image[] slots;
     int shootIndex = 0;
     int loadIndex = 0;
 
     void Start () {
-        shotgun = FindObjectOfType<DBShotgun>();
         slots = GetComponentsInChildren<Image>();
         Reload();
+    }
+
+    public void SetShotgun (DBShotgun shotgun) {
+        this.shotgun = shotgun;
     }
 
     public void Reload () {

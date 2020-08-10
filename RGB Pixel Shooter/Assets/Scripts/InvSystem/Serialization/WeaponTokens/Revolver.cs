@@ -1,31 +1,33 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-[CreateAssetMenu(fileName = "Revolver", menuName = "Weapons/Revolver")]
+
+[System.Serializable]
 public class Revolver : Weapon {
 
-    public Rigidbody2D bulletPrefab;
-    public AudioClip shootEffect;
-    public AudioClip reloadStartSFX;
-    public AudioClip reloadEndSFX;
-    public int dmgAmount = 100;
-    public float reloadTime = 3;
+    private RevolverInfo revolverInfo;
+
+    private int dmgAmount = 100;
+    private float reloadTime = 3;
+    private float bulletSpeed = 15;
 
     private List<RGBColor> bullets;
     private int maxBullets = 6;
-    public float bulletSpeed = 15;
     private GameObject player;
     private RevolverBarrel barrel;
 
-    public AudioClip redInfuseSFX;
-    public AudioClip greenInfuseSFX;
-    public AudioClip blueInfuseSFX;
+    public Revolver () {  }
 
+    protected override void LoadWeaponInfo () {
+        weaponInfo = revolverInfo = (RevolverInfo) Resources.Load<RevolverInfo>("Data/Weapons/Revolver");
 
-    public override string GetName () { return "Revolver"; }
+        icon = revolverInfo.GetIcon();
+        name = revolverInfo.GetName();
 
-    public override ItemToken GetToken () {
-        return new RevolverToken(this);
+        // Stats should not depend on ScriptableObject
+        dmgAmount = revolverInfo.dmgAmount;
+        reloadTime = revolverInfo.reloadTime;
+        bulletSpeed = revolverInfo.bulletSpeed;
     }
 
     public List<RGBColor> GetBullets () {
@@ -57,16 +59,16 @@ public class Revolver : Weapon {
             if (bullets[i] != RGBColor.NONE) continue;
             switch (color) {
                 case RGBColor.RED:
-                    AudioManager.GetInstance().PlaySound(redInfuseSFX, true);
-                    FindObjectOfType<RevolverBarrel>().LoadRed();
+                    AudioManager.GetInstance().PlaySound(revolverInfo.redInfuseSFX, true);
+                    GameObject.FindObjectOfType<RevolverBarrel>().LoadRed();
                     break;
                 case RGBColor.GREEN:
-                    AudioManager.GetInstance().PlaySound(greenInfuseSFX, true);
-                    FindObjectOfType<RevolverBarrel>().LoadGreen();
+                    AudioManager.GetInstance().PlaySound(revolverInfo.greenInfuseSFX, true);
+                    GameObject.FindObjectOfType<RevolverBarrel>().LoadGreen();
                     break;
                 case RGBColor.BLUE:
-                    AudioManager.GetInstance().PlaySound(blueInfuseSFX, true);
-                    FindObjectOfType<RevolverBarrel>().LoadBlue();
+                    AudioManager.GetInstance().PlaySound(revolverInfo.blueInfuseSFX, true);
+                    GameObject.FindObjectOfType<RevolverBarrel>().LoadBlue();
                     break;
                 case RGBColor.NONE:
                     break;
@@ -81,24 +83,25 @@ public class Revolver : Weapon {
     public override void Shoot () {
         // ¯\_(ツ)_/¯
         if (barrel == null) {
-            barrel = FindObjectOfType<RevolverBarrel>();
+            barrel = GameObject.FindObjectOfType<RevolverBarrel>();
+            barrel.SetRevolver(this);
         }
 
         if (!isReloading && !player.GetComponent<PlayerController>().isJumping) {
             if (bullets.Count > 0) {
                 player.GetComponent<Animator>().SetTrigger("shootTrigger");
-                InstantiateBullet(player.transform.position + (Vector3) deltaPosition);
+                InstantiateBullet(player.transform.position + (Vector3) revolverInfo.deltaPosition);
                 bullets.RemoveAt(0);
 
-                AudioManager.GetInstance().PlaySound(shootEffect, true);
-                FindObjectOfType<RevolverBarrel>().Shoot();
+                AudioManager.GetInstance().PlaySound(revolverInfo.shootEffect, true);
+                GameObject.FindObjectOfType<RevolverBarrel>().Shoot();
             }
             if (bullets.Count == 0) {
                 isReloading = true;
                 Tweener.Invoke(0.15f, () => {
                     player.GetComponent<Animator>().SetTrigger("loadTrigger");
-                    AudioManager.GetInstance().PlaySound(reloadStartSFX);
-                    player.GetComponent<PlayerController>().allPurposeAudio = reloadEndSFX;
+                    AudioManager.GetInstance().PlaySound(revolverInfo.reloadStartSFX);
+                    player.GetComponent<PlayerController>().allPurposeAudio = revolverInfo.reloadEndSFX;
                     Tweener.Invoke(reloadTime, () => {
                         barrel.Reload();
                         Reload();
@@ -118,7 +121,7 @@ public class Revolver : Weapon {
     }
 
     public void InstantiateBullet (Vector3 position) {
-        Rigidbody2D bulletObj = Instantiate(bulletPrefab, (Vector3) deltaPosition + position, Quaternion.Euler(0, 0, 180));
+        Rigidbody2D bulletObj = GameObject.Instantiate(revolverInfo.bulletPrefab, (Vector3) revolverInfo.deltaPosition + position, Quaternion.Euler(0, 0, 180));
         bulletObj.velocity = new Vector2(bulletSpeed, 0);
         bulletObj.GetComponent<Projectile>().SetDamage(bullets[0], dmgAmount);
     }
