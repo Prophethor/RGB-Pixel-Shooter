@@ -8,7 +8,7 @@ public class SaveTester : MonoBehaviour {
     public Weapon item;
 
     public void AddItem () {
-        InventoryManager.GetInstance().GetInventory().AddItem(item.GetToken());
+        InventoryManager.GetInstance().GetInventory().AddItem(new Revolver());
     }
 }
 

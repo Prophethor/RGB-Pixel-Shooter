@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour {
     public AudioClip swapWeapon;
 
     private UIManager UIManager;
+
     private void Awake () {
         weapons = new List<Weapon>();
 
@@ -27,8 +28,8 @@ public class GameManager : MonoBehaviour {
         try {
             loadout = InventoryManager.GetInstance().GetInventory().GetLoadout();
 
-            foreach (ItemToken weaponToken in loadout.GetWeapons()) {
-                weapons.Add(weaponToken.Instantiate() as Weapon);
+            foreach (Weapon weaponToken in loadout.GetWeapons()) {
+                weapons.Add(weaponToken);
             }
         }
         catch (Exception e) {
@@ -36,9 +37,11 @@ public class GameManager : MonoBehaviour {
 
         }
 
-        if (weapons.Count < 1) {
-            GenerateLoadout();
-        }
+        //if (weapons.Count < 1) {
+        //    GenerateLoadout();
+        //}
+
+        GenerateLoadout();
 
         player.equippedWeapon = weapons[0];
 
@@ -54,8 +57,8 @@ public class GameManager : MonoBehaviour {
     }
 
     private void GenerateLoadout () {
-        weapons.Add(Instantiate(revolver));
-        weapons.Add(Instantiate(shotgun));
+        weapons.Add(new Revolver());
+        weapons.Add(new DBShotgun());
     }
 
     public void SwitchWeapon () {
@@ -67,11 +70,11 @@ public class GameManager : MonoBehaviour {
 
         if (player.equippedWeapon == weapons[0]) {
             player.equippedWeapon = weapons[1];
-            player.GetComponent<Animator>().runtimeAnimatorController = player.equippedWeapon.controller;
+            player.GetComponent<Animator>().runtimeAnimatorController = player.equippedWeapon.Controller;
         }
         else {
             player.equippedWeapon = weapons[0];
-            player.GetComponent<Animator>().runtimeAnimatorController = player.equippedWeapon.controller;
+            player.GetComponent<Animator>().runtimeAnimatorController = player.equippedWeapon.Controller;
         }
     }
 
@@ -83,11 +86,11 @@ public class GameManager : MonoBehaviour {
         UIManager.ShowLoseScreen();
     }
 
-    public void RestartLevel() {
+    public void RestartLevel () {
         SceneLoader.GetInstance().LoadScene("LevelScene");
     }
 
-    public void GoToMenu() {
+    public void GoToMenu () {
         SceneLoader.GetInstance().FinishLevel("LevelSelect");
     }
 

@@ -37,10 +37,10 @@ public class UIManager : MonoBehaviour {
 
         weapons[0].HookUI(weapon1Panel);
         weapons[1].HookUI(weapon2Panel);
-        weapon1Barrel = Instantiate(weapons[0].UIbarrel, barrelPanel);
-        weapon2Barrel = Instantiate(weapons[1].UIbarrel, barrelPanel);
-        weapon1Sprite = weapons[0].weaponSprite;
-        weapon2Sprite = weapons[1].weaponSprite;
+        weapon1Barrel = Instantiate(weapons[0].UIBarrel, barrelPanel);
+        weapon2Barrel = Instantiate(weapons[1].UIBarrel, barrelPanel);
+        weapon1Sprite = weapons[0].WeaponSprite;
+        weapon2Sprite = weapons[1].WeaponSprite;
         currentWeaponPanel.color = Color.white;
         otherWeaponPanel.color = Color.white;
         currentWeaponPanel.sprite = weapon1Sprite;
@@ -98,7 +98,7 @@ public class UIManager : MonoBehaviour {
         YouWin.GetComponent<CanvasGroup>().interactable = true;
         YouWin.GetComponent<CanvasGroup>().blocksRaycasts = true;
         Tweener.AddTween(() => YouWin.transform.position.y, (x) => { YouWin.transform.position = new Vector3(YouWin.transform.position.x, x); },
-             Camera.main.WorldToScreenPoint(new Vector3(0, 5.5f)).y, 0.5f, () => {
+             Camera.main.WorldToScreenPoint(new Vector3(0, 10f)).y, 0.5f, () => {
                  Time.timeScale = 0;
              }, true);
     }
@@ -114,7 +114,7 @@ public class UIManager : MonoBehaviour {
         YouLose.GetComponent<CanvasGroup>().interactable = true;
         YouLose.GetComponent<CanvasGroup>().blocksRaycasts = true;
         Tweener.AddTween(() => YouLose.transform.position.y, (x) => { YouLose.transform.position = new Vector3(YouLose.transform.position.x, x); },
-            Camera.main.WorldToScreenPoint(new Vector3(0, 5.5f)).y, 0.5f, () => {
+            Camera.main.WorldToScreenPoint(new Vector3(0f, 10f)).y, 0.5f, () => {
                 Time.timeScale = 0;
             }, true);
     }
