@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayField : MonoBehaviour {
 
     public GameObject lanePrefab;
-    public int laneCount = 3;
+    
 
     private static RectTransform playField;
-
     private static List<Transform> laneList;
     private static float laneHeight;
+    public static int laneCount = 3;
 
     private void Awake () {
         laneList = new List<Transform>();
@@ -33,6 +33,14 @@ public class PlayField : MonoBehaviour {
     public static bool OnField(Vector3 pos) {
         return pos.x > playField.position.x && pos.x < playField.position.x+playField.rect.width &&
                pos.y > playField.position.y && pos.y < playField.position.y + playField.rect.height;
+    }
+
+    public static int GetLaneIndex(Vector3 pos) {
+        for(int i = 0; i < laneCount; i++) {
+            if (pos.y >= playField.position.y + i * laneHeight && pos.y < playField.position.y + (i + 1) * laneHeight) return i;
+        }
+        if (pos.y < playField.position.y) return -1;
+        else return laneCount;
     }
 
     public static float GetLaneHeight () {

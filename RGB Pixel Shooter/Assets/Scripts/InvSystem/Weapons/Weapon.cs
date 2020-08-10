@@ -32,10 +32,6 @@ public abstract class Weapon : ScriptableObject, Item {
 
     protected abstract void InitHooks ();
 
-    public virtual bool CanMove () {
-        return isReloading;
-    }
-
     public virtual void HookUI (Transform weaponUI) {
         if (UIHooks == null) {
             InitHooks();

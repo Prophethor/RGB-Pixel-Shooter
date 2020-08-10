@@ -150,7 +150,7 @@ public class EnemySpawner : MonoBehaviour {
 
         gEnemies.Add(gEnemy);
         //Set lane randomly
-        gEnemy.SetLane(Random.Range(0, playField.GetComponent<PlayField>().laneCount));
+        gEnemy.SetLane(Random.Range(0, PlayField.laneCount));
 
         //Set color based on level color distribution
         RGBColor color = (RGBColor) CalculateByDistribution(colorDistribution, colorDistrReduxFactors, ref colorDistributionSum);

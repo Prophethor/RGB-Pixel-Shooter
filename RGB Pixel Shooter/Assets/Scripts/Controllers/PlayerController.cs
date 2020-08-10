@@ -28,10 +28,10 @@ public class PlayerController: MonoBehaviour {
     private void Start () {
 
         //TODO: Replace with tap
-        swipe = Instantiate(swipeDetector).GetComponent<Swipe>();
+        /*swipe = Instantiate(swipeDetector).GetComponent<Swipe>();
         swipe.minDistanceForSwipe = 20;
         swipe.detectOnlyAfterSwipe = true;
-        swipe.OnSwipe += Move;
+        swipe.OnSwipe += Move;*/
 
         //Positioning level objects based on aspect ratio
         transform.position = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(0, 0)).x +
@@ -40,6 +40,14 @@ public class PlayerController: MonoBehaviour {
 
         Transform finishLine = GameObject.FindGameObjectWithTag("FinishLine").transform;
         finishLine.position = new Vector3((transform.position + new Vector3(2.25f, 0, 0)).x,finishLine.position.y);
+
+        moveSpace.position = Camera.main.ScreenToWorldPoint(new Vector3(0, 0));        
+        moveSpace.sizeDelta = new Vector3(finishLine.position.x- Camera.main.ScreenToWorldPoint(new Vector3(0, 0)).x, 
+            Camera.main.ScreenToWorldPoint(new Vector3(0, Camera.main.pixelHeight)).y);
+
+        shootSpace.position = new Vector3(finishLine.position.x,0);
+        shootSpace.sizeDelta = new Vector3(Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth,0)).x - finishLine.position.x, 
+            Camera.main.ScreenToWorldPoint(new Vector3(0, Camera.main.pixelHeight)).y);
 
         laneOffset = PlayField.GetLanePosition(lane) - transform.position.y;
         animator = GetComponent<Animator>();
@@ -50,8 +58,12 @@ public class PlayerController: MonoBehaviour {
     private void Update () {
         if (Time.timeScale != 0) {
             if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began) {
-                if (PosOnPanel(Camera.main.ScreenToWorldPoint(Input.touches[0].position), shootSpace)) {
+                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.touches[0].position);
+                if (PosOnPanel(pos, shootSpace)) {
                     equippedWeapon.Shoot();
+                } else if (PosOnPanel(pos, moveSpace)) {
+                    if (PlayField.GetLaneIndex(pos) < lane) SwitchLane(lane - 1);
+                    else if (PlayField.GetLaneIndex(pos) > lane) SwitchLane(lane + 1);
                 }
             }
 
@@ -106,7 +118,7 @@ public class PlayerController: MonoBehaviour {
 
     private void SwitchLane (int newLane) {
         //TODO: get rid of casting
-        if (newLane < 0 || 2 < newLane || (equippedWeapon.CanMove())) {
+        if (newLane < 0 || 2 < newLane) {
             return;
         }
         allPurposeAudio = moveSFX;
